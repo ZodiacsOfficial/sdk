@@ -21,11 +21,11 @@
   ],
   "homepage": "https://zodiacs.org/sdk",
   "bugs": {
-    "url": "https://github.com/diasmal917/zodiacs-sdk/issues"
+    "url": "https://github.com/ZodiacSDK/sdk/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diasmal917/zodiacs-sdk.git"
+    "url": "git+https://github.com/ZodiacSDK/sdk.git"
   },
   "type": "module",
   "sideEffects": false,

@@ -82,7 +82,7 @@ Run package dry-runs from `packages/sdk`.
 - Balance reads depend on the configured Solana RPC endpoint or Base RPC transport.
 - Public RPC endpoints may rate-limit or return transient failures.
 - Mint and bridge address changes must be handled as explicit registry updates with tests.
-- The temporary audit repository is `https://github.com/diasmal917/zodiacs-sdk`; the intended final public repository is `https://github.com/zodiacs-org/sdk`.
+- The public SDK repository is `https://github.com/ZodiacSDK/sdk`.
 
 ## Read-Only And Security Posture
 
