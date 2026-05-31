@@ -6,7 +6,7 @@
   "scripts": {
     "build": "corepack pnpm --filter @zodiacs/sdk build",
     "typecheck": "tsc -b --noEmit --pretty false",
-    "test": "vitest run",
+    "test": "vitest run --fileParallelism=false",
     "clean": "corepack pnpm -r exec rm -rf dist tsconfig.tsbuildinfo"
   },
   "devDependencies": {
