@@ -70,14 +70,22 @@ export function useIsOfficialZodiacAddress(
   address: string | null | undefined,
   options: ZodiacAddressLookupOptions = {}
 ): boolean {
-  return useMemo(() => (address ? isOfficialZodiacAddress(address, options) : false), [address, options]);
+  const chain = options.chain;
+  return useMemo(
+    () => (address ? isOfficialZodiacAddress(address, chain ? { chain } : {}) : false),
+    [address, chain]
+  );
 }
 
 export function useZodiacRepresentation(
   address: string | null | undefined,
   options: ZodiacAddressLookupOptions = {}
 ): ZodiacRepresentation | null {
-  return useMemo(() => (address ? getRepresentationByAddress(address, options) : null), [address, options]);
+  const chain = options.chain;
+  return useMemo(
+    () => (address ? getRepresentationByAddress(address, chain ? { chain } : {}) : null),
+    [address, chain]
+  );
 }
 
 export function useCurrentZodiacSeason(date?: Date): ZodiacSeason {
