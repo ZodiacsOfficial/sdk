@@ -299,3 +299,55 @@ export interface UnifiedZodiacShelf {
 }
 
 export type ZodiacComposition = Record<ZodiacElement | ZodiacModality, number>;
+
+export interface ZodiacSeason {
+  readonly sign: ZodiacSign;
+  readonly displayName: string;
+  readonly startDate: string;
+  readonly endDate: string;
+  readonly isCurrent: boolean;
+}
+
+export interface ZodiacSeasonProgress extends ZodiacSeason {
+  readonly progress: number;
+}
+
+export interface ZodiacIdentityAlignmentInput {
+  readonly sunSign?: ZodiacSign;
+  readonly moonSign?: ZodiacSign;
+  readonly risingSign?: ZodiacSign;
+}
+
+export interface ZodiacIdentityAlignment {
+  readonly placement: "sun" | "moon" | "rising";
+  readonly sign: ZodiacSign;
+  readonly held: boolean;
+}
+
+export interface ZodiacNativeBridgedSummary {
+  readonly nativeHeld: number;
+  readonly bridgedHeld: number;
+  readonly combinedHeld: number;
+  readonly heldSigns: readonly ZodiacSign[];
+}
+
+export interface ZodiacIdentityContext {
+  readonly heldSigns: readonly ZodiacSign[];
+  readonly missingSigns: readonly ZodiacSign[];
+  readonly totalHeld: number;
+  readonly wheelCoverage: number;
+  readonly elementComposition: Record<ZodiacElement, number>;
+  readonly modalityComposition: Record<ZodiacModality, number>;
+  readonly currentSeason: ZodiacSeason;
+  readonly currentSeasonHeld: boolean;
+  readonly nativeBridgedSummary?: ZodiacNativeBridgedSummary;
+  readonly alignments: readonly ZodiacIdentityAlignment[];
+}
+
+export interface CosmicReceiptData extends ZodiacIdentityContext {
+  readonly label: string;
+  readonly wheelState: readonly {
+    readonly sign: ZodiacSign;
+    readonly held: boolean;
+  }[];
+}

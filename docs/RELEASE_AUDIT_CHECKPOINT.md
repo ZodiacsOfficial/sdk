@@ -21,7 +21,7 @@ The workspace is managed with pnpm through `pnpm-workspace.yaml`.
 - Read-only Solana balance helpers and explicit Solana aliases.
 - Read-only Base balance helpers using `viem` `PublicClient` only.
 - Cross-chain ownership and public shelf helpers.
-- Identity composition helpers for held signs, element mix, modality mix, wheel state, and receipt data.
+- Identity context helpers for held signs, missing signs, element mix, modality mix, wheel state, seasonal context, and receipt data.
 - React hooks and UI components for registry verification, ownership, and identity surfaces.
 - Optional market context adapters for DEX Screener, Jupiter, and placeholder data.
 

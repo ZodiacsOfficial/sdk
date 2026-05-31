@@ -1,5 +1,20 @@
 import { getZodiacAsset } from "./official-registry.js";
-import { ZODIAC_SIGNS, type BaseZodiacsOwnership, type CrossChainZodiacsOwnership, type UnifiedZodiacShelf, type ZodiacElement, type ZodiacModality, type ZodiacSign, type ZodiacsOwnership } from "./types.js";
+import { getCurrentZodiacSeason } from "./season.js";
+import {
+  ZODIAC_SIGNS,
+  type BaseZodiacsOwnership,
+  type CosmicReceiptData,
+  type CrossChainZodiacsOwnership,
+  type UnifiedZodiacShelf,
+  type ZodiacElement,
+  type ZodiacIdentityAlignment,
+  type ZodiacIdentityAlignmentInput,
+  type ZodiacIdentityContext,
+  type ZodiacModality,
+  type ZodiacNativeBridgedSummary,
+  type ZodiacSign,
+  type ZodiacsOwnership
+} from "./types.js";
 
 interface HoldingLike {
   readonly sign: ZodiacSign;
@@ -8,6 +23,16 @@ interface HoldingLike {
 
 interface OwnershipLike {
   readonly holdings: readonly HoldingLike[];
+}
+
+export type ZodiacIdentityOwnershipInput = OwnershipLike | CrossChainZodiacsOwnership;
+
+export interface ZodiacIdentityContextOptions extends ZodiacIdentityAlignmentInput {
+  readonly date?: Date;
+}
+
+export interface CosmicReceiptDataOptions extends ZodiacIdentityContextOptions {
+  readonly label?: string;
 }
 
 export function getZodiacShelf<T extends OwnershipLike>(ownership: T): readonly HoldingLike[] {
@@ -58,24 +83,47 @@ export function getZodiacWheelState(ownership: OwnershipLike): readonly {
 }
 
 export function getCosmicReceiptData(
-  ownership: OwnershipLike,
-  options: { readonly label?: string } = {}
-): {
-  readonly label: string;
-  readonly heldSigns: readonly ZodiacSign[];
-  readonly totalHeld: number;
-  readonly elementComposition: Record<ZodiacElement, number>;
-  readonly modalityComposition: Record<ZodiacModality, number>;
-} {
-  const heldSigns = getZodiacShelf(ownership).map((holding) => holding.sign);
+  ownership: ZodiacIdentityOwnershipInput,
+  options: CosmicReceiptDataOptions = {}
+): CosmicReceiptData {
+  const context = getZodiacIdentityContext(ownership, options);
 
   return {
     label: options.label ?? "public Zodiacs shelf",
-    heldSigns,
-    totalHeld: heldSigns.length,
-    elementComposition: getElementComposition(ownership),
-    modalityComposition: getModalityComposition(ownership)
+    ...context,
+    wheelState: getZodiacWheelState(toOwnershipLike(ownership))
   };
+}
+
+export function getZodiacIdentityContext(
+  ownership: ZodiacIdentityOwnershipInput,
+  options: ZodiacIdentityContextOptions = {}
+): ZodiacIdentityContext {
+  const normalizedOwnership = toOwnershipLike(ownership);
+  const heldSigns = getZodiacShelf(normalizedOwnership).map((holding) => holding.sign);
+  const currentSeason = getCurrentZodiacSeason(options.date);
+
+  return {
+    heldSigns,
+    missingSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
+    totalHeld: heldSigns.length,
+    wheelCoverage: getWheelCoverage(heldSigns.length),
+    elementComposition: getElementComposition(normalizedOwnership),
+    modalityComposition: getModalityComposition(normalizedOwnership),
+    currentSeason,
+    currentSeasonHeld: heldSigns.includes(currentSeason.sign),
+    ...(isCrossChainOwnership(ownership)
+      ? { nativeBridgedSummary: getNativeAndBridgedSummary(ownership) }
+      : {}),
+    alignments: getIdentityAlignments(heldSigns, options)
+  };
+}
+
+export function getZodiacReadingContext(
+  ownership: ZodiacIdentityOwnershipInput,
+  options: ZodiacIdentityContextOptions = {}
+): ZodiacIdentityContext {
+  return getZodiacIdentityContext(ownership, options);
 }
 
 export function getCrossChainZodiacShelf(ownershipByChain: CrossChainZodiacsOwnership): UnifiedZodiacShelf {
@@ -144,4 +192,53 @@ function unique<T>(items: readonly T[]): readonly T[] {
 
 function isHeld(ownership: ZodiacsOwnership | BaseZodiacsOwnership | undefined, sign: ZodiacSign): boolean {
   return ownership?.holdings.some((holding) => holding.sign === sign && holding.held) ?? false;
+}
+
+function toOwnershipLike(ownership: ZodiacIdentityOwnershipInput): OwnershipLike {
+  if (!isCrossChainOwnership(ownership)) {
+    return ownership;
+  }
+
+  const shelf = getCrossChainZodiacShelf(ownership);
+
+  return {
+    holdings: shelf.items.map((item) => ({
+      sign: item.sign,
+      held: item.held
+    }))
+  };
+}
+
+function isCrossChainOwnership(ownership: ZodiacIdentityOwnershipInput): ownership is CrossChainZodiacsOwnership {
+  return "solana" in ownership || "base" in ownership;
+}
+
+function getWheelCoverage(totalHeld: number): number {
+  return Math.round((totalHeld / ZODIAC_SIGNS.length) * 10000) / 100;
+}
+
+function getIdentityAlignments(
+  heldSigns: readonly ZodiacSign[],
+  options: ZodiacIdentityAlignmentInput
+): readonly ZodiacIdentityAlignment[] {
+  const placements: readonly {
+    readonly placement: ZodiacIdentityAlignment["placement"];
+    readonly sign: ZodiacSign | undefined;
+  }[] = [
+    { placement: "sun", sign: options.sunSign },
+    { placement: "moon", sign: options.moonSign },
+    { placement: "rising", sign: options.risingSign }
+  ];
+
+  return placements.flatMap(({ placement, sign }) => {
+    if (!sign) {
+      return [];
+    }
+
+    return [{
+      placement,
+      sign,
+      held: heldSigns.includes(sign)
+    }];
+  });
 }

@@ -92,6 +92,12 @@ export {
   getZodiacHoldingsByChain
 } from "./cross-chain.js";
 export {
+  getCurrentZodiacSeason,
+  getNextZodiacSeason,
+  getZodiacSeasonForDate,
+  getZodiacSeasonProgress
+} from "./season.js";
+export {
   getCosmicReceiptData,
   getCrossChainZodiacShelf,
   getElementComposition,
@@ -101,6 +107,8 @@ export {
   getNativeAndBridgedSummary,
   getOwnSignStatus,
   getTotalHeld,
+  getZodiacIdentityContext,
+  getZodiacReadingContext,
   getZodiacShelf,
   getZodiacWheelState
 } from "./identity.js";
@@ -171,8 +179,20 @@ export type {
   ZodiacsRegistry,
   ZodiacsSupportedChain,
   UnifiedZodiacShelf,
-  UnifiedZodiacShelfItem
+  UnifiedZodiacShelfItem,
+  CosmicReceiptData,
+  ZodiacIdentityAlignment,
+  ZodiacIdentityAlignmentInput,
+  ZodiacIdentityContext,
+  ZodiacNativeBridgedSummary,
+  ZodiacSeason,
+  ZodiacSeasonProgress
 } from "./types.js";
+export type {
+  CosmicReceiptDataOptions,
+  ZodiacIdentityContextOptions,
+  ZodiacIdentityOwnershipInput
+} from "./identity.js";
 export type {
   ZodiacAddressLookupOptions
 } from "./verification.js";

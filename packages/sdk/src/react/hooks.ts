@@ -3,9 +3,12 @@ import type { PublicClient } from "viem";
 import {
   getBaseZodiacBalance,
   getBaseZodiacsOwnership,
+  getCosmicReceiptData,
+  getCurrentZodiacSeason,
   getRepresentationByAddress,
   getSolanaZodiacsOwnership,
   getZodiacAsset,
+  getZodiacIdentityContext,
   getZodiacMetadata,
   getZodiacToken,
   getZodiacsRegistry,
@@ -14,12 +17,19 @@ import {
   type BaseZodiacBalance,
   type BaseZodiacsOwnership,
   type ConnectionOrRpcUrl,
+  type CosmicReceiptData,
+  type CosmicReceiptDataOptions,
+  type CrossChainZodiacsOwnership,
   type ZodiacsOwnership,
   type ZodiacAddressLookupOptions,
   type ZodiacAsset,
   type ZodiacBalanceResult,
+  type ZodiacIdentityContext,
+  type ZodiacIdentityContextOptions,
+  type ZodiacIdentityOwnershipInput,
   type ZodiacMetadata,
   type ZodiacRepresentation,
+  type ZodiacSeason,
   type ZodiacSign,
   type ZodiacToken,
   type ZodiacsRegistry
@@ -68,6 +78,36 @@ export function useZodiacRepresentation(
   options: ZodiacAddressLookupOptions = {}
 ): ZodiacRepresentation | null {
   return useMemo(() => (address ? getRepresentationByAddress(address, options) : null), [address, options]);
+}
+
+export function useCurrentZodiacSeason(date?: Date): ZodiacSeason {
+  const time = date?.getTime() ?? null;
+
+  return useMemo(() => getCurrentZodiacSeason(date), [time]);
+}
+
+export function useZodiacIdentityContext(
+  ownership: ZodiacIdentityOwnershipInput,
+  options: ZodiacIdentityContextOptions = {}
+): ZodiacIdentityContext {
+  const dateTime = options.date?.getTime() ?? null;
+
+  return useMemo(
+    () => getZodiacIdentityContext(ownership, options),
+    [ownership, dateTime, options.sunSign, options.moonSign, options.risingSign]
+  );
+}
+
+export function useCosmicReceiptData(
+  ownership: ZodiacIdentityOwnershipInput,
+  options: CosmicReceiptDataOptions = {}
+): CosmicReceiptData {
+  const dateTime = options.date?.getTime() ?? null;
+
+  return useMemo(
+    () => getCosmicReceiptData(ownership, options),
+    [ownership, dateTime, options.sunSign, options.moonSign, options.risingSign, options.label]
+  );
 }
 
 export function useZodiacToken(sign: ZodiacSign): UseZodiacTokenResult {
@@ -264,7 +304,7 @@ export function useSolanaZodiacsOwnership(
 export function useCrossChainZodiacsOwnership(params: {
   readonly solana?: { readonly connection: ConnectionOrRpcUrl; readonly ownerAddress: string };
   readonly base?: { readonly publicClient: PublicClient; readonly ownerAddress: string };
-}): AsyncHookState<{ readonly solana?: ZodiacsOwnership; readonly base?: BaseZodiacsOwnership }> {
+}): AsyncHookState<CrossChainZodiacsOwnership> {
   const solanaConnection = params.solana?.connection ?? null;
   const solanaOwnerAddress = params.solana?.ownerAddress.trim() ?? "";
   const basePublicClient = params.base?.publicClient ?? null;

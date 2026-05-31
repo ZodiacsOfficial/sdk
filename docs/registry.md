@@ -32,3 +32,16 @@ Primary helpers:
 - `isOfficialZodiacAddress`
 - `getNativeCounterpart`
 - `getBridgedCounterpart`
+
+## Identity Context
+
+The registry also supports deterministic identity context for downstream apps.
+Helpers such as `getCurrentZodiacSeason`, `getZodiacIdentityContext`, and
+`getCosmicReceiptData` combine official sign metadata with public ownership
+state to produce display-ready facts: held signs, missing signs, element mix,
+modality mix, seasonal context, wheel coverage, and native/bridged summaries
+when cross-chain ownership is supplied.
+
+These helpers do not generate horoscopes or recommend asset acquisition,
+disposal, exchange, or retention. They are read-only building blocks for
+profiles, receipts, seasonal experiences, and other identity surfaces.

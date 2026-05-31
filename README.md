@@ -146,6 +146,41 @@ console.log(ownershipByChain.base?.heldSigns);
 Cross-chain helpers expose per-chain holdings first. They do not treat bridged
 Base balances as independent new supply.
 
+## Identity Context
+
+The SDK provides computed symbolic context from verified registry metadata and
+public ownership state. Downstream apps can use these display-ready facts to
+build readings, receipts, profiles, seasonal context, and other identity
+surfaces without depending on market data.
+
+```ts
+import {
+  getCurrentZodiacSeason,
+  getCosmicReceiptData,
+  getZodiacIdentityContext
+} from "@zodiacs/sdk";
+
+const season = getCurrentZodiacSeason(new Date("2026-03-22T00:00:00.000Z"));
+const context = getZodiacIdentityContext(ownership, {
+  date: new Date("2026-03-22T00:00:00.000Z"),
+  sunSign: "aries"
+});
+const receipt = getCosmicReceiptData(ownership);
+
+console.log(season.sign); // "aries"
+console.log(context.currentSeasonHeld);
+console.log(receipt.wheelCoverage);
+```
+
+Identity helpers return facts such as held signs, missing signs, element mix,
+modality mix, current season, wheel coverage, and optional manual placement
+alignment. They do not generate horoscopes or recommend asset acquisition,
+disposal, exchange, or retention. The SDK remains read-only.
+
+React integrations can use `useCurrentZodiacSeason`, `useZodiacIdentityContext`,
+and `useCosmicReceiptData` as thin deterministic wrappers around the same
+helpers.
+
 ## React Components
 
 ```tsx

@@ -7,10 +7,13 @@ export {
 export {
   useBaseZodiacBalance,
   useBaseZodiacsOwnership,
+  useCosmicReceiptData,
   useCrossChainZodiacsOwnership,
+  useCurrentZodiacSeason,
   useIsOfficialZodiacAddress,
   useOfficialZodiacToken,
   useSolanaZodiacsOwnership,
+  useZodiacIdentityContext,
   useZodiacRepresentation,
   useZodiacsRegistry,
   useZodiacBalance,

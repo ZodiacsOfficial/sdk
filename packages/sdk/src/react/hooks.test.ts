@@ -186,4 +186,33 @@ describe("useZodiacBalance", () => {
     expect(mockState.latestEffectDeps).toEqual([connection, "", publicClient, ""]);
     expect(mockState.latestEffectDeps).not.toContain(params);
   });
+
+  it("returns deterministic identity context without network calls", async () => {
+    const ownership = {
+      holdings: [
+        { sign: "aries", held: true },
+        { sign: "taurus", held: false }
+      ]
+    } as const;
+    const { useCurrentZodiacSeason, useCosmicReceiptData, useZodiacIdentityContext } = await import("./hooks.js");
+
+    expect(useCurrentZodiacSeason(new Date("2026-03-22T00:00:00.000Z"))).toMatchObject({
+      sign: "aries"
+    });
+    expect(useZodiacIdentityContext(ownership, {
+      date: new Date("2026-03-22T00:00:00.000Z"),
+      sunSign: "aries"
+    })).toMatchObject({
+      heldSigns: ["aries"],
+      currentSeasonHeld: true,
+      alignments: [{ placement: "sun", sign: "aries", held: true }]
+    });
+    expect(useCosmicReceiptData(ownership, {
+      date: new Date("2026-04-21T00:00:00.000Z")
+    })).toMatchObject({
+      label: "public Zodiacs shelf",
+      currentSeason: { sign: "taurus" },
+      currentSeasonHeld: false
+    });
+  });
 });
