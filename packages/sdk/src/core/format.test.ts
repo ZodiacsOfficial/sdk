@@ -45,11 +45,18 @@ describe("formatTokenAmount", () => {
     expect(formatTokenAmount("1250000", 6, { maximumFractionDigits: 1 })).toBe("1.2");
   });
 
+  it("rounds only when explicitly requested", () => {
+    expect(formatTokenAmount("1250000", 6, { maximumFractionDigits: 1 })).toBe("1.2");
+    expect(formatTokenAmount("1250000", 6, { maximumFractionDigits: 1, roundingMode: "round" })).toBe("1.3");
+    expect(formatTokenAmount("999999", 6, { maximumFractionDigits: 0, roundingMode: "round" })).toBe("1");
+  });
+
   it("rejects malformed amounts and out-of-range decimals", () => {
     expect(() => formatTokenAmount("-5", 6)).toThrow();
     expect(() => formatTokenAmount("1.5", 6)).toThrow();
     expect(() => formatTokenAmount("100", 19)).toThrow();
     expect(() => formatTokenAmount("100", -1)).toThrow();
+    expect(() => formatTokenAmount("100", 6, { minimumFractionDigits: 3, maximumFractionDigits: 2 })).toThrow();
   });
 });
 
@@ -107,5 +114,15 @@ describe("formatZodiacBalance", () => {
 
   it("falls back to string formatting when uiAmount is null", () => {
     expect(formatZodiacBalance(tokenBalance({ uiAmount: null }), token)).toBe("2.5 ARIES");
+  });
+
+  it("honors raw amount rounding options even when uiAmount is present", () => {
+    const balance = tokenBalance({ amountRaw: "1250000", uiAmount: 1.25 });
+
+    expect(formatZodiacBalance(balance, token, { maximumFractionDigits: 1 })).toBe("1.2 ARIES");
+    expect(formatZodiacBalance(balance, token, {
+      maximumFractionDigits: 1,
+      roundingMode: "round"
+    })).toBe("1.3 ARIES");
   });
 });

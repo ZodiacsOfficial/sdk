@@ -36,18 +36,17 @@ pnpm add @zodiacs/sdk
 For Base read-only balance helpers, the SDK uses `viem` public clients. For
 Solana read-only balance helpers, it uses `@solana/web3.js` connections.
 
-The package ships granular entry points. Use the core and market entry points
-when React is not installed:
+The package ships granular entry points. The root, core, and market entry
+points do not require React:
 
-- `@zodiacs/sdk` — everything (registry, reads, identity, React, UI; requires React)
+- `@zodiacs/sdk` — registry, reads, identity, and market adapters (no React)
 - `@zodiacs/sdk/core` — registry, verification, balances, identity (no React)
 - `@zodiacs/sdk/market` — optional market adapters (no React)
 - `@zodiacs/sdk/react` — React hooks and `ZodiacsProvider`
 - `@zodiacs/sdk/ui` — React UI components
 
-`react` is a peer dependency for the root, React, and UI entry points. Plain
-Node consumers without React should import from `@zodiacs/sdk/core` or
-`@zodiacs/sdk/market`.
+`react` is an optional peer dependency that is required only when importing
+`@zodiacs/sdk/react` or `@zodiacs/sdk/ui`.
 
 ## Verify an Address
 
@@ -132,7 +131,11 @@ const ownership = await getBaseZodiacsOwnership(
 ```
 
 Base helpers use `PublicClient` only. They read ERC-20 `balanceOf` and
-`decimals`; they do not construct transactions or require wallet clients.
+registry decimals; they do not construct transactions or require wallet
+clients.
+
+Formatting helpers preserve raw-token precision. `formatTokenAmount` truncates
+when `maximumFractionDigits` is set unless `roundingMode: "round"` is passed.
 
 ## Build a Cross-Chain Zodiac Shelf
 
@@ -199,9 +202,11 @@ helpers.
 ```tsx
 import {
   OfficialZodiacBadge,
-  ZodiacAddressVerifier,
+  ZodiacAddressVerifier
+} from "@zodiacs/sdk/ui";
+import {
   ZodiacsProvider
-} from "@zodiacs/sdk";
+} from "@zodiacs/sdk/react";
 
 export function RegistrySurface() {
   return (
@@ -249,6 +254,8 @@ claims.
 
 `@zodiacs/sdk` follows semver. The canonical registry has its own version field
 inside `ZODIACS_REGISTRY` and `packages/sdk/registry/zodiacs.registry.json`.
+The `0.3.0` package release moves React hooks and UI components out of the root
+entry point and into explicit `/react` and `/ui` subpaths.
 
 ## Contributing
 

@@ -42,11 +42,11 @@ uses `NEXT_PUBLIC_SOLANA_RPC_URL` for Solana RPC access.
 ## What It Shows
 
 - Local Zodiacs token metadata from `@zodiacs/sdk`
-- `ZodiacAssetCard` and `ZodiacsPanel` from `@zodiacs/sdk`
+- `ZodiacAssetCard` and `ZodiacsPanel` from `@zodiacs/sdk/ui`
 - Read-only balance lookup with `getZodiacBalance`
-- React balance hooks through `ZodiacsProvider rpcUrl`
-- Ownership summary with `getZodiacsOwnership`
-- Placeholder market context through `useZodiacMarket`
+- React balance hooks through `ZodiacsProvider rpcUrl` from `@zodiacs/sdk/react`
+- Ownership summary with `getZodiacsOwnership` from `@zodiacs/sdk`
+- Placeholder market context through `useZodiacMarket` from `@zodiacs/sdk/react`
 
 Market data is optional. Adapter failures surface as unavailable market context
 without blocking metadata or ownership UI.

@@ -10,18 +10,17 @@ pnpm add @zodiacs/sdk
 
 ## Entry Points
 
-The package ships granular entry points. Use the core and market entry points
-when React is not installed:
+The package ships granular entry points. The root, core, and market entry
+points do not require React:
 
-- `@zodiacs/sdk` — everything (registry, reads, identity, React, UI; requires React)
+- `@zodiacs/sdk` — registry, reads, identity, and market adapters (no React)
 - `@zodiacs/sdk/core` — registry, verification, balances, identity (no React)
 - `@zodiacs/sdk/market` — optional market adapters (no React)
 - `@zodiacs/sdk/react` — React hooks and `ZodiacsProvider`
 - `@zodiacs/sdk/ui` — React UI components
 
-`react` is a peer dependency for the root, React, and UI entry points. Plain
-Node consumers without React should import from `@zodiacs/sdk/core` or
-`@zodiacs/sdk/market`.
+`react` is an optional peer dependency that is required only when importing
+`@zodiacs/sdk/react` or `@zodiacs/sdk/ui`.
 
 ```ts
 import {
@@ -60,6 +59,9 @@ metadata, computed symbolic context, React hooks, and UI components. It does
 not request private keys, sign messages, submit transactions, provide custody,
 or provide transaction approval helpers. It does not generate horoscopes or
 recommend asset acquisition, disposal, exchange, or retention.
+
+Formatting helpers preserve raw-token precision. `formatTokenAmount` truncates
+when `maximumFractionDigits` is set unless `roundingMode: "round"` is passed.
 
 Always verify official addresses against the published Zodiacs.org registry.
 The SDK exposes the official registry for apps and clients, but downstream

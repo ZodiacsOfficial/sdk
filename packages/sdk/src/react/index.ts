@@ -20,6 +20,7 @@ export {
   useZodiacMarket,
   useZodiacToken,
   type AsyncHookState,
+  type UseZodiacBalanceOptions,
   type UseZodiacMarketOptions,
   type UseZodiacTokenResult
 } from "./hooks.js";

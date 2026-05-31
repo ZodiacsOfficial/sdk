@@ -30,10 +30,12 @@ export function ZodiacAssetCard({
   style
 }: ZodiacAssetCardProps) {
   const { token } = useZodiacToken(sign);
-  const balanceState = useZodiacBalance(sign, ownerAddress);
-  const marketState = useZodiacMarket(sign, { enabled: showMarket });
-  const balance = balanceProp ?? balanceState.data;
-  const market = marketProp ?? marketState.data;
+  const shouldReadBalance = balanceProp === undefined;
+  const shouldReadMarket = showMarket && marketProp === undefined;
+  const balanceState = useZodiacBalance(sign, ownerAddress, { enabled: shouldReadBalance });
+  const marketState = useZodiacMarket(sign, { enabled: shouldReadMarket });
+  const balance = balanceProp === undefined ? balanceState.data : balanceProp;
+  const market = marketProp === undefined ? marketState.data : marketProp;
 
   return (
     <article

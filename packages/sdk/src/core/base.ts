@@ -30,19 +30,17 @@ export async function getBaseZodiacBalance(
   }
 
   try {
-    const [rawAmount, decimals] = await Promise.all([
-      publicClient.readContract({
-        address: representation.address as `0x${string}`,
-        abi: erc20Abi,
-        functionName: "balanceOf",
-        args: [normalizedOwner]
-      }),
-      publicClient.readContract({
-        address: representation.address as `0x${string}`,
-        abi: erc20Abi,
-        functionName: "decimals"
-      })
-    ]);
+    const rawAmount = await publicClient.readContract({
+      address: representation.address as `0x${string}`,
+      abi: erc20Abi,
+      functionName: "balanceOf",
+      args: [normalizedOwner]
+    });
+    const decimals = representation.decimals ?? Number(await publicClient.readContract({
+      address: representation.address as `0x${string}`,
+      abi: erc20Abi,
+      functionName: "decimals"
+    }));
     const rawAmountString = rawAmount.toString();
 
     return {

@@ -58,6 +58,10 @@ export interface UseZodiacMarketOptions {
   readonly enabled?: boolean;
 }
 
+export interface UseZodiacBalanceOptions {
+  readonly enabled?: boolean;
+}
+
 export function useZodiacsRegistry(): ZodiacsRegistry {
   return getZodiacsRegistry();
 }
@@ -132,10 +136,12 @@ export function useZodiacToken(sign: ZodiacSign): UseZodiacTokenResult {
 
 export function useZodiacBalance(
   sign: ZodiacSign,
-  ownerAddress: string | null | undefined
+  ownerAddress: string | null | undefined,
+  options: UseZodiacBalanceOptions = {}
 ): AsyncHookState<ZodiacBalanceResult> {
   const { balanceReader, registry } = useZodiacs();
   const { token } = useZodiacToken(sign);
+  const enabled = options.enabled ?? true;
   const [state, setState] = useState<AsyncHookState<ZodiacBalanceResult>>({
     data: null,
     error: null,
@@ -143,6 +149,11 @@ export function useZodiacBalance(
   });
 
   useEffect(() => {
+    if (!enabled) {
+      setState({ data: null, error: null, loading: false });
+      return;
+    }
+
     const normalizedOwnerAddress = ownerAddress?.trim();
 
     if (!normalizedOwnerAddress) {
@@ -188,7 +199,7 @@ export function useZodiacBalance(
     return () => {
       cancelled = true;
     };
-  }, [balanceReader, ownerAddress, registry, sign, token]);
+  }, [balanceReader, enabled, ownerAddress, registry, sign, token]);
 
   return state;
 }

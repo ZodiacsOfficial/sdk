@@ -1,6 +1,6 @@
 {
   "name": "@zodiacs/sdk",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Official read-only TypeScript SDK for the canonical Zodiacs.org registry, native Solana Zodiacs assets, and official bridged Base representations.",
   "license": "MIT",
   "keywords": [
@@ -59,6 +59,7 @@
   "files": [
     "dist",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE",
     "registry"
   ],
@@ -79,6 +80,11 @@
   },
   "peerDependencies": {
     "react": ">=18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/react": "^18.3.12",

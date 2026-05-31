@@ -12,6 +12,7 @@ import {
   isOfficialBaseZodiacAddress,
   isOfficialSolanaZodiacMint,
   isOfficialZodiacAddress,
+  isOfficialZodiacRepresentation,
   type ZodiacSign,
   assertOfficialZodiacAddress
 } from "./index.js";
@@ -94,6 +95,12 @@ describe("canonical Zodiacs registry", () => {
       kind: "bridged",
       originAddress: ariesSolanaMint
     });
+    expect(isOfficialZodiacRepresentation(getRepresentationByAddress(baseLowercase))).toBe(true);
+    expect(isOfficialZodiacRepresentation(baseLowercase)).toBe(true);
+    expect(isOfficialZodiacRepresentation({
+      ...getBaseZodiacRepresentation("aries"),
+      address: unknownBaseAddress()
+    })).toBe(false);
   });
 
   it("returns null or false for unknown addresses and throws only from assertions", () => {
@@ -138,3 +145,7 @@ describe("canonical Zodiacs registry", () => {
     }
   });
 });
+
+function unknownBaseAddress(): string {
+  return "0x0000000000000000000000000000000000000000";
+}
