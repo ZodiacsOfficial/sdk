@@ -57,7 +57,16 @@
     }
   },
   "files": [
-    "dist",
+    "dist/*.d.ts",
+    "dist/*.js",
+    "dist/core/index.d.ts",
+    "dist/core/index.js",
+    "dist/market/index.d.ts",
+    "dist/market/index.js",
+    "dist/react/index.d.ts",
+    "dist/react/index.js",
+    "dist/ui/index.d.ts",
+    "dist/ui/index.js",
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
@@ -71,7 +80,8 @@
   },
   "scripts": {
     "build": "tsup src/index.ts src/core/index.ts src/market/index.ts src/react/index.ts src/ui/index.ts --format esm --dts --clean --tsconfig tsconfig.build.json --external react --external react/jsx-runtime --external @solana/web3.js --external viem",
-    "typecheck": "tsc -b --pretty false",
+    "prepack": "npm run build",
+    "typecheck": "tsc -b --noEmit --pretty false",
     "test": "vitest run src/**/*.test.ts src/**/*.test.tsx"
   },
   "dependencies": {

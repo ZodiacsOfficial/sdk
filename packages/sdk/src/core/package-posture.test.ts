@@ -5,8 +5,10 @@ const packageJson = JSON.parse(
   readFileSync(new URL("../../package.json", import.meta.url), "utf8")
 ) as {
   readonly version: string;
+  readonly files: readonly string[];
   readonly exports: Record<string, unknown>;
   readonly peerDependenciesMeta?: Record<string, { readonly optional?: boolean }>;
+  readonly scripts: Record<string, string>;
 };
 
 describe("package entry point posture", () => {
@@ -20,7 +22,17 @@ describe("package entry point posture", () => {
       "./ui",
       "./registry/zodiacs.registry.json"
     ]);
+    expect(packageJson.files).not.toContain("dist");
+    expect(packageJson.files).toEqual(expect.arrayContaining([
+      "dist/*.d.ts",
+      "dist/*.js",
+      "dist/core/index.js",
+      "dist/react/index.js",
+      "CHANGELOG.md"
+    ]));
     expect(packageJson.peerDependenciesMeta?.react?.optional).toBe(true);
+    expect(packageJson.scripts.typecheck).toContain("--noEmit");
+    expect(packageJson.scripts.prepack).toBe("npm run build");
 
     const rootEntry = readFileSync(new URL("../index.ts", import.meta.url), "utf8");
 

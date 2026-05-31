@@ -7,6 +7,9 @@
 - Marked `react` as an optional peer dependency for non-React consumers.
 - Added package posture tests for root, core, market, React, and UI entry
   points.
+- Hardened package publishing so typecheck cannot emit into `dist`, prepack
+  performs a clean build, and the published file list excludes nested test
+  artifacts.
 - Added controlled `ZodiacAssetCard` behavior so supplied balance and market
   props disable internal reads.
 - Added `enabled` support to `useZodiacBalance`.
