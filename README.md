@@ -36,17 +36,18 @@ pnpm add @zodiacs/sdk
 For Base read-only balance helpers, the SDK uses `viem` public clients. For
 Solana read-only balance helpers, it uses `@solana/web3.js` connections.
 
-The package ships granular entry points so non-React and server-side consumers
-do not pull in React:
+The package ships granular entry points. Use the core and market entry points
+when React is not installed:
 
-- `@zodiacs/sdk` — everything (registry, reads, identity, React, UI)
+- `@zodiacs/sdk` — everything (registry, reads, identity, React, UI; requires React)
 - `@zodiacs/sdk/core` — registry, verification, balances, identity (no React)
 - `@zodiacs/sdk/market` — optional market adapters (no React)
 - `@zodiacs/sdk/react` — React hooks and `ZodiacsProvider`
 - `@zodiacs/sdk/ui` — React UI components
 
-`react` is an optional peer dependency. It is only required when importing
-`@zodiacs/sdk/react`, `@zodiacs/sdk/ui`, or React members from the root entry.
+`react` is a peer dependency for the root, React, and UI entry points. Plain
+Node consumers without React should import from `@zodiacs/sdk/core` or
+`@zodiacs/sdk/market`.
 
 ## Verify an Address
 
