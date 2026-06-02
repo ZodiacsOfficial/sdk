@@ -4,18 +4,22 @@ import { useState } from "react";
 import {
   ZodiacsValidationError,
   getZodiacsOwnership,
-  ZodiacsPanel,
-  ZodiacsProvider,
   getHeldZodiacs,
   getZodiacBalance,
-  useZodiacMarket,
-  ZodiacAssetCard,
   ZODIAC_SIGNS,
   type ZodiacsHolding,
   type ZodiacsOwnership,
   type ZodiacBalance,
   type ZodiacSign
 } from "@zodiacs/sdk";
+import {
+  ZodiacsProvider,
+  useZodiacMarket
+} from "@zodiacs/sdk/react";
+import {
+  ZodiacAssetCard,
+  ZodiacsPanel
+} from "@zodiacs/sdk/ui";
 
 interface ZodiacsDemoProps {
   readonly initialRpcUrl: string;

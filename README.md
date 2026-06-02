@@ -1,5 +1,10 @@
 # Zodiacs SDK
 
+[![SDK version](https://img.shields.io/badge/sdk-0.3.0-blue)](packages/sdk/package.json)
+[![Registry version](https://img.shields.io/badge/registry-0.2.0-6f42c1)](packages/sdk/registry/zodiacs.registry.json)
+[![React peer](https://img.shields.io/badge/react-optional%20peer-61dafb)](packages/sdk/package.json)
+[![Posture](https://img.shields.io/badge/posture-read--only-2ea44f)](#security-posture)
+
 Zodiacs SDK is the official read-only TypeScript interface for the canonical
 Zodiacs.org registry. The native Zodiacs assets are SPL tokens on Solana. The
 SDK also recognizes official bridged ERC-20 representations on Base, created to
@@ -27,6 +32,13 @@ Machine-readable registry artifact:
 packages/sdk/registry/zodiacs.registry.json
 ```
 
+## Resources
+
+- Registry JSON package subpath: `@zodiacs/sdk/registry/zodiacs.registry.json`
+- Registry JSON source: [packages/sdk/registry/zodiacs.registry.json](packages/sdk/registry/zodiacs.registry.json)
+- GitHub repository: [ZodiacsOfficial/sdk](https://github.com/ZodiacsOfficial/sdk)
+- Next.js example app: [examples/nextjs](examples/nextjs)
+
 ## Install
 
 ```sh
@@ -35,6 +47,43 @@ pnpm add @zodiacs/sdk
 
 For Base read-only balance helpers, the SDK uses `viem` public clients. For
 Solana read-only balance helpers, it uses `@solana/web3.js` connections.
+
+The package ships granular entry points. The root, core, and market entry
+points do not require React:
+
+- `@zodiacs/sdk` — registry, reads, identity, and market adapters (no React)
+- `@zodiacs/sdk/core` — registry, verification, balances, identity (no React)
+- `@zodiacs/sdk/market` — optional market adapters (no React)
+- `@zodiacs/sdk/react` — React hooks and `ZodiacsProvider`
+- `@zodiacs/sdk/ui` — React UI components
+
+`react` is an optional peer dependency that is required only when importing
+`@zodiacs/sdk/react` or `@zodiacs/sdk/ui`.
+
+Core-only consumers do not need to install React. `viem` and `@solana/web3.js`
+ship as regular SDK dependencies because the read helpers use public clients
+from those ecosystems.
+
+## Common Core APIs
+
+| Need | Start with |
+| --- | --- |
+| Verify an official address | `isOfficialZodiacAddress`, `getRepresentationByAddress` |
+| Load sign metadata | `getZodiacAsset`, `getZodiacMetadata`, `listZodiacMetadata` |
+| Read Solana holdings | `getSolanaZodiacsOwnership`, `getSolanaZodiacBalance` |
+| Read Base holdings | `getBaseZodiacsOwnership`, `getBaseZodiacBalance` |
+| Build a cross-chain shelf | `getCrossChainZodiacsOwnership`, `getUnifiedZodiacShelf` |
+| Build identity surfaces | `getZodiacIdentityContext`, `getCosmicReceiptData` |
+| Show season context | `getCurrentZodiacSeason`, `getZodiacSeasonProgress` |
+| Format balances safely | `formatTokenAmount`, `formatZodiacBalance` |
+| Add optional market context | `getZodiacMarketByRepresentation`, `createDexScreenerMarketAdapter` |
+
+Full export maps live in the source barrels:
+[root](packages/sdk/src/index.ts),
+[core](packages/sdk/src/core/index.ts),
+[market](packages/sdk/src/market/index.ts),
+[react](packages/sdk/src/react/index.ts), and
+[ui](packages/sdk/src/ui/index.ts).
 
 ## Verify an Address
 
@@ -58,6 +107,8 @@ console.log(native?.chain); // "solana"
 
 Unknown addresses return `false` or `null`. Assertion helpers throw typed
 errors only when an app explicitly asks for assertion behavior.
+The example address above is the official bridged Base representation for
+Aries.
 
 ## Get a Zodiac Asset
 
@@ -91,6 +142,9 @@ const ownership = await getSolanaZodiacsOwnership(
 );
 ```
 
+Replace the owner address with any public Solana wallet address to inspect its
+Zodiacs holdings.
+
 Compatibility aliases remain available:
 
 - `getZodiacBalance`
@@ -118,8 +172,15 @@ const ownership = await getBaseZodiacsOwnership(
 );
 ```
 
+Replace the owner address with any public Base wallet address to inspect its
+Zodiacs holdings.
+
 Base helpers use `PublicClient` only. They read ERC-20 `balanceOf` and
-`decimals`; they do not construct transactions or require wallet clients.
+registry decimals; they do not construct transactions or require wallet
+clients.
+
+Formatting helpers preserve raw-token precision. `formatTokenAmount` truncates
+when `maximumFractionDigits` is set unless `roundingMode: "round"` is passed.
 
 ## Build a Cross-Chain Zodiac Shelf
 
@@ -186,9 +247,11 @@ helpers.
 ```tsx
 import {
   OfficialZodiacBadge,
-  ZodiacAddressVerifier,
+  ZodiacAddressVerifier
+} from "@zodiacs/sdk/ui";
+import {
   ZodiacsProvider
-} from "@zodiacs/sdk";
+} from "@zodiacs/sdk/react";
 
 export function RegistrySurface() {
   return (
@@ -205,6 +268,9 @@ Verifier UI distinguishes:
 - Official native Zodiacs.org asset on Solana
 - Official bridged Zodiacs.org asset on Base
 - Not found in the official Zodiacs.org registry
+
+For a complete app integration, see the
+[Next.js example app](examples/nextjs).
 
 ## Optional Market Context
 
@@ -236,6 +302,8 @@ claims.
 
 `@zodiacs/sdk` follows semver. The canonical registry has its own version field
 inside `ZODIACS_REGISTRY` and `packages/sdk/registry/zodiacs.registry.json`.
+The `0.3.0` package release moves React hooks and UI components out of the root
+entry point and into explicit `/react` and `/ui` subpaths.
 
 ## Contributing
 

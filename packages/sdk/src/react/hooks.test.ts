@@ -132,6 +132,20 @@ describe("useZodiacBalance", () => {
     });
   });
 
+  it("does not call the balance reader when disabled", async () => {
+    const customBalanceReader: ReadonlyZodiacBalanceReader = {
+      getTokenBalance: vi.fn(async () => null)
+    };
+    mockState.contextValue = createMockContext({ balanceReader: customBalanceReader });
+    const { useZodiacBalance } = await import("./hooks.js");
+
+    useZodiacBalance("aries", walletAddress, { enabled: false });
+    const state = await currentHookState();
+
+    expect(customBalanceReader.getTokenBalance).not.toHaveBeenCalled();
+    expect(state).toEqual({ data: null, error: null, loading: false });
+  });
+
   it("returns a safe error state for invalid wallet addresses", async () => {
     const connection: SolanaBalanceConnection = {
       getParsedTokenAccountsByOwner: vi.fn(async () => ({ value: [] }))

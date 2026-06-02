@@ -15,7 +15,8 @@ function mockPublicClient(readContract: ReturnType<typeof vi.fn>): PublicClient 
 
 describe("Base read-only balances", () => {
   it("returns an ok balance for positive ERC-20 balanceOf reads", async () => {
-    const client = mockPublicClient(vi.fn(async ({ functionName }) => functionName === "decimals" ? 6 : 1234500000000000000000000n));
+    const readContract = vi.fn(async (_request: { readonly functionName: string }) => 1234500000000000000000000n);
+    const client = mockPublicClient(readContract);
 
     await expect(getBaseZodiacBalance(client, ownerAddress, "aries")).resolves.toMatchObject({
       sign: "aries",
@@ -26,28 +27,29 @@ describe("Base read-only balances", () => {
       uiAmountString: "1234500000000000000",
       status: "ok"
     });
+    expect(readContract).toHaveBeenCalledOnce();
+    expect(readContract.mock.calls[0]?.[0]).toMatchObject({ functionName: "balanceOf" });
   });
 
   it("returns zero for empty balances", async () => {
-    const client = mockPublicClient(vi.fn(async ({ functionName }) => functionName === "decimals" ? 6 : 0n));
+    const readContract = vi.fn(async (_request: { readonly functionName: string }) => 0n);
+    const client = mockPublicClient(readContract);
 
     await expect(getBaseZodiacBalance(client, ownerAddress, "taurus")).resolves.toMatchObject({
       rawAmount: "0",
       uiAmountString: "0",
       status: "zero"
     });
+    expect(readContract).toHaveBeenCalledOnce();
   });
 
   it("returns unavailable for read errors without breaking ownership reads", async () => {
     const readContract = vi.fn(async ({ address, functionName }) => {
-      if (functionName === "decimals") {
-        return 6;
-      }
-
       if (String(address).toLowerCase() === "0x3ffb5282f5891dd8c813e64059edb0607537ec91") {
         throw new Error("RPC unavailable");
       }
 
+      expect(functionName).toBe("balanceOf");
       return 0n;
     });
     const client = mockPublicClient(readContract);

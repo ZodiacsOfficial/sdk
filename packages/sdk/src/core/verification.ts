@@ -32,7 +32,28 @@ export function getRepresentationByAddress(
   }) ?? null;
 }
 
-export const isOfficialZodiacRepresentation = isOfficialZodiacAddress;
+export function isOfficialZodiacRepresentation(
+  value: ZodiacRepresentation | string | null | undefined,
+  options: ZodiacAddressLookupOptions = {}
+): boolean {
+  if (typeof value === "string") {
+    return isOfficialZodiacAddress(value, options);
+  }
+
+  if (!value?.isOfficialRepresentation) {
+    return false;
+  }
+
+  const official = getZodiacRepresentation(value.sign, value.chain);
+
+  if (!official) {
+    return false;
+  }
+
+  return official.kind === value.kind &&
+    official.tokenStandard === value.tokenStandard &&
+    normalizeLookupAddress(official.address, official.chain) === normalizeLookupAddress(value.address, value.chain);
+}
 
 export function isOfficialZodiacAddress(address: string, options: ZodiacAddressLookupOptions = {}): boolean {
   return getRepresentationByAddress(address, options) !== null;

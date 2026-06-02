@@ -1,6 +1,6 @@
 {
   "name": "@zodiacs/sdk",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Official read-only TypeScript SDK for the canonical Zodiacs.org registry, native Solana Zodiacs assets, and official bridged Base representations.",
   "license": "MIT",
   "keywords": [
@@ -36,13 +36,39 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.js"
+    },
+    "./market": {
+      "types": "./dist/market/index.d.ts",
+      "import": "./dist/market/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    },
+    "./ui": {
+      "types": "./dist/ui/index.d.ts",
+      "import": "./dist/ui/index.js"
+    },
     "./registry/zodiacs.registry.json": {
       "default": "./registry/zodiacs.registry.json"
     }
   },
   "files": [
-    "dist",
+    "dist/*.d.ts",
+    "dist/*.js",
+    "dist/core/index.d.ts",
+    "dist/core/index.js",
+    "dist/market/index.d.ts",
+    "dist/market/index.js",
+    "dist/react/index.d.ts",
+    "dist/react/index.js",
+    "dist/ui/index.d.ts",
+    "dist/ui/index.js",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE",
     "registry"
   ],
@@ -53,8 +79,9 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts --clean --tsconfig tsconfig.build.json --external react --external react/jsx-runtime --external @solana/web3.js --external viem",
-    "typecheck": "tsc -b --pretty false",
+    "build": "tsup src/index.ts src/core/index.ts src/market/index.ts src/react/index.ts src/ui/index.ts --format esm --dts --clean --tsconfig tsconfig.build.json --external react --external react/jsx-runtime --external @solana/web3.js --external viem",
+    "prepack": "npm run build",
+    "typecheck": "tsc -b --noEmit --pretty false",
     "test": "vitest run src/**/*.test.ts src/**/*.test.tsx"
   },
   "dependencies": {
@@ -63,6 +90,11 @@
   },
   "peerDependencies": {
     "react": ">=18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/react": "^18.3.12",

@@ -5,11 +5,15 @@ Existing Solana read APIs remain available:
 - `getZodiacBalance`
 - `getZodiacsOwnership`
 - `getHeldZodiacs`
-- `useZodiacBalance`
-- `useZodiacMarket`
-- `useZodiacToken`
+- `useZodiacBalance` from `@zodiacs/sdk/react`
+- `useZodiacMarket` from `@zodiacs/sdk/react`
+- `useZodiacToken` from `@zodiacs/sdk/react`
 
 These compatibility helpers continue to read native Solana SPL assets.
+
+The root `@zodiacs/sdk` entry point is now React-free. React hooks should be
+imported from `@zodiacs/sdk/react`; UI components should be imported from
+`@zodiacs/sdk/ui`.
 
 New integrations should prefer explicit names:
 
