@@ -5,9 +5,11 @@ SDK canonical registry and read-only integration layer.
 
 ## Package Structure
 
-- `@zodiacs/sdk` in `packages/sdk`
+- `@zodiacs/sdk` package version `0.3.0` in `packages/sdk`
 - machine-readable registry artifact at `packages/sdk/registry/zodiacs.registry.json`
 - generic Next.js integration example in `examples/nextjs`
+- root, core, and market entry points are React-free; React hooks and UI live
+  behind explicit `/react` and `/ui` subpaths
 
 The workspace is managed with pnpm through `pnpm-workspace.yaml`.
 
@@ -38,7 +40,8 @@ The workspace is managed with pnpm through `pnpm-workspace.yaml`.
 ## Read Behavior
 
 - Solana reads use public wallet addresses and token mint addresses.
-- Base reads use `PublicClient.readContract` for ERC-20 `balanceOf` and `decimals`.
+- Base reads use `PublicClient.readContract` for ERC-20 `balanceOf`; registry
+  decimals are used when present, with on-chain `decimals` as a fallback.
 - Read failures return typed unavailable states per token.
 - Cross-chain helpers expose per-chain holdings before any unified shelf view.
 - Large Base raw balances are formatted through string/bigint-safe helpers.

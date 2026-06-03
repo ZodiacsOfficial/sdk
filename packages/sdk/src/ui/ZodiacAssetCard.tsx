@@ -28,8 +28,11 @@ export function ZodiacAssetCard({
   void marketProp;
   void showMarket;
   const { token } = useZodiacToken(sign);
-  const balanceState = useZodiacBalance(sign, ownerAddress);
-  const balance = balanceProp ?? balanceState.data;
+  const shouldReadBalance = balanceProp === undefined;
+  const balanceState = useZodiacBalance(sign, shouldReadBalance ? ownerAddress : null, {
+    enabled: shouldReadBalance
+  });
+  const balance = balanceProp === undefined ? balanceState.data : balanceProp;
 
   return (
     <article

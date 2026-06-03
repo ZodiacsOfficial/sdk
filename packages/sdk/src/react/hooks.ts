@@ -73,6 +73,10 @@ export interface DeprecatedZodiacMarketData {
 /** @deprecated Import market helpers explicitly from @zodiacs/sdk/market. */
 export type ZodiacMarketData = DeprecatedZodiacMarketData;
 
+export interface UseZodiacBalanceOptions {
+  readonly enabled?: boolean;
+}
+
 export function useZodiacsRegistry(): ZodiacsRegistry {
   return getZodiacsRegistry();
 }
@@ -85,9 +89,10 @@ export function useIsOfficialZodiacAddress(
   address: string | null | undefined,
   options: ZodiacAddressLookupOptions = {}
 ): boolean {
+  const chain = options.chain;
   return useMemo(
-    () => (address ? isOfficialZodiacAddress(address, options) : false),
-    [address, options]
+    () => (address ? isOfficialZodiacAddress(address, chain ? { chain } : {}) : false),
+    [address, chain]
   );
 }
 
@@ -95,9 +100,10 @@ export function useZodiacRepresentation(
   address: string | null | undefined,
   options: ZodiacAddressLookupOptions = {}
 ): ZodiacRepresentation | null {
+  const chain = options.chain;
   return useMemo(
-    () => (address ? getRepresentationByAddress(address, options) : null),
-    [address, options]
+    () => (address ? getRepresentationByAddress(address, chain ? { chain } : {}) : null),
+    [address, chain]
   );
 }
 
@@ -156,12 +162,14 @@ export function useZodiacToken(sign: ZodiacSign): UseZodiacTokenResult {
 
 export function useZodiacBalance(
   sign: ZodiacSign,
-  ownerAddress: string | null | undefined
+  ownerAddress: string | null | undefined,
+  options: UseZodiacBalanceOptions = {}
 ): AsyncHookState<ZodiacBalanceResult> {
   const { balanceReader, registry } = useZodiacs();
   const { token } = useZodiacToken(sign);
   const [version, setVersion] = useState(0);
   const refetch = useCallback(() => setVersion((current) => current + 1), []);
+  const enabled = options.enabled ?? true;
   const [state, setState] = useState<AsyncHookState<ZodiacBalanceResult>>({
     data: null,
     error: null,
@@ -170,6 +178,11 @@ export function useZodiacBalance(
   });
 
   useEffect(() => {
+    if (!enabled) {
+      setState({ data: null, error: null, loading: false, refetch });
+      return;
+    }
+
     const normalizedOwnerAddress = ownerAddress?.trim();
 
     if (!normalizedOwnerAddress) {
@@ -218,7 +231,7 @@ export function useZodiacBalance(
     return () => {
       cancelled = true;
     };
-  }, [balanceReader, ownerAddress, registry, sign, token, version, refetch]);
+  }, [balanceReader, enabled, ownerAddress, registry, sign, token, version, refetch]);
 
   return state;
 }

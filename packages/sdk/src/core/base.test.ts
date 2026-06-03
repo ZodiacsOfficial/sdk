@@ -26,11 +26,10 @@ function mockBatchedPublicClient(readContracts: ReturnType<typeof vi.fn>): Publi
 
 describe("Base read-only balances", () => {
   it("returns an ok balance for positive ERC-20 balanceOf reads", async () => {
-    const client = mockPublicClient(
-      vi.fn(async ({ functionName }) =>
-        functionName === "decimals" ? 6 : 1234500000000000000000000n
-      )
+    const readContract = vi.fn(async ({ functionName }) =>
+      functionName === "decimals" ? 6 : 1234500000000000000000000n
     );
+    const client = mockPublicClient(readContract);
 
     await expect(getBaseZodiacBalance(client, ownerAddress, "aries")).resolves.toMatchObject({
       sign: "aries",
@@ -41,31 +40,30 @@ describe("Base read-only balances", () => {
       uiAmountString: "1234500000000000000",
       status: "ok"
     });
+    expect(readContract).toHaveBeenCalledTimes(2);
+    expect(readContract.mock.calls[0]?.[0]).toMatchObject({ functionName: "balanceOf" });
+    expect(readContract.mock.calls[1]?.[0]).toMatchObject({ functionName: "decimals" });
   });
 
   it("returns zero for empty balances", async () => {
-    const client = mockPublicClient(
-      vi.fn(async ({ functionName }) => (functionName === "decimals" ? 6 : 0n))
-    );
+    const readContract = vi.fn(async ({ functionName }) => (functionName === "decimals" ? 6 : 0n));
+    const client = mockPublicClient(readContract);
 
     await expect(getBaseZodiacBalance(client, ownerAddress, "taurus")).resolves.toMatchObject({
       rawAmount: "0",
       uiAmountString: "0",
       status: "zero"
     });
+    expect(readContract).toHaveBeenCalledTimes(2);
   });
 
   it("returns unavailable for read errors without breaking ownership reads", async () => {
     const readContract = vi.fn(async ({ address, functionName }) => {
-      if (functionName === "decimals") {
-        return 6;
-      }
-
       if (String(address).toLowerCase() === "0x3ffb5282f5891dd8c813e64059edb0607537ec91") {
         throw new Error("RPC unavailable");
       }
 
-      return 0n;
+      return functionName === "decimals" ? 6 : 0n;
     });
     const client = mockPublicClient(readContract);
     const ownership = await getBaseZodiacsOwnership(client, ownerAddress);

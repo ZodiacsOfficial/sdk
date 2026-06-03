@@ -40,18 +40,16 @@ export function ZodiacsProvider({
     [rpcUrl]
   );
   const resolvedBalanceReader = balanceReader === undefined ? rpcBalanceReader : balanceReader;
-
-  return (
-    <ZodiacsContext.Provider
-      value={{
-        registry,
-        balanceReader: resolvedBalanceReader,
-        ...(marketAdapter === undefined ? {} : { marketAdapter })
-      }}
-    >
-      {children}
-    </ZodiacsContext.Provider>
+  const value = useMemo<ZodiacsContextValue>(
+    () => ({
+      registry,
+      balanceReader: resolvedBalanceReader,
+      ...(marketAdapter === undefined ? {} : { marketAdapter })
+    }),
+    [registry, resolvedBalanceReader, marketAdapter]
   );
+
+  return <ZodiacsContext.Provider value={value}>{children}</ZodiacsContext.Provider>;
 }
 
 export function useZodiacs(): ZodiacsContextValue {

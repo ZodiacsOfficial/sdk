@@ -4,6 +4,7 @@ export interface FormatTokenAmountOptions {
   readonly maximumFractionDigits?: number;
   readonly minimumFractionDigits?: number;
   readonly locale?: string;
+  readonly roundingMode?: "round" | "truncate";
 }
 
 export function formatCompactNumber(value: number, locale = "en-US"): string {
@@ -50,7 +51,10 @@ export function formatTokenAmount(
   assertDecimals(decimals);
   const maximumFractionDigits = options.maximumFractionDigits ?? decimals;
   const minimumFractionDigits = options.minimumFractionDigits ?? 0;
-  const padded = raw.padStart(decimals + 1, "0");
+  assertFractionDigits(minimumFractionDigits, maximumFractionDigits);
+  const normalizedRaw =
+    options.roundingMode === "round" ? roundRawAmount(raw, decimals, maximumFractionDigits) : raw;
+  const padded = normalizedRaw.padStart(decimals + 1, "0");
   const whole = decimals === 0 ? padded : padded.slice(0, -decimals);
   const fractional = decimals === 0 ? "" : padded.slice(-decimals);
   const trimmedFractional = fractional.slice(0, maximumFractionDigits).replace(/0+$/u, "");
@@ -71,13 +75,16 @@ export function formatZodiacBalance(
     return `0 ${token.ticker}`;
   }
 
-  const amount =
-    balance.uiAmount === null
-      ? formatTokenAmount(balance.amountRaw, balance.decimals, options)
-      : new Intl.NumberFormat(options.locale ?? "en-US", {
-          maximumFractionDigits: options.maximumFractionDigits ?? 6,
-          minimumFractionDigits: options.minimumFractionDigits ?? 0
-        }).format(balance.uiAmount);
+  const useRawFormatter =
+    balance.uiAmount === null ||
+    options.maximumFractionDigits !== undefined ||
+    options.roundingMode !== undefined;
+  const amount = useRawFormatter
+    ? formatTokenAmount(balance.amountRaw, balance.decimals, options)
+    : new Intl.NumberFormat(options.locale ?? "en-US", {
+        maximumFractionDigits: options.maximumFractionDigits ?? 6,
+        minimumFractionDigits: options.minimumFractionDigits ?? 0
+      }).format(balance.uiAmount);
 
   return `${amount} ${token.ticker}`;
 }
@@ -103,4 +110,31 @@ function assertDecimals(decimals: number): void {
   if (!Number.isInteger(decimals) || decimals < 0 || decimals > 18) {
     throw new Error(`Token decimals must be an integer from 0 to 18: ${decimals}`);
   }
+}
+
+function assertFractionDigits(minimumFractionDigits: number, maximumFractionDigits: number): void {
+  if (
+    !Number.isInteger(minimumFractionDigits) ||
+    !Number.isInteger(maximumFractionDigits) ||
+    minimumFractionDigits < 0 ||
+    maximumFractionDigits < 0 ||
+    minimumFractionDigits > maximumFractionDigits
+  ) {
+    throw new Error(
+      `Fraction digit options must be non-negative integers with minimum <= maximum: ${minimumFractionDigits}, ${maximumFractionDigits}`
+    );
+  }
+}
+
+function roundRawAmount(raw: string, decimals: number, maximumFractionDigits: number): string {
+  const digitsToDrop = decimals - maximumFractionDigits;
+
+  if (digitsToDrop <= 0) {
+    return raw;
+  }
+
+  const divisor = 10n ** BigInt(digitsToDrop);
+  const rounded = (BigInt(raw) + divisor / 2n) / divisor;
+
+  return (rounded * divisor).toString();
 }
