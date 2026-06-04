@@ -1,7 +1,7 @@
 export {
   getCompatibilityContext,
-  getCosmicReceiptData,
-  getCosmicReceiptFacts,
+  getIdentityReceiptData,
+  getIdentityReceiptFacts,
   getCrossChainZodiacShelf,
   getDominantElement,
   getDominantModality,
@@ -19,7 +19,7 @@ export {
   getZodiacShelf,
   getZodiacWheelData,
   getZodiacWheelState,
-  getZunaSafeWalletContext,
+  getConsumerSafeWalletContext,
   mergeZodiacsOwnership
 } from "./core/identity.js";
 export {
@@ -29,7 +29,7 @@ export {
   getZodiacSeasonProgress
 } from "./core/season.js";
 export type {
-  CosmicReceiptData,
+  IdentityReceiptData,
   ZodiacCompatibilityContext,
   ZodiacElement,
   ZodiacIdentityAlignment,
@@ -43,10 +43,10 @@ export type {
   ZodiacSign,
   ZodiacWheelData,
   ZodiacWheelDataItem,
-  ZunaSafeWalletContext
+  ConsumerSafeWalletContext
 } from "./core/types.js";
 export type {
-  CosmicReceiptDataOptions,
+  IdentityReceiptDataOptions,
   ZodiacIdentityContextOptions,
   ZodiacIdentityOwnershipInput
 } from "./core/identity.js";

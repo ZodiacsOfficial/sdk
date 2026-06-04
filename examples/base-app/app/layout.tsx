@@ -4,7 +4,7 @@ import { Providers } from "./providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Zodiacs Cosmic Passport",
+  title: "Zodiacs Base Read-Only Example",
   description: "Read-only Base App example for official Zodiacs registry identity context."
 };
 

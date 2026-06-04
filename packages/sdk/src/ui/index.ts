@@ -3,7 +3,7 @@ export { ZodiacAssetCard, type ZodiacAssetCardProps } from "./ZodiacAssetCard.js
 export { ZodiacMarketStrip, type ZodiacMarketStripProps } from "./ZodiacMarketStrip.js";
 export { ZodiacOwnershipBadge, type ZodiacOwnershipBadgeProps } from "./ZodiacOwnershipBadge.js";
 export {
-  CosmicReceiptCard,
+  IdentityReceiptCard,
   CompatibilityWheel,
   OfficialZodiacBadge,
   OfficialZodiacTokenCard,

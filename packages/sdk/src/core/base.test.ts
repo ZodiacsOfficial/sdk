@@ -136,6 +136,7 @@ describe("Base read-only balances", () => {
       status: "available",
       heldSigns: ["aries"],
       zeroBalanceSigns: expect.arrayContaining(["taurus"]),
+      confirmedAbsentSigns: expect.arrayContaining(["taurus"]),
       missingSigns: expect.arrayContaining(["taurus"]),
       totalHeld: 1,
       blockNumber: 123n

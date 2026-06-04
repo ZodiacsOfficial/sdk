@@ -8,7 +8,7 @@ export {
   useBaseZodiacBalance,
   useBaseZodiacsOwnership,
   useCompatibilityContext,
-  useCosmicReceiptData,
+  useIdentityReceiptData,
   useCrossChainZodiacsOwnership,
   useCurrentZodiacSeason,
   useIsOfficialZodiacAddress,

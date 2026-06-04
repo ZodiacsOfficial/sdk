@@ -6,7 +6,7 @@ clients or request signatures.
 ```tsx
 import { useBaseZodiacsOwnership, useZodiacIdentityContext } from "@zodiacs/sdk/react";
 
-export function Passport({ publicClient, address }) {
+export function ReadOnlyProfile({ publicClient, address }) {
   const ownership = useBaseZodiacsOwnership(publicClient, address, { blockTag: "safe" });
   const context = useZodiacIdentityContext(ownership.data ?? { holdings: [] });
 
@@ -19,7 +19,7 @@ Async hooks expose `{ data, error, loading, refetch }`.
 Pure hooks:
 
 - `useZodiacIdentityContext`
-- `useCosmicReceiptData`
+- `useIdentityReceiptData`
 - `useZodiacWheelData`
 - `useCompatibilityContext`
 - `useCurrentZodiacSeason`

@@ -24,7 +24,7 @@ const ownership = await getBaseZodiacsOwnership(
 ```
 
 The ownership reader batches `balanceOf` reads with `readContracts` when available and caches token decimals
-per client, chain, and token address. It returns held signs, missing signs, per-sign balances, checked time,
+per client, chain, and token address. It returns held signs, confirmed absent signs, per-sign balances, checked time,
 representations, errors, warnings, and block number when available.
 
 Wallet connection, Base Account, Builder Codes, transaction attribution, and notifications belong in app code

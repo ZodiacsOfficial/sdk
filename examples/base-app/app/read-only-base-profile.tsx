@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  CosmicReceiptCard,
+  IdentityReceiptCard,
   ProfileSummaryCard,
   ShareCardPreview,
   ZodiacShelf,
@@ -9,14 +9,14 @@ import {
 } from "@zodiacs/sdk/ui";
 import {
   useBaseZodiacsOwnership,
-  useCosmicReceiptData,
+  useIdentityReceiptData,
   useZodiacIdentityContext,
   useZodiacWheelData
 } from "@zodiacs/sdk/react";
 import { base } from "wagmi/chains";
 import { useAccount, useConnect, useDisconnect, usePublicClient } from "wagmi";
 
-export function CosmicPassport() {
+export function ReadOnlyBaseProfile() {
   const { address, isConnected, isConnecting, isReconnecting } = useAccount();
   const { connect, connectors, isPending } = useConnect();
   const { disconnect } = useDisconnect();
@@ -29,15 +29,15 @@ export function CosmicPassport() {
   const ownershipData = ownership.data ?? { holdings: [] };
   const identity = useZodiacIdentityContext(ownershipData);
   const wheel = useZodiacWheelData(ownershipData);
-  const receipt = useCosmicReceiptData(ownershipData, {
-    label: "Base Cosmic Passport"
+  const receipt = useIdentityReceiptData(ownershipData, {
+    label: "Base read-only profile"
   });
 
   return (
     <main className="app-shell">
-      <section className="passport-hero" aria-label="Cosmic Passport">
+      <section className="profile-hero" aria-label="Base Read-Only Profile">
         <div className="hero-copy">
-          <h1>Cosmic Passport</h1>
+          <h1>Base Read-Only Profile</h1>
           <p>
             A read-only Base App surface for official Zodiacs holdings, provenance labels, wheel
             coverage, and share-ready identity facts.
@@ -81,11 +81,11 @@ export function CosmicPassport() {
         <StatusMetric label="Wheel coverage" value={`${identity.wheelCoverage}%`} />
       </section>
 
-      <section className="passport-grid">
+      <section className="profile-grid">
         <div className="stack">
           <ProfileSummaryCard context={identity} />
           <ZodiacShelf wheel={wheel} />
-          <CosmicReceiptCard receipt={receipt} />
+          <IdentityReceiptCard receipt={receipt} />
         </div>
         <div className="stack">
           <div className="panel">

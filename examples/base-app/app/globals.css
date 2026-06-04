@@ -44,7 +44,7 @@ button:disabled {
   padding: 20px;
 }
 
-.passport-hero {
+.profile-hero {
   align-items: end;
   display: grid;
   gap: 18px;
@@ -115,7 +115,7 @@ button:disabled {
   margin-top: 6px;
 }
 
-.passport-grid {
+.profile-grid {
   display: grid;
   gap: 16px;
   grid-template-columns: minmax(0, 1fr);
@@ -138,11 +138,11 @@ button:disabled {
     padding: 28px;
   }
 
-  .passport-hero {
+  .profile-hero {
     grid-template-columns: minmax(0, 1fr) 320px;
   }
 
-  .passport-grid {
+  .profile-grid {
     grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
   }
 }

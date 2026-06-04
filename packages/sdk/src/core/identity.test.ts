@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
-  getCosmicReceiptData,
-  getCosmicReceiptFacts,
+  getIdentityReceiptData,
+  getIdentityReceiptFacts,
   getCompatibilityContext,
   getCrossChainZodiacShelf,
   getDominantElement,
@@ -17,7 +17,7 @@ import {
   getNativeAndBridgedSummary,
   getOwnSignStatus,
   getTotalHeld,
-  getZunaSafeWalletContext,
+  getConsumerSafeWalletContext,
   getZodiacWheelState
 } from "./index.js";
 
@@ -60,7 +60,7 @@ describe("identity composition helpers", () => {
   });
 
   it("builds receipt and cross-chain shelf data without market data", () => {
-    expect(getCosmicReceiptData(ownership)).toMatchObject({
+    expect(getIdentityReceiptData(ownership)).toMatchObject({
       label: "public Zodiacs shelf",
       heldSigns: ["aries", "gemini"],
       totalHeld: 2,
@@ -102,7 +102,7 @@ describe("identity composition helpers", () => {
     });
   });
 
-  it("builds deterministic identity context with held, missing, season, and manual placements", () => {
+  it("builds deterministic identity context with held, confirmed absent, season, and manual placements", () => {
     const context = getZodiacIdentityContext(ownership, {
       date: new Date("2026-03-22T00:00:00.000Z"),
       sunSign: "aries",
@@ -112,6 +112,7 @@ describe("identity composition helpers", () => {
 
     expect(context).toMatchObject({
       heldSigns: ["aries", "gemini"],
+      confirmedAbsentSigns: expect.arrayContaining(["taurus", "cancer"]),
       missingSigns: expect.arrayContaining(["taurus", "cancer"]),
       totalHeld: 2,
       totalUniqueSigns: 2,
@@ -135,6 +136,7 @@ describe("identity composition helpers", () => {
         { placement: "rising", sign: "gemini", held: true }
       ]
     });
+    expect(context.confirmedAbsentSigns).toHaveLength(10);
     expect(context.missingSigns).toHaveLength(10);
     expect(context.receiptFacts.map((fact) => fact.label)).toContain("Wheel coverage");
   });
@@ -196,6 +198,7 @@ describe("identity composition helpers", () => {
 
     expect(context).toMatchObject({
       heldSigns: [],
+      confirmedAbsentSigns: expect.arrayContaining(["aries", "pisces"]),
       missingSigns: expect.arrayContaining(["aries", "pisces"]),
       totalUniqueSigns: 0,
       wheelCoverage: 0,
@@ -314,23 +317,23 @@ describe("identity composition helpers", () => {
     });
   });
 
-  it("exposes dominant, receipt, share card, and Zuna-safe context helpers", () => {
-    const zuna = getZunaSafeWalletContext(ownership, {
+  it("exposes dominant, receipt, share card, and consumer-safe context helpers", () => {
+    const consumerSafe = getConsumerSafeWalletContext(ownership, {
       date: new Date("2026-03-22T00:00:00.000Z"),
       publicAddress: "0x1111111111111111111111111111111111111111"
     });
-    const serialized = JSON.stringify(zuna);
+    const serialized = JSON.stringify(consumerSafe);
 
     expect(getDominantElement({ holdings: [{ sign: "leo", held: true }] })).toBe("fire");
     expect(getDominantModality({ holdings: [{ sign: "leo", held: true }] })).toBe("fixed");
-    expect(getCosmicReceiptFacts(ownership)).toEqual(
+    expect(getIdentityReceiptFacts(ownership)).toEqual(
       getZodiacIdentityContext(ownership).receiptFacts
     );
     expect(getShareCardContext(ownership)).toMatchObject({
       title: "2 verified Zodiacs signs",
       heldSigns: ["aries", "gemini"]
     });
-    expect(zuna).toMatchObject({
+    expect(consumerSafe).toMatchObject({
       connectedWalletLabel: "Connected wallet",
       readOnly: true,
       walletRequired: false,

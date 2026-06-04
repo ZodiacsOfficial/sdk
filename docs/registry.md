@@ -44,8 +44,8 @@ registry artifact change, run the invariant tests and update the SHA-256 checksu
 
 The registry also supports deterministic identity context for downstream apps.
 Helpers such as `getCurrentZodiacSeason`, `getZodiacIdentityContext`, and
-`getCosmicReceiptData` combine official sign metadata with public ownership
-state to produce display-ready facts: held signs, missing signs, element mix,
+`getIdentityReceiptData` combine official sign metadata with public ownership
+state to produce display-ready facts: held signs, confirmed absent signs, element mix,
 modality mix, seasonal context, wheel coverage, and native/bridged summaries
 when cross-chain ownership is supplied.
 

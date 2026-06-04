@@ -4,7 +4,7 @@ import type { Config } from "wagmi";
 import { base, baseSepolia } from "wagmi/chains";
 import { baseAccount } from "wagmi/connectors";
 
-const appName = process.env.NEXT_PUBLIC_BASE_APP_NAME?.trim() || "Zodiacs Cosmic Passport";
+const appName = process.env.NEXT_PUBLIC_BASE_APP_NAME?.trim() || "Zodiacs Base Read-Only Example";
 const builderCode = process.env.NEXT_PUBLIC_BASE_BUILDER_CODE?.trim();
 const dataSuffix = builderCode ? Attribution.toDataSuffix({ codes: [builderCode] }) : undefined;
 

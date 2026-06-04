@@ -1,6 +1,6 @@
 # Zodiacs SDK
 
-[![SDK version](https://img.shields.io/badge/sdk-0.3.0-blue)](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/package.json)
+[![SDK version](https://img.shields.io/badge/sdk-1.0.0--rc.1-blue)](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/package.json)
 [![Registry version](https://img.shields.io/badge/registry-0.2.0-6f42c1)](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/registry/zodiacs.registry.json)
 [![React peer](https://img.shields.io/badge/react-optional%20peer-61dafb)](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/package.json)
 [![Posture](https://img.shields.io/badge/posture-read--only-2ea44f)](https://github.com/ZodiacsOfficial/sdk#security-posture)
@@ -15,11 +15,16 @@ pnpm add @zodiacs/sdk
 
 ## Entry Points
 
-The package ships granular entry points. The root, core, and market entry
-points do not require React:
+The package ships granular entry points. React and UI code load only from their
+explicit subpaths:
 
-- `@zodiacs/sdk` — registry, reads, identity, and market adapters (no React)
-- `@zodiacs/sdk/core` — registry, verification, balances, identity (no React)
+- `@zodiacs/sdk` — registry, reads, and identity helpers (no React)
+- `@zodiacs/sdk/core` — core registry, verification, reads, and identity helpers (no React)
+- `@zodiacs/sdk/registry` — registry artifact helpers (no React)
+- `@zodiacs/sdk/base` — Base public ownership reads (no React)
+- `@zodiacs/sdk/solana` — Solana public ownership reads (no React)
+- `@zodiacs/sdk/identity` — symbolic identity context helpers (no React)
+- `@zodiacs/sdk/testing` — typed fixtures for downstream tests (no React)
 - `@zodiacs/sdk/market` — optional market adapters (no React)
 - `@zodiacs/sdk/react` — React hooks and `ZodiacsProvider`
 - `@zodiacs/sdk/ui` — React UI components
@@ -30,6 +35,9 @@ points do not require React:
 Core-only consumers do not need to install React. `viem` and `@solana/web3.js`
 ship as regular SDK dependencies because the read helpers use public clients
 from those ecosystems.
+
+Market adapters require explicit import from `@zodiacs/sdk/market`; they are
+not exported from the root package.
 
 ## Resources
 
@@ -47,14 +55,18 @@ from those ecosystems.
 | Read Solana holdings        | `getSolanaZodiacsOwnership`, `getSolanaZodiacBalance`               |
 | Read Base holdings          | `getBaseZodiacsOwnership`, `getBaseZodiacBalance`                   |
 | Build a cross-chain shelf   | `getCrossChainZodiacsOwnership`, `getUnifiedZodiacShelf`            |
-| Build identity surfaces     | `getZodiacIdentityContext`, `getCosmicReceiptData`                  |
+| Build identity surfaces     | `getZodiacIdentityContext`, `getIdentityReceiptData`                |
 | Show season context         | `getCurrentZodiacSeason`, `getZodiacSeasonProgress`                 |
 | Format balances safely      | `formatTokenAmount`, `formatZodiacBalance`                          |
-| Add optional market context | `getZodiacMarketByRepresentation`, `createDexScreenerMarketAdapter` |
+| Add optional market context | import `getZodiacMarketByRepresentation` from `@zodiacs/sdk/market` |
 
 Full export maps live in the source barrels:
 [root](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/index.ts),
 [core](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/core/index.ts),
+[registry](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/registry.ts),
+[base](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/base.ts),
+[solana](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/solana.ts),
+[identity](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/identity.ts),
 [market](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/market/index.ts),
 [react](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/react/index.ts), and
 [ui](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/ui/index.ts).

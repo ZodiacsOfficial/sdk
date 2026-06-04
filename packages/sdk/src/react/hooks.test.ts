@@ -217,7 +217,7 @@ describe("useZodiacBalance", () => {
     const {
       useCompatibilityContext,
       useCurrentZodiacSeason,
-      useCosmicReceiptData,
+      useIdentityReceiptData,
       useZodiacIdentityContext,
       useZodiacWheelData
     } = await import("./hooks.js");
@@ -236,7 +236,7 @@ describe("useZodiacBalance", () => {
       alignments: [{ placement: "sun", sign: "aries", held: true }]
     });
     expect(
-      useCosmicReceiptData(ownership, {
+      useIdentityReceiptData(ownership, {
         date: new Date("2026-04-21T00:00:00.000Z")
       })
     ).toMatchObject({

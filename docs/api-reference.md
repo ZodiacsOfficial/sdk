@@ -6,7 +6,7 @@ Use subpath imports for tree-shakable apps:
 import { getZodiacIdentityContext } from "@zodiacs/sdk/core";
 import { getBaseZodiacsOwnership } from "@zodiacs/sdk/base";
 import { getSolanaZodiacsOwnership } from "@zodiacs/sdk/solana";
-import { getZunaSafeWalletContext } from "@zodiacs/sdk/identity";
+import { getConsumerSafeWalletContext } from "@zodiacs/sdk/identity";
 import { useBaseZodiacsOwnership } from "@zodiacs/sdk/react";
 import { ProfileSummaryCard } from "@zodiacs/sdk/ui";
 ```
@@ -18,7 +18,7 @@ import { ProfileSummaryCard } from "@zodiacs/sdk/ui";
 - `@zodiacs/sdk/registry`: registry/provenance/address verification helpers.
 - `@zodiacs/sdk/base`: Base bridged ERC-20 read helpers.
 - `@zodiacs/sdk/solana`: Solana native SPL read helpers.
-- `@zodiacs/sdk/identity`: identity, receipt, wheel, share-card, seasonal, compatibility, and Zuna-safe helpers.
+- `@zodiacs/sdk/identity`: identity, receipt, wheel, share-card, seasonal, compatibility, and consumer-safe helpers.
 - `@zodiacs/sdk/market`: optional market context adapters.
 - `@zodiacs/sdk/react`: optional React hooks.
 - `@zodiacs/sdk/ui`: optional React UI primitives.
@@ -38,15 +38,15 @@ Base options include `includeZeroBalances`, `minBalance`, `blockNumber`, `blockT
 ## Identity APIs
 
 - `getZodiacIdentityContext`
-- `getCosmicReceiptData`
-- `getCosmicReceiptFacts`
+- `getIdentityReceiptData`
+- `getIdentityReceiptFacts`
 - `getDominantElement`
 - `getDominantModality`
 - `getZodiacWheelData`
 - `getShareCardContext`
 - `getCompatibilityContext`
 - `getSeasonalContext`
-- `getZunaSafeWalletContext`
+- `getConsumerSafeWalletContext`
 - `mergeZodiacsOwnership`
 
 These return display-ready facts, not horoscopes, price predictions, or financial advice.

@@ -5,7 +5,7 @@ SDK canonical registry and read-only integration layer.
 
 ## Package Structure
 
-- `@zodiacs/sdk` package version `0.3.0` in `packages/sdk`
+- `@zodiacs/sdk` package version `1.0.0-rc.1` in `packages/sdk`
 - machine-readable registry artifact at `packages/sdk/registry/zodiacs.registry.json`
 - generic Next.js integration example in `examples/nextjs`
 - root, core, and market entry points are React-free; React hooks and UI live
@@ -23,7 +23,7 @@ The workspace is managed with pnpm through `pnpm-workspace.yaml`.
 - Read-only Solana balance helpers and explicit Solana aliases.
 - Read-only Base balance helpers using `viem` `PublicClient` only.
 - Cross-chain ownership and public shelf helpers.
-- Identity context helpers for held signs, missing signs, element mix, modality mix, wheel state, seasonal context, and receipt data.
+- Identity context helpers for held signs, confirmed absent signs, element mix, modality mix, wheel state, seasonal context, and receipt data.
 - React hooks and UI components for registry verification, ownership, and identity surfaces.
 - Optional market context adapters for DEX Screener, Jupiter, and placeholder data.
 

@@ -11,6 +11,8 @@
 - Confirmed subpath exports, React isolation, market isolation, registry
   checksum, Base/Solana read optimization, testing fixtures, docs, examples, and
   package contents.
+- Renamed pre-1.0 app-specific identity helpers to neutral consumer-safe and
+  identity-receipt APIs.
 
 ## 0.3.0
 

@@ -1,5 +1,5 @@
-import { CosmicPassport } from "./cosmic-passport";
+import { ReadOnlyBaseProfile } from "./read-only-base-profile";
 
 export default function Page() {
-  return <CosmicPassport />;
+  return <ReadOnlyBaseProfile />;
 }

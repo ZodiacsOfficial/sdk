@@ -27,18 +27,18 @@ writeFileSync(
     'import type { ZodiacsRegistry } from "@zodiacs/sdk/registry";',
     'import type { BaseZodiacsOwnership } from "@zodiacs/sdk/base";',
     'import type { ZodiacsOwnership } from "@zodiacs/sdk/solana";',
-    'import type { ZunaSafeWalletContext } from "@zodiacs/sdk/identity";',
+    'import type { ConsumerSafeWalletContext } from "@zodiacs/sdk/identity";',
     'import { ZODIAC_SIGNS, getZodiacIdentityContext } from "@zodiacs/sdk/core";',
     'import { getZodiacsRegistry } from "@zodiacs/sdk/registry";',
     'import { getBaseZodiacRepresentation } from "@zodiacs/sdk/base";',
     'import { getSolanaZodiacRepresentation } from "@zodiacs/sdk/solana";',
-    'import { getZunaSafeWalletContext } from "@zodiacs/sdk/identity";',
+    'import { getConsumerSafeWalletContext } from "@zodiacs/sdk/identity";',
     'import { createPlaceholderMarketAdapter } from "@zodiacs/sdk/market";',
     'import { createMockOwnership } from "@zodiacs/sdk/testing";',
     "",
     "const ownership = createMockOwnership({ heldSigns: ['aries'] });",
     "const context = getZodiacIdentityContext(ownership);",
-    "const zuna = getZunaSafeWalletContext(ownership);",
+    "const consumerSafe = getConsumerSafeWalletContext(ownership);",
     "const registry = getZodiacsRegistry();",
     "const base = getBaseZodiacRepresentation('aries');",
     "const solana = getSolanaZodiacRepresentation('aries');",
@@ -47,14 +47,14 @@ writeFileSync(
     "const typedRegistry: ZodiacsRegistry = registry;",
     "const typedBaseOwnership: BaseZodiacsOwnership | null = null;",
     "const typedSolanaOwnership: ZodiacsOwnership = ownership;",
-    "const typedZuna: ZunaSafeWalletContext = zuna;",
+    "const typedConsumerSafe: ConsumerSafeWalletContext = consumerSafe;",
     "",
     "void typedContext;",
     "void typedRegistry;",
     "void typedBaseOwnership;",
     "void typedSolanaOwnership;",
-    "void typedZuna;",
-    "console.log(ZODIAC_SIGNS.length, context.totalUniqueSigns, zuna.readOnly, registry.assets.length, base.chain, solana.chain, Boolean(market));"
+    "void typedConsumerSafe;",
+    "console.log(ZODIAC_SIGNS.length, context.totalUniqueSigns, consumerSafe.readOnly, registry.assets.length, base.chain, solana.chain, Boolean(market));"
   ].join("\n")
 );
 
@@ -115,7 +115,7 @@ execFileSync(
   [
     "--input-type=module",
     "--eval",
-    "const core = await import('@zodiacs/sdk/core'); const identity = await import('@zodiacs/sdk/identity'); console.log(core.ZODIAC_SIGNS.length, typeof identity.getZunaSafeWalletContext);"
+    "const core = await import('@zodiacs/sdk/core'); const identity = await import('@zodiacs/sdk/identity'); console.log(core.ZODIAC_SIGNS.length, typeof identity.getConsumerSafeWalletContext);"
   ],
   {
     cwd: tmp,

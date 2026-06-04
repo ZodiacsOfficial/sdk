@@ -286,6 +286,8 @@ export interface BaseZodiacsOwnership {
   readonly holdings: readonly BaseZodiacsHolding[];
   readonly heldSigns: readonly ZodiacSign[];
   readonly zeroBalanceSigns?: readonly ZodiacSign[];
+  readonly confirmedAbsentSigns?: readonly ZodiacSign[];
+  /** @deprecated Use confirmedAbsentSigns for neutral display language. */
   readonly missingSigns?: readonly ZodiacSign[];
   readonly balancesBySign?: Readonly<Record<ZodiacSign, BaseZodiacBalance>>;
   readonly representations?: readonly ZodiacRepresentation[];
@@ -366,6 +368,8 @@ export interface ZodiacWheelDataItem {
 export interface ZodiacWheelData {
   readonly items: readonly ZodiacWheelDataItem[];
   readonly heldSigns: readonly ZodiacSign[];
+  readonly confirmedAbsentSigns: readonly ZodiacSign[];
+  /** @deprecated Use confirmedAbsentSigns for neutral display language. */
   readonly missingSigns: readonly ZodiacSign[];
   readonly coverage: number;
   readonly totalUniqueSigns: number;
@@ -406,7 +410,7 @@ export interface ZodiacShareCardContext {
   readonly facts: readonly ZodiacReceiptFact[];
 }
 
-export interface ZunaSafeWalletContext {
+export interface ConsumerSafeWalletContext {
   readonly connectedWalletLabel: string;
   readonly readOnly: true;
   readonly walletRequired: false;
@@ -424,6 +428,8 @@ export interface ZunaSafeWalletContext {
 
 export interface ZodiacIdentityContext {
   readonly heldSigns: readonly ZodiacSign[];
+  readonly confirmedAbsentSigns: readonly ZodiacSign[];
+  /** @deprecated Use confirmedAbsentSigns for neutral display language. */
   readonly missingSigns: readonly ZodiacSign[];
   readonly totalHeld: number;
   readonly wheelCoverage: number;
@@ -443,7 +449,7 @@ export interface ZodiacIdentityContext {
   readonly alignments: readonly ZodiacIdentityAlignment[];
 }
 
-export interface CosmicReceiptData extends ZodiacIdentityContext {
+export interface IdentityReceiptData extends ZodiacIdentityContext {
   readonly label: string;
   readonly wheelState: readonly {
     readonly sign: ZodiacSign;

@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import {
   getBaseZodiacRepresentation,
-  getCosmicReceiptData,
+  getIdentityReceiptData,
   getElementComposition,
   getModalityComposition,
   getNativeCounterpart,
@@ -11,7 +11,7 @@ import {
   getZodiacWheelData,
   getZodiacWheelState,
   isOfficialZodiacAddress,
-  type CosmicReceiptData,
+  type IdentityReceiptData,
   type ZodiacCompatibilityContext,
   type ZodiacAddressLookupOptions,
   type ZodiacIdentityContext,
@@ -37,7 +37,7 @@ export interface ProfileSummaryCardProps {
 }
 
 export interface ShareCardPreviewProps {
-  readonly context: ZodiacIdentityContext | CosmicReceiptData;
+  readonly context: ZodiacIdentityContext | IdentityReceiptData;
   readonly style?: CSSProperties;
 }
 
@@ -301,20 +301,20 @@ export function ZodiacModalityComposition({
   return <Composition title="Modality mix" composition={getModalityComposition(ownership)} />;
 }
 
-export function CosmicReceiptCard({
+export function IdentityReceiptCard({
   ownership,
   receipt
 }: {
   readonly ownership?: ZodiacIdentityOwnershipInput;
-  readonly receipt?: CosmicReceiptData;
+  readonly receipt?: IdentityReceiptData;
 }) {
   const resolvedReceipt =
     receipt ??
-    (ownership ? getCosmicReceiptData(ownership) : getCosmicReceiptData({ holdings: [] }));
+    (ownership ? getIdentityReceiptData(ownership) : getIdentityReceiptData({ holdings: [] }));
 
   return (
     <article style={{ ...surfaceStyle, display: "grid", gap: 10, padding: 16 }}>
-      <p style={labelStyle}>Cosmic receipt</p>
+      <p style={labelStyle}>Identity receipt</p>
       <p style={mutedTextStyle}>{resolvedReceipt.label}</p>
       {resolvedReceipt.receiptFacts.map((fact) => (
         <VerifierRow key={fact.label} label={fact.label} value={fact.value} />

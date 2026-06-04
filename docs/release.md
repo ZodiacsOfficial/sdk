@@ -47,7 +47,7 @@ corepack pnpm pack:dry-run
 - Mention any migration notes for explicit market imports.
 - Mention registry checksum status.
 - Mention examples and docs added or changed.
-- Do not include acquisition, trading, reward, or token-gating language.
+- Do not include asset-promotion, trading, crypto-incentive, or wallet ownership access control language.
 
 ## 1.0 Candidate Criteria
 

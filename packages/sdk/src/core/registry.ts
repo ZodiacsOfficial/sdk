@@ -70,7 +70,7 @@ export const DEFAULT_ZODIAC_TOKENS = [
     order: 4,
     element: "water",
     modality: "cardinal",
-    rulingPlanet: "Luna",
+    rulingPlanet: "Moon",
     symbol: "♋",
     archetype: "The Keeper",
     shortBio: "A cultural asset for memory, protection, belonging, and ancestral continuity.",
@@ -307,7 +307,7 @@ export function validateZodiacRegistry(
 
   for (const sign of ZODIAC_SIGNS) {
     if (!signs.has(sign)) {
-      errors.push(`Missing sign: ${sign}.`);
+      errors.push(`Registry sign unavailable: ${sign}.`);
     }
   }
 

@@ -105,8 +105,8 @@ export {
   getZodiacSeasonProgress
 } from "./season.js";
 export {
-  getCosmicReceiptData,
-  getCosmicReceiptFacts,
+  getIdentityReceiptData,
+  getIdentityReceiptFacts,
   getCompatibilityContext,
   getCrossChainZodiacShelf,
   getDominantElement,
@@ -126,7 +126,7 @@ export {
   getZodiacShelf,
   getZodiacWheelData,
   getZodiacWheelState,
-  getZunaSafeWalletContext
+  getConsumerSafeWalletContext
 } from "./identity.js";
 export {
   InvalidZodiacAddressError,
@@ -201,7 +201,7 @@ export type {
   ZodiacsSupportedChain,
   UnifiedZodiacShelf,
   UnifiedZodiacShelfItem,
-  CosmicReceiptData,
+  IdentityReceiptData,
   ZodiacIdentityAlignment,
   ZodiacIdentityAlignmentInput,
   ZodiacIdentityContext,
@@ -214,13 +214,13 @@ export type {
   ZodiacSeasonProgress,
   ZodiacWheelData,
   ZodiacWheelDataItem,
-  ZunaSafeWalletContext
+  ConsumerSafeWalletContext
 } from "./types.js";
 export type {
-  CosmicReceiptDataOptions,
+  IdentityReceiptDataOptions,
   ZodiacIdentityContextOptions,
   ZodiacIdentityOwnershipInput,
-  ZunaSafeWalletContextOptions
+  ConsumerSafeWalletContextOptions
 } from "./identity.js";
 export type { ZodiacAddressLookupOptions } from "./verification.js";
 export type { ZodiacHoldingsByChain, ZodiacHoldingsByChainParams } from "./cross-chain.js";

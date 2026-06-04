@@ -7,7 +7,7 @@ ownership, and optional symbolic identity context.
 
 The API never accepts private keys, seed phrases, wallet secrets, signatures,
 or transaction payloads. It never signs messages, submits transactions, moves
-assets, returns prices, or returns portfolio values.
+assets, returns valuation data, or returns holdings-value data.
 
 ## GET /v1/zodiacs/signs
 
@@ -87,7 +87,7 @@ Response:
   "wheelCoverage": 16.67,
   "currentSeasonHeld": true,
   "receiptFacts": [{ "label": "Verified zodiac holdings", "value": "2" }],
-  "zunaSafe": {
+  "consumerSafe": {
     "readOnly": true,
     "walletRequired": false,
     "headline": "Optional Zodiacs context"
@@ -101,9 +101,9 @@ Response:
 - Validate addresses before RPC reads.
 - Use `getSolanaZodiacsOwnership` for Solana.
 - Use `getBaseZodiacsOwnership` for Base.
-- Use `getZodiacIdentityContext` or `getZunaSafeWalletContext` for display
+- Use `getZodiacIdentityContext` or `getConsumerSafeWalletContext` for display
   context.
 - Return provenance labels for Solana-native and Base-bridged representations.
 - Do not accept private keys, seed phrases, signatures, or transaction data.
-- Do not sign, approve, submit, swap, transfer, or custody assets.
-- Do not return prices, P&L, market cap, or portfolio values.
+- Do not sign, approve, submit, exchange, transfer, or custody assets.
+- Do not return valuation, performance, capitalization, or holdings-value data.

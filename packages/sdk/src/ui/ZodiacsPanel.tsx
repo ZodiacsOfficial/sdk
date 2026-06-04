@@ -13,7 +13,7 @@ export interface ZodiacsPanelProps {
 export function ZodiacsPanel({
   ownerAddress,
   signs = ZODIAC_SIGNS,
-  showMarket = true,
+  showMarket = false,
   className,
   style
 }: ZodiacsPanelProps) {

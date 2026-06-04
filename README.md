@@ -1,6 +1,6 @@
 # Zodiacs SDK
 
-[![SDK version](https://img.shields.io/badge/sdk-0.3.0-blue)](packages/sdk/package.json)
+[![SDK version](https://img.shields.io/badge/sdk-1.0.0--rc.1-blue)](packages/sdk/package.json)
 [![Registry version](https://img.shields.io/badge/registry-0.2.0-6f42c1)](packages/sdk/registry/zodiacs.registry.json)
 [![React peer](https://img.shields.io/badge/react-optional%20peer-61dafb)](packages/sdk/package.json)
 [![Posture](https://img.shields.io/badge/posture-read--only-2ea44f)](#security-posture)
@@ -91,7 +91,7 @@ not exported from the root package.
 | Read Solana holdings        | `getSolanaZodiacsOwnership`, `getSolanaZodiacBalance`               |
 | Read Base holdings          | `getBaseZodiacsOwnership`, `getBaseZodiacBalance`                   |
 | Build a cross-chain shelf   | `getCrossChainZodiacsOwnership`, `getUnifiedZodiacShelf`            |
-| Build identity surfaces     | `getZodiacIdentityContext`, `getCosmicReceiptData`                  |
+| Build identity surfaces     | `getZodiacIdentityContext`, `getIdentityReceiptData`                |
 | Show season context         | `getCurrentZodiacSeason`, `getZodiacSeasonProgress`                 |
 | Format balances safely      | `formatTokenAmount`, `formatZodiacBalance`                          |
 | Add optional market context | import `getZodiacMarketByRepresentation` from `@zodiacs/sdk/market` |
@@ -238,7 +238,7 @@ surfaces without depending on market data.
 ```ts
 import {
   getCurrentZodiacSeason,
-  getCosmicReceiptData,
+  getIdentityReceiptData,
   getZodiacIdentityContext
 } from "@zodiacs/sdk/identity";
 
@@ -247,20 +247,20 @@ const context = getZodiacIdentityContext(ownership, {
   date: new Date("2026-03-22T00:00:00.000Z"),
   sunSign: "aries"
 });
-const receipt = getCosmicReceiptData(ownership);
+const receipt = getIdentityReceiptData(ownership);
 
 console.log(season.sign); // "aries"
 console.log(context.currentSeasonHeld);
 console.log(receipt.wheelCoverage);
 ```
 
-Identity helpers return facts such as held signs, missing signs, element mix,
+Identity helpers return facts such as held signs, confirmed absent signs, element mix,
 modality mix, current season, wheel coverage, and optional manual placement
 alignment. They do not generate horoscopes or recommend asset acquisition,
 disposal, exchange, or retention. The SDK remains read-only.
 
 React integrations can use `useCurrentZodiacSeason`, `useZodiacIdentityContext`,
-and `useCosmicReceiptData` as thin deterministic wrappers around the same
+and `useIdentityReceiptData` as thin deterministic wrappers around the same
 helpers.
 
 Additional app helpers include `getZodiacWheelData`,
@@ -325,7 +325,7 @@ identity surfaces.
 - `docs/ui-components.md`
 - `docs/base-app-starter.md`
 - `docs/ios-react-native.md`
-- `docs/ios-zuna.md`
+- `docs/native-ios.md`
 - `docs/zodiacs-readonly-api.md`
 - `docs/threat-model.md`
 - `docs/performance.md`
@@ -333,7 +333,7 @@ identity surfaces.
 
 ## What This SDK Does Not Do
 
-The SDK does not provide asset movement, exchange, staking, reward, or claim
+The SDK does not provide asset movement, exchange, staking, claim, or crypto-incentive
 flows. It does not provide financial guarantees, rankings, or promotional
 claims.
 
@@ -341,8 +341,9 @@ claims.
 
 `@zodiacs/sdk` follows semver. The canonical registry has its own version field
 inside `ZODIACS_REGISTRY` and `packages/sdk/registry/zodiacs.registry.json`.
-The `0.3.0` package release moves React hooks and UI components out of the root
-entry point and into explicit `/react` and `/ui` subpaths.
+The `1.0.0-rc.1` release candidate keeps the root entry point React-free and
+requires explicit subpath imports for React, UI, market, Base, Solana,
+registry, identity, and testing helpers.
 
 ## Contributing
 

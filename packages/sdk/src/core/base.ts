@@ -142,6 +142,9 @@ export async function getBaseZodiacsOwnership(
   }
 
   const owner = normalizeOwnerAddress(ownerAddress) ?? ownerAddress;
+  const confirmedAbsentSigns = getAllBaseBridgedZodiacs()
+    .map((representation) => representation.sign)
+    .filter((sign) => !allHeldSigns.includes(sign));
 
   return {
     owner,
@@ -153,9 +156,8 @@ export async function getBaseZodiacsOwnership(
     holdings,
     heldSigns,
     zeroBalanceSigns,
-    missingSigns: getAllBaseBridgedZodiacs()
-      .map((representation) => representation.sign)
-      .filter((sign) => !allHeldSigns.includes(sign)),
+    confirmedAbsentSigns,
+    missingSigns: confirmedAbsentSigns,
     balancesBySign: toBalancesBySign(balances),
     representations: getAllBaseBridgedZodiacs(),
     totalHeld: allHeldSigns.length,

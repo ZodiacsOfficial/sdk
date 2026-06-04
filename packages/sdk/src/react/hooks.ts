@@ -3,7 +3,7 @@ import {
   getCompatibilityContext,
   getBaseZodiacBalance,
   getBaseZodiacsOwnership,
-  getCosmicReceiptData,
+  getIdentityReceiptData,
   getCurrentZodiacSeason,
   getRepresentationByAddress,
   getSolanaZodiacsOwnership,
@@ -20,8 +20,8 @@ import {
   type BaseZodiacsOwnership,
   type ZodiacCompatibilityContext,
   type ConnectionOrRpcUrl,
-  type CosmicReceiptData,
-  type CosmicReceiptDataOptions,
+  type IdentityReceiptData,
+  type IdentityReceiptDataOptions,
   type CrossChainZodiacsOwnership,
   type ZodiacsOwnership,
   type ZodiacAddressLookupOptions,
@@ -125,14 +125,14 @@ export function useZodiacIdentityContext(
   );
 }
 
-export function useCosmicReceiptData(
+export function useIdentityReceiptData(
   ownership: ZodiacIdentityOwnershipInput,
-  options: CosmicReceiptDataOptions = {}
-): CosmicReceiptData {
+  options: IdentityReceiptDataOptions = {}
+): IdentityReceiptData {
   const dateTime = options.date?.getTime() ?? null;
 
   return useMemo(
-    () => getCosmicReceiptData(ownership, options),
+    () => getIdentityReceiptData(ownership, options),
     [ownership, dateTime, options.sunSign, options.moonSign, options.risingSign, options.label]
   );
 }

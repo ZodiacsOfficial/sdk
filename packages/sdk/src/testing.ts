@@ -330,6 +330,7 @@ export function createMockBaseOwnership(
     holdings,
     heldSigns,
     zeroBalanceSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
+    confirmedAbsentSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
     missingSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
     balancesBySign: Object.fromEntries(
       balances.map((balance) => [balance.sign, balance])

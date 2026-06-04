@@ -4,7 +4,7 @@ import {
   ZODIAC_SIGNS,
   type BaseZodiacsOwnership,
   type ZodiacCompatibilityContext,
-  type CosmicReceiptData,
+  type IdentityReceiptData,
   type CrossChainZodiacsOwnership,
   type UnifiedZodiacShelf,
   type ZodiacElement,
@@ -19,7 +19,7 @@ import {
   type ZodiacSign,
   type ZodiacWheelData,
   type ZodiacsOwnership,
-  type ZunaSafeWalletContext
+  type ConsumerSafeWalletContext
 } from "./types.js";
 
 interface HoldingLike {
@@ -45,11 +45,11 @@ export interface ZodiacIdentityContextOptions extends ZodiacIdentityAlignmentInp
   readonly date?: Date;
 }
 
-export interface CosmicReceiptDataOptions extends ZodiacIdentityContextOptions {
+export interface IdentityReceiptDataOptions extends ZodiacIdentityContextOptions {
   readonly label?: string;
 }
 
-export interface ZunaSafeWalletContextOptions extends ZodiacIdentityContextOptions {
+export interface ConsumerSafeWalletContextOptions extends ZodiacIdentityContextOptions {
   readonly publicAddress?: string;
 }
 
@@ -121,6 +121,7 @@ export function getZodiacWheelData(ownership: ZodiacIdentityOwnershipInput): Zod
   const crossChain = isCrossChainOwnership(ownership) ? ownership : null;
   const normalizedOwnership = toOwnershipLike(ownership);
   const heldSigns = getHeldSigns(normalizedOwnership);
+  const confirmedAbsentSigns = ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign));
 
   return {
     items: ZODIAC_SIGNS.map((sign) => {
@@ -141,16 +142,17 @@ export function getZodiacWheelData(ownership: ZodiacIdentityOwnershipInput): Zod
       };
     }),
     heldSigns,
-    missingSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
+    confirmedAbsentSigns,
+    missingSigns: confirmedAbsentSigns,
     coverage: getWheelCoverage(heldSigns.length),
     totalUniqueSigns: heldSigns.length
   };
 }
 
-export function getCosmicReceiptData(
+export function getIdentityReceiptData(
   ownership: ZodiacIdentityOwnershipInput,
-  options: CosmicReceiptDataOptions = {}
-): CosmicReceiptData {
+  options: IdentityReceiptDataOptions = {}
+): IdentityReceiptData {
   const context = getZodiacIdentityContext(ownership, options);
 
   return {
@@ -160,7 +162,7 @@ export function getCosmicReceiptData(
   };
 }
 
-export function getCosmicReceiptFacts(
+export function getIdentityReceiptFacts(
   ownership: ZodiacIdentityOwnershipInput,
   options: ZodiacIdentityContextOptions = {}
 ): readonly ZodiacReceiptFact[] {
@@ -184,10 +186,10 @@ export function getShareCardContext(
   };
 }
 
-export function getZunaSafeWalletContext(
+export function getConsumerSafeWalletContext(
   ownership: ZodiacIdentityOwnershipInput,
-  options: ZunaSafeWalletContextOptions = {}
-): ZunaSafeWalletContext {
+  options: ConsumerSafeWalletContextOptions = {}
+): ConsumerSafeWalletContext {
   const normalizedOwnership = toOwnershipLike(ownership);
   const heldSigns = getHeldSigns(normalizedOwnership);
   const currentSeason = getCurrentZodiacSeason(options.date);
@@ -242,10 +244,12 @@ export function getZodiacIdentityContext(
   const dominantModality = getDominantCompositionKey(modalityComposition);
   const currentSeasonHeld = heldSigns.includes(currentSeason.sign);
   const totalUniqueSigns = heldSigns.length;
+  const confirmedAbsentSigns = ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign));
 
   return {
     heldSigns,
-    missingSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
+    confirmedAbsentSigns,
+    missingSigns: confirmedAbsentSigns,
     totalHeld: totalUniqueSigns,
     wheelCoverage: getWheelCoverage(totalUniqueSigns),
     elementComposition,

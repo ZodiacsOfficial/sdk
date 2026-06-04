@@ -10,12 +10,12 @@ connection, signing, transaction submission, swaps, rewards, and custody outside
 Use React Native or Expo for the first iOS experience when you want to share TypeScript models with web.
 
 ```ts
-import { getCosmicReceiptData, getZodiacIdentityContext } from "@zodiacs/sdk/core";
+import { getIdentityReceiptData, getZodiacIdentityContext } from "@zodiacs/sdk/core";
 import { createMockOwnership } from "@zodiacs/sdk/testing";
 
 const ownership = createMockOwnership({ heldSigns: ["aries", "gemini"] });
 const context = getZodiacIdentityContext(ownership);
-const receipt = getCosmicReceiptData(ownership);
+const receipt = getIdentityReceiptData(ownership);
 ```
 
 For production reads, prefer a small backend API that performs Base and Solana RPC calls server-side, then
@@ -93,7 +93,7 @@ Example combined context route:
 import {
   getCrossChainZodiacsOwnership,
   getZodiacIdentityContext,
-  getCosmicReceiptData
+  getIdentityReceiptData
 } from "@zodiacs/sdk/core";
 
 export async function GET(request: Request) {
@@ -109,7 +109,7 @@ export async function GET(request: Request) {
   return Response.json({
     ownership,
     identity: getZodiacIdentityContext(ownership),
-    receipt: getCosmicReceiptData(ownership)
+    receipt: getIdentityReceiptData(ownership)
   });
 }
 ```
@@ -120,9 +120,9 @@ export async function GET(request: Request) {
   intended SDK use.
 - Do not use token ownership to unlock paid digital features unless your app’s in-app purchase and external
   purchase flows comply with App Store rules.
-- Avoid in-app swap, trading, exchange, securities, derivatives, or custody flows unless the app is properly
+- Avoid in-app asset exchange, trading, securities, derivatives, or custody flows unless the app is properly
   licensed, region-scoped, and reviewed for that purpose.
-- Do not reward users with crypto or tokens for app downloads, invites, social posting, or similar tasks.
+- Do not incentivize users with crypto or tokens for app downloads, invites, social posting, or similar tasks.
 - Clearly label Solana-native assets and Base-bridged official representations.
 - Do not imply unofficial assets are official.
 
@@ -130,4 +130,4 @@ export async function GET(request: Request) {
 
 The SDK is for recognition, verification, public reads, metadata, and identity context. It is not financial
 advice, not a wallet SDK, not a trading SDK, and not a custody product. It does not sign messages, request
-private keys, approve transfers, submit transactions, swap, trade, or move assets.
+private keys, approve transfers, submit transactions, exchange assets, trade, or move assets.

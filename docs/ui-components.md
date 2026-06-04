@@ -15,5 +15,5 @@ const wheel = getZodiacWheelData(ownership);
 <ShareCardPreview context={context} />
 ```
 
-Components label Solana-native and Base-bridged provenance. They intentionally avoid buy, sell, swap, approval,
-reward, profit, or price-prediction calls to action.
+Components label Solana-native and Base-bridged provenance. They intentionally avoid asset acquisition, asset disposal, asset exchange, approval,
+crypto-incentive, promotional-return, or price-prediction calls to action.
