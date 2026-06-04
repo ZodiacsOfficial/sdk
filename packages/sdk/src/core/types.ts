@@ -211,6 +211,8 @@ export interface ZodiacsOwnership {
   readonly holdings: readonly ZodiacsHolding[];
   readonly heldSigns: readonly ZodiacSign[];
   readonly zeroBalanceSigns?: readonly ZodiacSign[];
+  readonly unavailableSigns?: readonly ZodiacSign[];
+  readonly confirmedAbsentSigns?: readonly ZodiacSign[];
   readonly balancesBySign?: Readonly<Record<ZodiacSign, ZodiacBalance>>;
   readonly representations?: readonly ZodiacRepresentation[];
   readonly totalHeld: number;
@@ -286,6 +288,7 @@ export interface BaseZodiacsOwnership {
   readonly holdings: readonly BaseZodiacsHolding[];
   readonly heldSigns: readonly ZodiacSign[];
   readonly zeroBalanceSigns?: readonly ZodiacSign[];
+  readonly unavailableSigns?: readonly ZodiacSign[];
   readonly confirmedAbsentSigns?: readonly ZodiacSign[];
   /** @deprecated Use confirmedAbsentSigns for neutral display language. */
   readonly missingSigns?: readonly ZodiacSign[];

@@ -71,6 +71,8 @@ describe("Base read-only balances", () => {
     expect(ownership.holdings).toHaveLength(12);
     expect(readContract).toHaveBeenCalledTimes(24);
     expect(ownership.status).toBe("partial");
+    expect(ownership.unavailableSigns).toEqual(["aries"]);
+    expect(ownership.confirmedAbsentSigns).not.toContain("aries");
     expect(ownership.errors[0]).toMatchObject({
       code: "zodiac-read-unavailable",
       message: "RPC unavailable"
@@ -136,6 +138,7 @@ describe("Base read-only balances", () => {
       status: "available",
       heldSigns: ["aries"],
       zeroBalanceSigns: expect.arrayContaining(["taurus"]),
+      unavailableSigns: [],
       confirmedAbsentSigns: expect.arrayContaining(["taurus"]),
       missingSigns: expect.arrayContaining(["taurus"]),
       totalHeld: 1,
@@ -166,6 +169,7 @@ describe("Base read-only balances", () => {
 
     expect(ownership.heldSigns).toEqual([]);
     expect(ownership.zeroBalanceSigns).toEqual(expect.arrayContaining(["taurus"]));
+    expect(ownership.confirmedAbsentSigns).not.toContain("aries");
     expect(ownership.balancesBySign?.aries.rawAmount).toBe("500000");
   });
 

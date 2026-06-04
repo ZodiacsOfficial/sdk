@@ -78,6 +78,8 @@ export function createMockOwnership(options: MockOwnershipOptions = {}): Zodiacs
     holdings,
     heldSigns,
     zeroBalanceSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
+    unavailableSigns: [],
+    confirmedAbsentSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
     balancesBySign: Object.fromEntries(
       holdings.map((holding) => [holding.sign, holding.balance])
     ) as Readonly<Record<ZodiacSign, ZodiacBalance>>,
@@ -330,6 +332,7 @@ export function createMockBaseOwnership(
     holdings,
     heldSigns,
     zeroBalanceSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
+    unavailableSigns: [],
     confirmedAbsentSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
     missingSigns: ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign)),
     balancesBySign: Object.fromEntries(

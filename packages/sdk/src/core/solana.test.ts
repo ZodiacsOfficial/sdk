@@ -176,6 +176,8 @@ describe("read-only Solana balances", () => {
     expect(ownership.holdings.map((holding) => holding.sign)).toHaveLength(12);
     expect(ownership.heldSigns).toEqual(["aries"]);
     expect(ownership.zeroBalanceSigns).toEqual(expect.arrayContaining(["taurus"]));
+    expect(ownership.unavailableSigns).toEqual([]);
+    expect(ownership.confirmedAbsentSigns).toEqual(expect.arrayContaining(["taurus"]));
     expect(ownership.balancesBySign?.aries.rawAmount).toBe("1000000");
     expect(ownership.representations).toHaveLength(12);
     expect(ownership.totalHeld).toBe(1);
@@ -238,12 +240,16 @@ describe("read-only Solana balances", () => {
       getSolanaZodiacsOwnershipBatched(connection, walletAddress, { onPartialFailure: "throw" })
     ).rejects.toBeInstanceOf(PartialOwnershipReadError);
 
-    await expect(
-      getSolanaZodiacsOwnershipBatched(connection, walletAddress, { onPartialFailure: "ignore" })
-    ).resolves.toMatchObject({
+    const ignored = await getSolanaZodiacsOwnershipBatched(connection, walletAddress, {
+      onPartialFailure: "ignore"
+    });
+
+    expect(ignored).toMatchObject({
       status: "partial",
+      unavailableSigns: ["aries"],
       errors: [],
       warnings: []
     });
+    expect(ignored.confirmedAbsentSigns).not.toContain("aries");
   });
 });

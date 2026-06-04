@@ -37,6 +37,9 @@ interface HoldingLike {
 
 interface OwnershipLike {
   readonly holdings: readonly HoldingLike[];
+  readonly zeroBalanceSigns?: readonly ZodiacSign[];
+  readonly unavailableSigns?: readonly ZodiacSign[];
+  readonly confirmedAbsentSigns?: readonly ZodiacSign[];
 }
 
 export type ZodiacIdentityOwnershipInput = OwnershipLike | CrossChainZodiacsOwnership;
@@ -121,7 +124,7 @@ export function getZodiacWheelData(ownership: ZodiacIdentityOwnershipInput): Zod
   const crossChain = isCrossChainOwnership(ownership) ? ownership : null;
   const normalizedOwnership = toOwnershipLike(ownership);
   const heldSigns = getHeldSigns(normalizedOwnership);
-  const confirmedAbsentSigns = ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign));
+  const confirmedAbsentSigns = getConfirmedAbsentSigns(ownership);
 
   return {
     items: ZODIAC_SIGNS.map((sign) => {
@@ -244,7 +247,7 @@ export function getZodiacIdentityContext(
   const dominantModality = getDominantCompositionKey(modalityComposition);
   const currentSeasonHeld = heldSigns.includes(currentSeason.sign);
   const totalUniqueSigns = heldSigns.length;
-  const confirmedAbsentSigns = ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign));
+  const confirmedAbsentSigns = getConfirmedAbsentSigns(ownership);
 
   return {
     heldSigns,
@@ -448,8 +451,47 @@ function toOwnershipLike(ownership: ZodiacIdentityOwnershipInput): OwnershipLike
     holdings: shelf.items.map((item) => ({
       sign: item.sign,
       held: item.held
-    }))
+    })),
+    confirmedAbsentSigns: getConfirmedAbsentSigns(ownership)
   };
+}
+
+function getConfirmedAbsentSigns(ownership: ZodiacIdentityOwnershipInput): readonly ZodiacSign[] {
+  if (!isCrossChainOwnership(ownership)) {
+    return getConfirmedAbsentSignsFromOwnership(ownership);
+  }
+
+  const checkedOwnerships = [ownership.solana, ownership.base].filter(
+    (chainOwnership): chainOwnership is ZodiacsOwnership | BaseZodiacsOwnership =>
+      chainOwnership !== undefined
+  );
+
+  if (checkedOwnerships.length === 0) {
+    return [];
+  }
+
+  return ZODIAC_SIGNS.filter((sign) => {
+    if (checkedOwnerships.some((chainOwnership) => isHeld(chainOwnership, sign))) {
+      return false;
+    }
+
+    return checkedOwnerships.every((chainOwnership) =>
+      getConfirmedAbsentSignsFromOwnership(chainOwnership).includes(sign)
+    );
+  });
+}
+
+function getConfirmedAbsentSignsFromOwnership(ownership: OwnershipLike): readonly ZodiacSign[] {
+  if (ownership.confirmedAbsentSigns) {
+    return ownership.confirmedAbsentSigns;
+  }
+
+  if (ownership.zeroBalanceSigns) {
+    return ownership.zeroBalanceSigns;
+  }
+
+  const heldSigns = getHeldSigns(ownership);
+  return ZODIAC_SIGNS.filter((sign) => !heldSigns.includes(sign));
 }
 
 function toUniqueOwnershipLike(ownership: OwnershipLike): OwnershipLike {

@@ -212,6 +212,20 @@ describe("identity composition helpers", () => {
     expect(context.receiptFacts).toContainEqual({ label: "Held signs", value: "0" });
   });
 
+  it("does not treat unavailable ownership reads as confirmed absent", () => {
+    const context = getZodiacIdentityContext({
+      holdings: [
+        { sign: "aries", held: false },
+        { sign: "taurus", held: false }
+      ],
+      unavailableSigns: ["aries"],
+      confirmedAbsentSigns: ["taurus"]
+    });
+
+    expect(context.confirmedAbsentSigns).toEqual(["taurus"]);
+    expect(context.missingSigns).toEqual(["taurus"]);
+  });
+
   it("handles one sign and full wheel coverage", () => {
     expect(
       getZodiacIdentityContext(

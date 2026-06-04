@@ -13,6 +13,8 @@
   package contents.
 - Renamed pre-1.0 app-specific identity helpers to neutral consumer-safe and
   identity-receipt APIs.
+- Added `unavailableSigns` and tightened `confirmedAbsentSigns` so failed reads
+  are not presented as checked absence.
 
 ## 0.3.0
 

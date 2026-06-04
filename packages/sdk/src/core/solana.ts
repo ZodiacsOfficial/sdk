@@ -165,6 +165,9 @@ export async function getZodiacsOwnership(
   const zeroBalanceSigns = balances
     .filter((balance) => balance.status === "zero")
     .map((balance) => balance.sign);
+  const unavailableSigns = balances
+    .filter((balance) => balance.status === "unavailable")
+    .map((balance) => balance.sign);
   const errors = balances.flatMap((balance) => (balance.error ? [balance.error] : []));
   const partialFailureMode = options.onPartialFailure ?? "warn";
 
@@ -181,6 +184,8 @@ export async function getZodiacsOwnership(
     holdings,
     heldSigns,
     zeroBalanceSigns,
+    unavailableSigns,
+    confirmedAbsentSigns: zeroBalanceSigns,
     balancesBySign: toBalancesBySign(balances),
     representations: getAllSolanaNativeZodiacs(),
     totalHeld: heldSigns.length,

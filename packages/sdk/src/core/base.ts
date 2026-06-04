@@ -130,6 +130,9 @@ export async function getBaseZodiacsOwnership(
   const zeroBalanceSigns = balances
     .filter((balance) => balance.status === "zero")
     .map((balance) => balance.sign);
+  const unavailableSigns = balances
+    .filter((balance) => balance.status === "unavailable")
+    .map((balance) => balance.sign);
   const allHeldSigns = balances
     .filter((balance) => balance.status === "ok" && BigInt(balance.rawAmount) >= minBalance)
     .map((balance) => balance.sign);
@@ -142,9 +145,7 @@ export async function getBaseZodiacsOwnership(
   }
 
   const owner = normalizeOwnerAddress(ownerAddress) ?? ownerAddress;
-  const confirmedAbsentSigns = getAllBaseBridgedZodiacs()
-    .map((representation) => representation.sign)
-    .filter((sign) => !allHeldSigns.includes(sign));
+  const confirmedAbsentSigns = zeroBalanceSigns;
 
   return {
     owner,
@@ -156,6 +157,7 @@ export async function getBaseZodiacsOwnership(
     holdings,
     heldSigns,
     zeroBalanceSigns,
+    unavailableSigns,
     confirmedAbsentSigns,
     missingSigns: confirmedAbsentSigns,
     balancesBySign: toBalancesBySign(balances),

@@ -42,6 +42,8 @@ Zodiacs mints through the registry.
   "walletAddress": "CWKQJJYec89wcx871C8vmyTPc3jhsdoAYs5aGffUtELJ",
   "chain": "solana",
   "heldSigns": ["aries"],
+  "confirmedAbsentSigns": ["taurus"],
+  "unavailableSigns": [],
   "totalHeld": 1,
   "errors": []
 }
@@ -59,6 +61,8 @@ reads when available.
   "ownerAddress": "0x1111111111111111111111111111111111111111",
   "chain": "base",
   "heldSigns": ["taurus"],
+  "confirmedAbsentSigns": ["aries"],
+  "unavailableSigns": [],
   "balancesBySign": {},
   "errors": [],
   "warnings": []

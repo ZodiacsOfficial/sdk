@@ -9,3 +9,5 @@
 - Added optional UI primitives, testing fixtures, Base App starter, and iOS/React Native guidance.
 - Renamed app-specific pre-1.0 identity helpers to neutral consumer-safe and
   identity-receipt APIs.
+- Added explicit unavailable-sign reporting so failed reads are not treated as
+  confirmed absent holdings.
