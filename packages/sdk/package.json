@@ -1,6 +1,6 @@
 {
   "name": "@zodiacs/sdk",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0",
   "description": "Official read-only TypeScript SDK for the canonical Zodiacs.org registry, native Solana Zodiacs assets, and official bridged Base representations.",
   "license": "MIT",
   "keywords": [
@@ -92,7 +92,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup src/index.ts src/core.ts src/market.ts src/registry.ts src/base.ts src/solana.ts src/identity.ts src/react.ts src/ui.ts src/testing.ts --format esm --dts --clean --tsconfig tsconfig.build.json --external react --external react/jsx-runtime --external @solana/web3.js --external viem",
+    "build": "tsup src/index.ts src/core.ts src/market.ts src/registry.ts src/base.ts src/solana.ts src/identity.ts src/react.ts src/ui.ts src/testing.ts --format esm --dts --clean --tsconfig tsconfig.build.json --external react --external react/jsx-runtime --external viem",
     "exports:smoke": "node scripts/module-resolution-smoke.mjs",
     "neutrality:guard": "node scripts/neutrality-guard.mjs",
     "package:contents": "node scripts/verify-package-contents.mjs",
@@ -102,7 +102,6 @@
     "test": "vitest run src/**/*.test.ts src/**/*.test.tsx"
   },
   "dependencies": {
-    "@solana/web3.js": "^1.98.0",
     "viem": "^2.45.0"
   },
   "peerDependencies": {
@@ -114,6 +113,7 @@
     }
   },
   "devDependencies": {
+    "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "react": "^18.3.1",

@@ -5,7 +5,7 @@ SDK canonical registry and read-only integration layer.
 
 ## Package Structure
 
-- `@zodiacs/sdk` package version `1.0.0-rc.1` in `packages/sdk`
+- `@zodiacs/sdk` package version `1.0.0` in `packages/sdk`
 - machine-readable registry artifact at `packages/sdk/registry/zodiacs.registry.json`
 - generic Next.js integration example in `examples/nextjs`
 - root, core, registry, Base, Solana, identity, testing, and market entry
@@ -51,8 +51,9 @@ The workspace is managed with pnpm through `pnpm-workspace.yaml`.
 - Read failures return typed unavailable states per token.
 - `unavailableSigns` identify signs that could not be checked.
 - `confirmedAbsentSigns` identify signs that were checked and had zero balance.
-- Deprecated `missingSigns` aliases only `confirmedAbsentSigns`; failed reads
-  are never treated as confirmed absent.
+- Stable ownership responses use `confirmedAbsentSigns` for checked absence and
+  `unavailableSigns` for failed reads; failed reads are never treated as
+  confirmed absent.
 - Identity helpers expose reconciled counts where
   `nativeCount + bridgedCount - dualRepresentationCount === totalUniqueSigns`
   and `totalRepresentationPositions === nativeCount + bridgedCount`.

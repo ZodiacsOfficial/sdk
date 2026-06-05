@@ -1,4 +1,3 @@
-import { Connection, PublicKey } from "@solana/web3.js";
 import {
   ZODIAC_SIGNS,
   type ZodiacsOwnership,
@@ -13,12 +12,25 @@ import {
   type ZodiacBalanceError,
   type ZodiacSign
 } from "./types.js";
+import { isSolanaAddressLike, normalizeSolanaAddress } from "./address.js";
 import { getAllZodiacTokens, getZodiacToken } from "./registry.js";
 import { getAllSolanaNativeZodiacs, getSolanaZodiacRepresentation } from "./official-registry.js";
 import { rawAmountToNumber } from "./format.js";
 import { PartialOwnershipReadError, ZodiacsValidationError } from "./errors.js";
 
-const SPL_TOKEN_PROGRAM_ID = new PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA");
+const SPL_TOKEN_PROGRAM_ID = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA";
+
+interface SolanaPublicKeyLike {
+  readonly toBase58: () => string;
+  readonly toString: () => string;
+}
+
+interface SolanaJsonRpcResponse {
+  readonly result?: ParsedTokenAccountResponse;
+  readonly error?: {
+    readonly message?: string;
+  };
+}
 
 export interface SolanaZodiacsReadOptions {
   readonly signal?: AbortSignal;
@@ -57,7 +69,7 @@ export function createSolanaConnection(
     );
   }
 
-  return new Connection(rpcUrl, "confirmed") as unknown as SolanaBalanceConnection;
+  return createJsonRpcSolanaConnection(rpcUrl);
 }
 
 export function createReadonlySolanaBalanceReader(
@@ -186,7 +198,6 @@ export async function getZodiacsOwnership(
     zeroBalanceSigns,
     unavailableSigns,
     confirmedAbsentSigns: zeroBalanceSigns,
-    missingSigns: zeroBalanceSigns,
     balancesBySign: toBalancesBySign(balances),
     representations: getAllSolanaNativeZodiacs(),
     totalHeld: heldSigns.length,
@@ -430,15 +441,84 @@ function throwIfAborted(signal: AbortSignal | undefined): void {
   }
 }
 
-function createPublicKey(value: string, label: string): PublicKey {
-  try {
-    return new PublicKey(value);
-  } catch {
+function createPublicKey(value: string, label: string): SolanaPublicKeyLike {
+  if (!isSolanaAddressLike(value)) {
     throw new ZodiacsValidationError(
       label === "wallet address" ? "invalid-wallet-address" : "invalid-mint-address",
       `Invalid ${label}: ${value}`
     );
   }
+
+  const normalized = normalizeSolanaAddress(value);
+
+  return {
+    toBase58: () => normalized,
+    toString: () => normalized
+  };
+}
+
+function createJsonRpcSolanaConnection(rpcUrl: string): SolanaBalanceConnection {
+  return {
+    getParsedTokenAccountsByOwner: async (
+      ownerAddress,
+      filter
+    ): Promise<ParsedTokenAccountResponse> => {
+      const owner = stringifyPublicKey(ownerAddress);
+      const tokenFilter =
+        "mint" in filter
+          ? { mint: stringifyPublicKey(filter.mint) }
+          : { programId: stringifyPublicKey(filter.programId) };
+      const response = await fetch(rpcUrl, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: "zodiacs-sdk-token-accounts",
+          method: "getTokenAccountsByOwner",
+          params: [owner, tokenFilter, { encoding: "jsonParsed", commitment: "confirmed" }]
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Solana RPC request failed with HTTP ${response.status}.`);
+      }
+
+      const payload = (await response.json()) as SolanaJsonRpcResponse;
+
+      if (payload.error) {
+        throw new Error(payload.error.message ?? "Solana RPC request failed.");
+      }
+
+      if (!payload.result || !Array.isArray(payload.result.value)) {
+        throw new Error("Invalid RPC response: expected token account array.");
+      }
+
+      return payload.result;
+    }
+  };
+}
+
+function stringifyPublicKey(value: unknown): string {
+  if (typeof value === "string") {
+    return value;
+  }
+
+  if (typeof value === "object" && value !== null) {
+    const maybePublicKey = value as {
+      readonly toBase58?: () => string;
+      readonly toString?: () => string;
+    };
+
+    if (typeof maybePublicKey.toBase58 === "function") {
+      return maybePublicKey.toBase58();
+    }
+
+    if (typeof maybePublicKey.toString === "function") {
+      return maybePublicKey.toString();
+    }
+  }
+
+  return String(value);
 }
 
 function assertZodiacSignInput(value: string): asserts value is ZodiacSign {

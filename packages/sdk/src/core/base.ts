@@ -159,7 +159,6 @@ export async function getBaseZodiacsOwnership(
     zeroBalanceSigns,
     unavailableSigns,
     confirmedAbsentSigns,
-    missingSigns: confirmedAbsentSigns,
     balancesBySign: toBalancesBySign(balances),
     representations: getAllBaseBridgedZodiacs(),
     totalHeld: allHeldSigns.length,

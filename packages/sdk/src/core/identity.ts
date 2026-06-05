@@ -146,7 +146,6 @@ export function getZodiacWheelData(ownership: ZodiacIdentityOwnershipInput): Zod
     }),
     heldSigns,
     confirmedAbsentSigns,
-    missingSigns: confirmedAbsentSigns,
     coverage: getWheelCoverage(heldSigns.length),
     totalUniqueSigns: heldSigns.length
   };
@@ -252,7 +251,6 @@ export function getZodiacIdentityContext(
   return {
     heldSigns,
     confirmedAbsentSigns,
-    missingSigns: confirmedAbsentSigns,
     totalHeld: totalUniqueSigns,
     wheelCoverage: getWheelCoverage(totalUniqueSigns),
     elementComposition,

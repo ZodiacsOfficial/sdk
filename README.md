@@ -1,6 +1,6 @@
 # Zodiacs SDK
 
-[![SDK version](https://img.shields.io/badge/sdk-1.0.0--rc.1-blue)](packages/sdk/package.json)
+[![SDK version](https://img.shields.io/badge/sdk-1.0.0-blue)](packages/sdk/package.json)
 [![Registry version](https://img.shields.io/badge/registry-0.2.0-6f42c1)](packages/sdk/registry/zodiacs.registry.json)
 [![React peer](https://img.shields.io/badge/react-optional%20peer-61dafb)](packages/sdk/package.json)
 [![Posture](https://img.shields.io/badge/posture-read--only-2ea44f)](#security-posture)
@@ -45,8 +45,9 @@ packages/sdk/registry/zodiacs.registry.json
 pnpm add @zodiacs/sdk
 ```
 
-For Base read-only balance helpers, the SDK uses `viem` public clients. For
-Solana read-only balance helpers, it uses `@solana/web3.js` connections.
+For Base read-only balance helpers, the SDK uses `viem` public clients. Solana
+read-only helpers accept an RPC URL string or any compatible read-only
+connection object with `getParsedTokenAccountsByOwner`.
 
 Prefer subpath imports for new apps:
 
@@ -75,9 +76,9 @@ The package ships granular entry points:
 `react` is an optional peer dependency that is required only when importing
 `@zodiacs/sdk/react` or `@zodiacs/sdk/ui`.
 
-Core-only consumers do not need to install React. `viem` and `@solana/web3.js`
-ship as regular SDK dependencies because the read helpers use public clients
-from those ecosystems.
+Core-only consumers do not need to install React. `viem` ships as a regular SDK
+dependency because Base read helpers use public clients from that ecosystem.
+Solana RPC URL reads use the SDK's internal read-only JSON-RPC adapter.
 
 Market adapters require explicit import from `@zodiacs/sdk/market`; they are
 not exported from the root package.
@@ -153,13 +154,10 @@ console.log(bridged.originAddress === native.address);
 ## Read Solana Holdings
 
 ```ts
-import { Connection } from "@solana/web3.js";
 import { getSolanaZodiacsOwnership } from "@zodiacs/sdk";
 
-const connection = new Connection("https://api.mainnet-beta.solana.com");
-
 const ownership = await getSolanaZodiacsOwnership(
-  connection,
+  "https://api.mainnet-beta.solana.com",
   "CWKQJJYec89wcx871C8vmyTPc3jhsdoAYs5aGffUtELJ"
 );
 ```
@@ -212,12 +210,18 @@ when `maximumFractionDigits` is set unless `roundingMode: "round"` is passed.
 import { getCrossChainZodiacsOwnership, getUnifiedZodiacShelf } from "@zodiacs/sdk";
 
 const ownershipByChain = await getCrossChainZodiacsOwnership({
-  solana: { connection, ownerAddress: "CWKQJJYec89wcx871C8vmyTPc3jhsdoAYs5aGffUtELJ" },
+  solana: {
+    connection: "https://api.mainnet-beta.solana.com",
+    ownerAddress: "CWKQJJYec89wcx871C8vmyTPc3jhsdoAYs5aGffUtELJ"
+  },
   base: { publicClient, ownerAddress: "0x1111111111111111111111111111111111111111" }
 });
 
 const shelf = await getUnifiedZodiacShelf({
-  solana: { connection, ownerAddress: "CWKQJJYec89wcx871C8vmyTPc3jhsdoAYs5aGffUtELJ" },
+  solana: {
+    connection: "https://api.mainnet-beta.solana.com",
+    ownerAddress: "CWKQJJYec89wcx871C8vmyTPc3jhsdoAYs5aGffUtELJ"
+  },
   base: { publicClient, ownerAddress: "0x1111111111111111111111111111111111111111" }
 });
 
@@ -341,9 +345,9 @@ claims.
 
 `@zodiacs/sdk` follows semver. The canonical registry has its own version field
 inside `ZODIACS_REGISTRY` and `packages/sdk/registry/zodiacs.registry.json`.
-The `1.0.0-rc.1` release candidate keeps the root entry point React-free and
-requires explicit subpath imports for React, UI, market, Base, Solana,
-registry, identity, and testing helpers.
+The `1.0.0` release keeps the root entry point React-free and requires explicit
+subpath imports for React, UI, market, Base, Solana, registry, identity, and
+testing helpers.
 
 ## Contributing
 

@@ -6,6 +6,7 @@
     "declarationMap": false,
     "emitDeclarationOnly": false,
     "incremental": false,
-    "noEmit": true
+    "noEmit": true,
+    "types": ["node"]
   }
 }

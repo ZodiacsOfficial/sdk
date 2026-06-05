@@ -13,7 +13,7 @@ const packageJson = JSON.parse(
 
 describe("package entry point posture", () => {
   it("keeps React isolated to explicit React and UI subpaths", () => {
-    expect(packageJson.version).toBe("1.0.0-rc.1");
+    expect(packageJson.version).toBe("1.0.0");
     expect(Object.keys(packageJson.exports)).toEqual([
       ".",
       "./core",

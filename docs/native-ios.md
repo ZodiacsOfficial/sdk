@@ -82,7 +82,7 @@ import { getConsumerSafeWalletContext } from "@zodiacs/sdk/identity";
 import { getSolanaZodiacsOwnership } from "@zodiacs/sdk/solana";
 
 const solana = solanaAddress
-  ? await getSolanaZodiacsOwnership(solanaConnection, solanaAddress)
+  ? await getSolanaZodiacsOwnership(process.env.SOLANA_RPC_URL!, solanaAddress)
   : undefined;
 const base = baseAddress ? await getBaseZodiacsOwnership(basePublicClient, baseAddress) : undefined;
 

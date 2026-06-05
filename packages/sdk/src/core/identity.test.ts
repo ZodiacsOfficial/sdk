@@ -121,7 +121,6 @@ describe("identity composition helpers", () => {
     expect(context).toMatchObject({
       heldSigns: ["aries", "gemini"],
       confirmedAbsentSigns: expect.arrayContaining(["taurus", "cancer"]),
-      missingSigns: expect.arrayContaining(["taurus", "cancer"]),
       totalHeld: 2,
       totalUniqueSigns: 2,
       wheelCoverage: 16.67,
@@ -149,7 +148,7 @@ describe("identity composition helpers", () => {
       ]
     });
     expect(context.confirmedAbsentSigns).toHaveLength(10);
-    expect(context.missingSigns).toHaveLength(10);
+    expect("missingSigns" in context).toBe(false);
     expect(context.receiptFacts.map((fact) => fact.label)).toContain("Wheel coverage");
     expect(context.nativeCount + context.bridgedCount - context.dualRepresentationCount).toBe(
       context.totalUniqueSigns
@@ -222,7 +221,6 @@ describe("identity composition helpers", () => {
     expect(context).toMatchObject({
       heldSigns: [],
       confirmedAbsentSigns: expect.arrayContaining(["aries", "pisces"]),
-      missingSigns: expect.arrayContaining(["aries", "pisces"]),
       totalUniqueSigns: 0,
       wheelCoverage: 0,
       nativeCount: 0,
@@ -252,7 +250,7 @@ describe("identity composition helpers", () => {
     });
 
     expect(context.confirmedAbsentSigns).toEqual(["taurus"]);
-    expect(context.missingSigns).toEqual(["taurus"]);
+    expect("missingSigns" in context).toBe(false);
   });
 
   it("handles one sign and full wheel coverage", () => {
@@ -397,7 +395,6 @@ describe("identity composition helpers", () => {
 
     expect(wheel).toMatchObject({
       heldSigns: ["aries", "gemini"],
-      missingSigns: expect.arrayContaining(["taurus"]),
       coverage: 16.67,
       totalUniqueSigns: 2
     });

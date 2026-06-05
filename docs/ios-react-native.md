@@ -77,13 +77,10 @@ Example Solana route:
 
 ```ts
 import { getSolanaZodiacsOwnership } from "@zodiacs/sdk/solana";
-import { Connection } from "@solana/web3.js";
-
-const connection = new Connection(process.env.SOLANA_RPC_URL!, "confirmed");
 
 export async function GET(_request: Request, context: { params: Promise<{ address: string }> }) {
   const { address } = await context.params;
-  return Response.json(await getSolanaZodiacsOwnership(connection, address));
+  return Response.json(await getSolanaZodiacsOwnership(process.env.SOLANA_RPC_URL!, address));
 }
 ```
 
@@ -103,7 +100,9 @@ export async function GET(request: Request) {
 
   const ownership = await getCrossChainZodiacsOwnership({
     ...(baseAddress ? { base: { publicClient, ownerAddress: baseAddress } } : {}),
-    ...(solanaAddress ? { solana: { connection, ownerAddress: solanaAddress } } : {})
+    ...(solanaAddress
+      ? { solana: { connection: process.env.SOLANA_RPC_URL!, ownerAddress: solanaAddress } }
+      : {})
   });
 
   return Response.json({

@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.0
+
+- Published the first stable SDK release.
+- Removed the Solana Web3 production dependency in favor of an internal
+  read-only JSON-RPC adapter for RPC URL reads.
+- Removed the pre-1.0 deprecated `missingSigns` compatibility alias from public
+  ownership and identity outputs.
+- Kept market context explicit through `@zodiacs/sdk/market`; root remains
+  React-free and market-adapter-free.
+
 ## 1.0.0-rc.1
 
 - Added SDK subpath exports for core, registry, Base, Solana, React, UI, and testing.

@@ -140,7 +140,6 @@ describe("Base read-only balances", () => {
       zeroBalanceSigns: expect.arrayContaining(["taurus"]),
       unavailableSigns: [],
       confirmedAbsentSigns: expect.arrayContaining(["taurus"]),
-      missingSigns: expect.arrayContaining(["taurus"]),
       totalHeld: 1,
       blockNumber: 123n
     });

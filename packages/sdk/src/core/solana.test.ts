@@ -178,7 +178,6 @@ describe("read-only Solana balances", () => {
     expect(ownership.zeroBalanceSigns).toEqual(expect.arrayContaining(["taurus"]));
     expect(ownership.unavailableSigns).toEqual([]);
     expect(ownership.confirmedAbsentSigns).toEqual(expect.arrayContaining(["taurus"]));
-    expect(ownership.missingSigns).toEqual(expect.arrayContaining(["taurus"]));
     expect(ownership.balancesBySign?.aries.rawAmount).toBe("1000000");
     expect(ownership.representations).toHaveLength(12);
     expect(ownership.totalHeld).toBe(1);
@@ -252,6 +251,39 @@ describe("read-only Solana balances", () => {
       warnings: []
     });
     expect(ignored.confirmedAbsentSigns).not.toContain("aries");
-    expect(ignored.missingSigns).not.toContain("aries");
+    expect("missingSigns" in ignored).toBe(false);
+  });
+
+  it("creates a read-only JSON-RPC connection for RPC URL strings", async () => {
+    const originalFetch = globalThis.fetch;
+    const fetch = vi.fn(async () =>
+      Response.json({
+        jsonrpc: "2.0",
+        id: "zodiacs-sdk-token-accounts",
+        result: parsedWalletTokenResponse({ mint: getMintAddress("aries"), amount: "1000000" })
+      })
+    );
+    vi.stubGlobal("fetch", fetch);
+
+    try {
+      const ownership = await getSolanaZodiacsOwnershipBatched(
+        "https://solana.example",
+        walletAddress
+      );
+
+      expect(ownership.heldSigns).toEqual(["aries"]);
+      expect(fetch).toHaveBeenCalledOnce();
+      const fetchCall = fetch.mock.calls[0] as unknown as [string, RequestInit];
+      expect(JSON.parse(String(fetchCall[1].body))).toMatchObject({
+        method: "getTokenAccountsByOwner",
+        params: [
+          walletAddress,
+          { programId: "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA" },
+          { encoding: "jsonParsed", commitment: "confirmed" }
+        ]
+      });
+    } finally {
+      vi.stubGlobal("fetch", originalFetch);
+    }
   });
 });

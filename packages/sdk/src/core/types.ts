@@ -213,8 +213,6 @@ export interface ZodiacsOwnership {
   readonly zeroBalanceSigns?: readonly ZodiacSign[];
   readonly unavailableSigns?: readonly ZodiacSign[];
   readonly confirmedAbsentSigns?: readonly ZodiacSign[];
-  /** @deprecated Use confirmedAbsentSigns for neutral display language. */
-  readonly missingSigns?: readonly ZodiacSign[];
   readonly balancesBySign?: Readonly<Record<ZodiacSign, ZodiacBalance>>;
   readonly representations?: readonly ZodiacRepresentation[];
   readonly totalHeld: number;
@@ -292,8 +290,6 @@ export interface BaseZodiacsOwnership {
   readonly zeroBalanceSigns?: readonly ZodiacSign[];
   readonly unavailableSigns?: readonly ZodiacSign[];
   readonly confirmedAbsentSigns?: readonly ZodiacSign[];
-  /** @deprecated Use confirmedAbsentSigns for neutral display language. */
-  readonly missingSigns?: readonly ZodiacSign[];
   readonly balancesBySign?: Readonly<Record<ZodiacSign, BaseZodiacBalance>>;
   readonly representations?: readonly ZodiacRepresentation[];
   readonly totalHeld: number;
@@ -385,8 +381,6 @@ export interface ZodiacWheelData {
   readonly items: readonly ZodiacWheelDataItem[];
   readonly heldSigns: readonly ZodiacSign[];
   readonly confirmedAbsentSigns: readonly ZodiacSign[];
-  /** @deprecated Use confirmedAbsentSigns for neutral display language. */
-  readonly missingSigns: readonly ZodiacSign[];
   readonly coverage: number;
   readonly totalUniqueSigns: number;
 }
@@ -445,8 +439,6 @@ export interface ConsumerSafeWalletContext {
 export interface ZodiacIdentityContext {
   readonly heldSigns: readonly ZodiacSign[];
   readonly confirmedAbsentSigns: readonly ZodiacSign[];
-  /** @deprecated Use confirmedAbsentSigns for neutral display language. */
-  readonly missingSigns: readonly ZodiacSign[];
   readonly totalHeld: number;
   readonly wheelCoverage: number;
   readonly elementComposition: Record<ZodiacElement, number>;

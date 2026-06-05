@@ -41,8 +41,6 @@ Ownership responses distinguish checked absence from read failures:
 - `confirmedAbsentSigns`: signs that were checked and had zero balance.
 - `unavailableSigns`: signs that could not be checked because an RPC or parsing
   step failed.
-- `missingSigns`: deprecated compatibility field for older pre-1.0 consumers;
-  use `confirmedAbsentSigns` for neutral display language.
 
 ## Identity APIs
 
