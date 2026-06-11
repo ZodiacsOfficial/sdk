@@ -4,6 +4,7 @@ import { renderFallbackSky } from "../../../../lib/horoscope/fallback";
 import { generateDailySky } from "../../../../lib/horoscope/generate";
 import type { DailySkyPayload } from "../../../../lib/horoscope/schema";
 import { isoDate, keys, redis } from "../../../../lib/redis";
+import { pushSkyTapeItem } from "../../../../lib/tape";
 
 const HOROSCOPE_TTL_SECONDS = 48 * 3600;
 
@@ -28,5 +29,12 @@ export async function GET(request: Request) {
     : { date, source: "fallback", events, sky: renderFallbackSky(date, events) };
 
   await redis().set(keys.horoscope(date), payload, { ex: HOROSCOPE_TTL_SECONDS });
+  const firstWriteToday = await redis().set(keys.tapeSkyFlag(date), "1", {
+    nx: true,
+    ex: HOROSCOPE_TTL_SECONDS
+  });
+  if (firstWriteToday) {
+    await pushSkyTapeItem(date, payload.sky.global.headline, payload.sky.global.marketMood);
+  }
   return NextResponse.json({ date, source: payload.source });
 }

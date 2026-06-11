@@ -7,6 +7,7 @@ import type { ZodiacSign } from "../../../lib/zodiac";
 import type { MarketPayload } from "../../../lib/market";
 import { AppHeader, FooterNote } from "../../../components/AppHeader";
 import { SwapSheet } from "../../../components/exchange/SwapSheet";
+import { TapeTickerCard } from "../../../components/TapeFeed";
 import { TokenRow } from "../../../components/exchange/TokenRow";
 
 export default function ExchangePage() {
@@ -26,6 +27,8 @@ export default function ExchangePage() {
   return (
     <>
       <AppHeader title="Exchange" subtitle="The twelve official Zodiacs on Base" />
+
+      <TapeTickerCard />
 
       {isLoading ? <p className="muted">Reading the tape…</p> : null}
 

@@ -37,7 +37,9 @@ export const keys = {
   chatReports: () => "ax:chat:reports",
   rateLimit: (route: string, fid: number, bucket: number) => `ax:rl:${route}:${fid}:${bucket}`,
   notifFids: () => "ax:notif:fids",
-  notifSent: (kind: string, date: string) => `ax:notif:sent:${kind}:${date}`
+  notifSent: (kind: string, date: string) => `ax:notif:sent:${kind}:${date}`,
+  tape: () => "ax:tape",
+  tapeSkyFlag: (date: string) => `ax:tape:sky:${date}`
 };
 
 export function isoDate(date: Date = new Date()): string {

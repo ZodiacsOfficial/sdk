@@ -2,6 +2,7 @@ import { getBaseZodiacsOwnership } from "@zodiacs/sdk/core";
 import type { ZodiacSign } from "@zodiacs/sdk/core";
 import { ZODIAC_SIGNS } from "@zodiacs/sdk/core";
 import { isoWeek, keys, redis } from "../redis";
+import { pushTradeTapeItem } from "../tape";
 import { serverPublicClient } from "../viem";
 import { getPriceMap } from "../market";
 import { baseDecimalsForSign } from "../zodiac";
@@ -119,6 +120,7 @@ export async function creditTrade(fid: number, trade: VerifiedTrade): Promise<vo
   }
 
   await client.del(keys.pnlBoardCache());
+  await pushTradeTapeItem(fid, trade);
 }
 
 interface ZsetEntry {
