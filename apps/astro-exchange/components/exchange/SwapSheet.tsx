@@ -15,6 +15,7 @@ import {
 } from "../../lib/zodiac";
 import type { ZodiacSign } from "../../lib/zodiac";
 import { ShareButton } from "../ShareButton";
+import { SignIcon } from "../SignIcon";
 
 const USDC_PRESETS = [5, 20, 50] as const;
 
@@ -118,7 +119,7 @@ export function SwapSheet({
       <div className="sheet">
         <div className="row spread">
           <div className="row">
-            <span className="glyph">{SIGN_GLYPHS[sign]}</span>
+            <SignIcon sign={sign} size={40} />
             <h2 style={{ margin: 0, textTransform: "capitalize" }}>{sign}</h2>
           </div>
           <button className="ghost" onClick={onClose}>

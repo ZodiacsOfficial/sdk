@@ -1,31 +1,57 @@
 :root {
   color-scheme: dark;
-  --bg: #0b0d1a;
-  --surface: #151a2e;
-  --surface-2: #1d2440;
-  --border: #2a3157;
-  --text: #e8eaf6;
-  --muted: #9aa3c7;
+  --text: #f4f6ff;
+  --muted: rgba(226, 232, 255, 0.64);
+  --faint: rgba(226, 232, 255, 0.42);
   --accent: #ffd166;
-  --up: #4ade80;
-  --down: #f87171;
+  --up: #5deda6;
+  --down: #ff8a93;
+  --glass: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04));
+  --glass-flat: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-highlight: rgba(255, 255, 255, 0.32);
+  --radius-card: 26px;
 }
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
+  min-height: 100%;
+  background: #05060f;
   color: var(--text);
   font-family:
-    system-ui,
-    -apple-system,
-    "Segoe UI",
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", system-ui,
     sans-serif;
+  letter-spacing: 0.01em;
+}
+
+/* Colorful fixed backdrop that the glass surfaces blur and refract. */
+.cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(42% 34% at 18% 8%, rgba(124, 108, 255, 0.45), transparent 70%),
+    radial-gradient(38% 30% at 86% 20%, rgba(255, 156, 122, 0.32), transparent 70%),
+    radial-gradient(46% 38% at 80% 88%, rgba(86, 204, 242, 0.28), transparent 70%),
+    radial-gradient(30% 26% at 10% 76%, rgba(255, 209, 102, 0.24), transparent 70%),
+    linear-gradient(180deg, #0a0c24 0%, #05060f 58%, #03040a 100%);
+}
+
+.cosmos::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.55) 1px, transparent 1.5px);
+  background-size: 132px 132px;
+  opacity: 0.14;
 }
 
 a {
@@ -36,21 +62,34 @@ a {
 main.tab-content {
   max-width: 520px;
   margin: 0 auto;
-  padding: 16px 16px 88px;
+  padding: 18px 16px 132px;
   display: grid;
   gap: 14px;
 }
 
+h2 {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* ---------- Liquid glass surfaces ---------- */
+
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 14px;
+  background: var(--glass);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+    0 18px 40px rgba(3, 6, 24, 0.45);
 }
 
 .card h2 {
   margin: 0 0 8px;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .muted {
@@ -59,9 +98,10 @@ main.tab-content {
 }
 
 .disclaimer {
-  color: var(--muted);
+  color: var(--faint);
   font-size: 11px;
-  line-height: 1.5;
+  line-height: 1.55;
+  padding: 0 6px;
 }
 
 .row {
@@ -74,16 +114,6 @@ main.tab-content {
   justify-content: space-between;
 }
 
-.glyph {
-  font-size: 22px;
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  background: var(--surface-2);
-  border-radius: 10px;
-}
-
 .up {
   color: var(--up);
 }
@@ -92,21 +122,56 @@ main.tab-content {
   color: var(--down);
 }
 
+/* Official sign icons get a glass ring and soft lift. */
+.sign-icon {
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.22),
+    0 6px 16px rgba(3, 6, 24, 0.45);
+}
+
+.glyph {
+  font-size: 20px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: var(--glass-flat);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
+/* ---------- Controls ---------- */
+
 button.primary,
 button.ghost,
 button.chip {
   font: inherit;
-  border-radius: 10px;
   cursor: pointer;
-  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition:
+    transform 0.12s ease,
+    filter 0.12s ease;
+}
+
+button.primary:active,
+button.ghost:active,
+button.chip:active {
+  transform: scale(0.97);
 }
 
 button.primary {
-  background: var(--accent);
-  color: #1a1503;
-  border: none;
-  padding: 10px 16px;
-  font-weight: 600;
+  background: linear-gradient(135deg, rgba(255, 217, 130, 0.96), rgba(255, 178, 74, 0.88));
+  color: #2a1d04;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 12px 20px;
+  font-weight: 700;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 10px 26px rgba(255, 178, 64, 0.32);
 }
 
 button.primary:disabled {
@@ -115,76 +180,136 @@ button.primary:disabled {
 }
 
 button.ghost {
-  background: transparent;
+  background: var(--glass);
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
   color: var(--text);
-  padding: 8px 12px;
+  border: 1px solid var(--glass-border);
+  padding: 9px 14px;
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
 }
 
 button.chip {
-  background: var(--surface-2);
+  background: var(--glass-flat);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   color: var(--text);
-  padding: 6px 10px;
+  border: 1px solid var(--glass-border);
+  padding: 7px 12px;
   font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 button.chip[data-active="true"] {
-  background: var(--accent);
-  color: #1a1503;
-  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(255, 217, 130, 0.95), rgba(255, 178, 74, 0.85));
+  color: #2a1d04;
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 8px 20px rgba(255, 178, 64, 0.28);
+  font-weight: 600;
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 7px;
 }
+
+input.field {
+  font: inherit;
+  width: 100%;
+  background: var(--glass-flat);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  color: var(--text);
+  padding: 12px 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+input.field::placeholder {
+  color: var(--faint);
+}
+
+input.field:focus {
+  outline: none;
+  border-color: rgba(255, 209, 102, 0.55);
+}
+
+/* ---------- Floating pill tab bar ---------- */
 
 .tab-bar {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  left: 14px;
+  right: 14px;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  max-width: 492px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-around;
-  background: rgba(11, 13, 26, 0.96);
-  border-top: 1px solid var(--border);
-  padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
-  backdrop-filter: blur(8px);
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 8px;
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 22px 48px rgba(2, 4, 18, 0.6);
 }
 
 .tab-bar a {
   display: grid;
   justify-items: center;
-  gap: 2px;
+  gap: 1px;
   color: var(--muted);
-  font-size: 11px;
-  min-width: 56px;
+  font-size: 10.5px;
+  min-width: 58px;
+  padding: 7px 10px;
+  border-radius: 999px;
 }
 
 .tab-bar a[data-active="true"] {
-  color: var(--accent);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .tab-bar a span.icon {
-  font-size: 18px;
+  font-size: 17px;
 }
 
+/* ---------- Mood meter ---------- */
+
 .mood-meter {
-  height: 8px;
+  height: 10px;
   border-radius: 999px;
-  background: var(--surface-2);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
 
 .mood-meter > div {
   height: 100%;
-  background: linear-gradient(90deg, #818cf8, var(--accent));
+  border-radius: 999px;
+  background: linear-gradient(90deg, #8f9bff, var(--accent));
+  box-shadow: 0 0 14px rgba(255, 209, 102, 0.55);
 }
+
+/* ---------- Bottom sheet ---------- */
 
 .sheet-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(2, 4, 16, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   z-index: 20;
 }
 
@@ -194,25 +319,35 @@ button.chip[data-active="true"] {
   right: 0;
   bottom: 0;
   z-index: 21;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  border-radius: 18px 18px 0 0;
-  padding: 18px 16px calc(18px + env(safe-area-inset-bottom));
+  background: linear-gradient(160deg, rgba(40, 46, 84, 0.66), rgba(16, 19, 42, 0.72));
+  backdrop-filter: blur(34px) saturate(190%);
+  -webkit-backdrop-filter: blur(34px) saturate(190%);
+  border: 1px solid var(--glass-border);
+  border-bottom: none;
+  border-radius: 30px 30px 0 0;
+  padding: 26px 18px calc(20px + env(safe-area-inset-bottom));
   max-width: 520px;
   margin: 0 auto;
   display: grid;
   gap: 12px;
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 -18px 60px rgba(2, 4, 18, 0.65);
 }
 
-input.field {
-  font: inherit;
-  width: 100%;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text);
-  padding: 10px 12px;
+.sheet::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
 }
+
+/* ---------- Leaderboard ---------- */
 
 table.board {
   width: 100%;
@@ -221,20 +356,30 @@ table.board {
 }
 
 table.board td {
-  padding: 8px 6px;
-  border-bottom: 1px solid var(--border);
+  padding: 10px 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
+
+table.board tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------- Chat ---------- */
 
 .chat-list {
   display: grid;
-  gap: 10px;
-  max-height: 60vh;
+  gap: 12px;
+  max-height: 58vh;
   overflow-y: auto;
 }
 
 .chat-msg {
   display: grid;
-  gap: 2px;
+  gap: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 9px 12px;
 }
 
 .chat-msg .author {
@@ -252,4 +397,5 @@ table.board td {
   height: 22px;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
 }

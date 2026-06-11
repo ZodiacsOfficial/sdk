@@ -8,8 +8,8 @@ import { base } from "wagmi/chains";
 import { getCurrentZodiacSeason } from "@zodiacs/sdk/core";
 import { useBaseZodiacsOwnership } from "@zodiacs/sdk/react";
 import { IdentityReceiptCard, ZodiacShelf } from "@zodiacs/sdk/ui";
-import { SIGN_GLYPHS } from "../../lib/zodiac";
 import { ShareButton } from "../ShareButton";
+import { SignIcon } from "../SignIcon";
 
 export function ProfilePanel() {
   const { context } = useMiniKit();
@@ -46,8 +46,9 @@ export function ProfilePanel() {
           )}
           <div>
             <div style={{ fontWeight: 600 }}>{user?.username ?? "Stargazer"}</div>
-            <div className="muted">
-              {SIGN_GLYPHS[season.sign]} {season.sign} season
+            <div className="muted row" style={{ gap: 5 }}>
+              <SignIcon sign={season.sign} size={16} />
+              <span style={{ textTransform: "capitalize" }}>{season.sign} season</span>
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
 "use client";
 
-import { SIGN_GLYPHS } from "../../lib/zodiac";
 import type { ZodiacSign } from "../../lib/zodiac";
 import type { MarketSnapshotLite } from "../../lib/market";
+import { SignIcon } from "../SignIcon";
 
 function formatPrice(price: number | null): string {
   if (price === null) {
@@ -34,7 +34,7 @@ export function TokenRow({
   return (
     <div className="card row spread">
       <div className="row">
-        <span className="glyph">{SIGN_GLYPHS[sign]}</span>
+        <SignIcon sign={sign} size={40} />
         <div>
           <div style={{ textTransform: "capitalize", fontWeight: 600 }}>{sign}</div>
           <div className="muted">24h vol {formatCompact(snapshot?.volume24h ?? null)}</div>

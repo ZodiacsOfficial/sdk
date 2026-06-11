@@ -6,7 +6,8 @@ import { computeAstroEvents } from "../../../../lib/astro/events";
 import { renderFallbackSky } from "../../../../lib/horoscope/fallback";
 import type { DailySkyPayload } from "../../../../lib/horoscope/schema";
 import { hasRedis, isoDate, keys, redis } from "../../../../lib/redis";
-import { SIGN_GLYPHS, isZodiacSign } from "../../../../lib/zodiac";
+import { isZodiacSign } from "../../../../lib/zodiac";
+import { SignIcon } from "../../../../components/SignIcon";
 
 interface Params {
   readonly sign: string;
@@ -56,9 +57,12 @@ export default async function ShareHoroscopePage({ params }: { params: Promise<P
   return (
     <main className="tab-content">
       <section className="card">
-        <h2 style={{ textTransform: "capitalize" }}>
-          {SIGN_GLYPHS[sign]} {sign} — {payload.date}
-        </h2>
+        <div className="row" style={{ marginBottom: 8 }}>
+          <SignIcon sign={sign} size={46} />
+          <h2 style={{ margin: 0, textTransform: "capitalize" }}>
+            {sign} — {payload.date}
+          </h2>
+        </div>
         <p style={{ fontWeight: 600 }}>{reading.vibe}</p>
         <p className="muted">{reading.note}</p>
       </section>

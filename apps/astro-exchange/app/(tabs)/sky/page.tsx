@@ -8,6 +8,7 @@ import type { DailySkyPayload } from "../../../lib/horoscope/schema";
 import { EventsCalendar } from "../../../components/sky/EventsCalendar";
 import { HoroscopeCard } from "../../../components/sky/HoroscopeCard";
 import { ShareButton } from "../../../components/ShareButton";
+import { SignIcon } from "../../../components/SignIcon";
 
 export default function SkyPage() {
   const [sign, setSign] = useState<ZodiacSign>("aries");
@@ -36,7 +37,8 @@ export default function SkyPage() {
       <div className="chips">
         {ZODIAC_SIGNS.map((s) => (
           <button key={s} className="chip" data-active={s === sign} onClick={() => setSign(s)}>
-            {SIGN_GLYPHS[s]} {s}
+            <SignIcon sign={s} size={18} />
+            {s}
           </button>
         ))}
       </div>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { appConfig, appUrl } from "../../../../minikit.config";
 import { hasRedis, keys, redis } from "../../../../lib/redis";
 import type { VerifiedTrade } from "../../../../lib/trades/verify";
-import { SIGN_GLYPHS } from "../../../../lib/zodiac";
+import { SignIcon } from "../../../../components/SignIcon";
 
 interface Params {
   readonly txHash: string;
@@ -45,13 +45,17 @@ export default async function ShareTradePage({ params }: { params: Promise<Param
       <section className="card">
         <h2>A cosmic move</h2>
         {trade ? (
-          <p>
-            Someone made a move on{" "}
-            {trade.legs
-              .map((leg) => `${SIGN_GLYPHS[leg.sign]} ${leg.sign} (${leg.direction})`)
-              .join(", ")}{" "}
-            via Zodiacs Astro Exchange.
-          </p>
+          <div style={{ display: "grid", gap: 8 }}>
+            <p style={{ margin: 0 }}>Someone made a move via Zodiacs Astro Exchange:</p>
+            {trade.legs.map((leg) => (
+              <span key={leg.sign} className="row" style={{ gap: 8 }}>
+                <SignIcon sign={leg.sign} size={24} />
+                <span style={{ textTransform: "capitalize" }}>
+                  {leg.sign} ({leg.direction})
+                </span>
+              </span>
+            ))}
+          </div>
         ) : (
           <p className="muted">The stars have no record of this one (yet).</p>
         )}

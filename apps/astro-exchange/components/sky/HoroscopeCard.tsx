@@ -1,7 +1,7 @@
 "use client";
 
-import { SIGN_GLYPHS } from "../../lib/zodiac";
 import type { ZodiacSign } from "../../lib/zodiac";
+import { SignIcon } from "../SignIcon";
 
 export function HoroscopeCard({
   sign,
@@ -14,7 +14,7 @@ export function HoroscopeCard({
   return (
     <section className="card">
       <div className="row">
-        <span className="glyph">{SIGN_GLYPHS[sign]}</span>
+        <SignIcon sign={sign} size={46} />
         <div>
           <h2 style={{ margin: 0, textTransform: "capitalize" }}>{sign}</h2>
           <p className="muted" style={{ margin: 0 }}>

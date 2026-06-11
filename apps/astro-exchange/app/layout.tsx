@@ -32,6 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <div className="cosmos" aria-hidden />
         <Providers>{children}</Providers>
       </body>
     </html>
