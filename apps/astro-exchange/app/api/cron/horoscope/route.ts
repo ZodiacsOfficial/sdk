@@ -4,6 +4,7 @@ import { renderFallbackSky } from "../../../../lib/horoscope/fallback";
 import { generateDailySky } from "../../../../lib/horoscope/generate";
 import type { DailySkyPayload } from "../../../../lib/horoscope/schema";
 import { isoDate, keys, redis } from "../../../../lib/redis";
+import { finalizeEndedSeason } from "../../../../lib/cup";
 import { pushSkyTapeItem } from "../../../../lib/tape";
 
 const HOROSCOPE_TTL_SECONDS = 48 * 3600;
@@ -35,6 +36,11 @@ export async function GET(request: Request) {
   });
   if (firstWriteToday) {
     await pushSkyTapeItem(date, payload.sky.global.headline, payload.sky.global.marketMood);
+  }
+  try {
+    await finalizeEndedSeason();
+  } catch {
+    // Champion recording is best-effort; the next daily run retries.
   }
   return NextResponse.json({ date, source: payload.source });
 }

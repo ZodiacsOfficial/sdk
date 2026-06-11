@@ -728,3 +728,60 @@ button.list-row:active {
   box-shadow: 0 0 8px rgba(93, 237, 166, 0.8);
   display: inline-block;
 }
+
+/* ---------- Season cup ---------- */
+
+.cup-card {
+  display: grid;
+  gap: 14px;
+  background:
+    radial-gradient(120% 130% at 88% -10%, rgba(255, 209, 102, 0.16), transparent 55%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04));
+}
+
+.cup-rows {
+  display: grid;
+  gap: 9px;
+}
+
+.cup-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.cup-rank {
+  width: 14px;
+  text-align: center;
+  color: var(--faint);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cup-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+}
+
+.cup-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.cup-fill[data-first="true"] {
+  background: linear-gradient(90deg, rgba(255, 217, 130, 0.95), rgba(255, 178, 74, 0.9));
+  box-shadow: 0 0 12px rgba(255, 209, 102, 0.5);
+}
+
+.cup-volume {
+  min-width: 56px;
+  text-align: right;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}

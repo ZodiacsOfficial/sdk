@@ -39,7 +39,9 @@ export const keys = {
   notifFids: () => "ax:notif:fids",
   notifSent: (kind: string, date: string) => `ax:notif:sent:${kind}:${date}`,
   tape: () => "ax:tape",
-  tapeSkyFlag: (date: string) => `ax:tape:sky:${date}`
+  tapeSkyFlag: (date: string) => `ax:tape:sky:${date}`,
+  cup: (seasonKey: string) => `ax:cup:${seasonKey}`,
+  cupChampions: () => "ax:cup:champions"
 };
 
 export function isoDate(date: Date = new Date()): string {

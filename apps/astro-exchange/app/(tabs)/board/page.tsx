@@ -6,6 +6,7 @@ import { authHeaders } from "../../../lib/clientApi";
 import type { BoardResponse } from "../../../lib/trades/leaderboard";
 import { AppHeader, FooterNote } from "../../../components/AppHeader";
 import { LeaderboardTable } from "../../../components/board/LeaderboardTable";
+import { SeasonCup } from "../../../components/SeasonCup";
 import { Segmented } from "../../../components/Segmented";
 import { TapeFeed } from "../../../components/TapeFeed";
 
@@ -30,6 +31,8 @@ export default function BoardPage() {
   return (
     <>
       <AppHeader title="Leaderboard" subtitle="In-app swaps only · no prizes" />
+
+      <SeasonCup />
 
       <Segmented
         value={board}
