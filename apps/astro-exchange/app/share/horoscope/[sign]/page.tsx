@@ -66,7 +66,7 @@ export default async function ShareHoroscopePage({ params }: { params: Promise<P
         <p style={{ fontWeight: 600 }}>{reading.vibe}</p>
         <p className="muted">{reading.note}</p>
       </section>
-      <Link href="/sky">Open Zodiacs Astro Exchange →</Link>
+      <Link href="/sky">Open Zodia →</Link>
       <p className="disclaimer">Entertainment only. Not investment advice.</p>
     </main>
   );

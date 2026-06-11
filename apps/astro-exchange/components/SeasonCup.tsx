@@ -90,7 +90,7 @@ export function SeasonCup() {
         )}
         <ShareButton
           label="Fly the flag"
-          text={`${SIGN_GLYPHS[season.sign]} ${season.displayName} Season Cup is live — sign vs sign on Zodiacs Astro Exchange. No prizes, eternal glory.`}
+          text={`${SIGN_GLYPHS[season.sign]} ${season.displayName} Season Cup is live — sign vs sign on Zodia. No prizes, eternal glory.`}
           embedPath="/share/cup"
         />
       </div>

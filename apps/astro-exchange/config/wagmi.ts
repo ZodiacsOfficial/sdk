@@ -5,7 +5,7 @@ import type { Config } from "wagmi";
 import { base } from "wagmi/chains";
 import { baseAccount } from "wagmi/connectors";
 
-const appName = "Zodiacs Astro Exchange";
+const appName = "Zodia";
 const builderCode = process.env.NEXT_PUBLIC_BASE_BUILDER_CODE?.trim();
 const dataSuffix = builderCode ? Attribution.toDataSuffix({ codes: [builderCode] }) : undefined;
 

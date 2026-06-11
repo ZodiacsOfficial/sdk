@@ -46,7 +46,7 @@ export default async function ShareTradePage({ params }: { params: Promise<Param
         <h2>A cosmic move</h2>
         {trade ? (
           <div style={{ display: "grid", gap: 8 }}>
-            <p style={{ margin: 0 }}>Someone made a move via Zodiacs Astro Exchange:</p>
+            <p style={{ margin: 0 }}>Someone made a move via Zodia:</p>
             {trade.legs.map((leg) => (
               <span key={leg.sign} className="row" style={{ gap: 8 }}>
                 <SignIcon sign={leg.sign} size={24} />
@@ -60,7 +60,7 @@ export default async function ShareTradePage({ params }: { params: Promise<Param
           <p className="muted">The stars have no record of this one (yet).</p>
         )}
       </section>
-      <Link href="/exchange">Open Zodiacs Astro Exchange →</Link>
+      <Link href="/exchange">Open Zodia →</Link>
       <p className="disclaimer">Entertainment only. Not investment advice.</p>
     </main>
   );

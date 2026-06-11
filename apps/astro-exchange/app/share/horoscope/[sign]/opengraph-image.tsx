@@ -79,7 +79,7 @@ export default async function Image({ params }: { params: Promise<{ sign: string
         </div>
         <div style={{ display: "flex", fontSize: 42, color: "#ffd166" }}>{reading.vibe}</div>
         <div style={{ display: "flex", fontSize: 26, color: "rgba(226,232,255,0.66)" }}>
-          {`${date} · Zodiacs Astro Exchange · entertainment only`}
+          {`${date} · Zodia · entertainment only`}
         </div>
       </div>
     </div>,

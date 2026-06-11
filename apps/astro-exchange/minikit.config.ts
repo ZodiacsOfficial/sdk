@@ -3,7 +3,7 @@ const rawUrl = process.env.NEXT_PUBLIC_URL?.trim() || "http://localhost:3000";
 export const appUrl = rawUrl.replace(/\/+$/, "");
 
 export const appConfig = {
-  name: "Zodiacs Astro Exchange",
+  name: "Zodia",
   subtitle: "Trade with the stars",
   description:
     "Daily horoscopes, real planetary events, and the twelve official Zodiacs on Base. " +

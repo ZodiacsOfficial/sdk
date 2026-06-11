@@ -16,7 +16,7 @@ const miniAppEmbed = {
   version: "1",
   imageUrl: appConfig.heroImageUrl,
   button: {
-    title: "Open Astro Exchange",
+    title: "Open Zodia",
     action: {
       type: "launch_miniapp",
       name: appConfig.name,

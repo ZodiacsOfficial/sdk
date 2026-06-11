@@ -81,7 +81,7 @@ export function ProfilePanel() {
           <div className="row">
             <ShareButton
               label="Share my shelf"
-              text="My verified zodiac shelf on Zodiacs Astro Exchange ✦"
+              text="My verified zodiac shelf on Zodia ✦"
               embedPath="/profile"
             />
           </div>

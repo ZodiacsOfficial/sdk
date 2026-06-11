@@ -197,7 +197,7 @@ export function SwapSheet({
             </p>
             <ShareButton
               label="Brag in the feed"
-              text={`Just made a move on ${SIGN_GLYPHS[sign]} ${sign} on Zodiacs Astro Exchange. The stars were merely consulted, not blamed.`}
+              text={`Just made a move on ${SIGN_GLYPHS[sign]} ${sign} on Zodia. The stars were merely consulted, not blamed.`}
               embedPath="/exchange"
             />
           </div>

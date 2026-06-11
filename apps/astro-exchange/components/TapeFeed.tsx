@@ -21,7 +21,7 @@ async function castTrade(item: TradeTapeItem) {
   const who = item.username ?? "A stargazer";
   try {
     await sdk.actions.composeCast({
-      text: `${who} just made a ${formatUsd(leg.usd)} move on ${leg.sign} via Zodiacs Astro Exchange ✦`,
+      text: `${who} just made a ${formatUsd(leg.usd)} move on ${leg.sign} via Zodia ✦`,
       embeds: [`${appUrl}/share/trade/${item.txHash}`]
     });
   } catch {

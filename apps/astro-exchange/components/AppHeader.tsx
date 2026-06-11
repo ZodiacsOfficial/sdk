@@ -12,7 +12,7 @@ export function AppHeader({
   return (
     <header className="app-header">
       <div>
-        <span className="eyebrow">Zodiacs · Astro Exchange</span>
+        <span className="eyebrow">Zodia</span>
         <h1>{title}</h1>
         {subtitle ? <p>{subtitle}</p> : null}
       </div>

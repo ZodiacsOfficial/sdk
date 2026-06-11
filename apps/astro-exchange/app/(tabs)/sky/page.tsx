@@ -83,7 +83,7 @@ export default function SkyPage() {
           <div className="row" style={{ justifyContent: "center" }}>
             <ShareButton
               label="Share today's reading"
-              text={`${SIGN_GLYPHS[sign]} ${sign} — ${data.sky.signs[sign].vibe}. Today's sky on Zodiacs Astro Exchange.`}
+              text={`${SIGN_GLYPHS[sign]} ${sign} — ${data.sky.signs[sign].vibe}. Today's sky on Zodia.`}
               embedPath={`/share/horoscope/${sign}`}
             />
           </div>

@@ -47,7 +47,7 @@ export default async function ShareRankPage({ params }: { params: Promise<Params
           <p className="muted">This stargazer has not hit the board yet.</p>
         )}
       </section>
-      <Link href="/board">Open Zodiacs Astro Exchange →</Link>
+      <Link href="/board">Open Zodia →</Link>
       <p className="disclaimer">
         Boards rank only swaps started inside the app. Entertainment leaderboard — no prizes.
       </p>

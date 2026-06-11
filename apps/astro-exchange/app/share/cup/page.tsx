@@ -53,7 +53,7 @@ export default async function ShareCupPage() {
           <p className="muted">The cup is wide open.</p>
         )}
       </section>
-      <Link href="/board">Open Zodiacs Astro Exchange →</Link>
+      <Link href="/board">Open Zodia →</Link>
       <p className="disclaimer">Entertainment only. Not investment advice.</p>
     </main>
   );

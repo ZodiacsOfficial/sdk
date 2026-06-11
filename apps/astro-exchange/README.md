@@ -1,4 +1,4 @@
-# Zodiacs Astro Exchange
+# Zodia
 
 A Base App mini app built on `@zodiacs/sdk`: daily horoscopes generated from real planetary
 events, the twelve official Zodiac tokens on Base with host-native swaps, a volume/PnL
