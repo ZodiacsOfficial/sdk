@@ -1,0 +1,38 @@
+{
+  "name": "zodia",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "prebuild": "pnpm --filter @zodiacs/sdk build",
+    "build": "next build",
+    "typecheck": "rm -rf .next && tsc -p tsconfig.typecheck.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.104.1",
+    "@coinbase/onchainkit": "^1.1.2",
+    "@farcaster/miniapp-node": "^0.2.0",
+    "@farcaster/miniapp-sdk": "^0.3.0",
+    "@farcaster/miniapp-wagmi-connector": "^2.0.0",
+    "@farcaster/quick-auth": "^0.0.8",
+    "@tanstack/react-query": "^5.90.11",
+    "@upstash/redis": "^1.38.0",
+    "@zodiacs/sdk": "workspace:^",
+    "astronomy-engine": "^2.1.19",
+    "next": "^15.0.4",
+    "ox": "^0.9.6",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "viem": "^2.45.0",
+    "wagmi": "^2.19.5",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  }
+}

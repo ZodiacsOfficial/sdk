@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "incremental": false,
+    "noEmit": true,
+    "paths": {
+      "react": ["./node_modules/@types/react"],
+      "react/jsx-runtime": ["./node_modules/@types/react/jsx-runtime"],
+      "react-dom": ["./node_modules/@types/react-dom"],
+      "@zodiacs/sdk": ["../../packages/sdk/src/index.ts"],
+      "@zodiacs/sdk/core": ["../../packages/sdk/src/core.ts"],
+      "@zodiacs/sdk/registry": ["../../packages/sdk/src/registry.ts"],
+      "@zodiacs/sdk/base": ["../../packages/sdk/src/base.ts"],
+      "@zodiacs/sdk/solana": ["../../packages/sdk/src/solana.ts"],
+      "@zodiacs/sdk/identity": ["../../packages/sdk/src/identity.ts"],
+      "@zodiacs/sdk/market": ["../../packages/sdk/src/market.ts"],
+      "@zodiacs/sdk/assets": ["../../packages/sdk/src/assets.ts"],
+      "@zodiacs/sdk/react": ["../../packages/sdk/src/react.ts"],
+      "@zodiacs/sdk/ui": ["../../packages/sdk/src/ui.ts"],
+      "@zodiacs/sdk/testing": ["../../packages/sdk/src/testing.ts"]
+    }
+  }
+}
