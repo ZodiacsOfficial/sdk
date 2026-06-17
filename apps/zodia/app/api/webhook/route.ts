@@ -5,6 +5,7 @@ import {
   verifyAppKeyWithNeynar
 } from "@farcaster/miniapp-node";
 import { clearNotificationDetails, storeNotificationDetails } from "../../../lib/notifications";
+import { hasRedis } from "../../../lib/redis";
 
 function verifier() {
   if (process.env.NEYNAR_API_KEY) {
@@ -24,6 +25,9 @@ export async function POST(request: Request) {
       { error: "webhook verification not configured (set FARCASTER_HUB_URL or NEYNAR_API_KEY)" },
       { status: 503 }
     );
+  }
+  if (!hasRedis()) {
+    return NextResponse.json({ error: "webhook storage unavailable" }, { status: 503 });
   }
 
   const body = await request.json().catch(() => null);

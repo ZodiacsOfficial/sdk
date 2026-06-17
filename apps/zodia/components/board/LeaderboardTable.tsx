@@ -1,7 +1,20 @@
 "use client";
 
-import type { BoardResponse } from "../../lib/trades/leaderboard";
+import type { BoardEntry, BoardResponse } from "../../lib/trades/leaderboard";
 import { EmptyState } from "../EmptyState";
+
+function displayNameForEntry(entry: Pick<BoardEntry, "fid" | "username" | "walletAddress">) {
+  if (entry.username) {
+    return entry.username;
+  }
+  if (entry.walletAddress) {
+    return `${entry.walletAddress.slice(0, 6)}...${entry.walletAddress.slice(-4)}`;
+  }
+  if (entry.fid) {
+    return `fid ${entry.fid}`;
+  }
+  return "Wallet";
+}
 
 function formatScore(board: "volume" | "pnl", score: number): string {
   const formatted = Intl.NumberFormat("en", {
@@ -47,7 +60,7 @@ export function LeaderboardTable({ response }: { response: BoardResponse }) {
       <table className="board">
         <tbody>
           {response.entries.map((entry) => (
-            <tr key={entry.fid}>
+            <tr key={entry.id}>
               <td className="muted" style={{ width: 32, fontVariantNumeric: "tabular-nums" }}>
                 {entry.rank}
               </td>
@@ -57,7 +70,7 @@ export function LeaderboardTable({ response }: { response: BoardResponse }) {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img className="avatar" src={entry.pfpUrl} alt="" />
                   ) : null}
-                  {entry.username ?? `fid ${entry.fid}`}
+                  {displayNameForEntry(entry)}
                 </span>
               </td>
               <td
@@ -70,7 +83,7 @@ export function LeaderboardTable({ response }: { response: BoardResponse }) {
           ))}
         </tbody>
       </table>
-      {response.me && !response.entries.some((entry) => entry.fid === response.me?.fid) ? (
+      {response.me && !response.entries.some((entry) => entry.id === response.me?.id) ? (
         <p className="muted">
           You: #{response.me.rank} · {formatScore(response.board, response.me.score)}
         </p>

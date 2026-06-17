@@ -10,6 +10,7 @@ import { useBaseZodiacsOwnership } from "@zodiacs/sdk/react";
 import { IdentityReceiptCard, ZodiacShelf } from "@zodiacs/sdk/ui";
 import { ShareButton } from "../ShareButton";
 import { SignIcon } from "../SignIcon";
+import { CosmicProfile } from "./CosmicProfile";
 
 export function ProfilePanel() {
   const { context } = useMiniKit();
@@ -24,13 +25,20 @@ export function ProfilePanel() {
   const user = context?.user;
   const season = getCurrentZodiacSeason();
   const ownershipData = ownership.data ?? { holdings: [] };
+  const heldSigns = ownershipData.holdings
+    .filter((holding) => holding.held)
+    .map((holding) => holding.sign);
 
   async function saveApp() {
     try {
-      await sdk.actions.addMiniApp();
-      setSaveNotice("Saved. Daily sky notifications can now reach you.");
+      if (await sdk.isInMiniApp()) {
+        await sdk.actions.addMiniApp();
+        setSaveNotice("Saved. Daily sky notifications can now reach you in Farcaster clients.");
+      } else {
+        setSaveNotice("Base App handles standard web app saves automatically.");
+      }
     } catch {
-      setSaveNotice("Saving works inside a mini app host like Base App.");
+      setSaveNotice("Saving is optional and depends on the current app host.");
     }
   }
 
@@ -57,6 +65,8 @@ export function ProfilePanel() {
         </button>
       </section>
       {saveNotice ? <p className="muted">{saveNotice}</p> : null}
+
+      <CosmicProfile heldSigns={heldSigns} />
 
       {!address ? (
         <section className="card">

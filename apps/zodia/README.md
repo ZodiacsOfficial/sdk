@@ -1,8 +1,11 @@
 # Zodia
 
-A Base App mini app built on `@zodiacs/sdk`: daily horoscopes generated from real planetary
-events, the twelve official Zodiac tokens on Base with host-native swaps, a volume/PnL
-leaderboard for app-initiated trades, a trollbox, and share cards for the social feed.
+A Base-first web app built on `@zodiacs/sdk`: daily horoscopes generated from real planetary
+events, the twelve official Zodiac tokens on Base, one live Farcaster feed per zodiac, a
+volume/PnL leaderboard for verified trades, AstroTalk, and share cards for social distribution.
+
+Farcaster remains an optional distribution layer. AstroTalk is a public Farcaster window; wallet
+auth, trade crediting, profiles, and standard web usage are Base/wallet-first.
 
 Astrology content is entertainment only. Nothing in this app is investment advice, and the
 leaderboard carries no prizes or rewards.
@@ -25,10 +28,11 @@ codified in this directory's `AGENTS.md`:
 
 ## Stack
 
-Next.js App Router, MiniKitProvider (`@coinbase/onchainkit/minikit`), `@farcaster/miniapp-sdk`
-(swapToken, composeCast, quickAuth, addMiniApp), wagmi + viem on Base mainnet, Upstash Redis,
-`astronomy-engine` for ephemeris, Claude (`@anthropic-ai/sdk`) for daily copy with a
-deterministic template fallback.
+Next.js App Router, MiniKitProvider (`@coinbase/onchainkit/minikit`), wagmi + viem on Base
+mainnet, Base Account wallet connection, wallet-signed sessions for app writes, Upstash Redis,
+Neynar cast search for optional public social feeds, optional Farcaster Mini App actions when
+the host supports them, `astronomy-engine` for ephemeris, and Claude (`@anthropic-ai/sdk`) for
+daily copy with a deterministic template fallback.
 
 ## Develop
 
@@ -39,10 +43,12 @@ corepack pnpm --filter zodia dev
 ```
 
 Copy `.env.example` to `.env.local` and fill in at least the Upstash values. Without Redis the
-Sky tab still works (computed fallback); trades, boards, chat, and notifications need Redis.
+Sky tab and social-feed disabled states still work; trade crediting, boards, wallet sessions,
+and optional Farcaster notifications need Redis.
 
-Quick Auth verifies against the canonical `NEXT_PUBLIC_URL` domain, so authenticated routes
-only verify on the deployed domain (or with `DEV_FID` set during local development).
+Wallet sessions require `AUTH_SECRET` in production. Farcaster Quick Auth is still accepted as
+optional metadata when a Farcaster Mini App host provides it, and verifies against the canonical
+`NEXT_PUBLIC_URL` domain.
 
 ## Test, typecheck, build
 
@@ -54,13 +60,14 @@ corepack pnpm --filter zodia build
 
 ## How leaderboard credit works
 
-`swapToken` returns the executed transaction hashes. The client posts them to `/api/trades`
-with a Quick Auth JWT; the server verifies each receipt on Base (success, fresh, confirmed),
-reads ERC-20 Transfer logs, keeps only official registry addresses, and nets the deltas for the
-claimed wallet — never trusting `tx.from`, which is usually a 4337 bundler in Base App. Buys
-and sells update an average-cost position per sign; volume and realized PnL go to weekly and
+On the standard web path, the app opens the Base market for the selected zodiac and lets the
+user paste the completed Base transaction hash. In supported Farcaster Mini App hosts, the
+legacy `swapToken` action can still return executed transaction hashes directly. Either way,
+the client posts hashes to `/api/trades` with a wallet-signed app session when available; the
+server verifies each receipt on Base (success, fresh, confirmed), reads ERC-20 Transfer logs,
+keeps only official registry addresses, and nets the deltas for the claimed wallet. Buys and
+sells update an average-cost position per sign; volume and realized PnL go to weekly and
 all-time boards; unrealized PnL is marked to market and capped by current on-chain balances.
-Only swaps started inside the app can be attributed, and the UI says so.
 
 ## Publishing checklist
 
@@ -69,7 +76,11 @@ Only swaps started inside the app can be attributed, and the UI says so.
 - Generate the account association (Base Build / manifest tool) and set the
   `FARCASTER_ASSOCIATION_*` env vars.
 - Set `NEXT_PUBLIC_APP_ENV=production` to drop `noindex`.
+- Set `AUTH_SECRET` for wallet sessions.
+- Set `NEXT_PUBLIC_BASE_APP_ID` and `NEXT_PUBLIC_BASE_BUILDER_CODE` from Base Dashboard.
 - Set `FARCASTER_HUB_URL` (or `NEYNAR_API_KEY`) so `/api/webhook` can verify signatures.
-- Register the app on Base.dev for discovery; review the featured guidelines.
+- Set `NEYNAR_API_KEY` to enable AstroTalk and the twelve per-zodiac public Farcaster feeds.
+- Register the app on Base.dev for discovery as a standard web app; review the featured
+  guidelines.
 - Vercel: set env vars from `.env.example`, plus `CRON_SECRET`; crons are defined in
   `vercel.json`.

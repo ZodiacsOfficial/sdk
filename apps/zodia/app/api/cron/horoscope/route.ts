@@ -3,9 +3,8 @@ import { computeAstroEvents } from "../../../../lib/astro/events";
 import { renderFallbackSky } from "../../../../lib/horoscope/fallback";
 import { generateDailySky } from "../../../../lib/horoscope/generate";
 import type { DailySkyPayload } from "../../../../lib/horoscope/schema";
-import { isoDate, keys, redis } from "../../../../lib/redis";
+import { hasRedis, isoDate, keys, redis } from "../../../../lib/redis";
 import { finalizeEndedSeason } from "../../../../lib/cup";
-import { pushSkyTapeItem } from "../../../../lib/tape";
 
 const HOROSCOPE_TTL_SECONDS = 48 * 3600;
 
@@ -21,6 +20,9 @@ export async function GET(request: Request) {
   if (!authorized(request)) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
+  if (!hasRedis()) {
+    return NextResponse.json({ error: "cron storage unavailable" }, { status: 503 });
+  }
 
   const date = isoDate();
   const events = computeAstroEvents(new Date(`${date}T00:00:00.000Z`), 45);
@@ -30,13 +32,6 @@ export async function GET(request: Request) {
     : { date, source: "fallback", events, sky: renderFallbackSky(date, events) };
 
   await redis().set(keys.horoscope(date), payload, { ex: HOROSCOPE_TTL_SECONDS });
-  const firstWriteToday = await redis().set(keys.tapeSkyFlag(date), "1", {
-    nx: true,
-    ex: HOROSCOPE_TTL_SECONDS
-  });
-  if (firstWriteToday) {
-    await pushSkyTapeItem(date, payload.sky.global.headline, payload.sky.global.marketMood);
-  }
   try {
     await finalizeEndedSeason();
   } catch {

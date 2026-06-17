@@ -32,9 +32,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ShareTradePage({ params }: { params: Promise<Params> }) {
   const { txHash } = await params;
-  let trade: (VerifiedTrade & { fid: number }) | null = null;
+  let trade: (VerifiedTrade & { userId?: string; fid?: number }) | null = null;
   if (hasRedis() && /^0x[0-9a-fA-F]{64}$/.test(txHash)) {
-    const stored = await redis().get<VerifiedTrade & { fid: number }>(keys.trade(txHash));
+    const stored = await redis().get<VerifiedTrade & { userId?: string; fid?: number }>(
+      keys.trade(txHash)
+    );
     if (stored && typeof stored === "object") {
       trade = stored;
     }

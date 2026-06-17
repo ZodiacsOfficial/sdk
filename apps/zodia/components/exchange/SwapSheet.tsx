@@ -2,14 +2,15 @@
 
 import { useMiniKit } from "@coinbase/onchainkit/minikit";
 import { sdk } from "@farcaster/miniapp-sdk";
-import { useState } from "react";
-import { useAccount, useConnect } from "wagmi";
+import { useEffect, useState } from "react";
+import { useAccount, useConnect, useSignMessage } from "wagmi";
 import { getZodiacToken } from "@zodiacs/sdk/core";
 import { authedJson } from "../../lib/clientApi";
 import {
   SIGN_GLYPHS,
   USDC_CAIP19,
   USDC_DECIMALS,
+  baseAddressForSign,
   baseDecimalsForSign,
   caip19ForSign
 } from "../../lib/zodiac";
@@ -36,13 +37,36 @@ export function SwapSheet({
 }) {
   const { address } = useAccount();
   const { connect, connectors } = useConnect();
+  const { signMessageAsync } = useSignMessage();
   const { context } = useMiniKit();
   const [mode, setMode] = useState<"buy" | "sell">("buy");
   const [usdcAmount, setUsdcAmount] = useState<number>(20);
   const [sellAmount, setSellAmount] = useState<string>("");
+  const [txHash, setTxHash] = useState("");
+  const [inMiniApp, setInMiniApp] = useState(false);
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
   const dexScreenerUrl = getZodiacToken(sign).marketLinks?.dexScreener;
+  const baseCoinUrl = `https://base.app/coin/base-mainnet/${baseAddressForSign(sign)}`;
+
+  useEffect(() => {
+    let alive = true;
+    sdk
+      .isInMiniApp()
+      .then((result) => {
+        if (alive) {
+          setInMiniApp(result);
+        }
+      })
+      .catch(() => {
+        if (alive) {
+          setInMiniApp(false);
+        }
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   async function recordTrade(transactions: readonly string[]) {
     if (!address) {
@@ -50,22 +74,45 @@ export function SwapSheet({
     }
     try {
       const user = context?.user;
-      await authedJson("/api/trades", {
-        method: "POST",
-        body: JSON.stringify({
-          walletAddress: address,
-          txHashes: transactions,
-          ...(user?.username ? { username: user.username } : {}),
-          ...(user?.pfpUrl ? { pfpUrl: user.pfpUrl } : {})
-        })
-      });
+      await authedJson(
+        "/api/trades",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            walletAddress: address,
+            txHashes: transactions,
+            ...(user?.username ? { username: user.username } : {}),
+            ...(user?.pfpUrl ? { pfpUrl: user.pfpUrl } : {})
+          })
+        },
+        { address, signMessage: signMessageAsync }
+      );
       return true;
     } catch {
       return false;
     }
   }
 
+  function openBaseMarket() {
+    window.open(baseCoinUrl, "_blank", "noopener,noreferrer");
+  }
+
+  async function creditManualTrade() {
+    const hash = txHash.trim();
+    if (!/^0x[0-9a-fA-F]{64}$/u.test(hash)) {
+      setStatus({ kind: "failed", message: "Paste a valid Base transaction hash." });
+      return;
+    }
+    setStatus({ kind: "pending" });
+    const credited = await recordTrade([hash]);
+    setStatus({ kind: "done", credited });
+  }
+
   async function swap() {
+    if (!inMiniApp) {
+      openBaseMarket();
+      return;
+    }
     setStatus({ kind: "pending" });
     const zodiacToken = caip19ForSign(sign);
     const options =
@@ -108,7 +155,7 @@ export function SwapSheet({
     } catch {
       setStatus({
         kind: "failed",
-        message: "Swapping is only available inside a mini app host like Base App."
+        message: "Mini app swapping is unavailable here. Open the Base market instead."
       });
     }
   }
@@ -183,9 +230,34 @@ export function SwapSheet({
             disabled={status.kind === "pending"}
             onClick={() => void swap()}
           >
-            {status.kind === "pending" ? "Opening wallet…" : "Review in wallet"}
+            {status.kind === "pending"
+              ? "Working..."
+              : inMiniApp
+                ? "Review in wallet"
+                : "Open Base market"}
           </button>
         )}
+
+        {address && !inMiniApp ? (
+          <div style={{ display: "grid", gap: 8 }}>
+            <p className="muted" style={{ margin: 0 }}>
+              After swapping in Base App, paste the transaction hash here to count it on Zodia.
+            </p>
+            <input
+              className="field"
+              placeholder="0x transaction hash"
+              value={txHash}
+              onChange={(event) => setTxHash(event.target.value)}
+            />
+            <button
+              className="ghost"
+              disabled={status.kind === "pending" || !txHash.trim()}
+              onClick={() => void creditManualTrade()}
+            >
+              Credit completed swap
+            </button>
+          </div>
+        ) : null}
 
         {status.kind === "done" ? (
           <div style={{ display: "grid", gap: 8 }}>
@@ -198,7 +270,7 @@ export function SwapSheet({
             <ShareButton
               label="Brag in the feed"
               text={`Just made a move on ${SIGN_GLYPHS[sign]} ${sign} on Zodia. The stars were merely consulted, not blamed.`}
-              embedPath="/exchange"
+              embedPath={`/exchange/${sign}`}
             />
           </div>
         ) : null}
@@ -215,7 +287,7 @@ export function SwapSheet({
         ) : null}
 
         <p className="disclaimer" style={{ textAlign: "center" }}>
-          Swaps execute in your wallet · only in-app swaps count on the board · not investment
+          Swaps execute in your wallet · verified Base swaps count on the board · not investment
           advice
         </p>
       </div>

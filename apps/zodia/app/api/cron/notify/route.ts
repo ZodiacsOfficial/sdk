@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { appUrl } from "../../../../minikit.config";
 import type { DailySkyPayload } from "../../../../lib/horoscope/schema";
 import { listNotificationTargets, sendNotifications } from "../../../../lib/notifications";
-import { isoDate, keys, redis } from "../../../../lib/redis";
+import { hasRedis, isoDate, keys, redis } from "../../../../lib/redis";
 
 function authorized(request: Request): boolean {
   const secret = process.env.CRON_SECRET;
@@ -35,6 +35,9 @@ function upcomingEventLine(payload: DailySkyPayload, now: Date): string | null {
 export async function GET(request: Request) {
   if (!authorized(request)) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
+  if (!hasRedis()) {
+    return NextResponse.json({ error: "notification storage unavailable" }, { status: 503 });
   }
 
   const date = isoDate();

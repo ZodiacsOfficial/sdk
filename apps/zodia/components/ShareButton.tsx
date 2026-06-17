@@ -18,12 +18,22 @@ export function ShareButton({
   async function share() {
     setBusy(true);
     try {
-      await sdk.actions.composeCast({
-        text,
-        ...(embedPath ? { embeds: [`${appUrl}${embedPath}`] as [string] } : {})
-      });
+      const embedUrl = embedPath ? `${appUrl}${embedPath}` : null;
+      if (await sdk.isInMiniApp()) {
+        await sdk.actions.composeCast({
+          text,
+          ...(embedUrl ? { embeds: [embedUrl] as [string] } : {})
+        });
+      } else {
+        const url = new URL("https://warpcast.com/~/compose");
+        url.searchParams.set("text", text);
+        if (embedUrl) {
+          url.searchParams.append("embeds[]", embedUrl);
+        }
+        window.open(url.toString(), "_blank", "noopener,noreferrer");
+      }
     } catch {
-      // Outside a mini app host there is nothing to share into.
+      // Sharing is optional social distribution.
     } finally {
       setBusy(false);
     }

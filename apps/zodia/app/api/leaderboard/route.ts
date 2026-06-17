@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { optionalFid } from "../../../lib/auth";
+import { optionalUser } from "../../../lib/auth";
 import { hasRedis } from "../../../lib/redis";
 import { getBoard } from "../../../lib/trades/leaderboard";
 
@@ -15,7 +15,7 @@ export async function GET(request: Request) {
       entries: []
     });
   }
-  const viewerFid = await optionalFid(request);
-  const response = await getBoard(board, window, viewerFid);
+  const viewer = await optionalUser(request);
+  const response = await getBoard(board, window, viewer?.id ?? null);
   return NextResponse.json(response);
 }

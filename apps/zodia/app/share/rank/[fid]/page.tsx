@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { appConfig, appUrl } from "../../../../minikit.config";
-import { getBoard } from "../../../../lib/trades/leaderboard";
+import { displayNameForEntry, getBoard } from "../../../../lib/trades/leaderboard";
 
 interface Params {
   readonly fid: string;
@@ -24,16 +24,15 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     }
   };
   return {
-    title: `Leaderboard rank — fid ${fid}`,
+    title: "Leaderboard rank",
     other: { "fc:miniapp": JSON.stringify(embed), "fc:frame": JSON.stringify(embed) }
   };
 }
 
 export default async function ShareRankPage({ params }: { params: Promise<Params> }) {
   const { fid } = await params;
-  const viewer = Number(fid);
-  const board = Number.isInteger(viewer) ? await getBoard("volume", "alltime", viewer) : null;
-  const me = board?.me ?? board?.entries.find((entry) => entry.fid === viewer);
+  const board = await getBoard("volume", "alltime", fid);
+  const me = board.me ?? board.entries.find((entry) => entry.id === fid);
 
   return (
     <main className="tab-content">
@@ -41,7 +40,7 @@ export default async function ShareRankPage({ params }: { params: Promise<Params
         <h2>Cosmic leaderboard</h2>
         {me ? (
           <p>
-            {me.username ?? `fid ${me.fid}`} is #{me.rank} by zodiac swap volume.
+            {displayNameForEntry(me)} is #{me.rank} by zodiac swap volume.
           </p>
         ) : (
           <p className="muted">This stargazer has not hit the board yet.</p>

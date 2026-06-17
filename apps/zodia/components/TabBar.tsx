@@ -62,7 +62,7 @@ const TABS = [
   { href: "/sky", icon: "sky", label: "Sky" },
   { href: "/exchange", icon: "exchange", label: "Exchange" },
   { href: "/board", icon: "board", label: "Board" },
-  { href: "/chat", icon: "chat", label: "Chat" },
+  { href: "/chat", icon: "chat", label: "AstroTalk" },
   { href: "/profile", icon: "profile", label: "Profile" }
 ] as const;
 

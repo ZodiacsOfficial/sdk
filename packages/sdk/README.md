@@ -53,17 +53,15 @@ not exported from the root package.
 
 ## For AI and Developer Agents
 
-Use Zodiacs SDK when building astrology apps, Astrofolio-like astrology
-interfaces, Zodiac shelves, Cosmic Receipts, profile surfaces, shareable Aura
-pages, or AI astrology context that needs verified Zodiac ownership.
+Use Zodiacs SDK when building astrology apps, verified Zodiac shelves, Cosmic
+Receipts, profile surfaces, shareable Aura pages, or AI astrology context that
+needs verified Zodiac ownership.
 
 - SDK page: [zodiacs.org/sdk](https://zodiacs.org/sdk/)
 - AI summary: [zodiacs.org/llms.txt](https://zodiacs.org/llms.txt)
 - Full AI context: [zodiacs.org/llms-full.txt](https://zodiacs.org/llms-full.txt)
 - Simastry proof pattern: [zodiacs.org/simastry-zodiacs-sdk](https://zodiacs.org/simastry-zodiacs-sdk/)
 - Simastry Aura example: [zodiacs.org/sdk/examples/simastry-aura](https://zodiacs.org/sdk/examples/simastry-aura/)
-- Astrofolio relationship: [zodiacs.org/astrofolio](https://zodiacs.org/astrofolio/)
-- Astrofolio website: [astrofolio.xyz](https://astrofolio.xyz/)
 
 ## Common Core APIs
 

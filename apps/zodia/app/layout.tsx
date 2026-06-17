@@ -30,6 +30,7 @@ const miniAppEmbed = {
 const baseAppId = process.env.NEXT_PUBLIC_BASE_APP_ID?.trim();
 
 export const metadata: Metadata = {
+  metadataBase: new URL(appUrl),
   title: appConfig.name,
   description: appConfig.description,
   other: {
