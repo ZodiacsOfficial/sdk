@@ -119,25 +119,22 @@ export function CosmicProfile({ heldSigns }: { heldSigns: readonly ZodiacSign[] 
   }, [draft, hydrated, riskMode]);
 
   const chart = useMemo(() => resolveBirthChart(draft), [draft]);
-  const identityContext = useMemo(
-    () => {
-      const options: { sunSign?: ZodiacSign; moonSign?: ZodiacSign; risingSign?: ZodiacSign } = {};
-      if (chart.sunSign) options.sunSign = chart.sunSign;
-      if (chart.moonSign) options.moonSign = chart.moonSign;
-      if (chart.risingSign) options.risingSign = chart.risingSign;
+  const identityContext = useMemo(() => {
+    const options: { sunSign?: ZodiacSign; moonSign?: ZodiacSign; risingSign?: ZodiacSign } = {};
+    if (chart.sunSign) options.sunSign = chart.sunSign;
+    if (chart.moonSign) options.moonSign = chart.moonSign;
+    if (chart.risingSign) options.risingSign = chart.risingSign;
 
-      return getZodiacIdentityContext(
-        {
-          holdings: ZODIAC_SIGNS.map((sign) => ({
-            sign,
-            held: heldSigns.includes(sign)
-          }))
-        },
-        options
-      );
-    },
-    [chart.moonSign, chart.risingSign, chart.sunSign, heldSigns]
-  );
+    return getZodiacIdentityContext(
+      {
+        holdings: ZODIAC_SIGNS.map((sign) => ({
+          sign,
+          held: heldSigns.includes(sign)
+        }))
+      },
+      options
+    );
+  }, [chart.moonSign, chart.risingSign, chart.sunSign, heldSigns]);
   const aura = useMemo(
     () => buildAuraProfile(chart, riskMode, heldSigns),
     [chart, heldSigns, riskMode]

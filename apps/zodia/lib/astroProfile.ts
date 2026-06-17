@@ -175,11 +175,7 @@ export function resolveBirthChart(draft: BirthChartDraft): ResolvedBirthChart {
   };
 }
 
-function scorePlacement(
-  scores: Map<ZodiacSign, number>,
-  sign: ZodiacSign | null,
-  points: number
-) {
+function scorePlacement(scores: Map<ZodiacSign, number>, sign: ZodiacSign | null, points: number) {
   if (!sign) {
     return;
   }
@@ -236,7 +232,10 @@ export function buildAuraProfile(
     addSign(sign, 1);
   }
 
-  const dominantElement = dominantKey(elementScores, chart.sunSign ? signElement(chart.sunSign) : "fire");
+  const dominantElement = dominantKey(
+    elementScores,
+    chart.sunSign ? signElement(chart.sunSign) : "fire"
+  );
   const dominantModality = dominantKey(
     modalityScores,
     chart.sunSign ? signModality(chart.sunSign) : "cardinal"
@@ -325,7 +324,9 @@ export function buildZodiaBasket(
 
   const riskBoosts: Record<RiskMode, readonly ZodiacSign[]> = {
     grounded: ELEMENT_SIGNS.earth,
-    balanced: chart.sunSign ? MODALITY_SIGNS[signModality(chart.sunSign)] : ["libra", "virgo", "taurus"],
+    balanced: chart.sunSign
+      ? MODALITY_SIGNS[signModality(chart.sunSign)]
+      : ["libra", "virgo", "taurus"],
     chaotic: ["aries", "gemini", "sagittarius", "aquarius"]
   };
   for (const sign of riskBoosts[riskMode]) {
@@ -334,7 +335,9 @@ export function buildZodiaBasket(
 
   const scored = ZODIAC_SIGNS.map((sign) => ({ sign, score: scores.get(sign) ?? 0 }))
     .filter((entry) => entry.score > 0)
-    .sort((a, b) => b.score - a.score || ZODIAC_SIGNS.indexOf(a.sign) - ZODIAC_SIGNS.indexOf(b.sign))
+    .sort(
+      (a, b) => b.score - a.score || ZODIAC_SIGNS.indexOf(a.sign) - ZODIAC_SIGNS.indexOf(b.sign)
+    )
     .slice(0, 4);
 
   return normalizeAllocations(scored).map((entry) => {
@@ -343,14 +346,14 @@ export function buildZodiaBasket(
       sign: entry.sign,
       ticker: token.ticker,
       allocation: entry.allocation,
-      reason: Array.from(reasons.get(entry.sign) ?? ["symbolic resonance"]).slice(0, 2).join(" · ")
+      reason: Array.from(reasons.get(entry.sign) ?? ["symbolic resonance"])
+        .slice(0, 2)
+        .join(" · ")
     };
   });
 }
 
 export function auraShareText(aura: AuraProfile, basket: readonly ZodiaBasketEntry[]): string {
-  const basketText = basket
-    .map((entry) => `$${entry.ticker} ${entry.allocation}%`)
-    .join(" / ");
+  const basketText = basket.map((entry) => `$${entry.ticker} ${entry.allocation}%`).join(" / ");
   return `${aura.title} on Zodia. ${aura.marketTemperament} Cosmic Basket: ${basketText || "forming"}. Entertainment only.`;
 }

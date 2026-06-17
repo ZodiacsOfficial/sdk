@@ -164,7 +164,9 @@ export function TokenDetail({ sign }: { sign: ZodiacSign }) {
         ) : feed.isError ? (
           <div className="card feed-state">
             <p className="empty-state-title">Social feed unavailable</p>
-            <p className="empty-state-hint">The token page still works; casts can retry on refresh.</p>
+            <p className="empty-state-hint">
+              The token page still works; casts can retry on refresh.
+            </p>
           </div>
         ) : feed.isLoading ? (
           <div className="list" aria-hidden>

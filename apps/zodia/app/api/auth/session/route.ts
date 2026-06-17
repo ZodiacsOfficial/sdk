@@ -29,7 +29,12 @@ export async function POST(request: Request) {
   const messageAddress = addressFromMessage(message);
   const nonce = nonceFromMessage(message);
   const domain = domainFromMessage(message);
-  if (!messageAddress || messageAddress.toLowerCase() !== address.toLowerCase() || !nonce || !domain) {
+  if (
+    !messageAddress ||
+    messageAddress.toLowerCase() !== address.toLowerCase() ||
+    !nonce ||
+    !domain
+  ) {
     return NextResponse.json({ error: "invalid sign-in message" }, { status: 400 });
   }
   if (domain !== new URL(request.url).host) {

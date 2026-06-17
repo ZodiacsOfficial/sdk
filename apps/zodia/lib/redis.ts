@@ -39,7 +39,8 @@ export const keys = {
   authNonce: (address: string) => `ax:auth:nonce:${address.toLowerCase()}`,
   notifFids: () => "ax:notif:fids",
   notifSent: (kind: string, date: string) => `ax:notif:sent:${kind}:${date}`,
-  socialFeed: (sign: string, cursor: string, limit: number) => `ax:social:${sign}:${limit}:${cursor}`,
+  socialFeed: (sign: string, cursor: string, limit: number) =>
+    `ax:social:${sign}:${limit}:${cursor}`,
   astroTalkFeed: (cursor: string, limit: number) => `ax:social:astrotalk:${limit}:${cursor}`,
   cup: (seasonKey: string) => `ax:cup:${seasonKey}`,
   cupChampions: () => "ax:cup:champions"

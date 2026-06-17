@@ -130,9 +130,9 @@ export function verifyWalletSession(token: string, now = new Date()): AppUser {
   }
   let payload: Partial<WalletSessionPayload> | null;
   try {
-    payload = JSON.parse(Buffer.from(encodedPayload, "base64url").toString("utf8")) as
-      | Partial<WalletSessionPayload>
-      | null;
+    payload = JSON.parse(
+      Buffer.from(encodedPayload, "base64url").toString("utf8")
+    ) as Partial<WalletSessionPayload> | null;
   } catch {
     throw new AuthError("Invalid wallet session");
   }
