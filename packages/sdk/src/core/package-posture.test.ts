@@ -32,6 +32,7 @@ describe("package entry point posture", () => {
     expect(packageJson.files).toEqual([
       "dist/*.d.ts",
       "dist/*.js",
+      "AGENTS.md",
       "README.md",
       "CHANGELOG.md",
       "LICENSE",
