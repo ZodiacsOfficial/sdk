@@ -6,7 +6,7 @@ import { ProfilePanel } from "../../../components/profile/ProfilePanel";
 export default function ProfilePage() {
   return (
     <>
-      <AppHeader title="Profile" subtitle="Your verified zodiac shelf" />
+      <AppHeader title="Profile" subtitle="Aura, chart, and verified zodiac shelf" />
       <ProfilePanel />
       <FooterNote>
         Holdings are public on-chain reads of official Zodiacs.org registry representations —

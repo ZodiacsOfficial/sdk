@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { AuthError, requireFid } from "../../../lib/auth";
+import { AuthConfigError, AuthError, requireUser } from "../../../lib/auth";
 import { getPriceMap } from "../../../lib/market";
 import { allowRequest } from "../../../lib/rateLimit";
-import { keys, redis } from "../../../lib/redis";
+import { hasRedis, keys, redis } from "../../../lib/redis";
 import { creditTrade, linkWallet, upsertProfileSnapshot } from "../../../lib/trades/leaderboard";
 import { verifyTradeTx } from "../../../lib/trades/verify";
 import type { VerifiedTrade } from "../../../lib/trades/verify";
@@ -25,17 +25,24 @@ interface Skipped {
 }
 
 export async function POST(request: Request) {
-  let fid: number;
+  let user;
   try {
-    fid = await requireFid(request);
+    user = await requireUser(request);
   } catch (error) {
     if (error instanceof AuthError) {
       return NextResponse.json({ error: error.message }, { status: 401 });
     }
+    if (error instanceof AuthConfigError) {
+      return NextResponse.json({ error: error.message }, { status: 503 });
+    }
     throw error;
   }
 
-  if (!(await allowRequest("trades", fid, 10, 60))) {
+  if (!hasRedis()) {
+    return NextResponse.json({ error: "trade storage unavailable" }, { status: 503 });
+  }
+
+  if (!(await allowRequest("trades", user.id, 10, 60))) {
     return NextResponse.json({ error: "rate limited" }, { status: 429 });
   }
 
@@ -45,10 +52,16 @@ export async function POST(request: Request) {
   }
   const { walletAddress, txHashes, username, pfpUrl } = parsed.data;
 
-  if (!(await linkWallet(fid, walletAddress))) {
+  if (user.walletAddress && user.walletAddress.toLowerCase() !== walletAddress.toLowerCase()) {
+    return NextResponse.json({ error: "wallet does not match session" }, { status: 403 });
+  }
+
+  if (!(await linkWallet(user.id, walletAddress))) {
     return NextResponse.json({ error: "wallet is linked to a different account" }, { status: 409 });
   }
-  await upsertProfileSnapshot(fid, {
+  await upsertProfileSnapshot(user.id, {
+    fid: user.fid,
+    walletAddress,
     ...(username ? { username } : {}),
     ...(pfpUrl ? { pfpUrl } : {})
   });
@@ -72,11 +85,19 @@ export async function POST(request: Request) {
     const result = await verifyTradeTx(serverPublicClient(), walletAddress, txHash, { prices });
     if (!result.ok) {
       await redis().del(tradeKey);
+      await redis().lpush(keys.tradeFailures(), {
+        userId: user.id,
+        walletAddress,
+        txHash,
+        reason: result.reason,
+        ts: Date.now()
+      });
+      await redis().ltrim(keys.tradeFailures(), 0, 99);
       skipped.push({ txHash, reason: result.reason });
       continue;
     }
 
-    await creditTrade(fid, result.trade);
+    await creditTrade(user.id, result.trade);
     credited.push(result.trade);
   }
 

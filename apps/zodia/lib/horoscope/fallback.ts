@@ -19,7 +19,7 @@ const NOTES = [
   "The sky is busy today; let your group chat catch up before you hit send.",
   "A good day to tidy loose ends and let the cosmos do the dramatic part.",
   "Energy moves sideways before it moves forward. Stretch first.",
-  "Someone from your past reappears in the trollbox. Wave politely.",
+  "Someone from your past reappears in AstroTalk. Wave politely.",
   "Your patience gets tested and then rewarded with excellent memes.",
   "Double-check the details; the universe loves a typo today."
 ] as const;

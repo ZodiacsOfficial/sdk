@@ -8,7 +8,6 @@ import { AppHeader, FooterNote, SkeletonRows } from "../../../components/AppHead
 import { LeaderboardTable } from "../../../components/board/LeaderboardTable";
 import { SeasonCup } from "../../../components/SeasonCup";
 import { Segmented } from "../../../components/Segmented";
-import { TapeFeed } from "../../../components/TapeFeed";
 
 export default function BoardPage() {
   const [board, setBoard] = useState<"volume" | "pnl">("volume");
@@ -53,17 +52,6 @@ export default function BoardPage() {
 
       {isLoading ? <SkeletonRows count={3} height={56} /> : null}
       {data ? <LeaderboardTable response={data} /> : null}
-
-      <section className="card">
-        <div className="row spread" style={{ marginBottom: 10 }}>
-          <h2 style={{ margin: 0 }}>Cosmic Tape</h2>
-          <span className="row" style={{ gap: 6 }}>
-            <span className="live-dot" />
-            <span className="muted">live</span>
-          </span>
-        </div>
-        <TapeFeed limit={30} />
-      </section>
 
       <FooterNote>
         Ranks count only swaps started inside this app, valued in USD at credit time. Entertainment

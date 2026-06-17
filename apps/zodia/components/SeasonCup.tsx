@@ -73,7 +73,7 @@ export function SeasonCup() {
         </div>
       ) : (
         <p className="muted" style={{ margin: 0 }}>
-          No swaps this season yet — the first sign on the tape takes the lead.
+          No swaps this season yet — the first verified sign takes the lead.
         </p>
       )}
 

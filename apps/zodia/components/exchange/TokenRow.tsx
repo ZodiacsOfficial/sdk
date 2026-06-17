@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ZodiacSign } from "../../lib/zodiac";
 import type { MarketSnapshotLite } from "../../lib/market";
 import { SignIcon } from "../SignIcon";
@@ -20,17 +21,15 @@ function formatCompact(value: number): string {
 
 export function TokenRow({
   sign,
-  snapshot,
-  onTrade
+  snapshot
 }: {
   sign: ZodiacSign;
   snapshot: MarketSnapshotLite | null;
-  onTrade: () => void;
 }) {
   const change = snapshot?.change24h ?? null;
   const volume = snapshot?.volume24h ?? null;
   return (
-    <button className="list-row" onClick={onTrade}>
+    <Link className="list-row" href={`/exchange/${sign}`}>
       <SignIcon sign={sign} size={40} />
       <span className="grow">
         <span className="name">{sign}</span>
@@ -45,6 +44,6 @@ export function TokenRow({
         </span>
       </span>
       <span className="chev">›</span>
-    </button>
+    </Link>
   );
 }

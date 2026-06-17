@@ -1,14 +1,14 @@
 "use client";
 
 import { AppHeader, FooterNote } from "../../../components/AppHeader";
-import { ChatRoom } from "../../../components/chat/ChatRoom";
+import { AstroTalk } from "../../../components/chat/AstroTalk";
 
 export default function ChatPage() {
   return (
     <>
-      <AppHeader title="Trollbox" subtitle="One room, twelve signs. Blame retrogrades." />
-      <ChatRoom />
-      <FooterNote>Messages are public and rate-limited. Be kind — no financial advice.</FooterNote>
+      <AppHeader title="AstroTalk" subtitle="A public Farcaster window into Zodia." />
+      <AstroTalk />
+      <FooterNote>Farcaster casts are public. Be kind — no financial advice.</FooterNote>
     </>
   );
 }

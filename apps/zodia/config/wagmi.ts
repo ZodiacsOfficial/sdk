@@ -11,7 +11,7 @@ const dataSuffix = builderCode ? Attribution.toDataSuffix({ codes: [builderCode]
 
 export const config: Config = createConfig({
   chains: [base],
-  connectors: [farcasterMiniApp(), baseAccount({ appName })],
+  connectors: [baseAccount({ appName }), farcasterMiniApp()],
   ssr: true,
   storage: createStorage({ storage: cookieStorage }),
   transports: {

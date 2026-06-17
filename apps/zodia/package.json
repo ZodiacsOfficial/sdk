@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "pnpm --filter @zodiacs/sdk build",
+    "prebuild": "corepack pnpm --filter @zodiacs/sdk build",
     "build": "next build",
     "typecheck": "rm -rf .next && tsc -p tsconfig.typecheck.json",
     "test": "vitest run"
