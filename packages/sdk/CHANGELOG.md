@@ -2,8 +2,14 @@
 
 ## Unreleased
 
+## 1.1.0
+
 - Added a neutral symbolic resonance use-case guide with user-facing facet copy
   for app-side aura, tooltip, and share-card experiences.
+- Added `@zodiacs/sdk/disclosure` with failure-honest Solana supply,
+  mint/freeze authority, and top-ten token-account verification reads.
+- Added sequential all-sign reads, complete-only aggregates, RPC slots, ISO read
+  timestamps, retry pacing, and captured mainnet parsing fixtures.
 
 ## 1.0.1
 

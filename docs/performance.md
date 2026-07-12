@@ -15,7 +15,11 @@ If an RPC does not support the parsed wallet-level scan, the SDK falls back to p
 a typed ownership result. Keep network functions injected through a connection object in tests so this fallback
 is easy to mock.
 
+Disclosure verification intentionally performs three sequential reads per sign
+and uses 300 millisecond pacing by default. It favors a reproducible public-RPC
+audit over interactive latency; use `getDisclosure` when only one sign is needed.
+
 ## UI
 
-Core, registry, Base, and Solana entrypoints do not import React. React hooks and UI components are imported
+Core, registry, Base, Solana, and disclosure entrypoints do not import React. React hooks and UI components are imported
 only from explicit `react` and `ui` subpaths.

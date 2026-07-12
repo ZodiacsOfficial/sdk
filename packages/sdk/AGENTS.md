@@ -24,6 +24,7 @@ Core APIs:
 - `getBaseZodiacsOwnership`
 - `getZodiacIdentityContext`
 - `getIdentityReceiptData`
+- `getDisclosure` and `getDisclosureAll` from `@zodiacs/sdk/disclosure`
 - `getZodiacIconAsset` from `@zodiacs/sdk/assets`
 
 React APIs:

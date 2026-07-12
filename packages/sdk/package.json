@@ -1,6 +1,6 @@
 {
   "name": "@zodiacs/sdk",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Official read-only TypeScript SDK for building astrology apps with verified Zodiac ownership.",
   "license": "MIT",
   "keywords": [
@@ -67,6 +67,10 @@
       "types": "./dist/identity.d.ts",
       "import": "./dist/identity.js"
     },
+    "./disclosure": {
+      "types": "./dist/disclosure.d.ts",
+      "import": "./dist/disclosure.js"
+    },
     "./react": {
       "types": "./dist/react.d.ts",
       "import": "./dist/react.js"
@@ -106,7 +110,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup src/index.ts src/core.ts src/market.ts src/registry.ts src/base.ts src/solana.ts src/identity.ts src/react.ts src/ui.ts src/testing.ts src/assets.ts --format esm --dts --clean --tsconfig tsconfig.build.json --external react --external react/jsx-runtime --external viem",
+    "build": "tsup src/index.ts src/core.ts src/market.ts src/registry.ts src/base.ts src/solana.ts src/identity.ts src/disclosure.ts src/react.ts src/ui.ts src/testing.ts src/assets.ts --format esm --dts --clean --tsconfig tsconfig.build.json --external react --external react/jsx-runtime --external viem",
     "exports:smoke": "node scripts/module-resolution-smoke.mjs",
     "neutrality:guard": "node scripts/neutrality-guard.mjs",
     "package:contents": "node scripts/verify-package-contents.mjs",
