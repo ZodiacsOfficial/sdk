@@ -13,7 +13,7 @@ const packageJson = JSON.parse(
 
 describe("package entry point posture", () => {
   it("keeps React isolated to explicit React and UI subpaths", () => {
-    expect(packageJson.version).toBe("1.0.1");
+    expect(packageJson.version).toBe("1.1.0");
     expect(Object.keys(packageJson.exports)).toEqual([
       ".",
       "./core",
@@ -22,6 +22,7 @@ describe("package entry point posture", () => {
       "./base",
       "./solana",
       "./identity",
+      "./disclosure",
       "./react",
       "./ui",
       "./testing",
@@ -44,6 +45,7 @@ describe("package entry point posture", () => {
     expect(packageJson.scripts.typecheck).toBe("tsc -p tsconfig.typecheck.json --pretty false");
     expect(packageJson.scripts.build).toContain("src/testing.ts");
     expect(packageJson.scripts.build).toContain("src/assets.ts");
+    expect(packageJson.scripts.build).toContain("src/disclosure.ts");
     expect(packageJson.scripts["exports:smoke"]).toBe("node scripts/module-resolution-smoke.mjs");
     expect(packageJson.scripts["package:contents"]).toBe(
       "node scripts/verify-package-contents.mjs"
@@ -54,6 +56,7 @@ describe("package entry point posture", () => {
     const rootEntry = readFileSync(new URL("../index.ts", import.meta.url), "utf8");
 
     expect(rootEntry).toContain("./core/index.js");
+    expect(rootEntry).not.toContain("./core/disclosure.js");
     expect(rootEntry).not.toContain("./market/index.js");
     expect(rootEntry).not.toMatch(/\.\/(?:market|react|ui)\/index\.js/u);
   });

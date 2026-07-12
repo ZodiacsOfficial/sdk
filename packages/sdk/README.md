@@ -1,6 +1,6 @@
 # Zodiacs SDK
 
-[![SDK version](https://img.shields.io/badge/sdk-1.0.1-blue)](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/package.json)
+[![SDK version](https://img.shields.io/badge/sdk-1.1.0-blue)](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/package.json)
 [![Registry version](https://img.shields.io/badge/registry-0.2.0-6f42c1)](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/registry/zodiacs.registry.json)
 [![React peer](https://img.shields.io/badge/react-optional%20peer-61dafb)](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/package.json)
 [![Posture](https://img.shields.io/badge/posture-read--only-2ea44f)](https://github.com/ZodiacsOfficial/sdk#security-posture)
@@ -26,6 +26,7 @@ explicit subpaths:
 - `@zodiacs/sdk/base` — Base public ownership reads (no React)
 - `@zodiacs/sdk/solana` — Solana public ownership reads (no React)
 - `@zodiacs/sdk/identity` — symbolic identity context helpers (no React)
+- `@zodiacs/sdk/disclosure` — supply, authority, and token-account disclosure reads (no React)
 - `@zodiacs/sdk/testing` — typed fixtures for downstream tests (no React)
 - `@zodiacs/sdk/market` — optional market adapters (no React)
 - `@zodiacs/sdk/react` — React hooks and `ZodiacsProvider`
@@ -71,6 +72,7 @@ needs verified Zodiac ownership.
 | Load sign metadata          | `getZodiacAsset`, `getZodiacMetadata`, `listZodiacMetadata`               |
 | Read Solana holdings        | `getSolanaZodiacsOwnership`, `getSolanaZodiacBalance`                     |
 | Read Base holdings          | `getBaseZodiacsOwnership`, `getBaseZodiacBalance`                         |
+| Verify registry disclosures | `getDisclosure`, `getDisclosureAll` from `@zodiacs/sdk/disclosure`        |
 | Build a cross-chain shelf   | `getCrossChainZodiacsOwnership`, `getUnifiedZodiacShelf`                  |
 | Build identity surfaces     | `getZodiacIdentityContext`, `getIdentityReceiptData`                      |
 | Show season context         | `getCurrentZodiacSeason`, `getZodiacSeasonProgress`                       |
@@ -85,6 +87,7 @@ Full export maps live in the source barrels:
 [base](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/base.ts),
 [solana](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/solana.ts),
 [identity](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/identity.ts),
+[disclosure](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/disclosure.ts),
 [assets](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/assets.ts),
 [market](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/market/index.ts),
 [react](https://github.com/ZodiacsOfficial/sdk/blob/main/packages/sdk/src/react/index.ts), and
@@ -118,6 +121,32 @@ console.log(getBaseZodiacRepresentation("aries").originChain); // "solana"
 ```
 
 The address above is the official bridged Base representation for Aries.
+
+## Verify the registry's disclosures yourself
+
+The disclosure API reads public chain facts for the canonical native mints in
+the packaged registry. It is a verification surface, not market commentary.
+Every field is an explicit success or failure; unavailable reads are never
+silently replaced. `topTenAccounts` means SPL token accounts, not wallets:
+pools and exchanges are accounts, and one wallet may control several accounts.
+
+Set `SOLANA_RPC_URL` to a mainnet provider that supports
+`getTokenLargestAccounts`; otherwise the SDK uses Solana's public mainnet
+endpoint and reports provider failures directly.
+
+<!-- prettier-ignore -->
+```js
+import { getDisclosureAll } from "@zodiacs/sdk/disclosure";
+const rpcUrl = process.env.SOLANA_RPC_URL;
+const result = await getDisclosureAll(rpcUrl ? { rpcUrl } : {});
+const show = (read) => read.ok ? read.value.summary : `unavailable: ${read.reason}`;
+const row = (sign, data) => ({ sign, supply: show(data.supply),
+  mintAuthority: show(data.mintAuthority), freezeAuthority: show(data.freezeAuthority),
+  topTenAccounts: show(data.topTenAccounts) });
+const rows = Object.values(result.disclosures).map((data) => row(data.sign, data));
+rows.push(row("aggregate", result.aggregate));
+console.table(rows);
+```
 
 Identity context helpers provide computed symbolic context from registry
 metadata and public ownership state:

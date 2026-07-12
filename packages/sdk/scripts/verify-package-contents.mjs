@@ -23,6 +23,8 @@ const requiredFiles = new Set([
   "dist/solana.d.ts",
   "dist/identity.js",
   "dist/identity.d.ts",
+  "dist/disclosure.js",
+  "dist/disclosure.d.ts",
   "dist/market.js",
   "dist/market.d.ts",
   "dist/react.js",

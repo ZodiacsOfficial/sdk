@@ -1,6 +1,6 @@
 # Zodiacs SDK
 
-[![SDK version](https://img.shields.io/badge/sdk-1.0.1-blue)](packages/sdk/package.json)
+[![SDK version](https://img.shields.io/badge/sdk-1.1.0-blue)](packages/sdk/package.json)
 [![Registry version](https://img.shields.io/badge/registry-0.2.0-6f42c1)](packages/sdk/registry/zodiacs.registry.json)
 [![React peer](https://img.shields.io/badge/react-optional%20peer-61dafb)](packages/sdk/package.json)
 [![Posture](https://img.shields.io/badge/posture-read--only-2ea44f)](#security-posture)
@@ -66,6 +66,7 @@ Prefer subpath imports for new apps:
 import { getZodiacIdentityContext } from "@zodiacs/sdk/core";
 import { getBaseZodiacsOwnership } from "@zodiacs/sdk/base";
 import { getSolanaZodiacsOwnership } from "@zodiacs/sdk/solana";
+import { getDisclosureAll } from "@zodiacs/sdk/disclosure";
 import { useBaseZodiacsOwnership } from "@zodiacs/sdk/react";
 import { ProfileSummaryCard } from "@zodiacs/sdk/ui";
 import { createMockOwnership } from "@zodiacs/sdk/testing";
@@ -80,6 +81,7 @@ The package ships granular entry points:
 - `@zodiacs/sdk/base` — Base public ownership reads (no React)
 - `@zodiacs/sdk/solana` — Solana public ownership reads (no React)
 - `@zodiacs/sdk/identity` — symbolic identity context helpers (no React)
+- `@zodiacs/sdk/disclosure` — supply, authority, and token-account disclosure reads (no React)
 - `@zodiacs/sdk/testing` — typed fixtures for downstream tests (no React)
 - `@zodiacs/sdk/market` — optional market adapters (no React)
 - `@zodiacs/sdk/react` — React hooks and `ZodiacsProvider`
@@ -104,6 +106,7 @@ not exported from the root package.
 | Load sign metadata          | `getZodiacAsset`, `getZodiacMetadata`, `listZodiacMetadata`               |
 | Read Solana holdings        | `getSolanaZodiacsOwnership`, `getSolanaZodiacBalance`                     |
 | Read Base holdings          | `getBaseZodiacsOwnership`, `getBaseZodiacBalance`                         |
+| Verify registry disclosures | `getDisclosure`, `getDisclosureAll` from `@zodiacs/sdk/disclosure`        |
 | Build a cross-chain shelf   | `getCrossChainZodiacsOwnership`, `getUnifiedZodiacShelf`                  |
 | Build identity surfaces     | `getZodiacIdentityContext`, `getIdentityReceiptData`                      |
 | Show season context         | `getCurrentZodiacSeason`, `getZodiacSeasonProgress`                       |
@@ -118,6 +121,7 @@ Full export maps live in the source barrels:
 [base](packages/sdk/src/base.ts),
 [solana](packages/sdk/src/solana.ts),
 [identity](packages/sdk/src/identity.ts),
+[disclosure](packages/sdk/src/disclosure.ts),
 [assets](packages/sdk/src/assets.ts),
 [market](packages/sdk/src/market/index.ts),
 [react](packages/sdk/src/react/index.ts), and
@@ -213,6 +217,32 @@ Compatibility aliases remain available:
 
 These default to the native Solana representation. New integrations should
 prefer the explicit `getSolana*` names.
+
+## Verify the registry's disclosures yourself
+
+The disclosure API reads public chain facts for the canonical native mints in
+the packaged registry. It is a verification surface, not market commentary.
+Every field is an explicit success or failure; unavailable reads are never
+silently replaced. `topTenAccounts` means SPL token accounts, not wallets:
+pools and exchanges are accounts, and one wallet may control several accounts.
+
+Set `SOLANA_RPC_URL` to a mainnet provider that supports
+`getTokenLargestAccounts`; otherwise the SDK uses Solana's public mainnet
+endpoint and reports provider failures directly.
+
+<!-- prettier-ignore -->
+```js
+import { getDisclosureAll } from "@zodiacs/sdk/disclosure";
+const rpcUrl = process.env.SOLANA_RPC_URL;
+const result = await getDisclosureAll(rpcUrl ? { rpcUrl } : {});
+const show = (read) => read.ok ? read.value.summary : `unavailable: ${read.reason}`;
+const row = (sign, data) => ({ sign, supply: show(data.supply),
+  mintAuthority: show(data.mintAuthority), freezeAuthority: show(data.freezeAuthority),
+  topTenAccounts: show(data.topTenAccounts) });
+const rows = Object.values(result.disclosures).map((data) => row(data.sign, data));
+rows.push(row("aggregate", result.aggregate));
+console.table(rows);
+```
 
 ## Read Base Holdings
 
@@ -390,6 +420,8 @@ inside `ZODIACS_REGISTRY` and `packages/sdk/registry/zodiacs.registry.json`.
 The `1.0.0` release keeps the root entry point React-free and requires explicit
 subpath imports for React, UI, market, Base, Solana, registry, identity, and
 testing helpers.
+The `1.1.0` release adds disclosure reads through the explicit
+`@zodiacs/sdk/disclosure` subpath.
 
 ## Contributing
 

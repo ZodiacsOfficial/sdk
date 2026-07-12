@@ -28,12 +28,14 @@ writeFileSync(
     'import type { BaseZodiacsOwnership } from "@zodiacs/sdk/base";',
     'import type { ZodiacsOwnership } from "@zodiacs/sdk/solana";',
     'import type { ConsumerSafeWalletContext } from "@zodiacs/sdk/identity";',
+    'import type { DisclosureAllResult } from "@zodiacs/sdk/disclosure";',
     'import type { ZodiacIconAsset } from "@zodiacs/sdk/assets";',
     'import { ZODIAC_SIGNS, getZodiacIdentityContext } from "@zodiacs/sdk/core";',
     'import { getZodiacsRegistry } from "@zodiacs/sdk/registry";',
     'import { getBaseZodiacRepresentation } from "@zodiacs/sdk/base";',
     'import { getSolanaZodiacRepresentation } from "@zodiacs/sdk/solana";',
     'import { getConsumerSafeWalletContext } from "@zodiacs/sdk/identity";',
+    'import { getDisclosureAll } from "@zodiacs/sdk/disclosure";',
     'import { getZodiacIconAsset } from "@zodiacs/sdk/assets";',
     'import { createPlaceholderMarketAdapter } from "@zodiacs/sdk/market";',
     'import { createMockOwnership } from "@zodiacs/sdk/testing";',
@@ -46,11 +48,13 @@ writeFileSync(
     "const solana = getSolanaZodiacRepresentation('aries');",
     "const icon = getZodiacIconAsset('aries');",
     "const market = createPlaceholderMarketAdapter();",
+    "const disclosureReader: typeof getDisclosureAll = getDisclosureAll;",
     "const typedContext: ZodiacIdentityContext = context;",
     "const typedRegistry: ZodiacsRegistry = registry;",
     "const typedBaseOwnership: BaseZodiacsOwnership | null = null;",
     "const typedSolanaOwnership: ZodiacsOwnership = ownership;",
     "const typedConsumerSafe: ConsumerSafeWalletContext = consumerSafe;",
+    "const typedDisclosure: DisclosureAllResult | null = null;",
     "const typedIcon: ZodiacIconAsset = icon;",
     "",
     "void typedContext;",
@@ -58,8 +62,10 @@ writeFileSync(
     "void typedBaseOwnership;",
     "void typedSolanaOwnership;",
     "void typedConsumerSafe;",
+    "void typedDisclosure;",
+    "void disclosureReader;",
     "void typedIcon;",
-    "console.log(ZODIAC_SIGNS.length, context.totalUniqueSigns, consumerSafe.readOnly, registry.assets.length, base.chain, solana.chain, icon.packagePath, Boolean(market));"
+    "console.log(ZODIAC_SIGNS.length, context.totalUniqueSigns, consumerSafe.readOnly, registry.assets.length, base.chain, solana.chain, icon.packagePath, Boolean(market), typeof disclosureReader);"
   ].join("\n")
 );
 
@@ -120,7 +126,7 @@ execFileSync(
   [
     "--input-type=module",
     "--eval",
-    "const core = await import('@zodiacs/sdk/core'); const identity = await import('@zodiacs/sdk/identity'); console.log(core.ZODIAC_SIGNS.length, typeof identity.getConsumerSafeWalletContext);"
+    "const core = await import('@zodiacs/sdk/core'); const identity = await import('@zodiacs/sdk/identity'); const disclosure = await import('@zodiacs/sdk/disclosure'); console.log(core.ZODIAC_SIGNS.length, typeof identity.getConsumerSafeWalletContext, typeof disclosure.getDisclosureAll);"
   ],
   {
     cwd: tmp,

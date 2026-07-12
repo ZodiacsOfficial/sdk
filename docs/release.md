@@ -11,7 +11,7 @@ Before cutting a release:
 - Confirm React hooks are only available through `@zodiacs/sdk/react`.
 - Confirm UI primitives are only available through `@zodiacs/sdk/ui`.
 - Confirm market context is only available through `@zodiacs/sdk/market`.
-- Confirm core, registry, Base, Solana, identity, and testing modules do not import React.
+- Confirm core, registry, Base, Solana, identity, disclosure, and testing modules do not import React.
 - Confirm no SDK core module creates wallet clients, signs messages, signs transactions, submits transactions, requests private keys, or moves assets.
 - Confirm registry JSON and TypeScript registry exports stay in sync.
 - Confirm the registry checksum is current.
