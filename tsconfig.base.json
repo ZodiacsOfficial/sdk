@@ -15,6 +15,11 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
+      "@zodiacs/engine": ["packages/engine/src/index.ts"],
+      "@zodiacs/engine/geo": ["packages/engine/src/geo.ts"],
+      "@zodiacs/engine/internal": ["packages/engine/src/internal.ts"],
+      "@zodiacs/engine/internal/math": ["packages/engine/src/internal-math.ts"],
+      "@zodiacs/widgets": ["packages/widgets/src/index.ts"],
       "@zodiacs/sdk": ["packages/sdk/src/index.ts"]
     },
     "skipLibCheck": true,

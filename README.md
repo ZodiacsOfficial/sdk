@@ -11,6 +11,15 @@ public ownership, computes identity context, and gives astrology apps a factual
 ownership layer for shelves, receipts, profiles, Aura pages, and AI astrology
 context.
 
+For browser-first natal charts, compatibility, transits, Moon phases, and
+Saturn returns, see the sibling [`@zodiacs/engine`](packages/engine/README.md)
+package. For typed mounts of the official iframe embeds, see
+[`@zodiacs/widgets`](packages/widgets/README.md). The registry SDK's audited API
+remains separate and read-only.
+
+Generate the typed engine reference with `pnpm docs:engine`; the static output
+is written to `docs/engine-api` and can be deployed at `/sdk/engine/`.
+
 ## Official Zodiacs.org Registry
 
 The registry models the twelve signs as one canonical asset universe:

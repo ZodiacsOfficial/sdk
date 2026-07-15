@@ -11,6 +11,11 @@ public ownership, computes identity context, and gives astrology apps a factual
 ownership layer for shelves, receipts, profiles, Aura pages, and AI astrology
 context.
 
+Astrological computation is published separately as
+[`@zodiacs/engine`](../engine/README.md), and official iframe mounts live in
+[`@zodiacs/widgets`](../widgets/README.md). This package remains the audited,
+read-only registry and public-ownership surface.
+
 ```sh
 pnpm add @zodiacs/sdk
 ```

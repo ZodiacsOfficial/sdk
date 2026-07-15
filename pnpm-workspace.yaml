@@ -1,4 +1,6 @@
 packages:
   - "packages/sdk"
+  - "packages/engine"
+  - "packages/widgets"
   - "examples/*"
   - "apps/*"
