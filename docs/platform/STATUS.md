@@ -20,8 +20,9 @@ public bytes match. Two actual fresh Node 20/22 consumers pass public types,
 examples, schema/retry/mutation controls and receipt replay; isolated audit is
 zero. All 96 chart parity cases match rc.3 apart from engineVersion. Actual
 Chrome passes 20 additional packed-consumer recovery, privacy and isolation
-checks with synthetic HTTP responses. Draft review delivery is being recorded;
-this artifact is not published to npm.
+checks with synthetic HTTP responses. Delivered in [draft PR #9](https://github.com/ZodiacsOfficial/sdk/pull/9), stacked
+on #8. This artifact is not published to npm. Existing CI targets main PRs only;
+passing stacked-PR CI is not claimed.
 
 Schema validation cannot authenticate place facts or detect in-range indices
 from the wrong dataset generation; that counterexample is tested and documented.

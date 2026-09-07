@@ -299,3 +299,11 @@ Public npm engine/widgets lookups return 404; ownership remains 1.0.1. These
 are reviewed-by-model/local-testing facts, not required human review or release
 authorization. Draft PR, npm publication, production and external adoption are
 tracked independently.
+
+Delivered as [draft PR #9](https://github.com/ZodiacsOfficial/sdk/pull/9), stacked
+on #8, with source `d190d97c981c7cacc6eb4ab6a49bdb8451ca3459`, archive carrier
+`9ad6a73984e69b897a6422429fab1970a7c89450` and final browser/evidence checkpoint
+`ef846c82dd284559f1574f69ee901a221a7a722a`. All required local gates above were
+executed. The existing GitHub workflow targets main PRs, so no passing CI for
+this stacked draft is claimed. No merge, npm publication, production release
+or external adoption was performed.
