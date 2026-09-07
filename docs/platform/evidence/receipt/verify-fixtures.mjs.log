@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { natalChart, ENGINE_VERSION } from '/private/tmp/zodiacs-platform-sdk/packages/engine/dist/index.js';
+import { createNatalEnvelope, parseNatalEnvelope, serializeNatalEnvelope, natalReplayInput } from '/private/tmp/zodiacs-platform-sdk/packages/engine/dist/receipt.js';
+const sdk = '/private/tmp/zodiacs-platform-sdk';
+const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const fixtures = [];
+for (const [name, sourceInstant, timeKnown] of [
+  ['polar', '2001-12-21T09:00:00Z', true],
+  ['unknown-0830', '2001-12-21T08:30:00Z', false]
+]) {
+  const generated = createNatalEnvelope(natalChart({ utc: sourceInstant, timeKnown, latitude: 78.2232, longitude: 15.6267, houseSystem: 'placidus' }), { sourceInstant });
+  const file = `docs/platform/fixtures/natal-envelope-draft-v1-${name}.json`;
+  const bytes = await readFile(join(sdk, file));
+  const parsed = parseNatalEnvelope(bytes.toString('utf8'));
+  assert.deepEqual(parsed, { ok: true, envelope: generated });
+  assert.deepEqual(parseNatalEnvelope(serializeNatalEnvelope(parsed.envelope)), parsed);
+  assert.deepEqual(createNatalEnvelope(natalChart(natalReplayInput(parsed.envelope)), { sourceInstant }), generated);
+  assert.equal(generated.receipt.provenance, null);
+  assert.equal(generated.receipt.localResolution, null);
+  assert.equal(generated.receipt.conventions.moonNodes, 'instantaneous-geocentric-moon-orbit-plane');
+  fixtures.push({ file, sha256: hash(bytes), bytes: bytes.length, matchesBuiltGenerator: true, roundTrip: true, sameBuildRecalculation: true });
+}
+const identities = [];
+for (const file of [
+  'docs/platform/receipt-draft-v1.md', 'packages/engine/src/receipt.ts',
+  'packages/engine/src/receipt-json.ts', 'packages/engine/src/receipt.test.ts',
+  'packages/engine/src/types.ts', 'packages/engine/dist/receipt.js',
+  'packages/engine/dist/index.js'
+]) identities.push({ file, sha256: hash(await readFile(join(sdk, file))) });
+const result = { status: 'passed', runtime: process.version, engineVersion: ENGINE_VERSION, fixtureKind: 'synthetic', fixtures, identities, limitations: ['Same built engine and runtime used for fixture generation and recalculation', 'Not an independent astronomical reference or broad range claim', 'No provenance facts are asserted inside these fixtures'] };
+await writeFile('/private/tmp/zodiacs-platform-receipt-docs/fixture-verification.json', JSON.stringify(result, null, 2) + '\n');
+console.log(JSON.stringify(result, null, 2));

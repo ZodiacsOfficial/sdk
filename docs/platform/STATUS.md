@@ -17,7 +17,12 @@ are recorded, with the guard unchanged. [Evidence](EVIDENCE.md#draft-natal-recei
 
 The frozen rc.3 archive has SHA-256
 `aeab68793129517abe7498c5f5a17197d387eed7cbdaa9614f3b8cd939b11a17`.
-Review delivery and anonymous artifact verification follow this checkpoint.
+Delivered in [draft PR #8](https://github.com/ZodiacsOfficial/sdk/pull/8), stacked
+on #7. Artifact/evidence commit `2000377b1b537c1b08c873889059acc8edacc4fe`
+was anonymously downloaded with the exact bytes/digest at 22:05 UTC. A separate
+actual Chrome 152 probe also passed 23 codec assertions offline with Intl/storage
+blocked, zero network attempts and no ephemeris imports. No stacked SDK CI is
+claimed because the workflow currently targets main PRs only.
 No older artifact is replaced. Site/starter pins, account sync v1, saved-profile
 formats, ownership SDK, Registry data and root dependencies are unchanged.
 The account requested/actual compatibility defect remains open in the central

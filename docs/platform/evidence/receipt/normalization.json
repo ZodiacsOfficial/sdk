@@ -282,6 +282,66 @@
       "file": "receipt-neutrality-with-evidence.log",
       "rawSha256": "c895534fb0f94b45547a0e8b22b9145ceaf5ace6ae3ff7c87bc67882d2c3fd18",
       "storedSha256": "961034b9bd25a40f043dffc824028d44a6a6adba8f93cfa12b8eb336f4c66c1e"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-receipt-docs/README.md",
+      "file": "browser-README.md",
+      "rawSha256": "817634aa52ffd2c29b5b4e5bd3be723399d7a15c5771f353676c66e5f968b88b",
+      "storedSha256": "817634aa52ffd2c29b5b4e5bd3be723399d7a15c5771f353676c66e5f968b88b"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-receipt-docs/browser-result.json",
+      "file": "browser-result.json",
+      "rawSha256": "02b2b67e388603a98ca9730b68f9d8a71047896283d77f2b134a8fa3c4cdacc6",
+      "storedSha256": "249c744ed9bab4681236ae93044ac4262473eedc7525009bb709f89b24e3ab74"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-receipt-docs/fixture-verification.json",
+      "file": "fixture-verification.json",
+      "rawSha256": "5a1def9f4677ea2e3725ee3ad80986248a292bd75fb85803968c947866357e2a",
+      "storedSha256": "5a1def9f4677ea2e3725ee3ad80986248a292bd75fb85803968c947866357e2a"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-receipt-docs/browser-probe.mjs",
+      "file": "browser-probe.mjs.log",
+      "rawSha256": "f0fd9236537aea620dcc3aa7f74e0cedb56158724f797f86e5fa3ba0bac215ec",
+      "storedSha256": "f0fd9236537aea620dcc3aa7f74e0cedb56158724f797f86e5fa3ba0bac215ec"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-receipt-docs/verify-fixtures.mjs",
+      "file": "verify-fixtures.mjs.log",
+      "rawSha256": "112f877dbade8a7f01d277e40fafb395bd0737f3fef3405893035ad67fa1ee19",
+      "storedSha256": "112f877dbade8a7f01d277e40fafb395bd0737f3fef3405893035ad67fa1ee19"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-receipt-docs/browser-probe.log",
+      "file": "browser-probe.log",
+      "rawSha256": "02b2b67e388603a98ca9730b68f9d8a71047896283d77f2b134a8fa3c4cdacc6",
+      "storedSha256": "02b2b67e388603a98ca9730b68f9d8a71047896283d77f2b134a8fa3c4cdacc6"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-receipt-docs/browser-sandbox-failure.log",
+      "file": "browser-sandbox-failure.log",
+      "rawSha256": "e7eabe6331d8aafdaaa2d028fb49e35292b27ca3d54e2c0c8b97ffc4cd0a1242",
+      "storedSha256": "e7eabe6331d8aafdaaa2d028fb49e35292b27ca3d54e2c0c8b97ffc4cd0a1242"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-receipt-docs/browser-harness-initialization-failure.log",
+      "file": "browser-harness-initialization-failure.log",
+      "rawSha256": "b956266373cace0309a04d4f02395684da002d137a0b39c5970ff02ab06d9011",
+      "storedSha256": "b956266373cace0309a04d4f02395684da002d137a0b39c5970ff02ab06d9011"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-receipt-docs/reference-roundtrip.log",
+      "file": "reference-roundtrip.log",
+      "rawSha256": "f00121b3e240e6af71cb9b40cabf175b5580f5aa0c9d2f161d799b98133ca5d8",
+      "storedSha256": "f00121b3e240e6af71cb9b40cabf175b5580f5aa0c9d2f161d799b98133ca5d8"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-evidence/receipt-public-artifact.json",
+      "file": "public-artifact.json",
+      "rawSha256": "fcd426fe4b7f31850dc9fe7a3084094b9529a3c1578d12a7798a0a42c7a3609f",
+      "storedSha256": "fcd426fe4b7f31850dc9fe7a3084094b9529a3c1578d12a7798a0a42c7a3609f"
     }
   ]
 }

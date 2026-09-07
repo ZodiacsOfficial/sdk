@@ -80,6 +80,24 @@ no submitted #5 reviews, explicit do-not-merge/do-not-publish remains. No
 publication, production operation, outreach, spending, access change, account
 operation or migration was performed.
 
+Delivery: [draft #8](https://github.com/ZodiacsOfficial/sdk/pull/8), stacked on #7.
+The exact [immutable archive](https://raw.githubusercontent.com/ZodiacsOfficial/sdk/2000377b1b537c1b08c873889059acc8edacc4fe/artifacts/zodiacs-engine-0.1.1-rc.3.tgz)
+was anonymously downloaded at 22:05 UTC with matching size/SHA-256.
+[Public-download receipt](evidence/receipt/public-artifact.json). Existing SDK CI
+only triggers for main-targeting PRs, so no successful stacked CI is claimed.
+
+An actual Chrome 152.0.7977.83 probe passed **23 assertions** using the rebuilt
+receipt ESM and its two local lightweight chunks. Intl and storage were blocked
+before module import; all five codec operations worked with the browser offline,
+zero network/capability attempts, zero cookies and zero page errors. The browser
+recreated Charts from synthetic fixture values; it did not execute the ephemeris
+or prove cross-runtime astronomical equality. [Browser result](evidence/receipt/browser-result.json),
+[exact commands and environment/harness corrections](evidence/receipt/browser-README.md).
+The [final formatted-fixture verification](evidence/receipt/fixture-verification.json)
+supersedes pre-format fixture byte hashes in the generation record; semantic
+values and same-build recalculation still match. Owned browser/server resources
+were closed and all fixtures remain synthetic.
+
 ## GeoNames candidate evidence
 
 The baseline was SDK `03bf77990f3014b9125eed4976d7a41200aac80d`. A failed
