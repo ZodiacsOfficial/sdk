@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync } from 'node:fs';
+const previousDir='/var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-platform-consumer-G7UHiL/package';
+const currentDir='/var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-vE97u9';
+const previous=await import(`${previousDir}/node_modules/@zodiacs/engine/dist/index.js`);
+const current=await import(`${currentDir}/node_modules/@zodiacs/engine/dist/index.js`);
+const receipt=await import(`${currentDir}/node_modules/@zodiacs/engine/dist/receipt.js`);
+const ephemeris=dir=>JSON.parse(readFileSync(`${dir}/node_modules/astronomy-engine/package.json`)).version;
+assert.equal(previous.ENGINE_VERSION,'0.1.1-rc.3');assert.equal(current.ENGINE_VERSION,'0.1.1-rc.4');assert.equal(ephemeris(previousDir),ephemeris(currentDir));
+let cases=0;
+for(const utc of ['1907-07-06T15:06:36Z','2001-12-21T09:00:00Z','2024-11-03T05:30:00Z'])
+for(const latitude of [-78.2232,-40,0,78.2232])
+for(const longitude of [-74,15.6267])
+for(const houseSystem of ['whole','placidus'])
+for(const timeKnown of [false,true]){
+ const input={utc,latitude,longitude,houseSystem,timeKnown};
+ const a=previous.natalChart(input),b=current.natalChart(input);
+ const {engineVersion:av,...ar}=a,{engineVersion:bv,...br}=b;assert.deepEqual(ar,br);
+ const envelope=receipt.createNatalEnvelope(b,{sourceInstant:utc});
+ const parsed=receipt.parseNatalEnvelope(receipt.serializeNatalEnvelope(envelope));assert(parsed.ok);
+ assert.deepEqual(current.natalChart(receipt.natalReplayInput(parsed.envelope)),{...b,input:{...b.input,flags:b.input.flags??[]}});
+ cases++;
+}
+const result={observedAt:new Date().toISOString(),result:'passed',cases,previous:previous.ENGINE_VERSION,current:current.ENGINE_VERSION,ephemeris:ephemeris(currentDir),node:process.version,previousDir,currentDir,scope:'Exact public natal-chart equality for finite synthetic corpus after excluding only engineVersion; current receipt replay preserves every field with absent input.flags normalized to []. Actual installed packages; no rounding or independent astronomical accuracy claim.'};
+writeFileSync('/private/tmp/zodiacs-platform-geo-schema-evidence/packed-parity.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
