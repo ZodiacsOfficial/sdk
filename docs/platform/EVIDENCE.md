@@ -182,3 +182,128 @@ No publication, production operation, outreach, account access or live GeoNames
 request occurred. Review/publication holds persist. A future site upgrade must
 be a separate reviewed pin/reference/provenance change; it must not overwrite
 rc.1 or silently alter saved calculation receipts.
+
+## GeoNames schema and cache integrity candidate
+
+Candidate rc.4 is based on SDK #8 `b0d7f025`; it changes the optional GeoNames
+client, tests and documentation. Numerical algorithms, Registry/ownership
+behavior, root dependencies and all existing archives are unchanged. Only the
+reported engine version changes for calculations. Central dependency/decision
+records remain in the site platform ledger.
+
+Before implementation, temporary HTTP-200 error envelopes and incomplete
+index/shard objects stayed fulfilled in the internal request cache. Three
+explicit caller attempts made only one failing resource fetch. A string
+`__proto__` table index escaped as an array-valued region, and mutating arrays
+returned by `preload()` changed later metadata/search. Baseline regressions:
+**59 failed / 4 valid controls passed**.
+[Observed counterexamples](evidence/geo-schema/baseline-probe.json.log),
+[initial regression failures](evidence/geo-schema/red-schema.log).
+
+The final client validates the generator's v1 shape inside the cached promise,
+so schema rejection follows the existing identity-guarded eviction path. It
+copies index tables/rows at validation and exposes fresh metadata arrays. The
+whole requested shard is checked before results; other successful/in-flight
+requests are preserved. Fixed schema errors contain no supplied body values.
+It accepts empty region/country labels, Unicode names, exact geographical
+endpoints and nonempty timezone strings independent of today's host ICU.
+
+The agent's isolated source suite passes **377 engine tests / 10 files**. Root's
+versioned integration passes the full **496 tests / 30 files** on Node 20.20.2
+and Node 22.23.2. Required lint, typecheck, registry checksum, neutrality, full
+workspace/example build, TypeDoc, module-resolution exports, package contents,
+dry-pack and format gates all pass. Initial build/typecheck were inadvertently
+started concurrently although example typecheck removes `.next`; both exited
+successfully, but they are superseded by the recorded **sequential** final build
+and typecheck before subsequent gates. No shared-output concurrency is relied on.
+
+All **33,934 checked-in rows in 27 shards** validate. A fixed 27-query comparison
+retains exact metadata, results and request ordering, with 28 requests per
+client. This is dataset compatibility, not independent verification of place
+facts. Nine independent Node 22 probes with strict unhandled-rejection handling
+pass on geo source SHA-256
+`fd4363799fb26f3682b8c54054afc07761d7c301cdb798e6afc40965df150437`: catch-triggered
+retry races, unrelated pending work, caller mutation, zero scalar coercions,
+27 table-index traps, full-shard rejection and eight baseline query comparisons.
+The reviewer did not author this implementation or repeat the full corpus.
+
+[Source implementation review](evidence/geo-schema/REVIEW.md.log),
+[corpus evidence](evidence/geo-schema/corpus.json.log),
+[independent review](evidence/geo-schema/independent-REVIEW.md.log),
+[independent probe](evidence/geo-schema/independent-probe.mjs.log),
+[exact input paths and hashes](evidence/geo-schema/inputs.json.log).
+
+A tested counterexample pairs a structurally valid shard with a differently
+ordered cached index: in-range indices silently choose the wrong country/zone.
+The v1 format has no content/generation identity to detect this. No aggregate
+count check across unrequested shards or successful-cache refresh is claimed.
+Caller-supplied fetch code and its accessors/iterators are not sandboxed. No new
+response-size budget is introduced. All network responses in source probes are
+synthetic; real browser/public packed-consumer acceptance is still pending.
+SDK #5's explicit do-not-merge/do-not-publish and required review remain.
+
+### Frozen rc.4 archive and actual consumers
+
+Source commit **`d190d97c981c7cacc6eb4ab6a49bdb8451ca3459`** precedes packing.
+Distribution commit **`9ad6a73984e69b897a6422429fab1970a7c89450`** contains
+`zodiacs-engine-0.1.1-rc.4.tgz`: **22 files, 33,669 packed bytes, 112,949
+unpacked bytes**, SHA-256
+`0146fdff7abb6b937cf4d66b4cdaf0c80ecf238ea71f1f4f9fb27eae687a0d20`.
+The [immutable public archive](https://raw.githubusercontent.com/ZodiacsOfficial/sdk/9ad6a73984e69b897a6422429fab1970a7c89450/artifacts/zodiacs-engine-0.1.1-rc.4.tgz)
+was downloaded without credentials at **23:08 UTC** and matches exactly. No
+previous version's bytes were replaced. Pack stdout includes tsup prepack logs;
+the original is retained and its trailing single-package JSON inventory is
+separately parsed, not mislabeled as a JSON-only raw command response.
+
+Actual fresh consumers on **Node 20.20.2 and 22.23.2**, with TypeScript 5.9.3,
+pass root/geo/receipt imports, ordinary calculations, errors, optional dependency
+isolation, rejected fetch/parser recovery, malformed HTTP-200 schema recovery,
+shared rejection identity, cache mutation protection and receipt/redaction
+controls. Separate empty npm configuration and caches were used; installed
+engine trees are real local consumers, not workspace links. Isolated consumer
+advisory audit reports zero.
+[Node 20](evidence/geo-schema/consumer20.log),
+[Node 22](evidence/geo-schema/consumer22.log),
+[audit](evidence/geo-schema/consumer-audit.json.log).
+
+The exact installed packages rc.3 and rc.4 match in **96 synthetic chart cases**
+after excluding only `engineVersion`; ephemeris is 2.1.19 on both. Current-version
+receipt replay also matches, with absent optional input flags normalized to an
+empty array. No numerical rounding or new astronomical-accuracy claim.
+[Probe](evidence/geo-schema/packed-parity.mjs.log),
+[result](evidence/geo-schema/packed-parity.json.log).
+
+Actual **Chrome 152.0.7977.83** passes **20 checks** against the fresh rc.4 consumer,
+after comparing all 22 installed engine files with the archive. With six
+synthetic intercepted HTTP-200 asset requests, index/shard failures recover on
+explicit retry, pending/success caches deduplicate, caller mutation is isolated
+and cached operation remains available offline. Tested requests are GET-only
+fixed resource paths, with no full search/birth sentinels, body or query string.
+The shard path necessarily reveals a normalized initial; this is not a claim
+of zero search information. Tested storage/Intl/other-network attempts and
+cookies are zero, with separate controls proving observers are armed. The
+optional geo graph excludes root/ephemeris/ownership; a separate root graph
+excludes GeoNames. No browser ephemeris calculation or live GeoNames response
+is implied. Owned browser/server are closed.
+
+The initial harness stopped before browser execution because esbuild's virtual
+stdin module key was a normalized relative path; the comparison was corrected
+to resolve it. Original script/log and the successful final source are retained.
+[Browser methodology](evidence/geo-schema/browser/README.md.log),
+[20-check result](evidence/geo-schema/browser/browser-result.json.log),
+[exact delivery evidence inputs](evidence/geo-schema/delivery-inputs.json.log).
+
+Fresh release reads at 23:08 UTC still show site main `7f953e3f`, SDK main
+`b49e0f14`, SDK #5 OPEN/draft at `cced0116`, zero reviews and its explicit hold.
+Public npm engine/widgets lookups return 404; ownership remains 1.0.1. These
+are reviewed-by-model/local-testing facts, not required human review or release
+authorization. Draft PR, npm publication, production and external adoption are
+tracked independently.
+
+Delivered as [draft PR #9](https://github.com/ZodiacsOfficial/sdk/pull/9), stacked
+on #8, with source `d190d97c981c7cacc6eb4ab6a49bdb8451ca3459`, archive carrier
+`9ad6a73984e69b897a6422429fab1970a7c89450` and final browser/evidence checkpoint
+`ef846c82dd284559f1574f69ee901a221a7a722a`. All required local gates above were
+executed. The existing GitHub workflow targets main PRs, so no passing CI for
+this stacked draft is claimed. No merge, npm publication, production release
+or external adoption was performed.

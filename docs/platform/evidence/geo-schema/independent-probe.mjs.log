@@ -1,0 +1,135 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFile, writeFile } from 'node:fs/promises';
+import { createGeoNamesClient } from './geonames.ts';
+import { createGeoNamesClient as baseline } from './geonames-before.ts';
+
+const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
+const indexData = { version: 1, source: 'Synthetic independent review', count: 2,
+  tz: ['UTC'], admin1: [''], countries: ['Synthetic'], shards: ['n', 's'] };
+const north = ['New Synthetic City', 0, 0, 0, 1000, 2000, 0, 5];
+const south = ['South Synthetic City', 0, 0, 0, -1000, -2000, 0, 3];
+const json = value => new Response(JSON.stringify(value));
+const deferred = () => { let resolve, reject; const promise = new Promise((a,b) => {resolve=a;reject=b}); return {promise,resolve,reject}; };
+const tick = () => new Promise(resolve => setImmediate(resolve));
+const observations = [];
+async function check(name, task) {
+  try { observations.push({name, status:'passed', detail: await task() ?? null}); }
+  catch (error) { observations.push({name,status:'failed',error:{name:error.name,message:error.message,stack:error.stack}}); }
+}
+
+await check('Index fanout with retry started from first rejection handler keeps replacement cache', async () => {
+  const first = deferred(), replacement = deferred(); let requests=0;
+  const client = createGeoNamesClient({baseUrl:'https://synthetic.test/data', fetch: async () => {
+    requests++; return requests === 1 ? first.promise : replacement.promise;
+  }});
+  const calls = Array.from({length:12},()=>client.preload());
+  const retry = calls[0].catch(()=>Promise.all([client.preload(),client.preload()]));
+  const failures = Promise.allSettled(calls);
+  assert.equal(requests,1); first.resolve(json({error:'synthetic invalid index'}));
+  const old = await failures; await tick();
+  assert(old.every(x=>x.status==='rejected'&&x.reason===old[0].reason));
+  assert.equal(requests,2);
+  replacement.resolve(json(indexData)); const outputs=await retry;
+  assert.deepEqual(outputs[0],outputs[1]); await tick(); await client.preload();
+  assert.equal(requests,2);
+  return {concurrentInitialCallers:12,indexRequests:requests,sharedOriginalError:true};
+});
+
+await check('Shard rejection/retry interleaving preserves pending successful shard and new retry', async () => {
+  const failed=deferred(),retryResponse=deferred(),other=deferred();const counts={index:0,n:0,s:0};
+  const client=createGeoNamesClient({baseUrl:'https://synthetic.test/data',fetch:async input=>{
+    if(input.endsWith('/index.json')){counts.index++;return json(indexData)}
+    if(input.endsWith('/s.json')){counts.s++;return other.promise}
+    counts.n++;return counts.n===1?failed.promise:retryResponse.promise;
+  }});
+  const southCall=client.searchCities('south');
+  const calls=Array.from({length:9},()=>client.searchCities('new'));
+  const retry=calls[0].catch(()=>Promise.all([client.searchCities('new'),client.searchCities('new s')]));
+  const failures=Promise.allSettled(calls);await tick();
+  assert.deepEqual(counts,{index:1,n:1,s:1});failed.resolve(json([north,null]));
+  const old=await failures;await tick();assert(old.every(x=>x.status==='rejected'&&x.reason===old[0].reason));
+  assert.deepEqual(counts,{index:1,n:2,s:1});
+  other.resolve(json([south]));assert.equal((await southCall)[0].name,south[0]);
+  retryResponse.resolve(json([north]));assert.deepEqual((await retry)[0],(await client.searchCities('new')));
+  await Promise.all([client.preload(),client.searchCities('south'),client.searchCities('new')]);
+  assert.deepEqual(counts,{index:1,n:2,s:1});return counts;
+});
+
+await check('Repeated malformed-JSON and shape failures retry only when caller asks', async () => {
+  let count=0;const responses=[new Response('{bad'),json({error:true}),json({...indexData,tz:[null]}),json(indexData)];
+  const client=createGeoNamesClient({baseUrl:'https://synthetic.test/data',fetch:async()=>responses[count++]});
+  const errors=[];
+  for(let i=0;i<3;i++){
+    const pair=await Promise.allSettled([client.preload(),client.preload()]);
+    assert(pair.every(r=>r.status==='rejected'&&r.reason===pair[0].reason));errors.push(pair[0].reason.name);
+    await tick();assert.equal(count,i+1);
+  }
+  await client.preload();await client.preload();assert.equal(count,4);return{requests:count,errors};
+});
+
+await check('Caller mutations across metadata, fetch-owned tables/rows and city results cannot poison cache', async () => {
+  const idx=structuredClone(indexData),rows=[[...north]];let requests=0;
+  const client=createGeoNamesClient({baseUrl:'https://synthetic.test/data',fetch:async input=>{
+    requests++;return{ok:true,json:async()=>input.endsWith('/index.json')?idx:rows};
+  }});
+  const metadata=await client.preload();const expected=await client.searchCities('new');
+  metadata.timeZones[0]='Modified/Zone';metadata.shards.length=0;idx.tz[0]='Modified/Zone';idx.admin1[0]='Modified';idx.countries[0]='Modified';idx.shards.length=0;
+  rows[0][0]='Changed';rows[0][4]=999999;rows.push(null);
+  const result=await client.searchCities('new');assert.deepEqual(result,expected);result[0].timeZone='Changed';result[0].latitude=99;result.length=0;
+  assert.deepEqual(await client.searchCities('new'),expected);assert.deepEqual((await client.preload()).timeZones,['UTC']);assert.equal(requests,2);
+  return {requests,isolatedLayers:['metadata','fetch-owned index','fetch-owned rows','returned city']};
+});
+
+await check('Validation never coerces hostile scalar coordinate or table-index objects', async () => {
+  let coerced=0;const hostile={valueOf(){coerced++;return 0},toString(){coerced++;return '0'}};
+  for(const position of [2,3,4,5,6,7]){
+    const row=[...north];row[position]=hostile;
+    const client=createGeoNamesClient({baseUrl:'https://synthetic.test/data',fetch:async input=>({ok:true,json:async()=>input.endsWith('/index.json')?indexData:[row]})});
+    await assert.rejects(client.searchCities('new'),{name:'TypeError',message:'Invalid GeoNames shard data.'});
+  }
+  assert.equal(coerced,0);return{positions:[2,3,4,5,6,7],coercions:coerced};
+});
+
+await check('Index table address trap strings are rejected without exposing inherited array members', async () => {
+  const values=['__proto__','constructor','length','0',-1,0.5,1,true,null];let rejected=0;
+  for(const position of [2,3,6])for(const value of values){
+    const row=[...north];row[position]=value;
+    const client=createGeoNamesClient({baseUrl:'https://synthetic.test/data',fetch:async input=>json(input.endsWith('/index.json')?indexData:[row])});
+    await assert.rejects(client.searchCities('new'),{name:'TypeError',message:'Invalid GeoNames shard data.'});rejected++;
+  }
+  return {rejected};
+});
+
+await check('Nested malformed row outside requested prefix and beyond early-break threshold rejects whole shard', async () => {
+  const bad=[...south];bad[6]=5;let requests=0;
+  const client=createGeoNamesClient({baseUrl:'https://synthetic.test/data',fetch:async input=>{
+    requests++;return json(input.endsWith('/index.json')?indexData:[[...north],[...north],[...north],bad]);
+  }});
+  await assert.rejects(client.searchCities('new',1),{name:'TypeError',message:'Invalid GeoNames shard data.'});
+  await assert.rejects(client.searchCities('new',1),{name:'TypeError',message:'Invalid GeoNames shard data.'});assert.equal(requests,3);return {requests};
+});
+
+await check('Boundary-valid synthetic data preserves baseline results, ranking and request ordering', async () => {
+  const idx={...indexData,count:6,tz:['New/Host_Independent_Zone'],countries:[''],shards:['n','0']};
+  const rows={n:[['Nörd','Nord',0,0,9000,-18000,0,900],['New Alpha',0,0,0,-9000,18000,0,500],['New Beta',0,0,0,0,-0,0,100],['Nadir new',0,0,0,100,200,0,10],['New Zero',0,0,0,-100,-200,0,0]],0:[['東京',0,0,0,3568,13976,0,1]]};
+  const run=async factory=>{const calls=[];const client=factory({baseUrl:'https://synthetic.test/data/',fetch:async input=>{calls.push(input);return json(input.endsWith('index.json')?idx:rows[input.at(-6)])}});const results=[];
+    for(const [query,limit]of[['nord',8],['new',1],['new',2],['new',8],['new zero',8],['東京',8],['absent',8],['n',8]])results.push(await client.searchCities(query,limit));
+    return {results,calls};};
+  const before=await run(baseline),after=await run(createGeoNamesClient);assert.deepEqual(after,before);return {queries:8,requestSequence:after.calls.map(url=>new URL(url).pathname)};
+});
+
+await check('Same-realm custom accessors remain trusted code as documented, not a parsed-JSON guarantee', async () => {
+  let reads=0;const table=[];Object.defineProperty(table,'0',{get(){reads++;return 'UTC'},enumerable:true});table.length=1;
+  const client=createGeoNamesClient({baseUrl:'https://synthetic.test/data',fetch:async()=>({ok:true,json:async()=>({...indexData,tz:table})})});
+  assert.deepEqual((await client.preload()).timeZones,['UTC']);assert.equal(reads,1);return{accessorReads:reads,classification:'documented trusted custom-fetch limitation, not a new blocker'};
+});
+
+// A separate turn lets accidental orphaned rejected promises fail under strict mode.
+await tick();
+const result={status:observations.every(x=>x.status==='passed')?'passed':'failed',runtime:process.version,
+  sourceSHA256:sha256(await readFile(new URL('./geonames.ts',import.meta.url))),
+  baselineSHA256:sha256(await readFile(new URL('./geonames-before.ts',import.meta.url))),
+  checks:observations,scope:'Independent fixed synthetic controls; no real place data, shared edits, network, full corpus rerun or publication.'};
+await writeFile(new URL('./result.json',import.meta.url),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify(result,null,2));if(result.status!=='passed')process.exitCode=1;

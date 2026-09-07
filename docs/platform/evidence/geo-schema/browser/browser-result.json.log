@@ -1,0 +1,448 @@
+{
+  "status": "passed",
+  "runtime": {
+    "node": "v22.23.2",
+    "chrome": "152.0.7977.83",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "esbuild": "0.28.1"
+  },
+  "identity": {
+    "consumer": "/var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-vE97u9",
+    "archive": "/private/tmp/zodiacs-platform-geo-schema-package/zodiacs-engine-0.1.1-rc.4.tgz",
+    "archiveSHA256": "0146fdff7abb6b937cf4d66b4cdaf0c80ecf238ea71f1f4f9fb27eae687a0d20",
+    "version": "0.1.1-rc.4",
+    "archiveMembersVerified": 22,
+    "geoBundleSHA256": "0abf46b478de149b65b59e9718f201189c0741fc7a841bb1bf4b3751ce1c5408",
+    "rootBundleSHA256": "3228476c106b9ae08f6e783c476882b564132778c8ea95bc1b10e1f55082aa58"
+  },
+  "checks": [
+    {
+      "name": "Storage and fetch observers detect explicit negative controls",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Public optional geo exports contain no engine root or ownership API",
+      "pass": true,
+      "detail": [
+        "createGeoNamesClient",
+        "offsetAt",
+        "resolveBirth",
+        "resolveLocalToUtc"
+      ]
+    },
+    {
+      "name": "Concurrent index calls issue one pending request",
+      "pass": true,
+      "detail": {
+        "index": 1,
+        "n": 0,
+        "s": 0,
+        "zero": 0
+      }
+    },
+    {
+      "name": "Malformed HTTP200 index rejects all callers with one fixed schema error",
+      "pass": true,
+      "detail": {
+        "errors": [
+          {
+            "status": "rejected",
+            "name": "TypeError",
+            "message": "Invalid GeoNames index data."
+          },
+          {
+            "status": "rejected",
+            "name": "TypeError",
+            "message": "Invalid GeoNames index data."
+          },
+          {
+            "status": "rejected",
+            "name": "TypeError",
+            "message": "Invalid GeoNames index data."
+          }
+        ],
+        "same": true
+      }
+    },
+    {
+      "name": "Index rejection causes no automatic retry",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Explicit index retry is shared while pending",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Concurrent searches share pending shard after cached index",
+      "pass": true,
+      "detail": {
+        "index": 2,
+        "n": 1,
+        "s": 1,
+        "zero": 0
+      }
+    },
+    {
+      "name": "Malformed HTTP200 shard rejects with fixed error before partial result",
+      "pass": true,
+      "detail": {
+        "errors": [
+          {
+            "status": "rejected",
+            "name": "TypeError",
+            "message": "Invalid GeoNames shard data."
+          },
+          {
+            "status": "rejected",
+            "name": "TypeError",
+            "message": "Invalid GeoNames shard data."
+          }
+        ],
+        "same": true
+      }
+    },
+    {
+      "name": "Shard rejection causes no automatic retry",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Explicit shard retry deduplicates and does not evict index or other pending shard",
+      "pass": true,
+      "detail": {
+        "index": 2,
+        "n": 2,
+        "s": 1,
+        "zero": 0
+      }
+    },
+    {
+      "name": "Later explicit retry succeeds and successful results stay cached",
+      "pass": true,
+      "detail": {
+        "sameNorth": true,
+        "storedNorth": true,
+        "metadata": {
+          "version": 1,
+          "source": "Synthetic intercepted GeoNames",
+          "count": 2,
+          "timeZones": [
+            "UTC"
+          ],
+          "shards": [
+            "n",
+            "s",
+            "0"
+          ]
+        },
+        "south": [
+          {
+            "name": "South Synthetic City",
+            "admin1": "",
+            "country": "Synthetic",
+            "latitude": -10,
+            "longitude": -20,
+            "timeZone": "UTC",
+            "population": 5
+          }
+        ],
+        "southAgain": [
+          {
+            "name": "South Synthetic City",
+            "admin1": "",
+            "country": "Synthetic",
+            "latitude": -10,
+            "longitude": -20,
+            "timeZone": "UTC",
+            "population": 5
+          }
+        ]
+      }
+    },
+    {
+      "name": "Caller metadata and city mutation do not alter cache",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Successful caches avoid subsequent requests",
+      "pass": true,
+      "detail": {
+        "index": 2,
+        "n": 2,
+        "s": 1,
+        "zero": 0
+      }
+    },
+    {
+      "name": "Sentinel searches fetch only existing fixed shard resources",
+      "pass": true,
+      "detail": {
+        "index": 2,
+        "n": 2,
+        "s": 1,
+        "zero": 1
+      }
+    },
+    {
+      "name": "Cached operations work offline without network attempts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "No storage, cookie, other-network or Intl capability attempted by geo client",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "No browser cookies written",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Geo requests contain only fixed resource paths, no full query/birth strings or request bodies",
+      "pass": true,
+      "detail": [
+        {
+          "url": "/data/index.json",
+          "method": "GET",
+          "postData": null,
+          "type": "fetch"
+        },
+        {
+          "url": "/data/index.json",
+          "method": "GET",
+          "postData": null,
+          "type": "fetch"
+        },
+        {
+          "url": "/data/n.json",
+          "method": "GET",
+          "postData": null,
+          "type": "fetch"
+        },
+        {
+          "url": "/data/s.json",
+          "method": "GET",
+          "postData": null,
+          "type": "fetch"
+        },
+        {
+          "url": "/data/n.json",
+          "method": "GET",
+          "postData": null,
+          "type": "fetch"
+        },
+        {
+          "url": "/data/0.json",
+          "method": "GET",
+          "postData": null,
+          "type": "fetch"
+        }
+      ]
+    },
+    {
+      "name": "Schema error diagnostics contain no supplied payload secret",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught browser errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "observations": {
+    "offlineFetchCalls": 0,
+    "blocked": [],
+    "fetchCalls": [
+      {
+        "url": "http://127.0.0.1:60826/data/index.json",
+        "method": "GET",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:60826/data/index.json",
+        "method": "GET",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:60826/data/n.json",
+        "method": "GET",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:60826/data/s.json",
+        "method": "GET",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:60826/data/n.json",
+        "method": "GET",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:60826/data/0.json",
+        "method": "GET",
+        "body": null
+      }
+    ],
+    "meta": {
+      "version": 1,
+      "source": "Synthetic intercepted GeoNames",
+      "count": 2,
+      "timeZones": [
+        "UTC"
+      ],
+      "shards": [
+        "n",
+        "s",
+        "0"
+      ]
+    },
+    "cities": [
+      {
+        "name": "New Synthetic City",
+        "admin1": "",
+        "country": "Synthetic",
+        "latitude": 10,
+        "longitude": 20,
+        "timeZone": "UTC",
+        "population": 10
+      }
+    ]
+  },
+  "observerControls": {
+    "blocked": [
+      "localStorage"
+    ],
+    "fetchCalls": [
+      {
+        "url": "/observer-check",
+        "method": "GET",
+        "body": null
+      }
+    ]
+  },
+  "counts": {
+    "index": 2,
+    "n": 2,
+    "s": 1,
+    "zero": 1
+  },
+  "intercepted": [
+    {
+      "path": "/data/index.json",
+      "sequence": 1,
+      "status": 200
+    },
+    {
+      "path": "/data/index.json",
+      "sequence": 2,
+      "status": 200
+    },
+    {
+      "path": "/data/n.json",
+      "sequence": 1,
+      "status": 200
+    },
+    {
+      "path": "/data/s.json",
+      "sequence": 1,
+      "status": 200
+    },
+    {
+      "path": "/data/n.json",
+      "sequence": 2,
+      "status": 200
+    },
+    {
+      "path": "/data/0.json",
+      "sequence": 1,
+      "status": 200
+    }
+  ],
+  "requests": [
+    {
+      "url": "/",
+      "method": "GET",
+      "postData": null,
+      "type": "document"
+    },
+    {
+      "url": "/observer-check",
+      "method": "GET",
+      "postData": null,
+      "type": "fetch"
+    },
+    {
+      "url": "/geo.js",
+      "method": "GET",
+      "postData": null,
+      "type": "script"
+    },
+    {
+      "url": "/data/index.json",
+      "method": "GET",
+      "postData": null,
+      "type": "fetch"
+    },
+    {
+      "url": "/data/index.json",
+      "method": "GET",
+      "postData": null,
+      "type": "fetch"
+    },
+    {
+      "url": "/data/n.json",
+      "method": "GET",
+      "postData": null,
+      "type": "fetch"
+    },
+    {
+      "url": "/data/s.json",
+      "method": "GET",
+      "postData": null,
+      "type": "fetch"
+    },
+    {
+      "url": "/data/n.json",
+      "method": "GET",
+      "postData": null,
+      "type": "fetch"
+    },
+    {
+      "url": "/data/0.json",
+      "method": "GET",
+      "postData": null,
+      "type": "fetch"
+    }
+  ],
+  "serverRequests": [
+    {
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "method": "GET",
+      "path": "/geo.js"
+    }
+  ],
+  "errors": [],
+  "cleanup": {
+    "browserClosed": true,
+    "contextClosed": true,
+    "serverClosed": true,
+    "authenticationCopied": false
+  },
+  "limitations": [
+    "Synthetic intercepted HTTP200 responses, not live GeoNames assets or external adoption",
+    "Search shard selection necessarily reveals its normalized initial; no full query/birth value was transmitted in these controls",
+    "Metadata/schema checks do not authenticate dataset generation or geographic facts",
+    "Root isolation is a separate bundle-graph check; no ownership or ephemeris calculation is executed in this browser probe",
+    "No response-size/row-count budget or universal custom-fetch sandbox is claimed"
+  ]
+}

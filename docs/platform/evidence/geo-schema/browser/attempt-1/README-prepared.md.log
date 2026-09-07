@@ -1,0 +1,20 @@
+# Prepared packed GeoNames Chrome probe
+
+`browser-probe.mjs` is prepared for the final packed candidate. It has not yet been executed against a candidate. The required consumer directory, engine archive, expected SHA256 and expected package version must be provided explicitly; the harness never resolves SDK workspace source or dist.
+
+```sh
+GEO_PACKED_CONSUMER_DIR=/path/to/final/consumer \
+GEO_PACKED_ARCHIVE=/path/to/zodiacs-engine-candidate.tgz \
+GEO_PACKED_SHA256=expected_sha256 \
+GEO_PACKED_VERSION=expected_version \
+/private/tmp/zodiacs-platform-runtime/node_modules/node/bin/node \
+  /private/tmp/zodiacs-platform-geo-browser-review/browser-probe.mjs
+```
+
+The probe compares all archive members with the installed engine, bundles the public optional geo entry using the existing pinned esbuild 0.28.1, and records exact bundle/input hashes. A separate root bundle verifies that the root does not import GeoNames; geo's graph must contain neither the engine root/ephemeris nor ownership code. This performs no package source build and writes only scratch output.
+
+A fresh actual Chrome context loads a loopback page and the bundled geo entry. Real fetch calls are intercepted with synthetic HTTP200 index/shard responses and explicit pending gates. The sequence checks fixed schema failures, explicit retry, concurrent and successful cache reuse, metadata/result mutation isolation, fixed resource paths, blocked storage and other network capabilities, and cached offline execution. A control intentionally touches blocked storage and makes one observer request before the tested operations so the observers are demonstrated active. Its results are kept separate.
+
+The network claim is deliberately precise: these controls must not transmit full search strings, synthetic birth text, request bodies or query parameters. The chosen shard path reveals the normalized initial, as the existing client contract requires. This is not a claim of zero information about a search reaching its asset host.
+
+Owned context, browser and server close in `finally`. Responses, charts and labels are synthetic. The harness is bounded to this recovery/cache/privacy path, not a complete browser matrix, live dataset compatibility, package publication or external onboarding.

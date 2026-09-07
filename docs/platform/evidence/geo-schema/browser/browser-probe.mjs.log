@@ -1,0 +1,208 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFile, writeFile } from 'node:fs/promises';
+import { createServer } from 'node:http';
+import { dirname, join, resolve, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { build, version as esbuildVersion } from '/Users/chiburashka/.codex/worktrees/4806/site/node_modules/esbuild/lib/main.js';
+import { chromium } from '/Users/chiburashka/.codex/worktrees/4806/site/node_modules/playwright-core/index.mjs';
+import { findChromium, STABLE_CHROMIUM_ARGS } from '/Users/chiburashka/.codex/worktrees/4806/site/tests/visual/browser.mjs';
+import { readPackageArchive } from '/Users/chiburashka/.codex/worktrees/4806/site/scripts/verify-platform-starter.mjs';
+
+// Required inputs ensure this harness cannot silently run against SDK workspace dist.
+const consumer = process.env.GEO_PACKED_CONSUMER_DIR;
+const archive = process.env.GEO_PACKED_ARCHIVE;
+const expectedSHA256 = process.env.GEO_PACKED_SHA256;
+const expectedVersion = process.env.GEO_PACKED_VERSION;
+assert(consumer && archive && expectedVersion && /^[a-f0-9]{64}$/.test(expectedSHA256 ?? ''), 'Final consumer, archive, version and SHA256 are required');
+const out = dirname(fileURLToPath(import.meta.url));
+const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+const installed = join(consumer, 'node_modules/@zodiacs/engine');
+const archiveBytes = await readFile(archive);
+assert.equal(hash(archiveBytes), expectedSHA256);
+const members = readPackageArchive(archiveBytes);
+for (const [name, bytes] of members) assert.deepEqual(await readFile(join(installed, name)), bytes, `Installed bytes match archive: ${name}`);
+const manifest = JSON.parse(await readFile(join(installed, 'package.json'), 'utf8'));
+assert.equal(manifest.name, '@zodiacs/engine');
+assert.equal(manifest.version, expectedVersion);
+assert.equal(esbuildVersion, '0.28.1');
+
+async function bundle(entry, label) {
+  const result = await build({
+    absWorkingDir: consumer,
+    stdin: { contents: `export * from ${JSON.stringify(entry)};`, resolveDir: consumer, sourcefile: `${label}-public-entry.mjs` },
+    bundle: true, platform: 'browser', format: 'esm', target: 'es2022', write: false, metafile: true, minify: false
+  });
+  assert.equal(result.outputFiles.length, 1);
+  const inputs = [];
+  for (const [name, facts] of Object.entries(result.metafile.inputs)) {
+    const path = resolve(consumer, name);
+    if (path === join(consumer, `${label}-public-entry.mjs`)) continue;
+    assert(!name.includes('@zodiacs/sdk') && !/solana|wallet|ownership|web3/i.test(name), 'No ownership/wallet graph imported');
+    inputs.push({ file: relative(consumer, path), sha256: hash(await readFile(path)), imports: facts.imports });
+  }
+  return { code: result.outputFiles[0].text, sha256: hash(result.outputFiles[0].contents), inputs, metafile: result.metafile };
+}
+
+const geo = await bundle('@zodiacs/engine/geo', 'geo');
+const root = await bundle('@zodiacs/engine', 'root');
+assert(geo.inputs.every(input => input.file.startsWith('node_modules/@zodiacs/engine/dist/') && !input.file.endsWith('/index.js')), 'Geo bundle is restricted to installed optional engine modules');
+assert(!geo.code.includes('astronomy-engine') && !geo.code.includes('function natalChart') && !geo.code.includes('getCrossChainZodiacsOwnership'), 'Geo imports neither ephemeris, engine root nor ownership execution');
+assert(!root.code.includes('createGeoNamesClient') && !root.code.includes('Invalid GeoNames'), 'Public root does not pull GeoNames implementation');
+assert(!root.inputs.some(input => input.file.endsWith('/geo.js')), 'Public root graph omits optional geo entry');
+await writeFile(join(out, 'geo.bundle.js'), geo.code);
+await writeFile(join(out, 'bundle-graphs.json'), JSON.stringify({esbuild:esbuildVersion, geo:{sha256:geo.sha256,inputs:geo.inputs,metafile:geo.metafile}, root:{sha256:root.sha256,inputs:root.inputs,metafile:root.metafile}}, null, 2)+'\n');
+
+const html = '<!doctype html><html lang="en"><meta charset="utf-8"><link rel="icon" href="data:,"><title>Synthetic packed geo browser probe</title><body><h1>Synthetic packed geo browser probe</h1><p id="status">Preparing controlled requests.</p></body></html>';
+const assets = new Map([['/', {type:'text/html',body:html}], ['/geo.js',{type:'text/javascript',body:geo.code}]]);
+const serverRequests = [], browserRequests = [], intercepted = [], errors = [], checks = [];
+const counts = {index:0,n:0,s:0,zero:0};
+const pending = new Map();
+function gate(name) {
+  let release, start;
+  const released = new Promise(resolve => { release=resolve; });
+  const started = new Promise(resolve => { start=resolve; });
+  const item={release,start,started,released}; pending.set(name,item); return item;
+}
+for (const name of ['index1','index2','n1','n2','s1']) gate(name);
+async function started(name) {
+  let timer;
+  try { await Promise.race([pending.get(name).started,new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error(`Expected request did not start: ${name}`)),10000)})]); }
+  finally { clearTimeout(timer); }
+}
+function check(name, pass, detail=null) { checks.push({name,pass:Boolean(pass),detail}); assert(pass,name); }
+const syntheticIndex={version:1,source:'Synthetic intercepted GeoNames',count:2,tz:['UTC'],admin1:[''],countries:['Synthetic'],shards:['n','s','0']};
+const north=['New Synthetic City',0,0,0,1000,2000,0,10];
+const south=['South Synthetic City',0,0,0,-1000,-2000,0,5];
+const server=createServer((request,response)=>{
+  serverRequests.push({method:request.method,path:request.url});
+  const asset=assets.get(request.url);
+  if(request.method!=='GET'||!asset){response.writeHead(404).end();return;}
+  response.writeHead(200,{'Content-Type':`${asset.type}; charset=utf-8`,'Cache-Control':'no-store','Content-Security-Policy':"default-src 'none'; script-src 'self'; connect-src 'self'; img-src data:; base-uri 'none'; form-action 'none'"});
+  response.end(asset.body);
+});
+let browser, context, page, baseURL;
+const cleanup={browserClosed:false,contextClosed:false,serverClosed:false,authenticationCopied:false};
+let status='failed', failure, observations, observerControls, runtime;
+try {
+  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve)});
+  baseURL=`http://127.0.0.1:${server.address().port}`;
+  const executablePath=await findChromium();
+  browser=await chromium.launch({executablePath,headless:true,args:STABLE_CHROMIUM_ARGS});
+  runtime={node:process.version,chrome:browser.version(),executablePath,esbuild:esbuildVersion};
+  context=await browser.newContext({viewport:{width:1000,height:700},reducedMotion:'reduce'});
+  context.on('request',request=>browserRequests.push({url:request.url(),method:request.method(),postData:request.postData(),type:request.resourceType()}));
+  await context.route('**/*',async route=>{
+    const request=route.request(),url=new URL(request.url());
+    if(url.origin!==baseURL){await route.abort();return;}
+    if(assets.has(url.pathname)&&url.search===''){await route.continue();return;}
+    if(url.pathname==='/observer-check'&&url.search===''){await route.fulfill({status:204});return;}
+    const key={'/data/index.json':'index','/data/n.json':'n','/data/s.json':'s','/data/0.json':'zero'}[url.pathname];
+    if(!key||url.search||request.method()!=='GET'){await route.abort();return;}
+    const sequence=++counts[key];
+    const record={path:url.pathname,sequence,status:200};intercepted.push(record);
+    const waiting=pending.get(`${key}${sequence}`);
+    if(waiting){waiting.start();await waiting.released;}
+    let value;
+    if(key==='index') value=sequence===1?{error:'SYNTHETIC_SCHEMA_SECRET',count:2}:syntheticIndex;
+    else if(key==='n') value=sequence===1?[north,['Other Synthetic',0,0,0,1000,2000,9,0]]:[north];
+    else if(key==='s')value=[south];else value=[];
+    await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(value),headers:{'cache-control':'no-store'}});
+  });
+  await context.addInitScript(()=>{
+    window.__blocked=[],window.__fetchCalls=[];
+    const blocked=name=>function(){window.__blocked.push(name);throw new Error('Blocked synthetic capability')};
+    for(const name of ['localStorage','sessionStorage','indexedDB','caches'])Object.defineProperty(window,name,{configurable:true,get:blocked(name)});
+    for(const name of ['XMLHttpRequest','WebSocket','EventSource'])Object.defineProperty(window,name,{configurable:true,value:blocked(name)});
+    Object.defineProperty(navigator,'sendBeacon',{configurable:true,value:blocked('sendBeacon')});
+    Object.defineProperty(navigator,'serviceWorker',{configurable:true,get:blocked('serviceWorker')});
+    Object.defineProperty(document,'cookie',{configurable:true,get:blocked('cookie-read'),set:blocked('cookie-write')});
+    const nativeFetch=window.fetch.bind(window);
+    window.fetch=(input,options)=>{window.__fetchCalls.push({url:typeof input==='string'?input:String(input.url??input),method:options?.method??'GET',body:options?.body??null});return nativeFetch(input,options)};
+  });
+  page=await context.newPage();page.on('pageerror',error=>errors.push(error.message));
+  await page.goto(baseURL,{waitUntil:'load'});
+  observerControls=await page.evaluate(async()=>{
+    try{void localStorage}catch{}
+    await fetch('/observer-check');
+    const result={blocked:[...window.__blocked],fetchCalls:[...window.__fetchCalls]};
+    window.__blocked.length=0;window.__fetchCalls.length=0;return result;
+  });
+  check('Storage and fetch observers detect explicit negative controls',observerControls.blocked.join()==='localStorage'&&observerControls.fetchCalls.length===1);
+  await page.evaluate(async()=>{
+    Object.defineProperty(window,'Intl',{configurable:true,get(){window.__blocked.push('Intl');throw new Error('Blocked synthetic capability')}});
+    window.__geo=await import('/geo.js');
+  });
+  const exports=await page.evaluate(()=>Object.keys(window.__geo).sort());
+  check('Public optional geo exports contain no engine root or ownership API',JSON.stringify(exports)===JSON.stringify(['createGeoNamesClient','offsetAt','resolveBirth','resolveLocalToUtc']),exports);
+  await page.evaluate(base=>{
+    window.__client=window.__geo.createGeoNamesClient({baseUrl:base+'/data'});
+    window.__initial=Promise.allSettled([window.__client.preload(),window.__client.searchCities('new'),window.__client.preload()]);
+  },baseURL);
+  await started('index1');check('Concurrent index calls issue one pending request',counts.index===1&&counts.n===0,{...counts});pending.get('index1').release();
+  const initial=await page.evaluate(async()=>{const r=await window.__initial;return{errors:r.map(x=>({status:x.status,name:x.reason?.name,message:x.reason?.message})),same:r.every(x=>x.reason===r[0].reason)}});
+  check('Malformed HTTP200 index rejects all callers with one fixed schema error',initial.same&&initial.errors.every(x=>x.status==='rejected'&&x.name==='TypeError'&&x.message==='Invalid GeoNames index data.'),initial);
+  check('Index rejection causes no automatic retry',counts.index===1);
+  await page.evaluate(()=>{
+    window.__retryIndex=Promise.all([window.__client.preload(),window.__client.preload()]);
+    window.__north=Promise.allSettled([window.__client.searchCities('new'),window.__client.searchCities('new synthetic')]);
+    window.__south=window.__client.searchCities('south');
+  });
+  await started('index2');check('Explicit index retry is shared while pending',counts.index===2);pending.get('index2').release();
+  await Promise.all([started('n1'),started('s1')]);
+  check('Concurrent searches share pending shard after cached index',counts.n===1&&counts.s===1&&counts.index===2,{...counts});
+  pending.get('n1').release();
+  const invalidShard=await page.evaluate(async()=>{const r=await window.__north;return{errors:r.map(x=>({status:x.status,name:x.reason?.name,message:x.reason?.message})),same:r.every(x=>x.reason===r[0].reason)}});
+  check('Malformed HTTP200 shard rejects with fixed error before partial result',invalidShard.same&&invalidShard.errors.every(x=>x.status==='rejected'&&x.name==='TypeError'&&x.message==='Invalid GeoNames shard data.'),invalidShard);
+  check('Shard rejection causes no automatic retry',counts.n===1);
+  await page.evaluate(()=>{window.__retryNorth=Promise.all([window.__client.searchCities('new'),window.__client.searchCities('new synthetic')]);window.__cachedPreload=window.__client.preload()});
+  await started('n2');check('Explicit shard retry deduplicates and does not evict index or other pending shard',counts.index===2&&counts.n===2&&counts.s===1,{...counts});
+  pending.get('s1').release();pending.get('n2').release();
+  const recovered=await page.evaluate(async()=>{
+    const [metadata,north,south]=await Promise.all([window.__retryIndex,window.__retryNorth,window.__south]);
+    const before=JSON.stringify(north[0]);
+    metadata[0].timeZones[0]='Mutated/Zone';metadata[0].shards.length=0;north[0][0].latitude=99;
+    const [metadataAgain,northAgain,southAgain]=await Promise.all([window.__client.preload(),window.__client.searchCities('new'),window.__client.searchCities('south')]);
+    return{sameNorth:JSON.stringify(north[1])===before,storedNorth:JSON.stringify(northAgain)===before,metadata:metadataAgain,south,southAgain};
+  });
+  check('Later explicit retry succeeds and successful results stay cached',recovered.sameNorth&&recovered.storedNorth&&recovered.south[0].name==='South Synthetic City'&&JSON.stringify(recovered.south)===JSON.stringify(recovered.southAgain),recovered);
+  check('Caller metadata and city mutation do not alter cache',recovered.metadata.timeZones[0]==='UTC'&&JSON.stringify(recovered.metadata.shards)==='["n","s","0"]');
+  check('Successful caches avoid subsequent requests',counts.index===2&&counts.n===2&&counts.s===1,{...counts});
+  await page.evaluate(async()=>{
+    await window.__client.searchCities('New SYNTHETIC_QUERY_SENTINEL');
+    await window.__client.searchCities('2001-02-03T08:30:00Z SYNTHETIC_BIRTH_SENTINEL');
+  });
+  check('Sentinel searches fetch only existing fixed shard resources',counts.zero===1&&counts.n===2&&counts.index===2,{...counts});
+  const beforeOffline=browserRequests.length;
+  await context.setOffline(true);
+  observations=await page.evaluate(async()=>{
+    const before=window.__fetchCalls.length;
+    const [meta,cities]=await Promise.all([window.__client.preload(),window.__client.searchCities('new'),window.__client.searchCities('south')]);
+    const result={offlineFetchCalls:window.__fetchCalls.length-before,blocked:[...window.__blocked],fetchCalls:[...window.__fetchCalls],meta,cities};
+    document.getElementById('status').textContent='Synthetic malformed-index/shard recovery, deduplication and cache-isolation checks passed using the installed candidate. Cached operations work offline.';
+    return result;
+  });
+  check('Cached operations work offline without network attempts',observations.offlineFetchCalls===0&&browserRequests.length===beforeOffline);
+  check('No storage, cookie, other-network or Intl capability attempted by geo client',observations.blocked.length===0,observations.blocked);
+  check('No browser cookies written',JSON.stringify(await context.cookies())==='[]');
+  const dataRequests=browserRequests.filter(request=>new URL(request.url).pathname.startsWith('/data/'));
+  check('Geo requests contain only fixed resource paths, no full query/birth strings or request bodies',dataRequests.length===6&&dataRequests.every(request=>request.method==='GET'&&request.postData===null&&new URL(request.url).origin===baseURL&&new URL(request.url).search===''&&/^\/data\/(?:index|[ns0])\.json$/.test(new URL(request.url).pathname))&&!JSON.stringify(dataRequests).includes('SYNTHETIC_')&&!JSON.stringify(observations.fetchCalls).includes('SYNTHETIC_'),dataRequests.map(request=>({...request,url:new URL(request.url).pathname})));
+  check('Schema error diagnostics contain no supplied payload secret',!JSON.stringify([initial,invalidShard]).includes('SYNTHETIC_SCHEMA_SECRET'));
+  check('No uncaught browser errors',errors.length===0,errors);
+  await page.screenshot({path:join(out,'browser-probe.png'),fullPage:true,animations:'disabled'});
+  status='passed';
+} catch(error) {
+  failure={name:error.name,message:error.message,stack:error.stack};
+  if(page)try{await page.screenshot({path:join(out,'failure.png')})}catch{}
+} finally {
+  for(const item of pending.values())item.release();
+  if(context){await context.close();cleanup.contextClosed=true}
+  if(browser){await browser.close();cleanup.browserClosed=true}
+  if(server.listening){await new Promise((resolve,reject)=>server.close(error=>error?reject(error):resolve()));cleanup.serverClosed=true}
+  const report={status,runtime,identity:{consumer,archive,archiveSHA256:hash(archiveBytes),version:manifest.version,archiveMembersVerified:members.size,geoBundleSHA256:geo.sha256,rootBundleSHA256:root.sha256},checks,observations,observerControls,counts,intercepted,
+    requests:browserRequests.map(request=>({...request,url:baseURL&&request.url.startsWith(baseURL)?new URL(request.url).pathname:request.url})),serverRequests,errors,cleanup,failure,
+    limitations:['Synthetic intercepted HTTP200 responses, not live GeoNames assets or external adoption','Search shard selection necessarily reveals its normalized initial; no full query/birth value was transmitted in these controls','Metadata/schema checks do not authenticate dataset generation or geographic facts','Root isolation is a separate bundle-graph check; no ownership or ephemeris calculation is executed in this browser probe','No response-size/row-count budget or universal custom-fetch sandbox is claimed']};
+  await writeFile(join(out,'browser-result.json'),JSON.stringify(report,null,2)+'\n');
+  console.log(JSON.stringify({status,checks:checks.length,failed:checks.filter(check=>!check.pass),failure,cleanup,result:join(out,'browser-result.json')},null,2));
+  if(status!=='passed')process.exitCode=1;
+}

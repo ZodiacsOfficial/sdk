@@ -1,0 +1,52 @@
+# Executed packed GeoNames Chrome probe
+
+`browser-probe.mjs` passed **20/20 checks** against the final fresh installed `@zodiacs/engine` `0.1.1-rc.4` consumer. Actual runtime: Node 22.23.2, Chrome 152.0.7977.83, esbuild 0.28.1. All 22 installed package files were checked byte-for-byte against the archive before bundling. The harness never resolves SDK workspace source or dist.
+
+```sh
+GEO_PACKED_CONSUMER_DIR=/var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-vE97u9 \
+GEO_PACKED_ARCHIVE=/private/tmp/zodiacs-platform-geo-schema-package/zodiacs-engine-0.1.1-rc.4.tgz \
+GEO_PACKED_SHA256=0146fdff7abb6b937cf4d66b4cdaf0c80ecf238ea71f1f4f9fb27eae687a0d20 \
+GEO_PACKED_VERSION=0.1.1-rc.4 \
+/private/tmp/zodiacs-platform-runtime/node_modules/node/bin/node \
+  /private/tmp/zodiacs-platform-geo-browser-review/browser-probe.mjs \
+  > /private/tmp/zodiacs-platform-geo-browser-review/browser-probe.log 2>&1
+```
+
+The probe compares all archive members with the installed engine, bundles the public optional geo entry using the existing pinned esbuild 0.28.1, and records exact bundle/input hashes. A separate root bundle verifies that the root does not import GeoNames; geo's graph must contain neither the engine root/ephemeris nor ownership code. This performs no package source build and writes only scratch output.
+
+The integrator supplied source commit `d190d97c981c7cacc6eb4ab6a49bdb8451ca3459` for the candidate. This browser run binds execution to the actual archive bytes and installed files; it does not derive or authenticate source-to-artifact provenance from that claim.
+
+A fresh actual Chrome context loads a loopback page and the bundled geo entry. Real fetch calls are intercepted with synthetic HTTP200 index/shard responses and explicit pending gates. The sequence checks fixed schema failures, explicit retry, concurrent and successful cache reuse, metadata/result mutation isolation, fixed resource paths, blocked storage and other network capabilities, and cached offline execution. A control intentionally touches blocked storage and makes one observer request before the tested operations so the observers are demonstrated active. Its results are kept separate.
+
+The network claim is deliberately precise: these controls must not transmit full search strings, synthetic birth text, request bodies or query parameters. The chosen shard path reveals the normalized initial, as the existing client contract requires. This is not a claim of zero information about a search reaching its asset host.
+
+Owned context, browser and server close in `finally`. Responses, charts and labels are synthetic. The harness is bounded to this recovery/cache/privacy path, not a complete browser matrix, live dataset compatibility, package publication or external onboarding.
+
+## Observed results and evidence
+
+- Invalid HTTP200 index and shard responses produced their fixed TypeError messages, shared by current callers. No retry occurred until another explicit call.
+- Pending callers shared the index/shard request. Retrying the failed shard retained the valid index and the other pending shard. Successful responses remained cached.
+- Metadata and city-result mutation did not modify cached data. Cached operations worked after Chrome was switched offline, without another fetch attempt.
+- Six intercepted data requests were observed: index twice, `n` shard twice, `s` once, `0` once. They were GET requests to the expected local paths, without request bodies, query parameters or complete supplied sentinel strings.
+- Storage/cookie/other-network/Intl guards observed no attempt during client operations; an earlier intentional negative control proved the storage and fetch observers were active. Cookies and uncaught page errors remained empty.
+- The owned context, browser and server closed successfully. No authentication state was copied.
+
+`browser-result.json` contains the finite acceptance record, request sequence, negative-control observations, hashes, runtime and cleanup. `bundle-graphs.json` records both build graphs and each actual installed input hash. `browser-probe.png` is a raw browser capture of the completed synthetic test page, inspected after execution; it is a status artifact, not a product-design capture.
+
+SHA256 records:
+
+| File | SHA256 |
+| --- | --- |
+| `browser-probe.mjs` | `0ae09bc477900f532e17f285be1ad1fbb5617b029d82e4fca670d121495d5f3f` |
+| `browser-result.json` | `86a52f4b7a789a95e2eb47fbf50d70bbde882e4d0aa7679947fb615b0915f445` |
+| `bundle-graphs.json` | `8f6d9d1bc41abbeaa37277a17adef18379245101a82544b708db98da24f2a965` |
+| `geo.bundle.js` | `0abf46b478de149b65b59e9718f201189c0741fc7a841bb1bf4b3751ce1c5408` |
+| `browser-probe.png` | `6aebbc8b38145486ce99d8f2707089fa092dd2e61852d8073144de3dffd0b096` |
+
+## Preserved harness adjustment
+
+The first attempt stopped before server/browser launch with ENOENT while hashing the esbuild virtual stdin entry. Its original harness and raw log are preserved in `attempt-1/`. Esbuild represented that virtual entry as a normalized relative path rather than the literal sourcefile name; the evidence collector incorrectly tried to read it from disk.
+
+The sole harness code adjustment moved the virtual-entry comparison after `resolve(consumer, name)` and compared it with the known virtual absolute path. No package or SDK code changed, and no assertion about runtime behavior was relaxed. A source-independent metafile inspection established the exact representation before correction. The final browser invocation used the approved owned-loopback/browser escalation and exited 0 in approximately 4.5 seconds. No broader matrix was repeated.
+
+Copy the harness into a new scratch directory before rerunning if these records must be retained, since its output directory is derived from its own location.

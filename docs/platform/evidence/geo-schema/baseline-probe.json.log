@@ -1,0 +1,197 @@
+{
+  "source": "packages/engine/src/geo/geonames.ts",
+  "runtime": "v22.23.2",
+  "observedAt": "2026-09-07T22:47:20.450Z",
+  "scope": "Synthetic local fetch only; no network",
+  "runs": [
+    {
+      "label": "temporary index error envelope",
+      "requests": [
+        "index"
+      ],
+      "calls": [
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Cannot read properties of undefined (reading 'includes')"
+        },
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Cannot read properties of undefined (reading 'includes')"
+        },
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Cannot read properties of undefined (reading 'includes')"
+        }
+      ]
+    },
+    {
+      "label": "partial index upload",
+      "requests": [
+        "index",
+        "shard"
+      ],
+      "calls": [
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Cannot read properties of null (reading '0')"
+        },
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Cannot read properties of null (reading '0')"
+        },
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Cannot read properties of null (reading '0')"
+        }
+      ]
+    },
+    {
+      "label": "temporary shard error envelope",
+      "requests": [
+        "index",
+        "shard"
+      ],
+      "calls": [
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "rows is not iterable"
+        },
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "rows is not iterable"
+        },
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "rows is not iterable"
+        }
+      ]
+    },
+    {
+      "label": "string coordinate shard",
+      "requests": [
+        "index",
+        "shard"
+      ],
+      "calls": [
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "prototype table index shard",
+      "requests": [
+        "index",
+        "shard"
+      ],
+      "calls": [
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": [],
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": [],
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": [],
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "preload caller mutation",
+      "metadataAfter": {
+        "version": 1,
+        "source": "Synthetic observation only",
+        "count": 1,
+        "timeZones": [
+          "Injected/Zone"
+        ],
+        "shards": []
+      },
+      "citiesAfter": [],
+      "requests": [
+        "https://example.test/cities/index.json"
+      ]
+    }
+  ]
+}
