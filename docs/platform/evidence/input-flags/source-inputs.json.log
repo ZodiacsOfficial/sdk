@@ -1,0 +1,107 @@
+[
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/REVIEW.md",
+    "stored": "docs/platform/evidence/input-flags/REVIEW.md.log",
+    "sha256": "03f32708998b2f3169df2da18d8806a3bd8629e3588dca6b66366cd426d3003c"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/summary.json",
+    "stored": "docs/platform/evidence/input-flags/summary.json.log",
+    "sha256": "330a3cf48048288d46c273735f728d4057536b8fdd4f196968ecc56a0b692452"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/input-flags.patch",
+    "stored": "docs/platform/evidence/input-flags/input-flags.patch.log",
+    "sha256": "33f03b34d580b042ee35337d44a62c6ce112980c924c1017a9713db6fbc6f12a"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/probe.mjs",
+    "stored": "docs/platform/evidence/input-flags/probe.mjs.log",
+    "sha256": "20c3bfbc326be39dac12c9231e895f66d628df509cf852f1b6673a83dcecd68f"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/baseline.json",
+    "stored": "docs/platform/evidence/input-flags/baseline.json.log",
+    "sha256": "effa1bef2f2917cc99dcbe53ff82e0e936e1ad86f88a6811d5d3f5a1baa7ef97"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/fixed.json",
+    "stored": "docs/platform/evidence/input-flags/fixed.json.log",
+    "sha256": "54e908e327d07b4394d958482dcef3789ce9b3aab2f083aebfed6e210521e4e6"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/red.log",
+    "stored": "docs/platform/evidence/input-flags/red.log",
+    "sha256": "e0ba573b4f34202ffb7995663aec39d610661d15e20e21b0308c1ef6dbdf57e1"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/red-final-suite.log",
+    "stored": "docs/platform/evidence/input-flags/red-final-suite.log",
+    "sha256": "2f3a4751c21aea5f6dc9fb417ab03986d9f4759b3f6c9c5805d9abe409b4b389"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/engine-tests-final.log",
+    "stored": "docs/platform/evidence/input-flags/engine-tests-final.log",
+    "sha256": "eb09f4159cf0f6d4dea3c0225ec40139471ab07e183d0ccca8868f5b857ecf07"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/typecheck-final.log",
+    "stored": "docs/platform/evidence/input-flags/typecheck-final.log",
+    "sha256": "6948a24e890e6bcf5504b86c01f924d07970a8edb7e57c79735cc870c9f857fe"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/build.log",
+    "stored": "docs/platform/evidence/input-flags/build.log",
+    "sha256": "85afda410a87a1025a6e2c37416c9555920112274fd42e775784a8be512f8df2"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/exports-smoke.log",
+    "stored": "docs/platform/evidence/input-flags/exports-smoke.log",
+    "sha256": "769f53537f9343af7131c2605623c5526d7f1e641039bcb741efd800b3ee5af7"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/geo-build-graph.json",
+    "stored": "docs/platform/evidence/input-flags/geo-build-graph.json.log",
+    "sha256": "5fdc24caf026ac5fd07e8f523e5ae56cdcf1ed5635bd88bac278056ce5c0716e"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-evidence/format-check.log",
+    "stored": "docs/platform/evidence/input-flags/format-check.log",
+    "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-review/REVIEW.md",
+    "stored": "docs/platform/evidence/input-flags/independent-REVIEW.md.log",
+    "sha256": "5080721502d26aa1532e29d54bb31e6d7d2cf90ece2b8233a1633c91423c9971"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-review/PLAN.md",
+    "stored": "docs/platform/evidence/input-flags/independent-PLAN.md.log",
+    "sha256": "a2bfada4f4028891da84056b165a16356919c9e57ed8872aa394191f24c31887"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-review/probe.test.ts",
+    "stored": "docs/platform/evidence/input-flags/independent-probe.test.ts.log",
+    "sha256": "1552a45f075f18a0f0c360f29c5710165b35173340499703a021b2a9550da3ec"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-review/vitest.config.mjs",
+    "stored": "docs/platform/evidence/input-flags/independent-vitest.config.mjs.log",
+    "sha256": "cd24ac24235e0332fac9c34b45904f92c9079a2f5d491bbf38930c31b6111caf"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-review/probe.log",
+    "stored": "docs/platform/evidence/input-flags/independent-probe.log",
+    "sha256": "9fd6997dabd25e8854641b799eae066eac997d637371561835b93cf1fadee6c0"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-review/result.json",
+    "stored": "docs/platform/evidence/input-flags/independent-result.json.log",
+    "sha256": "c07b8c57ed01e2b35ee083f5e7f04946aa69fb137aebed61029d7447c0d80991"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-review/source-manifest.json",
+    "stored": "docs/platform/evidence/input-flags/independent-source-manifest.json.log",
+    "sha256": "2b74683273f9a92d3f1891c7d1bcc43a842aabc3a195bdde98d1975d040f71ea"
+  }
+]

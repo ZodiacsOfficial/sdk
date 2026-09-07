@@ -1,0 +1,68 @@
+[
+  {
+    "command": "corepack pnpm build",
+    "utc": "2026-09-07T23:41:55.437824+00:00",
+    "exitCode": 0,
+    "seconds": 38.868
+  },
+  {
+    "command": "corepack pnpm typecheck",
+    "utc": "2026-09-07T23:42:34.307300+00:00",
+    "exitCode": 0,
+    "seconds": 8.014
+  },
+  {
+    "command": "corepack pnpm lint",
+    "utc": "2026-09-07T23:42:42.321263+00:00",
+    "exitCode": 0,
+    "seconds": 3.651
+  },
+  {
+    "command": "corepack pnpm test",
+    "utc": "2026-09-07T23:42:45.972928+00:00",
+    "exitCode": 0,
+    "seconds": 6.753
+  },
+  {
+    "command": "corepack pnpm registry:checksum",
+    "utc": "2026-09-07T23:42:52.727295+00:00",
+    "exitCode": 0,
+    "seconds": 0.381
+  },
+  {
+    "command": "corepack pnpm neutrality:guard",
+    "utc": "2026-09-07T23:42:53.108103+00:00",
+    "exitCode": 0,
+    "seconds": 0.409
+  },
+  {
+    "command": "corepack pnpm exports:smoke",
+    "utc": "2026-09-07T23:42:53.517693+00:00",
+    "exitCode": 0,
+    "seconds": 1.796
+  },
+  {
+    "command": "corepack pnpm package:contents",
+    "utc": "2026-09-07T23:42:55.313905+00:00",
+    "exitCode": 0,
+    "seconds": 1.989
+  },
+  {
+    "command": "corepack pnpm pack:dry-run",
+    "utc": "2026-09-07T23:42:57.303492+00:00",
+    "exitCode": 0,
+    "seconds": 6.916
+  },
+  {
+    "command": "corepack pnpm docs:engine",
+    "utc": "2026-09-07T23:43:04.220250+00:00",
+    "exitCode": 0,
+    "seconds": 2.149
+  },
+  {
+    "command": "corepack pnpm format:check",
+    "utc": "2026-09-07T23:43:06.369914+00:00",
+    "exitCode": 0,
+    "seconds": 1.84
+  }
+]

@@ -1,0 +1,542 @@
+{
+  "baseCommit": "d190d97c981c7cacc6eb4ab6a49bdb8451ca3459",
+  "runtime": "v22.23.2",
+  "scope": "Synthetic local inputs only; no network or storage",
+  "label": "baseline",
+  "births": [
+    {
+      "name": "private string",
+      "status": "fulfilled",
+      "inputFlags": [
+        "SYNTHETIC-PRIVATE-NOTE"
+      ],
+      "outputFlags": [
+        "SYNTHETIC-PRIVATE-NOTE"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": {
+        "code": "invalid_value",
+        "name": "NatalEnvelopeError",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "string instead of array",
+      "status": "fulfilled",
+      "inputFlags": [
+        "l",
+        "m",
+        "t"
+      ],
+      "outputFlags": [
+        "l",
+        "m",
+        "t"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": {
+        "code": "invalid_value",
+        "name": "NatalEnvelopeError",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "Set instead of array",
+      "status": "fulfilled",
+      "inputFlags": [
+        "lmt"
+      ],
+      "outputFlags": [
+        "lmt"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": "accepted",
+      "receiptInputFlags": [
+        "lmt"
+      ],
+      "receiptResultFlags": [
+        "lmt"
+      ],
+      "replayFlags": [
+        "lmt"
+      ]
+    },
+    {
+      "name": "array-like object",
+      "status": "rejected",
+      "error": {
+        "name": "TypeError",
+        "message": "birth.flags is not iterable"
+      }
+    },
+    {
+      "name": "null array",
+      "status": "rejected",
+      "error": {
+        "name": "TypeError",
+        "message": "birth.flags is not iterable"
+      }
+    },
+    {
+      "name": "null member",
+      "status": "fulfilled",
+      "inputFlags": [
+        null
+      ],
+      "outputFlags": [
+        null
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": {
+        "code": "invalid_value",
+        "name": "NatalEnvelopeError",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "duplicate time flags",
+      "status": "fulfilled",
+      "inputFlags": [
+        "lmt",
+        "lmt"
+      ],
+      "outputFlags": [
+        "lmt",
+        "lmt"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": {
+        "code": "inconsistent_result",
+        "name": "NatalEnvelopeError",
+        "message": "Natal envelope rejected: inconsistent_result."
+      }
+    },
+    {
+      "name": "simultaneous gap and fold",
+      "status": "fulfilled",
+      "inputFlags": [
+        "dst-gap",
+        "dst-fold"
+      ],
+      "outputFlags": [
+        "dst-gap",
+        "dst-fold"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": {
+        "code": "inconsistent_result",
+        "name": "NatalEnvelopeError",
+        "message": "Natal envelope rejected: inconsistent_result."
+      }
+    },
+    {
+      "name": "correct no-time echo",
+      "status": "fulfilled",
+      "inputFlags": [
+        "no-time"
+      ],
+      "outputFlags": [
+        "no-time",
+        "no-time"
+      ],
+      "timeKnown": false,
+      "anglesPresent": false,
+      "requested": "whole",
+      "actual": null,
+      "receipt": {
+        "code": "invalid_value",
+        "name": "NatalEnvelopeError",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "contradictory no-time",
+      "status": "fulfilled",
+      "inputFlags": [
+        "no-time"
+      ],
+      "outputFlags": [
+        "no-time"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": {
+        "code": "invalid_value",
+        "name": "NatalEnvelopeError",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "correct polar fallback echo",
+      "status": "fulfilled",
+      "inputFlags": [
+        "polar-fallback"
+      ],
+      "outputFlags": [
+        "polar-fallback",
+        "polar-fallback"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "placidus",
+      "actual": "whole",
+      "receipt": {
+        "code": "invalid_value",
+        "name": "NatalEnvelopeError",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "contradictory whole-sign polar fallback",
+      "status": "fulfilled",
+      "inputFlags": [
+        "polar-fallback"
+      ],
+      "outputFlags": [
+        "polar-fallback"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": {
+        "code": "invalid_value",
+        "name": "NatalEnvelopeError",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "contradictory low-latitude Placidus fallback",
+      "status": "fulfilled",
+      "inputFlags": [
+        "polar-fallback"
+      ],
+      "outputFlags": [
+        "polar-fallback"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "placidus",
+      "actual": "placidus",
+      "receipt": {
+        "code": "invalid_value",
+        "name": "NatalEnvelopeError",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "valid time assertion",
+      "status": "fulfilled",
+      "inputFlags": [
+        "lmt"
+      ],
+      "outputFlags": [
+        "lmt"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": "accepted",
+      "receiptInputFlags": [
+        "lmt"
+      ],
+      "receiptResultFlags": [
+        "lmt"
+      ],
+      "replayFlags": [
+        "lmt"
+      ]
+    },
+    {
+      "name": "valid historical gap assertions",
+      "status": "fulfilled",
+      "inputFlags": [
+        "dst-gap",
+        "lmt"
+      ],
+      "outputFlags": [
+        "dst-gap",
+        "lmt"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": "accepted",
+      "receiptInputFlags": [
+        "dst-gap",
+        "lmt"
+      ],
+      "receiptResultFlags": [
+        "dst-gap",
+        "lmt"
+      ],
+      "replayFlags": [
+        "dst-gap",
+        "lmt"
+      ]
+    },
+    {
+      "name": "valid historical fold assertions",
+      "status": "fulfilled",
+      "inputFlags": [
+        "dst-fold",
+        "lmt"
+      ],
+      "outputFlags": [
+        "dst-fold",
+        "lmt"
+      ],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": "accepted",
+      "receiptInputFlags": [
+        "dst-fold",
+        "lmt"
+      ],
+      "receiptResultFlags": [
+        "dst-fold",
+        "lmt"
+      ],
+      "replayFlags": [
+        "dst-fold",
+        "lmt"
+      ]
+    },
+    {
+      "name": "no flags",
+      "status": "fulfilled",
+      "outputFlags": [],
+      "timeKnown": true,
+      "anglesPresent": true,
+      "requested": "whole",
+      "actual": "whole",
+      "receipt": "accepted",
+      "receiptInputFlags": [],
+      "receiptResultFlags": [],
+      "replayFlags": []
+    },
+    {
+      "name": "unknown-time from scalar only",
+      "status": "fulfilled",
+      "outputFlags": [
+        "no-time"
+      ],
+      "timeKnown": false,
+      "anglesPresent": false,
+      "requested": "whole",
+      "actual": null,
+      "receipt": "accepted",
+      "receiptInputFlags": [],
+      "receiptResultFlags": [
+        "no-time"
+      ],
+      "replayFlags": []
+    }
+  ],
+  "civil": [
+    {
+      "name": "string false timeKnown",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": "false",
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": 40,
+        "longitude": -74
+      },
+      "coreAccepts": false,
+      "coreError": {
+        "name": "RangeError",
+        "message": "timeKnown must be a boolean."
+      }
+    },
+    {
+      "name": "numeric zero timeKnown",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": 0,
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": 40,
+        "longitude": -74
+      },
+      "coreAccepts": false,
+      "coreError": {
+        "name": "RangeError",
+        "message": "timeKnown must be a boolean."
+      }
+    },
+    {
+      "name": "null timeKnown",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": true,
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": 40,
+        "longitude": -74
+      },
+      "coreAccepts": true
+    },
+    {
+      "name": "unsupported house system",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": true,
+        "houseSystem": "equal",
+        "flags": [],
+        "latitude": 40,
+        "longitude": -74
+      },
+      "coreAccepts": false,
+      "coreError": {
+        "name": "RangeError",
+        "message": "houseSystem must be \"whole\" or \"placidus\"."
+      }
+    },
+    {
+      "name": "null house system",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": true,
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": 40,
+        "longitude": -74
+      },
+      "coreAccepts": true
+    },
+    {
+      "name": "null coordinates",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": true,
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": null,
+        "longitude": null
+      },
+      "coreAccepts": false,
+      "coreError": {
+        "name": "RangeError",
+        "message": "latitude must be between -90 and 90 degrees."
+      }
+    },
+    {
+      "name": "string latitude",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": true,
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": "40",
+        "longitude": -74
+      },
+      "coreAccepts": false,
+      "coreError": {
+        "name": "RangeError",
+        "message": "latitude must be between -90 and 90 degrees."
+      }
+    },
+    {
+      "name": "out-of-range latitude",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": true,
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": 91,
+        "longitude": -74
+      },
+      "coreAccepts": false,
+      "coreError": {
+        "name": "RangeError",
+        "message": "latitude must be between -90 and 90 degrees."
+      }
+    },
+    {
+      "name": "private extra flags",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": true,
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": 40,
+        "longitude": -74
+      },
+      "coreAccepts": true
+    },
+    {
+      "name": "valid default",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": true,
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": 40,
+        "longitude": -74
+      },
+      "coreAccepts": true
+    },
+    {
+      "name": "valid unknown-time supplied reference",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": false,
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": 40,
+        "longitude": -74
+      },
+      "coreAccepts": true
+    },
+    {
+      "name": "valid unknown-time default noon",
+      "status": "fulfilled",
+      "birth": {
+        "utc": "2024-02-29T12:00:00.000Z",
+        "timeKnown": false,
+        "houseSystem": "whole",
+        "flags": [],
+        "latitude": 40,
+        "longitude": -74
+      },
+      "coreAccepts": true
+    }
+  ]
+}

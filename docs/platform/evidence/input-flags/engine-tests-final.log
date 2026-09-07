@@ -1,0 +1,20 @@
+
+ RUN  v2.1.9 /private/tmp/zodiacs-platform-input-flags
+
+ ✓ packages/engine/src/receipt.test.ts (36 tests) 220ms
+ ✓ packages/engine/src/input-flags.test.ts (66 tests) 98ms
+ ✓ packages/engine/src/geo/geonames-schema.test.ts (67 tests) 23ms
+ ✓ packages/engine/src/engine.test.ts (24 tests) 71ms
+ ✓ packages/engine/src/geo/geonames.test.ts (10 tests) 13ms
+ ✓ packages/engine/src/public-input.test.ts (77 tests) 38ms
+ ✓ packages/engine/src/geo.test.ts (40 tests) 19ms
+ ✓ packages/engine/src/receipt-json.test.ts (88 tests) 9ms
+ ✓ packages/engine/src/houses-regression.test.ts (6 tests) 98ms
+ ✓ packages/engine/src/returns-bounds.test.ts (15 tests) 13ms
+ ✓ packages/engine/src/returns-crossings.test.ts (14 tests) 4ms
+
+ Test Files  11 passed (11)
+      Tests  443 passed (443)
+   Start at  06:36:13
+   Duration  2.29s (transform 218ms, setup 0ms, collect 402ms, tests 606ms, environment 1ms, prepare 349ms)
+

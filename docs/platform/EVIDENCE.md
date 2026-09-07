@@ -307,3 +307,68 @@ on #8, with source `d190d97c981c7cacc6eb4ab6a49bdb8451ca3459`, archive carrier
 executed. The existing GitHub workflow targets main PRs, so no passing CI for
 this stacked draft is claimed. No merge, npm publication, production release
 or external adoption was performed.
+
+## Public flags and civil settings candidate
+
+SDK branch `codex/platform-input-flags` is based on delivered #9 at `84897ffb`.
+The bounded seven-file patch was reproduced and reviewed in an isolated checkout
+of runtime source `d190d97c`. Root integrated patch SHA-256
+`33f03b34d580b042ee35337d44a62c6ce112980c924c1017a9713db6fbc6f12a`, then changed
+only candidate version identity, changelog, consumer verification and generated
+TypeDoc in addition to that patch. Numerical formulas, internal computation,
+receipt implementation, dependency lockfile, ownership/Registry and old archives
+are unchanged. Site and starter pins remain separate.
+
+Before: correct typed `no-time` and `polar-fallback` echoes duplicated result
+flags and failed receipt creation; private/malformed/contradictory inputs could
+become result metadata. Civil settings admitted values rejected downstream and
+public settings could be reread after validation. Final original-source suite:
+**61 failed / 5 passed**, with 18 birth and 12 civil observational cases.
+The initial baseline Intl constructor spy was faulty; the original output is
+retained and explicitly superseded by the forwarding-constructor final suite.
+[Implementation rationale and limits](evidence/input-flags/REVIEW.md.log),
+[baseline probe](evidence/input-flags/baseline.json.log),
+[final baseline suite](evidence/input-flags/red-final-suite.log),
+[before/after harness](evidence/input-flags/probe.mjs.log).
+
+The existing five-value public type is preserved. At most 64 raw own data slots
+are snapshotted without custom iteration or scalar coercion; known duplicates
+collapse, and invalid/private/gap-plus-fold contradictions reject with fixed
+errors. Time flags remain unauthenticated historical assertions. Derived echoes
+must agree with actual calculation; canonical `chart.input.flags` holds only
+time assertions. Raw submitted arrays are not preserved. A supplied Chart gets
+metadata consistency checks only; canonical identity and numerical references
+are preserved, with shallow metadata normalization when needed. Changed body
+longitudes are deliberately accepted as caller claims: no numerical
+recomputation/authentication is asserted. Objects remain caller-owned and
+same-realm executable getters/proxies are not sandboxed.
+
+Shared public/civil settings use a single validated snapshot. Ordinary Saturn
+input adds zero natal computations; an explicit raw polar assertion adds one
+calculation to verify actual fallback before scanning. Supplied Chart paths
+never add a natal calculation. Independent frozen-source review passes **14/14**
+controls, including exact call counts, getter substitution, flag slot/length
+traps, correct echoes/receipts, 08:30 unknown time, missing result metadata and
+identity/immutability. The reviewer did not author the runtime patch or repeat
+its full suite. Harness corrections are retained and no human sign-off is claimed.
+[Independent report](evidence/input-flags/independent-REVIEW.md.log),
+[executed independent tests](evidence/input-flags/independent-probe.test.ts.log),
+[source hashes and raw input mapping](evidence/input-flags/source-inputs.json.log).
+
+Root's actual versioned integration passes **562 tests / 31 files** on
+Node 20.20.2 and Node 22.23.2. Required workspace build, typecheck, lint,
+registry checksum, neutrality, export smoke, package contents, dry-pack,
+TypeDoc and format checks all pass. Build → typecheck → other gates were
+executed sequentially; the independent Node 20 test run writes no build output.
+[Sequential gate results](evidence/input-flags/release-gates.json.log),
+[Node 20 test](evidence/input-flags/release-test20.log),
+[Node 22 test](evidence/input-flags/release-test.log),
+[exact release check mapping](evidence/input-flags/release-inputs.json.log).
+
+Refresh at **2026-09-07 23:41 UTC**: site main `7f953e3f`, SDK main `b49e0f14`,
+SDK #5 OPEN/draft at `cced0116` with zero submitted reviews and explicit
+**do not merge / do not publish**. Engine/widgets registry lookups remain 404;
+optional ownership SDK remains 1.0.1. Production `zodiacs.org` remains READY
+`dpl_BrntzbFYa2gzetKWgeq91GFeaM6W` at site main. New rc.5 archive/consumer/browser
+acceptance and draft delivery are pending at this source checkpoint. No npm
+publication, merge, production operation, outreach, spending or account action.

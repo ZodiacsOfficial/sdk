@@ -1,5 +1,29 @@
 # SDK platform checkpoint
 
+## Public flags and civil settings candidate
+
+Branch `codex/platform-input-flags` starts from delivered SDK #9 at
+`84897ffb6e044469875d381bdc0acbd39c995ffb`. Engine `0.1.1-rc.5` preserves all
+five typed flag values, checks derived compatibility echoes, produces canonical
+metadata once and captures validated public/civil settings before use. Correct
+unknown-time and polar echoes now round-trip through the existing receipt schema.
+Malformed/private/contradictory flags reject. Supplied Charts receive metadata
+consistency checks, not astronomical authentication.
+
+Implemented and locally tested: **562 tests / 31 files** on Node 20 and 22;
+all required workspace and TypeDoc gates pass. The final build and typecheck ran
+sequentially. The independent reviewer passed 14 additional frozen-source
+controls; original-source regressions were 61 failed / 5 passed. Actual new
+packed-consumer/browser acceptance and review delivery remain pending at this
+source checkpoint. [Exact commands, compatibility and limits](EVIDENCE.md#public-flags-and-civil-settings-candidate).
+
+The site application retains engine rc.1 and standalone starter rc.3 retains
+engine rc.3. Previous artifacts, internal calculation formulas, receipt schema,
+account/storage protocols and the optional read-only ownership SDK are unchanged.
+Fresh remote reads still show SDK #5's explicit hold and no submitted review;
+engine/widgets are not npm-published. Source implementation and internal review
+are not release authorization, production deployment or external adoption.
+
 ## GeoNames schema/cache candidate
 
 Branch `codex/platform-geonames-schema` starts from delivered SDK #8 at
