@@ -1,0 +1,32 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const {createRequire} = require('node:module');
+const {createHash} = require('node:crypto');
+const root = '/private/tmp/zodiacs-platform-sdk';
+const ts = createRequire(path.join(root, 'package.json'))('typescript');
+const cache = new Map(), hashes = {};
+function load(file) {
+  if (cache.has(file)) return cache.get(file).exports;
+  const source = fs.readFileSync(file, 'utf8');
+  hashes[path.relative(root, file)] = createHash('sha256').update(source).digest('hex');
+  const code = ts.transpileModule(source, {compilerOptions: {module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022}}).outputText;
+  const mod = {exports: {}}; cache.set(file, mod);
+  new Function('module', 'exports', 'require', code)(mod, mod.exports, specifier => load(path.resolve(path.dirname(file), specifier.replace(/\.js$/, '.ts'))));
+  return mod.exports;
+}
+const receipt = load(path.join(root, 'packages/engine/src/receipt.ts'));
+const secret = 'SYNTHETIC_PRIVATE_ERROR_SENTINEL';
+const observations = [];
+for (const mode of ['mutated', 'getter']) {
+  let reads = 0;
+  const input = new Proxy({}, {getPrototypeOf() {
+    const error = new receipt.NatalEnvelopeError('invalid_shape');
+    error.message = secret;
+    if (mode === 'mutated') error.code = secret;
+    else Object.defineProperty(error, 'code', {get() { reads++; return secret; }});
+    throw error;
+  }});
+  try { receipt.createNatalEnvelope(input); observations.push({mode, accepted: true}); }
+  catch (error) { observations.push({mode, message: error.message, code: error.code, getterReads: reads, leaked: error.message.includes(secret) || error.code === secret}); }
+}
+console.log(JSON.stringify({capturedAt: new Date().toISOString(), runtime: process.version, hashes, observations, scope: 'Synthetic caller-thrown error; no network, real birth data or repository mutation.'}, null, 2));

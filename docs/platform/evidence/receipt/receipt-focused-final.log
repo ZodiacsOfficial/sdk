@@ -1,0 +1,9 @@
+RUN  v2.1.9 /private/tmp/zodiacs-platform-sdk
+
+ ✓ packages/engine/src/receipt-json.test.ts (88 tests) 14ms
+ ✓ packages/engine/src/receipt.test.ts (36 tests) 208ms
+
+ Test Files  2 passed (2)
+      Tests  124 passed (124)
+   Start at  04:55:19
+   Duration  693ms (transform 232ms, setup 0ms, collect 310ms, tests 221ms, environment 0ms, prepare 77ms)

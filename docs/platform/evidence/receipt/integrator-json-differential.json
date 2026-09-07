@@ -1,0 +1,10 @@
+{
+  "observedAt": "2026-09-07T21:57:01.808Z",
+  "node": "v22.23.2",
+  "seed": "0x72656365",
+  "sourceSha256": "da5627224b593769eea8f1d434815ad34f422f44e1ef38a6687f86d8ccf8dd5c",
+  "validCases": 1500,
+  "mutationCases": 20000,
+  "failures": [],
+  "scope": "Deterministic finite grammar differential against native JSON.parse; duplicate-key policy separately covered in focused tests. No source or network writes."
+}

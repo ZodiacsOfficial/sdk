@@ -1,0 +1,82 @@
+[
+  {
+    "command": "corepack pnpm lint",
+    "started": "2026-09-07T21:52:40.339Z",
+    "finished": "2026-09-07T21:52:44.142Z",
+    "status": 0,
+    "path": "/private/tmp/zodiacs-platform-evidence/receipt-lint.log",
+    "runtime": "v22.23.2"
+  },
+  {
+    "command": "corepack pnpm typecheck",
+    "started": "2026-09-07T21:52:44.143Z",
+    "finished": "2026-09-07T21:52:52.900Z",
+    "status": 0,
+    "path": "/private/tmp/zodiacs-platform-evidence/receipt-typecheck.log",
+    "runtime": "v22.23.2"
+  },
+  {
+    "command": "corepack pnpm format:check",
+    "started": "2026-09-07T21:52:52.901Z",
+    "finished": "2026-09-07T21:52:54.702Z",
+    "status": 0,
+    "path": "/private/tmp/zodiacs-platform-evidence/receipt-format-check.log",
+    "runtime": "v22.23.2"
+  },
+  {
+    "command": "corepack pnpm registry:checksum",
+    "started": "2026-09-07T21:52:54.702Z",
+    "finished": "2026-09-07T21:52:55.096Z",
+    "status": 0,
+    "path": "/private/tmp/zodiacs-platform-evidence/receipt-registry-checksum.log",
+    "runtime": "v22.23.2"
+  },
+  {
+    "command": "corepack pnpm test",
+    "started": "2026-09-07T21:52:55.096Z",
+    "finished": "2026-09-07T21:53:01.391Z",
+    "status": 0,
+    "path": "/private/tmp/zodiacs-platform-evidence/receipt-test.log",
+    "runtime": "v22.23.2"
+  },
+  {
+    "command": "corepack pnpm build",
+    "started": "2026-09-07T21:53:01.391Z",
+    "finished": "2026-09-07T21:53:37.536Z",
+    "status": 0,
+    "path": "/private/tmp/zodiacs-platform-evidence/receipt-build.log",
+    "runtime": "v22.23.2"
+  },
+  {
+    "command": "corepack pnpm exports:smoke",
+    "started": "2026-09-07T21:53:37.537Z",
+    "finished": "2026-09-07T21:53:39.273Z",
+    "status": 0,
+    "path": "/private/tmp/zodiacs-platform-evidence/receipt-exports-smoke.log",
+    "runtime": "v22.23.2"
+  },
+  {
+    "command": "corepack pnpm pack:dry-run",
+    "started": "2026-09-07T21:53:39.274Z",
+    "finished": "2026-09-07T21:53:45.732Z",
+    "status": 0,
+    "path": "/private/tmp/zodiacs-platform-evidence/receipt-pack-dry-run.log",
+    "runtime": "v22.23.2"
+  },
+  {
+    "command": "corepack pnpm package:contents",
+    "started": "2026-09-07T21:53:45.733Z",
+    "finished": "2026-09-07T21:53:47.423Z",
+    "status": 0,
+    "path": "/private/tmp/zodiacs-platform-evidence/receipt-package-contents.log",
+    "runtime": "v22.23.2"
+  },
+  {
+    "command": "corepack pnpm neutrality:guard",
+    "started": "2026-09-07T21:53:47.423Z",
+    "finished": "2026-09-07T21:53:47.961Z",
+    "status": 1,
+    "path": "/private/tmp/zodiacs-platform-evidence/receipt-neutrality-guard.log",
+    "runtime": "v22.23.2"
+  }
+]

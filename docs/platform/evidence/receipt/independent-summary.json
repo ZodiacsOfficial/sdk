@@ -1,0 +1,44 @@
+{
+  "observedAt": "2026-09-07T21:51:58.049393+00:00",
+  "scope": "Independent model-assisted bounded review and scratch probes of the additive draft natal codec. No human review, industry protocol adoption, account/storage migration, network calls, publication, or deployment implied.",
+  "sourceSha256": {
+    "packages/engine/src/receipt.ts": "fe1d63d46031dc439728754c319ee291a78ccd5254adb3f085ef53726651b725",
+    "packages/engine/src/receipt-json.ts": "da5627224b593769eea8f1d434815ad34f422f44e1ef38a6687f86d8ccf8dd5c",
+    "packages/engine/src/receipt-json.test.ts": "9771c80a0e64e93612b1f345ec865ee238d34491f21031dc025761410740faf6"
+  },
+  "helper": {
+    "unitTests": 88,
+    "testLog": "json-helper-tests.log",
+    "prettier": "passed",
+    "formatLog": "json-helper-format.log",
+    "engineTypecheck": "passed",
+    "typecheckLog": "json-helper-typecheck-final.log",
+    "differentialValidCases": 1500,
+    "differentialMutationCases": 20000,
+    "differentialFailures": 0
+  },
+  "codecProbes": {
+    "baselineCases": 21,
+    "baselineFailures": 0,
+    "temporalCases": 17,
+    "temporalFailures": 0,
+    "privacyAndOrderingCases": 22,
+    "privacyAndOrderingFailures": 0,
+    "previousCounterexamplesNowRejected": 3
+  },
+  "findings": "No remaining concrete blocking finding in this bounded review. Earlier accepted exact known-time pole geometry and duplicate JSON requiredFeatures/schema counterexamples were fixed by the codec owner and new preflight helper, then rerun.",
+  "limitations": [
+    "Finite synthetic corpus, not exhaustive proof or ephemeris accuracy certification.",
+    "Temporal controls use the observed Node 22 ICU/tzdb; they are not independent evidence of universal historical timezone truth.",
+    "Local-resolution metadata and provenance remain supplied claims checked for arithmetic/shape consistency, not authenticated facts.",
+    "Proxy traps may execute when JavaScript object descriptors/prototypes are inspected; these probes check fixed error sanitization, not sandboxing of arbitrary same-realm JavaScript.",
+    "The helper only preflights JSON structure: semantic values such as nonfinite native numeric conversion are rejected by the outer codec."
+  ],
+  "reports": [
+    "probe.json",
+    "temporal.json",
+    "counterexamples.json",
+    "error-probes.json",
+    "json-differential.json"
+  ]
+}

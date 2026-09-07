@@ -1,0 +1,25 @@
+{
+  "capturedAt": "2026-09-07T21:42:23.651Z",
+  "runtime": "v22.23.2",
+  "hashes": {
+    "packages/engine/src/receipt.ts": "b58581f1146e7182e346c440ae52b803d24517bf0254163fc7ddfc5e19401a28",
+    "packages/engine/src/date-input.ts": "f9db8865bf143d6334eb93d9618f50aa6a81ba32273b0a103d2a83e3c8014675"
+  },
+  "observations": [
+    {
+      "mode": "mutated",
+      "message": "Natal envelope rejected: invalid_shape.",
+      "code": "invalid_shape",
+      "getterReads": 0,
+      "leaked": false
+    },
+    {
+      "mode": "getter",
+      "message": "Natal envelope rejected: invalid_shape.",
+      "code": "invalid_shape",
+      "getterReads": 0,
+      "leaked": false
+    }
+  ],
+  "scope": "Synthetic caller-thrown error; no network, real birth data or repository mutation."
+}

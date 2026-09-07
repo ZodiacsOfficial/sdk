@@ -1,0 +1,13 @@
+> zodiacs-sdk-workspace@ neutrality:guard /private/tmp/zodiacs-platform-sdk
+> corepack pnpm --filter @zodiacs/sdk neutrality:guard
+
+
+> @zodiacs/sdk@1.0.1 neutrality:guard /private/tmp/zodiacs-platform-sdk/packages/sdk
+> node scripts/neutrality-guard.mjs
+
+/private/tmp/zodiacs-platform-sdk/packages/sdk:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @zodiacs/sdk@1.0.1 neutrality:guard: `node scripts/neutrality-guard.mjs`
+Exit status 1
+ ELIFECYCLE  Command failed with exit code 1.
+App-neutrality guard failed:
+- packages/engine/src/receipt.ts: contains "luna"
