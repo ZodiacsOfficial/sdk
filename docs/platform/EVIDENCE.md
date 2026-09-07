@@ -241,3 +241,61 @@ Caller-supplied fetch code and its accessors/iterators are not sandboxed. No new
 response-size budget is introduced. All network responses in source probes are
 synthetic; real browser/public packed-consumer acceptance is still pending.
 SDK #5's explicit do-not-merge/do-not-publish and required review remain.
+
+### Frozen rc.4 archive and actual consumers
+
+Source commit **`d190d97c981c7cacc6eb4ab6a49bdb8451ca3459`** precedes packing.
+Distribution commit **`9ad6a73984e69b897a6422429fab1970a7c89450`** contains
+`zodiacs-engine-0.1.1-rc.4.tgz`: **22 files, 33,669 packed bytes, 112,949
+unpacked bytes**, SHA-256
+`0146fdff7abb6b937cf4d66b4cdaf0c80ecf238ea71f1f4f9fb27eae687a0d20`.
+The [immutable public archive](https://raw.githubusercontent.com/ZodiacsOfficial/sdk/9ad6a73984e69b897a6422429fab1970a7c89450/artifacts/zodiacs-engine-0.1.1-rc.4.tgz)
+was downloaded without credentials at **23:08 UTC** and matches exactly. No
+previous version's bytes were replaced. Pack stdout includes tsup prepack logs;
+the original is retained and its trailing single-package JSON inventory is
+separately parsed, not mislabeled as a JSON-only raw command response.
+
+Actual fresh consumers on **Node 20.20.2 and 22.23.2**, with TypeScript 5.9.3,
+pass root/geo/receipt imports, ordinary calculations, errors, optional dependency
+isolation, rejected fetch/parser recovery, malformed HTTP-200 schema recovery,
+shared rejection identity, cache mutation protection and receipt/redaction
+controls. Separate empty npm configuration and caches were used; installed
+engine trees are real local consumers, not workspace links. Isolated consumer
+advisory audit reports zero.
+[Node 20](evidence/geo-schema/consumer20.log),
+[Node 22](evidence/geo-schema/consumer22.log),
+[audit](evidence/geo-schema/consumer-audit.json.log).
+
+The exact installed packages rc.3 and rc.4 match in **96 synthetic chart cases**
+after excluding only `engineVersion`; ephemeris is 2.1.19 on both. Current-version
+receipt replay also matches, with absent optional input flags normalized to an
+empty array. No numerical rounding or new astronomical-accuracy claim.
+[Probe](evidence/geo-schema/packed-parity.mjs.log),
+[result](evidence/geo-schema/packed-parity.json.log).
+
+Actual **Chrome 152.0.7977.83** passes **20 checks** against the fresh rc.4 consumer,
+after comparing all 22 installed engine files with the archive. With six
+synthetic intercepted HTTP-200 asset requests, index/shard failures recover on
+explicit retry, pending/success caches deduplicate, caller mutation is isolated
+and cached operation remains available offline. Tested requests are GET-only
+fixed resource paths, with no full search/birth sentinels, body or query string.
+The shard path necessarily reveals a normalized initial; this is not a claim
+of zero search information. Tested storage/Intl/other-network attempts and
+cookies are zero, with separate controls proving observers are armed. The
+optional geo graph excludes root/ephemeris/ownership; a separate root graph
+excludes GeoNames. No browser ephemeris calculation or live GeoNames response
+is implied. Owned browser/server are closed.
+
+The initial harness stopped before browser execution because esbuild's virtual
+stdin module key was a normalized relative path; the comparison was corrected
+to resolve it. Original script/log and the successful final source are retained.
+[Browser methodology](evidence/geo-schema/browser/README.md.log),
+[20-check result](evidence/geo-schema/browser/browser-result.json.log),
+[exact delivery evidence inputs](evidence/geo-schema/delivery-inputs.json.log).
+
+Fresh release reads at 23:08 UTC still show site main `7f953e3f`, SDK main
+`b49e0f14`, SDK #5 OPEN/draft at `cced0116`, zero reviews and its explicit hold.
+Public npm engine/widgets lookups return 404; ownership remains 1.0.1. These
+are reviewed-by-model/local-testing facts, not required human review or release
+authorization. Draft PR, npm publication, production and external adoption are
+tracked independently.

@@ -13,8 +13,15 @@ Implemented and tested: **496 tests / 30 files** on Node 20 and 22; required
 workspace lint/typecheck/build/format/checksum/neutrality/export/content/dry-pack
 and TypeDoc gates pass. All 33,934 checked-in rows validate, and 27 sampled
 query results/metadata/request sequences agree with baseline. Nine independent
-strict-unhandled-rejection probes pass. Packaging and fresh consumers are
-pending at this source checkpoint; no new artifact or public delivery is claimed.
+strict-unhandled-rejection probes pass. Frozen source is `d190d97c981c7cacc6eb4ab6a49bdb8451ca3459`. The new 22-file
+archive is distributed at `9ad6a73984e69b897a6422429fab1970a7c89450`, SHA-256
+`0146fdff7abb6b937cf4d66b4cdaf0c80ecf238ea71f1f4f9fb27eae687a0d20`. Its anonymous
+public bytes match. Two actual fresh Node 20/22 consumers pass public types,
+examples, schema/retry/mutation controls and receipt replay; isolated audit is
+zero. All 96 chart parity cases match rc.3 apart from engineVersion. Actual
+Chrome passes 20 additional packed-consumer recovery, privacy and isolation
+checks with synthetic HTTP responses. Draft review delivery is being recorded;
+this artifact is not published to npm.
 
 Schema validation cannot authenticate place facts or detect in-range indices
 from the wrong dataset generation; that counterexample is tested and documented.

@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": 20,
+  "failed": [],
+  "cleanup": {
+    "browserClosed": true,
+    "contextClosed": true,
+    "serverClosed": true,
+    "authenticationCopied": false
+  },
+  "result": "/private/tmp/zodiacs-platform-geo-browser-review/browser-result.json"
+}

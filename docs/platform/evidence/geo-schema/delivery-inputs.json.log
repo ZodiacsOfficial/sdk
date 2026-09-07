@@ -1,0 +1,61 @@
+{
+  "recordedAt": "2026-09-07T23:09:46.674113+00:00",
+  "sourceToEvidence": [
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-browser-review/browser-result.json",
+      "evidence": "browser/browser-result.json.log",
+      "sha256": "86a52f4b7a789a95e2eb47fbf50d70bbde882e4d0aa7679947fb615b0915f445"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-browser-review/browser-probe.mjs",
+      "evidence": "browser/browser-probe.mjs.log",
+      "sha256": "0ae09bc477900f532e17f285be1ad1fbb5617b029d82e4fca670d121495d5f3f"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-browser-review/browser-probe.log",
+      "evidence": "browser/browser-probe.log",
+      "sha256": "14088ba46b651ab94a2955c170fa9c13071028561e1db1cfb0258f4153951698"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-browser-review/bundle-graphs.json",
+      "evidence": "browser/bundle-graphs.json.log",
+      "sha256": "8f6d9d1bc41abbeaa37277a17adef18379245101a82544b708db98da24f2a965"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-browser-review/README.md",
+      "evidence": "browser/README.md.log",
+      "sha256": "505d85f63efa025e9fdc1f7c9040647b6739c572aa259c79a1e9ec40ddb9be61"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-browser-review/browser-probe.png",
+      "evidence": "browser/browser-probe.png",
+      "sha256": "6aebbc8b38145486ce99d8f2707089fa092dd2e61852d8073144de3dffd0b096"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-browser-review/attempt-1/browser-probe.mjs",
+      "evidence": "browser/attempt-1/browser-probe.mjs.log",
+      "sha256": "9803728827373011b0980f438044914bdc8ea730cf301515e096f203c7b803d9"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-browser-review/attempt-1/browser-probe.log",
+      "evidence": "browser/attempt-1/browser-probe.log",
+      "sha256": "d85be212b843bfa398801be3741da372400c46f73f7015c9b76b46bd68541ddd"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-browser-review/attempt-1/README-prepared.md",
+      "evidence": "browser/attempt-1/README-prepared.md.log",
+      "sha256": "d81195ec688a2525938d92d62b30d9760d64bfa82d205836eddb71de148e1950"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/public-artifact.json",
+      "evidence": "public-artifact.json.log",
+      "sha256": "5f74282eac1874bcd8f247f7c10d2938c5e44dbce55758f4106d029c05e1a6da"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/release-refresh.json",
+      "evidence": "release-refresh.json.log",
+      "sha256": "d529d80b18b637fb1daa4a9afb35afc1f957550789864ab672d48bd0b2f1a960"
+    }
+  ],
+  "normalization": "Exact original bytes retained; text evidence has .log suffix. No browser profiles, credentials or temporary access tokens copied."
+}
