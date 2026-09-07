@@ -1,0 +1,97 @@
+
+ RUN  v2.1.9 /private/tmp/zodiacs-platform-geonames-retry
+
+ ❯ packages/engine/src/geo/geonames.test.ts (10 tests | 8 failed) 13ms
+   × GeoNames failed-request retry > retries an index after network failure without an automatic request loop 3ms
+     → Synthetic network failure
+   × GeoNames failed-request retry > retries an index after http failure without an automatic request loop 1ms
+     → GeoNames fetch failed: 503
+   × GeoNames failed-request retry > retries an index after json failure without an automatic request loop 2ms
+     → Expected property name or '}' in JSON at position 1 (line 1 column 2)
+   × GeoNames failed-request retry > retries an index after abort failure without an automatic request loop 2ms
+     → Synthetic request aborted
+   × GeoNames failed-request retry > retries a shard after network failure while retaining other successful caches 1ms
+     → Synthetic network failure
+   × GeoNames failed-request retry > retries a shard after http failure while retaining other successful caches 1ms
+     → GeoNames fetch failed: 503
+   × GeoNames failed-request retry > retries a shard after json failure while retaining other successful caches 1ms
+     → Expected property name or '}' in JSON at position 1 (line 1 column 2)
+   × GeoNames failed-request retry > retries a shard after abort failure while retaining other successful caches 1ms
+     → Synthetic request aborted
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/engine/src/geo/geonames.test.ts > GeoNames failed-request retry > retries an index after network failure without an automatic request loop
+TypeError: Synthetic network failure
+ ❯ failRequest packages/engine/src/geo/geonames.test.ts:39:22
+     37|   switch (kind) {
+     38|     case "network":
+     39|       pending.reject(new TypeError("Synthetic network failure"));
+       |                      ^
+     40|       break;
+     41|     case "http":
+ ❯ packages/engine/src/geo/geonames.test.ts:104:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  packages/engine/src/geo/geonames.test.ts > GeoNames failed-request retry > retries an index after http failure without an automatic request loop
+ FAIL  packages/engine/src/geo/geonames.test.ts > GeoNames failed-request retry > retries a shard after http failure while retaining other successful caches
+Error: GeoNames fetch failed: 503
+ ❯ fetchJson packages/engine/src/geo/geonames.ts:62:29
+     60|   async function fetchJson<T>(url: string): Promise<T> {
+     61|     const response = await fetcher(url);
+     62|     if (!response.ok) throw new Error(`GeoNames fetch failed: ${respon…
+       |                             ^
+     63|     return response.json() as Promise<T>;
+     64|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  packages/engine/src/geo/geonames.test.ts > GeoNames failed-request retry > retries an index after json failure without an automatic request loop
+ FAIL  packages/engine/src/geo/geonames.test.ts > GeoNames failed-request retry > retries a shard after json failure while retaining other successful caches
+SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  packages/engine/src/geo/geonames.test.ts > GeoNames failed-request retry > retries an index after abort failure without an automatic request loop
+AbortError: Synthetic request aborted
+ ❯ failRequest packages/engine/src/geo/geonames.test.ts:54:24
+     52|         once: true
+     53|       });
+     54|       controller.abort(new DOMException("Synthetic request aborted", "…
+       |                        ^
+     55|       break;
+     56|     }
+ ❯ packages/engine/src/geo/geonames.test.ts:104:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  packages/engine/src/geo/geonames.test.ts > GeoNames failed-request retry > retries a shard after network failure while retaining other successful caches
+TypeError: Synthetic network failure
+ ❯ failRequest packages/engine/src/geo/geonames.test.ts:39:22
+     37|   switch (kind) {
+     38|     case "network":
+     39|       pending.reject(new TypeError("Synthetic network failure"));
+       |                      ^
+     40|       break;
+     41|     case "http":
+ ❯ packages/engine/src/geo/geonames.test.ts:150:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  packages/engine/src/geo/geonames.test.ts > GeoNames failed-request retry > retries a shard after abort failure while retaining other successful caches
+AbortError: Synthetic request aborted
+ ❯ failRequest packages/engine/src/geo/geonames.test.ts:54:24
+     52|         once: true
+     53|       });
+     54|       controller.abort(new DOMException("Synthetic request aborted", "…
+       |                        ^
+     55|       break;
+     56|     }
+ ❯ packages/engine/src/geo/geonames.test.ts:150:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 2 passed (10)
+   Start at  03:55:54
+   Duration  381ms (transform 53ms, setup 0ms, collect 51ms, tests 13ms, environment 0ms, prepare 61ms)

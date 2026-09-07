@@ -1,0 +1,239 @@
+
+> zodiacs-sdk-workspace@ pack:dry-run /private/tmp/zodiacs-platform-sdk
+> corepack pnpm --filter @zodiacs/engine pack:dry-run && corepack pnpm --filter @zodiacs/widgets pack:dry-run && cd packages/sdk && npm pack --dry-run
+
+
+> @zodiacs/engine@0.1.1-rc.2 pack:dry-run /private/tmp/zodiacs-platform-sdk/packages/engine
+> npm pack --dry-run
+
+npm warn Unknown env config "recursive". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> @zodiacs/engine@0.1.1-rc.2 prepack
+> npm run build
+
+npm warn Unknown env config "recursive". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> @zodiacs/engine@0.1.1-rc.2 build
+> tsup src/index.ts src/geo.ts src/internal.ts src/internal-math.ts --format esm --dts --clean --splitting --tsconfig tsconfig.build.json
+
+CLI Building entry: src/geo.ts, src/index.ts, src/internal-math.ts, src/internal.ts
+CLI Using tsconfig: tsconfig.build.json
+CLI tsup v8.5.1
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+ESM dist/internal.js       215.00 B
+ESM dist/geo.js            8.96 KB
+ESM dist/index.js          12.59 KB
+ESM dist/internal-math.js  553.00 B
+ESM dist/chunk-A2FKCFBQ.js 8.63 KB
+ESM dist/chunk-YXTGSJN4.js 4.50 KB
+ESM ⚡️ Build success in 46ms
+DTS Build start
+DTS ⚡️ Build success in 1184ms
+DTS dist/internal.d.ts               502.00 B
+DTS dist/geo.d.ts                    2.03 KB
+DTS dist/index.d.ts                  3.92 KB
+DTS dist/internal-math.d.ts          595.00 B
+DTS dist/types-BpxUCOWC.d.ts         4.55 KB
+DTS dist/internal-math-TWm0rR_q.d.ts 5.50 KB
+npm notice
+npm notice 📦  @zodiacs/engine@0.1.1-rc.2
+npm notice Tarball Contents
+npm notice 2.1kB CHANGELOG.md
+npm notice 1.1kB LICENSE
+npm notice 2.6kB LICENSING.md
+npm notice 1.4kB NOTICE
+npm notice 9.2kB README.md
+npm notice 8.8kB dist/chunk-A2FKCFBQ.js
+npm notice 4.6kB dist/chunk-YXTGSJN4.js
+npm notice 2.1kB dist/geo.d.ts
+npm notice 9.2kB dist/geo.js
+npm notice 4.0kB dist/index.d.ts
+npm notice 12.9kB dist/index.js
+npm notice 5.6kB dist/internal-math-TWm0rR_q.d.ts
+npm notice 595B dist/internal-math.d.ts
+npm notice 553B dist/internal-math.js
+npm notice 502B dist/internal.d.ts
+npm notice 215B dist/internal.js
+npm notice 4.7kB dist/types-BpxUCOWC.d.ts
+npm notice 2.0kB package.json
+npm notice Tarball Details
+npm notice name: @zodiacs/engine
+npm notice version: 0.1.1-rc.2
+npm notice filename: zodiacs-engine-0.1.1-rc.2.tgz
+npm notice package size: 21.9 kB
+npm notice unpacked size: 72.1 kB
+npm notice shasum: d6214c21ac1929707b663e39bfdd9f89521422c1
+npm notice integrity: sha512-0ckExYLD5vAUw[...]iS7DPy/jakidg==
+npm notice total files: 18
+npm notice
+zodiacs-engine-0.1.1-rc.2.tgz
+
+> @zodiacs/widgets@0.1.0 pack:dry-run /private/tmp/zodiacs-platform-sdk/packages/widgets
+> npm pack --dry-run
+
+npm warn Unknown env config "recursive". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> @zodiacs/widgets@0.1.0 prepack
+> npm run build
+
+npm warn Unknown env config "recursive". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> @zodiacs/widgets@0.1.0 build
+> tsup src/index.ts --format esm --dts --clean --tsconfig tsconfig.build.json
+
+CLI Building entry: src/index.ts
+CLI Using tsconfig: tsconfig.build.json
+CLI tsup v8.5.1
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+ESM dist/index.js 5.11 KB
+ESM ⚡️ Build success in 13ms
+DTS Build start
+DTS ⚡️ Build success in 430ms
+DTS dist/index.d.ts 3.23 KB
+npm notice
+npm notice 📦  @zodiacs/widgets@0.1.0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 2.8kB README.md
+npm notice 3.3kB dist/index.d.ts
+npm notice 5.2kB dist/index.js
+npm notice 1.3kB package.json
+npm notice Tarball Details
+npm notice name: @zodiacs/widgets
+npm notice version: 0.1.0
+npm notice filename: zodiacs-widgets-0.1.0.tgz
+npm notice package size: 4.9 kB
+npm notice unpacked size: 13.7 kB
+npm notice shasum: 47fdb12cdbf6f75e3473a18e1ab97ee3668dffa6
+npm notice integrity: sha512-dDmQwnclCMH6p[...]7QYiQ7DIXq7Yw==
+npm notice total files: 5
+npm notice
+zodiacs-widgets-0.1.0.tgz
+
+> @zodiacs/sdk@1.0.1 prepack
+> npm run build
+
+
+> @zodiacs/sdk@1.0.1 build
+> tsup src/index.ts src/core.ts src/market.ts src/registry.ts src/base.ts src/solana.ts src/identity.ts src/react.ts src/ui.ts src/testing.ts src/assets.ts --format esm --dts --clean --tsconfig tsconfig.build.json --external react --external react/jsx-runtime --external viem
+
+CLI Building entry: src/assets.ts, src/base.ts, src/core.ts, src/identity.ts, src/index.ts, src/market.ts, src/react.ts, src/registry.ts, src/solana.ts, src/testing.ts, src/ui.ts
+CLI Using tsconfig: tsconfig.build.json
+CLI tsup v8.5.1
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+ESM dist/core.js           6.51 KB
+ESM dist/solana.js         982.00 B
+ESM dist/index.js          6.51 KB
+ESM dist/ui.js             17.17 KB
+ESM dist/testing.js        9.15 KB
+ESM dist/assets.js         4.79 KB
+ESM dist/identity.js       1.31 KB
+ESM dist/chunk-7HMQU4CK.js 2.13 KB
+ESM dist/base.js           699.00 B
+ESM dist/chunk-OQRNN4ZK.js 13.51 KB
+ESM dist/chunk-EUVBYB2J.js 10.01 KB
+ESM dist/market.js         8.67 KB
+ESM dist/registry.js       3.24 KB
+ESM dist/react.js          1.14 KB
+ESM dist/chunk-EY5ZPYKH.js 18.99 KB
+ESM dist/chunk-MKSOIAQJ.js 10.98 KB
+ESM dist/chunk-FDACS4HF.js 22.91 KB
+ESM dist/chunk-B3IR6HZ4.js 14.14 KB
+ESM dist/chunk-P7VARAEK.js 3.86 KB
+ESM dist/chunk-ROY7M27V.js 9.19 KB
+ESM ⚡️ Build success in 29ms
+DTS Build start
+DTS ⚡️ Build success in 2248ms
+DTS dist/base.d.ts                       709.00 B
+DTS dist/assets.d.ts                     6.38 KB
+DTS dist/testing.d.ts                    2.88 KB
+DTS dist/react.d.ts                      5.25 KB
+DTS dist/ui.d.ts                         6.45 KB
+DTS dist/market.d.ts                     3.09 KB
+DTS dist/identity.d.ts                   1.59 KB
+DTS dist/solana.d.ts                     2.31 KB
+DTS dist/core.d.ts                       12.21 KB
+DTS dist/registry.d.ts                   2.38 KB
+DTS dist/index.d.ts                      5.53 KB
+DTS dist/official-registry-DaxQ8uKE.d.ts 3.12 KB
+DTS dist/base-DCwbiCq3.d.ts              1.97 KB
+DTS dist/identity-CHINNYtE.d.ts          4.69 KB
+DTS dist/verification-DuaE0jgZ.d.ts      2.47 KB
+DTS dist/types-BP3P1yrY.d.ts             15.66 KB
+DTS dist/registry-Ddg-N52-.d.ts          12.35 KB
+npm notice
+npm notice 📦  @zodiacs/sdk@1.0.1
+npm notice Tarball Contents
+npm notice 1.3kB AGENTS.md
+npm notice 2.6kB CHANGELOG.md
+npm notice 1.1kB LICENSE
+npm notice 8.4kB README.md
+npm notice 32.3kB assets/zodiac-icons/circle/aquarius.png
+npm notice 43.8kB assets/zodiac-icons/circle/aries.png
+npm notice 46.9kB assets/zodiac-icons/circle/cancer.png
+npm notice 61.7kB assets/zodiac-icons/circle/capricorn.png
+npm notice 31.8kB assets/zodiac-icons/circle/gemini.png
+npm notice 48.0kB assets/zodiac-icons/circle/leo.png
+npm notice 34.9kB assets/zodiac-icons/circle/libra.png
+npm notice 37.0kB assets/zodiac-icons/circle/pisces.png
+npm notice 35.1kB assets/zodiac-icons/circle/sagittarius.png
+npm notice 49.9kB assets/zodiac-icons/circle/scorpio.png
+npm notice 178.5kB assets/zodiac-icons/circle/taurus.png
+npm notice 54.6kB assets/zodiac-icons/circle/virgo.png
+npm notice 6.5kB dist/assets.d.ts
+npm notice 4.9kB dist/assets.js
+npm notice 2.0kB dist/base-DCwbiCq3.d.ts
+npm notice 709B dist/base.d.ts
+npm notice 699B dist/base.js
+npm notice 2.2kB dist/chunk-7HMQU4CK.js
+npm notice 14.5kB dist/chunk-B3IR6HZ4.js
+npm notice 10.3kB dist/chunk-EUVBYB2J.js
+npm notice 19.4kB dist/chunk-EY5ZPYKH.js
+npm notice 23.5kB dist/chunk-FDACS4HF.js
+npm notice 11.2kB dist/chunk-MKSOIAQJ.js
+npm notice 13.8kB dist/chunk-OQRNN4ZK.js
+npm notice 4.0kB dist/chunk-P7VARAEK.js
+npm notice 9.4kB dist/chunk-ROY7M27V.js
+npm notice 12.5kB dist/core.d.ts
+npm notice 6.7kB dist/core.js
+npm notice 4.8kB dist/identity-CHINNYtE.d.ts
+npm notice 1.6kB dist/identity.d.ts
+npm notice 1.3kB dist/identity.js
+npm notice 5.7kB dist/index.d.ts
+npm notice 6.7kB dist/index.js
+npm notice 3.2kB dist/market.d.ts
+npm notice 8.9kB dist/market.js
+npm notice 3.2kB dist/official-registry-DaxQ8uKE.d.ts
+npm notice 5.4kB dist/react.d.ts
+npm notice 1.2kB dist/react.js
+npm notice 12.7kB dist/registry-Ddg-N52-.d.ts
+npm notice 2.4kB dist/registry.d.ts
+npm notice 3.3kB dist/registry.js
+npm notice 2.4kB dist/solana.d.ts
+npm notice 982B dist/solana.js
+npm notice 3.0kB dist/testing.d.ts
+npm notice 9.4kB dist/testing.js
+npm notice 16.0kB dist/types-BP3P1yrY.d.ts
+npm notice 6.6kB dist/ui.d.ts
+npm notice 17.6kB dist/ui.js
+npm notice 2.5kB dist/verification-DuaE0jgZ.d.ts
+npm notice 3.6kB package.json
+npm notice 23.7kB registry/zodiacs.registry.json
+npm notice 88B registry/zodiacs.registry.sha256
+npm notice Tarball Details
+npm notice name: @zodiacs/sdk
+npm notice version: 1.0.1
+npm notice filename: zodiacs-sdk-1.0.1.tgz
+npm notice package size: 670.6 kB
+npm notice unpacked size: 956.4 kB
+npm notice shasum: 195787bbd38a04998977140179485ea5535819e3
+npm notice integrity: sha512-qT3lm9bTKOaJa[...]L4MFpQPjfTRjQ==
+npm notice total files: 56
+npm notice
+zodiacs-sdk-1.0.1.tgz

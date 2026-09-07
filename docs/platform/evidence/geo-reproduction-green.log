@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 /private/tmp/zodiacs-platform-geonames-retry
+
+ ✓ packages/engine/src/geo/geonames.test.ts (10 tests) 16ms
+ ✓ packages/engine/src/geo.test.ts (40 tests) 37ms
+
+ Test Files  2 passed (2)
+      Tests  50 passed (50)
+   Start at  03:56:44
+   Duration  483ms (transform 87ms, setup 0ms, collect 126ms, tests 53ms, environment 0ms, prepare 128ms)
