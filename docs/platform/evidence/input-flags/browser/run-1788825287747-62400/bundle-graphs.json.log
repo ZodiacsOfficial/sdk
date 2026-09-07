@@ -1,0 +1,440 @@
+{
+  "esbuild": "0.28.1",
+  "root": {
+    "sha256": "4defad05c385021d89557c0c73dcd7b05452825b65149b8b1ba57d04a83f7cdd",
+    "inputs": [
+      {
+        "file": "node_modules/@zodiacs/engine/dist/chunk-K5MRTCWE.js",
+        "sha256": "2048e88750394d48837acb55735f872be9128b2f2d3d37af7134026a9f0e976d",
+        "imports": []
+      },
+      {
+        "file": "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js",
+        "sha256": "e6f7c42bfdaee08361b37975c7a27a7a5400de35e9b44b71325d9f64ff5aa68d",
+        "imports": []
+      },
+      {
+        "file": "node_modules/@zodiacs/engine/dist/chunk-PD4H342X.js",
+        "sha256": "5852fc08c1f56052de23dc2f018b3bcd6e75b080c18c9d9b5a793a2be49bf4c0",
+        "imports": [
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js",
+            "kind": "import-statement",
+            "original": "./chunk-INI453VG.js"
+          }
+        ]
+      },
+      {
+        "file": "node_modules/astronomy-engine/esm/astronomy.js",
+        "sha256": "068f1445ed0c636c94818fe6d20d7d125120e605e0bab9fc4675c3d531be5ad7",
+        "imports": []
+      },
+      {
+        "file": "node_modules/@zodiacs/engine/dist/chunk-4YKOFVM6.js",
+        "sha256": "5d795078c6cfc19404f933c87c3748946706ab30631d6b4b4b695a227dc8b803",
+        "imports": [
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-PD4H342X.js",
+            "kind": "import-statement",
+            "original": "./chunk-PD4H342X.js"
+          },
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js",
+            "kind": "import-statement",
+            "original": "./chunk-INI453VG.js"
+          },
+          {
+            "path": "node_modules/astronomy-engine/esm/astronomy.js",
+            "kind": "import-statement",
+            "original": "astronomy-engine"
+          }
+        ]
+      },
+      {
+        "file": "node_modules/@zodiacs/engine/dist/chunk-CPALRSPC.js",
+        "sha256": "9db1a3814ec9bd00a40d4bc295e348debd6108f62a322ed91d18610c81b9fb08",
+        "imports": []
+      },
+      {
+        "file": "node_modules/@zodiacs/engine/dist/index.js",
+        "sha256": "46306e0005fc4dd86eaa62a062f8e54957bceb0e672a6f073f920434d2b2ef3b",
+        "imports": [
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-K5MRTCWE.js",
+            "kind": "import-statement",
+            "original": "./chunk-K5MRTCWE.js"
+          },
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-4YKOFVM6.js",
+            "kind": "import-statement",
+            "original": "./chunk-4YKOFVM6.js"
+          },
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-PD4H342X.js",
+            "kind": "import-statement",
+            "original": "./chunk-PD4H342X.js"
+          },
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-CPALRSPC.js",
+            "kind": "import-statement",
+            "original": "./chunk-CPALRSPC.js"
+          },
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js",
+            "kind": "import-statement",
+            "original": "./chunk-INI453VG.js"
+          }
+        ]
+      }
+    ],
+    "metafile": {
+      "inputs": {
+        "node_modules/@zodiacs/engine/dist/chunk-K5MRTCWE.js": {
+          "bytes": 2593,
+          "imports": [],
+          "format": "esm"
+        },
+        "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js": {
+          "bytes": 4693,
+          "imports": [],
+          "format": "esm"
+        },
+        "node_modules/@zodiacs/engine/dist/chunk-PD4H342X.js": {
+          "bytes": 4213,
+          "imports": [
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js",
+              "kind": "import-statement",
+              "original": "./chunk-INI453VG.js"
+            }
+          ],
+          "format": "esm"
+        },
+        "node_modules/astronomy-engine/esm/astronomy.js": {
+          "bytes": 412025,
+          "imports": [],
+          "format": "esm"
+        },
+        "node_modules/@zodiacs/engine/dist/chunk-4YKOFVM6.js": {
+          "bytes": 4644,
+          "imports": [
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-PD4H342X.js",
+              "kind": "import-statement",
+              "original": "./chunk-PD4H342X.js"
+            },
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js",
+              "kind": "import-statement",
+              "original": "./chunk-INI453VG.js"
+            },
+            {
+              "path": "node_modules/astronomy-engine/esm/astronomy.js",
+              "kind": "import-statement",
+              "original": "astronomy-engine"
+            }
+          ],
+          "format": "esm"
+        },
+        "node_modules/@zodiacs/engine/dist/chunk-CPALRSPC.js": {
+          "bytes": 1459,
+          "imports": [],
+          "format": "esm"
+        },
+        "node_modules/@zodiacs/engine/dist/index.js": {
+          "bytes": 13163,
+          "imports": [
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-K5MRTCWE.js",
+              "kind": "import-statement",
+              "original": "./chunk-K5MRTCWE.js"
+            },
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-4YKOFVM6.js",
+              "kind": "import-statement",
+              "original": "./chunk-4YKOFVM6.js"
+            },
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-PD4H342X.js",
+              "kind": "import-statement",
+              "original": "./chunk-PD4H342X.js"
+            },
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-CPALRSPC.js",
+              "kind": "import-statement",
+              "original": "./chunk-CPALRSPC.js"
+            },
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js",
+              "kind": "import-statement",
+              "original": "./chunk-INI453VG.js"
+            }
+          ],
+          "format": "esm"
+        },
+        "../../../../../../../var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-jKe2mv/root-public-entry.mjs": {
+          "bytes": 32,
+          "imports": [
+            {
+              "path": "node_modules/@zodiacs/engine/dist/index.js",
+              "kind": "import-statement",
+              "original": "@zodiacs/engine"
+            }
+          ],
+          "format": "esm"
+        }
+      },
+      "outputs": {
+        "stdin.js": {
+          "imports": [],
+          "exports": [
+            "ASPECTS",
+            "ASPECT_BODIES",
+            "ASPECT_TYPES",
+            "ELEMENTS",
+            "ENGINE_VERSION",
+            "HOUSE_SYSTEMS",
+            "MODALITIES",
+            "SIGNS",
+            "SIGN_NAMES",
+            "computeAngles",
+            "computeHouses",
+            "degreeInSign",
+            "elementBalance",
+            "findAspects",
+            "findInterAspects",
+            "findLongitudeCrossings",
+            "groupIntoSeasons",
+            "houseOf",
+            "matchAspect",
+            "meanObliquity",
+            "modalityBalance",
+            "moonPhase",
+            "natalChart",
+            "normalizeLongitude",
+            "placidusCusps",
+            "positions",
+            "ramcOf",
+            "saturnReturn",
+            "separation",
+            "signForLongitude",
+            "signIndexForLongitude",
+            "summarizePair",
+            "synastry",
+            "transits",
+            "wholeSignCusps"
+          ],
+          "entryPoint": "../../../../../../../var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-jKe2mv/root-public-entry.mjs",
+          "inputs": {
+            "node_modules/@zodiacs/engine/dist/chunk-K5MRTCWE.js": {
+              "bytesInOutput": 2482
+            },
+            "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js": {
+              "bytesInOutput": 4426
+            },
+            "node_modules/@zodiacs/engine/dist/chunk-PD4H342X.js": {
+              "bytesInOutput": 3964
+            },
+            "node_modules/astronomy-engine/esm/astronomy.js": {
+              "bytesInOutput": 79834
+            },
+            "node_modules/@zodiacs/engine/dist/chunk-4YKOFVM6.js": {
+              "bytesInOutput": 4164
+            },
+            "node_modules/@zodiacs/engine/dist/chunk-CPALRSPC.js": {
+              "bytesInOutput": 1414
+            },
+            "node_modules/@zodiacs/engine/dist/index.js": {
+              "bytesInOutput": 11845
+            },
+            "../../../../../../../var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-jKe2mv/root-public-entry.mjs": {
+              "bytesInOutput": 0
+            }
+          },
+          "bytes": 110659
+        }
+      }
+    }
+  },
+  "geo": {
+    "sha256": "37c8585ea54fc3bd44aa83d2d624030cbb38c837d1c72539e5d6003faea067ca",
+    "inputs": [
+      {
+        "file": "node_modules/@zodiacs/engine/dist/chunk-K5MRTCWE.js",
+        "sha256": "2048e88750394d48837acb55735f872be9128b2f2d3d37af7134026a9f0e976d",
+        "imports": []
+      },
+      {
+        "file": "node_modules/@zodiacs/engine/dist/geo.js",
+        "sha256": "9d45088e73e9dadf8083c3673d12e5e8affedd17d1796a6fb0f3b0ec6ae679f5",
+        "imports": [
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-K5MRTCWE.js",
+            "kind": "import-statement",
+            "original": "./chunk-K5MRTCWE.js"
+          }
+        ]
+      }
+    ],
+    "metafile": {
+      "inputs": {
+        "node_modules/@zodiacs/engine/dist/chunk-K5MRTCWE.js": {
+          "bytes": 2593,
+          "imports": [],
+          "format": "esm"
+        },
+        "node_modules/@zodiacs/engine/dist/geo.js": {
+          "bytes": 11616,
+          "imports": [
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-K5MRTCWE.js",
+              "kind": "import-statement",
+              "original": "./chunk-K5MRTCWE.js"
+            }
+          ],
+          "format": "esm"
+        },
+        "../../../../../../../var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-jKe2mv/geo-public-entry.mjs": {
+          "bytes": 36,
+          "imports": [
+            {
+              "path": "node_modules/@zodiacs/engine/dist/geo.js",
+              "kind": "import-statement",
+              "original": "@zodiacs/engine/geo"
+            }
+          ],
+          "format": "esm"
+        }
+      },
+      "outputs": {
+        "stdin.js": {
+          "imports": [],
+          "exports": [
+            "createGeoNamesClient",
+            "offsetAt",
+            "resolveBirth",
+            "resolveLocalToUtc"
+          ],
+          "entryPoint": "../../../../../../../var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-jKe2mv/geo-public-entry.mjs",
+          "inputs": {
+            "node_modules/@zodiacs/engine/dist/chunk-K5MRTCWE.js": {
+              "bytesInOutput": 1142
+            },
+            "node_modules/@zodiacs/engine/dist/geo.js": {
+              "bytesInOutput": 11421
+            },
+            "../../../../../../../var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-jKe2mv/geo-public-entry.mjs": {
+              "bytesInOutput": 0
+            }
+          },
+          "bytes": 12747
+        }
+      }
+    }
+  },
+  "receipt": {
+    "sha256": "08111121ae9e8f38b171e6e203409e05f0aa6d91bffdb653f4b0d3149d552f8d",
+    "inputs": [
+      {
+        "file": "node_modules/@zodiacs/engine/dist/chunk-CPALRSPC.js",
+        "sha256": "9db1a3814ec9bd00a40d4bc295e348debd6108f62a322ed91d18610c81b9fb08",
+        "imports": []
+      },
+      {
+        "file": "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js",
+        "sha256": "e6f7c42bfdaee08361b37975c7a27a7a5400de35e9b44b71325d9f64ff5aa68d",
+        "imports": []
+      },
+      {
+        "file": "node_modules/@zodiacs/engine/dist/receipt.js",
+        "sha256": "b42ea8dbedea62a02c3793acd7d22024b302681fea203657b02437cd25a17fea",
+        "imports": [
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-CPALRSPC.js",
+            "kind": "import-statement",
+            "original": "./chunk-CPALRSPC.js"
+          },
+          {
+            "path": "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js",
+            "kind": "import-statement",
+            "original": "./chunk-INI453VG.js"
+          }
+        ]
+      }
+    ],
+    "metafile": {
+      "inputs": {
+        "node_modules/@zodiacs/engine/dist/chunk-CPALRSPC.js": {
+          "bytes": 1459,
+          "imports": [],
+          "format": "esm"
+        },
+        "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js": {
+          "bytes": 4693,
+          "imports": [],
+          "format": "esm"
+        },
+        "node_modules/@zodiacs/engine/dist/receipt.js": {
+          "bytes": 24948,
+          "imports": [
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-CPALRSPC.js",
+              "kind": "import-statement",
+              "original": "./chunk-CPALRSPC.js"
+            },
+            {
+              "path": "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js",
+              "kind": "import-statement",
+              "original": "./chunk-INI453VG.js"
+            }
+          ],
+          "format": "esm"
+        },
+        "../../../../../../../var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-jKe2mv/receipt-public-entry.mjs": {
+          "bytes": 40,
+          "imports": [
+            {
+              "path": "node_modules/@zodiacs/engine/dist/receipt.js",
+              "kind": "import-statement",
+              "original": "@zodiacs/engine/receipt"
+            }
+          ],
+          "format": "esm"
+        }
+      },
+      "outputs": {
+        "stdin.js": {
+          "imports": [],
+          "exports": [
+            "NATAL_DIAGNOSTIC_SCHEMA",
+            "NATAL_ENVELOPE_LIMITS",
+            "NATAL_ENVELOPE_SCHEMA",
+            "NATAL_RECEIPT_SCHEMA",
+            "NatalEnvelopeError",
+            "createNatalEnvelope",
+            "natalReplayInput",
+            "parseNatalEnvelope",
+            "redactNatalEnvelope",
+            "serializeNatalEnvelope"
+          ],
+          "entryPoint": "../../../../../../../var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-jKe2mv/receipt-public-entry.mjs",
+          "inputs": {
+            "node_modules/@zodiacs/engine/dist/chunk-CPALRSPC.js": {
+              "bytesInOutput": 1414
+            },
+            "node_modules/@zodiacs/engine/dist/chunk-INI453VG.js": {
+              "bytesInOutput": 2291
+            },
+            "node_modules/@zodiacs/engine/dist/receipt.js": {
+              "bytesInOutput": 24516
+            },
+            "../../../../../../../var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-jKe2mv/receipt-public-entry.mjs": {
+              "bytesInOutput": 0
+            }
+          },
+          "bytes": 28629
+        }
+      }
+    }
+  }
+}

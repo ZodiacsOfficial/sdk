@@ -1,0 +1,201 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { readFile, writeFile, mkdir, lstat, realpath } from 'node:fs/promises';
+import { createServer } from 'node:http';
+import { dirname, join, resolve, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { build, version as esbuildVersion } from '/Users/chiburashka/.codex/worktrees/4806/site/node_modules/esbuild/lib/main.js';
+import { chromium } from '/Users/chiburashka/.codex/worktrees/4806/site/node_modules/playwright-core/index.mjs';
+import { findChromium, STABLE_CHROMIUM_ARGS } from '/Users/chiburashka/.codex/worktrees/4806/site/tests/visual/browser.mjs';
+import { readPackageArchive } from '/Users/chiburashka/.codex/worktrees/4806/site/scripts/verify-platform-starter.mjs';
+import { browserCases } from './cases.mjs';
+
+const consumer = process.env.FLAGS_PACKED_CONSUMER_DIR;
+const archive = process.env.FLAGS_PACKED_ARCHIVE;
+const expectedSHA256 = process.env.FLAGS_PACKED_SHA256;
+const expectedVersion = process.env.FLAGS_PACKED_VERSION;
+const sourceCommitClaim = process.env.FLAGS_SOURCE_COMMIT;
+assert(consumer && archive && expectedVersion && /^[a-f0-9]{64}$/.test(expectedSHA256 ?? '') && /^[a-f0-9]{40}$/.test(sourceCommitClaim ?? ''), 'Explicit frozen consumer, archive, version, SHA256 and source commit are required');
+const folder = dirname(fileURLToPath(import.meta.url));
+const out = join(folder, `run-${Date.now()}-${process.pid}`);
+await mkdir(out);
+const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+const save = (name, value) => writeFile(join(out, name), typeof value === 'string' ? value : `${JSON.stringify(value, null, 2)}\n`);
+const checks = [], browserRequests = [], serverRequests = [], blockedRoutes = [], errors = [], consoleErrors = [];
+const cleanup = { browserClosed: false, contextClosed: false, agentBrowserClosed: false, serverClosed: false, authenticationCopied: false };
+const check = (name, pass, detail = null) => { checks.push({ name, pass: Boolean(pass), detail }); assert(pass, name); };
+const installed = join(consumer, 'node_modules/@zodiacs/engine');
+let identity, graphs, runtime, browserResult, observations, observerControls, baseURL;
+let server, browser, context, page, status = 'failed', failure, agentStarted = false;
+// Both namespace and session enter the macOS Unix-socket path (103-byte cap).
+const agentSession = `zif${process.pid}`;
+const agentExecutable = '/private/tmp/zodiacs-platform-browser/node_modules/.bin/agent-browser';
+const agentConfig = join(out, 'agent-browser-config.json');
+const execFileAsync = promisify(execFile);
+let agentSequence = 0;
+async function agent(...args) {
+  const all = ['--config', agentConfig, '--session', agentSession, '--namespace', agentSession, ...args];
+  try {
+    const result = await execFileAsync(agentExecutable, all, { timeout: 25000, maxBuffer: 1024 * 1024, env: {
+      PATH: `${dirname(process.execPath)}:/usr/bin:/bin:/usr/sbin:/sbin`, HOME: process.env.HOME, TMPDIR: process.env.TMPDIR, LANG: 'en_US.UTF-8'
+    } });
+    await save(`agent-${++agentSequence}-${args[0]}.log`, `$ agent-browser ${args.join(' ')}\n${result.stdout}${result.stderr}`);
+    return result.stdout;
+  } catch (error) {
+    await save(`agent-${++agentSequence}-${args[0]}-failure.log`, `$ agent-browser ${args.join(' ')}\n${error.stdout ?? ''}${error.stderr ?? ''}\n${error.message}\n`);
+    throw error;
+  }
+}
+
+try {
+  for (const name of ['browser-probe.mjs', 'cases.mjs']) await save(name, await readFile(join(folder, name), 'utf8'));
+  const archiveBytes = await readFile(archive);
+  check('Exact immutable archive SHA256 matches supplied identity', hash(archiveBytes) === expectedSHA256);
+  const members = readPackageArchive(archiveBytes);
+  check('Fresh installed package is inside consumer, not a workspace symlink', (await realpath(installed)).startsWith(`${await realpath(consumer)}/node_modules/`) && !(await lstat(installed)).isSymbolicLink());
+  const memberHashes = [];
+  for (const [name, bytes] of members) {
+    const path = join(installed, name);
+    const stat = await lstat(path);
+    assert(stat.isFile() && !stat.isSymbolicLink(), `Installed member is regular: ${name}`);
+    assert.deepEqual(await readFile(path), bytes, `Installed bytes match archive: ${name}`);
+    memberHashes.push({ name, bytes: bytes.length, sha256: hash(bytes) });
+  }
+  check('Every installed archive member matches exact packed bytes', memberHashes.length === members.size, { members: members.size });
+  const manifest = JSON.parse(await readFile(join(installed, 'package.json'), 'utf8'));
+  check('Executed package metadata identifies the ESM engine candidate', manifest.name === '@zodiacs/engine' && manifest.version === expectedVersion && manifest.type === 'module');
+  for (const entry of ['.', './geo', './receipt']) {
+    const target = manifest.exports[entry];
+    assert(target && typeof target.import === 'string' && typeof target.types === 'string', 'Expected import/types export target');
+    assert(members.has(target.import.replace(/^\.\//, '')) && members.has(target.types.replace(/^\.\//, '')), 'Export targets must exist in archive');
+  }
+  identity = { consumer, archive, archiveSHA256: hash(archiveBytes), archiveBytes: archiveBytes.length, version: manifest.version, sourceCommitClaim, memberCount: members.size, unpackedBytes: memberHashes.reduce((sum, entry) => sum + entry.bytes, 0), memberHashes };
+  await save('archive-members.json', identity);
+
+  async function bundle(entry, label) {
+    const result = await build({ absWorkingDir: consumer, stdin: { contents: `export * from ${JSON.stringify(entry)};`, resolveDir: consumer, sourcefile: `${label}-public-entry.mjs` }, bundle: true, platform: 'browser', format: 'esm', target: 'es2022', write: false, metafile: true, minify: false });
+    assert.equal(result.outputFiles.length, 1);
+    const inputs = [];
+    for (const [name, facts] of Object.entries(result.metafile.inputs)) {
+      const path = resolve(consumer, name);
+      if (path === join(consumer, `${label}-public-entry.mjs`)) continue;
+      const local = relative(consumer, path);
+      assert(local.startsWith('node_modules/@zodiacs/engine/dist/') || local.startsWith('node_modules/astronomy-engine/'), 'Unexpected dependency outside packed engine/ephemeris graph');
+      assert(!/solana|wallet|ownership|web3|@zodiacs\/sdk/i.test(local), 'Ownership module entered browser graph');
+      inputs.push({ file: local, sha256: hash(await readFile(path)), imports: facts.imports });
+    }
+    await save(`${label}.bundle.js`, result.outputFiles[0].text);
+    return { code: result.outputFiles[0].text, sha256: hash(result.outputFiles[0].contents), inputs, metafile: result.metafile };
+  }
+  const core = await bundle('@zodiacs/engine', 'root');
+  const geo = await bundle('@zodiacs/engine/geo', 'geo');
+  const receipt = await bundle('@zodiacs/engine/receipt', 'receipt');
+  check('Optional geo and receipt graphs omit root ephemeris and ownership modules', [geo, receipt].every(graph => graph.inputs.every(input => input.file.startsWith('node_modules/@zodiacs/engine/dist/') && !/\/(?:index|ephemeris)\.js$/.test(input.file))) && ![geo.code, receipt.code].some(code => code.includes('function natalChart') || code.includes('getCrossChainZodiacsOwnership')));
+  check('Core graph omits optional geo and receipt implementation', !core.inputs.some(input => /\/(?:geo|receipt)\.js$/.test(input.file)) && !core.code.includes('function createGeoNamesClient') && !core.code.includes('function parseNatalEnvelope'));
+  graphs = Object.fromEntries(Object.entries({ root: core, geo, receipt }).map(([key, graph]) => [key, { sha256: graph.sha256, inputs: graph.inputs, metafile: graph.metafile }]));
+  await save('bundle-graphs.json', { esbuild: esbuildVersion, ...graphs });
+
+  const html = '<!doctype html><html lang="en"><meta charset="utf-8"><link rel="icon" href="data:,"><title>Installed rc.5 browser acceptance</title><body><h1>Installed rc.5 browser acceptance</h1><p id="status">Synthetic acceptance cases are prepared. Candidate modules load only after privacy observers are armed.</p><ol id="checks"></ol></body></html>';
+  const assets = new Map([['/', { type: 'text/html', body: html }], ['/root.js', { type: 'text/javascript', body: core.code }], ['/geo.js', { type: 'text/javascript', body: geo.code }], ['/receipt.js', { type: 'text/javascript', body: receipt.code }]]);
+  server = createServer((request, response) => {
+    serverRequests.push({ method: request.method, path: request.url });
+    const asset = assets.get(request.url);
+    if (request.method !== 'GET' || !asset) { response.writeHead(404).end(); return; }
+    response.writeHead(200, { 'Content-Type': `${asset.type}; charset=utf-8`, 'Cache-Control': 'no-store', 'Content-Security-Policy': "default-src 'none'; script-src 'self'; connect-src 'self'; img-src data:; base-uri 'none'; form-action 'none'" });
+    response.end(asset.body);
+  });
+  await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
+  baseURL = `http://127.0.0.1:${server.address().port}`;
+  await save('agent-browser-config.json', '{}\n');
+  agentStarted = true;
+  await agent('open', baseURL);
+  await agent('wait', '--load', 'networkidle');
+  const preflight = await agent('eval', 'JSON.stringify({content:document.body.innerText.trim().length>0,overlay:!!document.querySelector("[data-nextjs-dialog],.vite-error-overlay,#webpack-dev-server-client-overlay"),heading:document.querySelector("h1")?.textContent})');
+  assert(preflight.includes('Installed rc.5 browser acceptance') && preflight.includes('true') && preflight.includes('false'), 'Static browser preflight failed');
+  await agent('snapshot');
+  await agent('snapshot', '-i');
+  const preflightErrors = await agent('errors');
+  assert(!preflightErrors.trim() || /No errors/i.test(preflightErrors), 'Agent-browser reports page errors');
+  await agent('screenshot', join(out, 'preflight.png'), '--full');
+  await agent('close');
+  cleanup.agentBrowserClosed = true;
+  check('Actual agent-browser server preflight loads meaningful content without overlays or errors', true);
+
+  const executablePath = await findChromium();
+  browser = await chromium.launch({ executablePath, headless: true, args: STABLE_CHROMIUM_ARGS });
+  runtime = { node: process.version, chrome: browser.version(), executablePath, esbuild: esbuildVersion, ephemeris: JSON.parse(await readFile(join(consumer, 'node_modules/astronomy-engine/package.json'), 'utf8')).version };
+  context = await browser.newContext({ viewport: { width: 1120, height: 800 }, reducedMotion: 'reduce' });
+  context.on('request', request => browserRequests.push({ url: request.url(), method: request.method(), postData: request.postData(), type: request.resourceType() }));
+  await context.route('**/*', async route => {
+    const request = route.request(), url = new URL(request.url());
+    if (url.origin === baseURL && assets.has(url.pathname) && !url.search && request.method() === 'GET') await route.continue();
+    else { blockedRoutes.push({ url: request.url(), method: request.method() }); await route.abort(); }
+  });
+  await context.addInitScript(() => {
+    const observed = window.__privacy = { blocked: [], fetch: [], intl: [], violations: [], blockIntl: false };
+    const blocked = name => function () { observed.blocked.push(name); throw new Error('Blocked synthetic capability'); };
+    for (const name of ['localStorage', 'sessionStorage', 'indexedDB', 'caches']) Object.defineProperty(window, name, { configurable: true, get: blocked(name) });
+    for (const name of ['XMLHttpRequest', 'WebSocket', 'EventSource', 'Worker', 'SharedWorker', 'WebTransport', 'RTCPeerConnection']) if (name in window) Object.defineProperty(window, name, { configurable: true, value: blocked(name) });
+    Object.defineProperty(navigator, 'sendBeacon', { configurable: true, value: blocked('sendBeacon') });
+    Object.defineProperty(navigator, 'serviceWorker', { configurable: true, get: blocked('serviceWorker') });
+    Object.defineProperty(document, 'cookie', { configurable: true, get: blocked('cookie-read'), set: blocked('cookie-write') });
+    window.fetch = () => { observed.fetch.push({ attempted: true }); return Promise.reject(new Error('Blocked synthetic fetch')); };
+    const NativeFormatter = Intl.DateTimeFormat;
+    Intl.DateTimeFormat = new Proxy(NativeFormatter, {
+      construct(target, args, newTarget) { observed.intl.push('construct'); if (observed.blockIntl) throw new Error('Unexpected Intl access'); return Reflect.construct(target, args, newTarget); },
+      apply(target, thisArg, args) { observed.intl.push('apply'); if (observed.blockIntl) throw new Error('Unexpected Intl access'); return Reflect.apply(target, thisArg, args); }
+    });
+    document.addEventListener('securitypolicyviolation', event => observed.violations.push({ directive: event.violatedDirective, blockedURI: event.blockedURI }));
+  });
+  page = await context.newPage();
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
+  await context.tracing.start({ screenshots: true, snapshots: true });
+  await page.goto(baseURL, { waitUntil: 'load' });
+  observerControls = await page.evaluate(async () => {
+    try { void localStorage; } catch {}
+    try { document.cookie = 'synthetic=1'; } catch {}
+    try { navigator.sendBeacon('/observer-check', 'synthetic'); } catch {}
+    try { await fetch('/observer-check'); } catch {}
+    window.__privacy.blockIntl = true;
+    try { new Intl.DateTimeFormat('en-US', { timeZone: 'UTC' }); } catch {}
+    window.__privacy.blockIntl = false;
+    const result = structuredClone(window.__privacy);
+    for (const name of ['blocked', 'fetch', 'intl', 'violations']) window.__privacy[name].length = 0;
+    return result;
+  });
+  check('Armed privacy and Intl observers detect negative controls without transmitting', JSON.stringify(observerControls.blocked) === '["localStorage","cookie-write","sendBeacon"]' && observerControls.fetch.length === 1 && observerControls.intl.length === 1 && browserRequests.length === 1);
+  await page.evaluate(async () => {
+    window.__packedCore = await import('/root.js');
+    window.__packedGeo = await import('/geo.js');
+    window.__packedReceipt = await import('/receipt.js');
+  });
+  check('Candidate module import attempts no storage, fetch or Intl access', await page.evaluate(() => ['blocked', 'fetch', 'intl', 'violations'].every(name => window.__privacy[name].length === 0)));
+  const requestsBeforeOffline = browserRequests.length;
+  await context.setOffline(true);
+  browserResult = await page.evaluate(browserCases, expectedVersion);
+  checks.push(...browserResult.checks);
+  observations = await page.evaluate(() => structuredClone(window.__privacy));
+  check('Packed computation and receipt replay execute offline with zero fetch/storage attempts', observations.blocked.length === 0 && observations.fetch.length === 0 && blockedRoutes.length === 0 && browserRequests.length === requestsBeforeOffline);
+  check('Only the exact four local static resources were requested, with no input values or bodies', browserRequests.length === 4 && browserRequests.every(request => request.method === 'GET' && request.postData === null && new URL(request.url).origin === baseURL && assets.has(new URL(request.url).pathname) && !new URL(request.url).search));
+  check('Fresh context remains cookie-free without CSP or browser errors', (await context.cookies()).length === 0 && errors.length === 0 && consoleErrors.length === 0 && observations.violations.length === 0, { errors, consoleErrors, violations: observations.violations });
+  await page.screenshot({ path: join(out, 'browser-probe.png'), fullPage: true, animations: 'disabled' });
+  assert(checks.every(check => check.pass), 'One or more browser acceptance cases failed');
+  status = 'passed';
+} catch (error) {
+  failure = { name: error.name, message: error.message, stack: error.stack };
+  if (page) try { await page.screenshot({ path: join(out, 'failure.png'), fullPage: true }); } catch {}
+} finally {
+  if (context) { try { await context.tracing.stop({ path: join(out, 'trace.zip') }); } catch {} await context.close(); cleanup.contextClosed = true; }
+  if (browser) { await browser.close(); cleanup.browserClosed = true; }
+  if (agentStarted && !cleanup.agentBrowserClosed) { try { await agent('close'); cleanup.agentBrowserClosed = true; } catch {} }
+  if (server?.listening) { server.closeIdleConnections(); await new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve())); cleanup.serverClosed = true; }
+  cleanup.serverListening = server?.listening ?? false;
+  const report = { status, runtime, identity, checks, browserResult, observations, observerControls, requests: browserRequests.map(request => ({ ...request, url: baseURL && request.url.startsWith(baseURL) ? new URL(request.url).pathname : request.url })), serverRequests, blockedRoutes, errors, consoleErrors, cleanup, failure,
+    limitations: ['Finite synthetic cases in the observed Chrome runtime; no universal timezone or numerical-accuracy claim.', 'Source commit is an integrator-supplied provenance claim; exact archive hash and all installed member bytes are independently verified.', 'Supplied Chart checks establish flag-metadata consistency at call time, not verified numerical computation or authenticated provenance.', 'Local capability observers and an offline browser context do not sandbox hostile same-realm JavaScript.', 'Saturn calculation call counts are covered by source tests and independent source review; production bundles are not instrumented here.', 'No site migration, release publication, deployment, external network service or external adoption is exercised.'] };
+  await save('browser-result.json', report);
+  console.log(JSON.stringify({ status, checks: checks.length, failed: checks.filter(check => !check.pass), failure, cleanup, result: join(out, 'browser-result.json') }, null, 2));
+  if (status !== 'passed') process.exitCode = 1;
+}

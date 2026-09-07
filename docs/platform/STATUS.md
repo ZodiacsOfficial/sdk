@@ -13,9 +13,14 @@ consistency checks, not astronomical authentication.
 Implemented and locally tested: **562 tests / 31 files** on Node 20 and 22;
 all required workspace and TypeDoc gates pass. The final build and typecheck ran
 sequentially. The independent reviewer passed 14 additional frozen-source
-controls; original-source regressions were 61 failed / 5 passed. Actual new
-packed-consumer/browser acceptance and review delivery remain pending at this
-source checkpoint. [Exact commands, compatibility and limits](EVIDENCE.md#public-flags-and-civil-settings-candidate).
+controls; original-source regressions were 61 failed / 5 passed. Frozen source
+`97f5e8d01828f4b85ffa845825dee9acff4695e4` and archive carrier
+`333369256af683c560603dd1e6411dd7a07adb1f` are pushed. The 23-file archive
+has SHA-256 `1809c1686843a6be148eb185535e32059a20c35896e29ccfc7583a6b2738da65`;
+its anonymous public bytes match. Two actual fresh consumers pass types/public
+controls; 480 numerical parity and 480 echo controls pass. Actual Chrome passes
+26 aggregate packed-browser acceptance checks, including 14 runtime case groups.
+The isolated consumer audit is zero. Draft PR delivery is the remaining step. [Exact commands, compatibility and limits](EVIDENCE.md#public-flags-and-civil-settings-candidate).
 
 The site application retains engine rc.1 and standalone starter rc.3 retains
 engine rc.3. Previous artifacts, internal calculation formulas, receipt schema,

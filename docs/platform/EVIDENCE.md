@@ -372,3 +372,83 @@ optional ownership SDK remains 1.0.1. Production `zodiacs.org` remains READY
 `dpl_BrntzbFYa2gzetKWgeq91GFeaM6W` at site main. New rc.5 archive/consumer/browser
 acceptance and draft delivery are pending at this source checkpoint. No npm
 publication, merge, production operation, outreach, spending or account action.
+
+### Frozen rc.5 archive and consumer acceptance
+
+Source **`97f5e8d01828f4b85ffa845825dee9acff4695e4`** precedes packing.
+Archive carrier **`333369256af683c560603dd1e6411dd7a07adb1f`** contains the
+new immutable **23-file, 36,065-byte** package (121,212 unpacked bytes), SHA-256
+`1809c1686843a6be148eb185535e32059a20c35896e29ccfc7583a6b2738da65` and integrity
+`sha512-XUmtZ+mOwMJxElr6hbhQ59cPatvsPa8/XrLfihZfdsQnMZgptlTZSV6YBRVr+Nqps0No64HUpYLXNhUoeCVzNA==`.
+All members match the frozen source/build files, notices and sole ephemeris
+dependency are retained, and SHA-512 integrity agrees. At **23:49:36 UTC**, the
+[anonymous public download](https://raw.githubusercontent.com/ZodiacsOfficial/sdk/333369256af683c560603dd1e6411dd7a07adb1f/artifacts/zodiacs-engine-0.1.1-rc.5.tgz)
+matched every local byte. Older archives are unchanged.
+
+The first pack built successfully but failed with inherited npm cache EPERM
+before producing any archive. No cache ownership/configuration was changed.
+The attempted inventory extraction then found no package inventory. Packing was
+repeated with isolated empty npm configs and a writable temporary cache; it
+succeeded without source changes. Original failure output is retained. Raw pack
+stdout includes prepack build logs, with its trailing JSON inventory parsed
+separately. [Original pack failure](evidence/input-flags/delivery-pack-attempt-1.log),
+[successful raw output](evidence/input-flags/delivery-pack.log),
+[public download receipt](evidence/input-flags/delivery-public-artifact.json.log).
+
+Two actual fresh consumers on Node 20.20.2 and 22.23.2 use no workspace links.
+They pass TypeScript 5.9.3 public imports, all five typed flags, good echo/replay,
+precomputed identity/shallow normalization, malformed/private claims, scalar
+snapshots and civil settings rejected before Intl, in addition to earlier
+GeoNames, receipt, error, notice and optional-dependency controls. The isolated
+consumer audit is zero. Actual installed rc.4 and rc.5 packages match all
+mathematical fields in **480 synthetic chart cases**, excluding only
+engineVersion, with ephemeris 2.1.19 on both. Another **480 valid duplicate/result
+flag echo controls** match canonical input, unchanged-schema receipt replay
+matches, and canonical supplied Chart identity survives. This is finite
+compatibility evidence, not an independent astronomical reference.
+[Node 20](evidence/input-flags/delivery-consumer20.log),
+[Node 22](evidence/input-flags/delivery-consumer22.log),
+[audit](evidence/input-flags/delivery-consumer-audit.json.log),
+[executed parity probe](evidence/input-flags/delivery-packed-parity.mjs.log),
+[parity result](evidence/input-flags/delivery-packed-parity.json.log),
+[raw delivery mapping](evidence/input-flags/delivery-inputs.json.log).
+
+Actual packed-browser acceptance and draft delivery remain pending at this
+artifact checkpoint. No merge, npm publication, production deployment or
+external adoption is claimed.
+
+### Final rc.5 browser acceptance
+
+Actual **Chrome 152.0.7977.83** passes **26/26 aggregate acceptance checks**,
+including **14 browser API groups**, against the fresh consumer's exact 23
+archive members. Core/geo/receipt were bundled from installed public exports,
+with every graph input hashed: optional geo/receipt omit ephemeris/ownership;
+core omits optional implementation. Browser groups cover invalid civil settings
+before Intl, malformed/private flags, 64/65 boundaries, no iterator/coercion,
+derived echo/receipt replay, unknown 08:30, Chart identity/shallow normalization,
+40 contradiction paths, getter snapshots, early Gregorian years, modern gap/fold,
+historical fractional LMT, local-resolution receipt and actual Saturn parity.
+Saturn internal invocation counts were not instrumented in browser; source
+review provides that separate evidence.
+
+Observers were installed before module import and proven with negative controls.
+Acceptance requested only four static GET resources (`/`, `/root.js`, `/geo.js`,
+`/receipt.js`), without query or body. Module import attempted no fetch/storage/
+Intl access; all API groups ran offline with zero observed fetch, storage or
+other network capability attempts, zero cookies and zero browser/console/CSP
+errors. Valid civil tests intentionally constructed Intl six times. These are
+finite local controls, not a sandbox or universal historical-time guarantee.
+Owned browser/context/agent session/server were closed.
+
+The initial harness exceeded macOS's Unix-socket name-length limit before any
+candidate module ran. Archive/graph checks had passed; the only correction was
+a shorter owned session name. Both attempts and exact scripts/logs/graphs/
+results/captures/trace are retained without source changes.
+[Browser methodology](evidence/input-flags/browser/README.md.log),
+[compact result](evidence/input-flags/browser/summary.json.log),
+[complete result](evidence/input-flags/browser/run-1788825287747-62400/browser-result.json.log),
+[exact retained input mapping](evidence/input-flags/browser/inputs.json.log).
+
+All authorized local package acceptance is complete for this bounded candidate.
+Required external/human review and SDK #5's explicit release hold are unchanged.
+No npm publication, merge, production deployment or external adoption occurred.

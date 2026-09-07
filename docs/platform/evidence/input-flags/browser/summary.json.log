@@ -1,0 +1,99 @@
+{
+  "status": "passed",
+  "checks": 26,
+  "browserGroups": 14,
+  "runtime": {
+    "node": "v22.23.2",
+    "chrome": "152.0.7977.83",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "esbuild": "0.28.1",
+    "ephemeris": "2.1.19"
+  },
+  "archiveSHA256": "1809c1686843a6be148eb185535e32059a20c35896e29ccfc7583a6b2738da65",
+  "archiveMembersVerified": 23,
+  "requests": [
+    {
+      "url": "/",
+      "method": "GET",
+      "postData": null,
+      "type": "document"
+    },
+    {
+      "url": "/root.js",
+      "method": "GET",
+      "postData": null,
+      "type": "script"
+    },
+    {
+      "url": "/geo.js",
+      "method": "GET",
+      "postData": null,
+      "type": "script"
+    },
+    {
+      "url": "/receipt.js",
+      "method": "GET",
+      "postData": null,
+      "type": "script"
+    }
+  ],
+  "privacy": {
+    "observedFetchAttempts": 0,
+    "observedStorageAndOtherNetworkAttempts": 0,
+    "civilIntlCalls": 6,
+    "browserErrors": 0,
+    "consoleErrors": 0
+  },
+  "cleanup": {
+    "browserClosed": true,
+    "contextClosed": true,
+    "agentBrowserClosed": true,
+    "serverClosed": true,
+    "authenticationCopied": false,
+    "serverListening": false
+  },
+  "finalEvidence": "run-1788825287747-62400/browser-result.json",
+  "preservedHarnessFailure": "run-1788825254705-62322/browser-result.json",
+  "files": [
+    {
+      "file": "browser-probe.mjs",
+      "bytes": 18261,
+      "sha256": "436695bef90ba13b1ff6c7f29c1495e52c79309ab0c2ea09b5c5228bdaa47067"
+    },
+    {
+      "file": "cases.mjs",
+      "bytes": 16300,
+      "sha256": "1be160482572480bd22baa0fc5d3e28c11020bc853acd3dc5f648cacabbfbbaf"
+    },
+    {
+      "file": "README.md",
+      "bytes": 4516,
+      "sha256": "afc4f109b0bd0f5ecb2b43d3514e7ce9d542e1c03e297576eb7e567e08f4d754"
+    },
+    {
+      "file": "run-1788825287747-62400/browser-result.json",
+      "bytes": 25160,
+      "sha256": "bfbdfd6770c26b432cd49317e3d0a17f0fddea290d2a41865ccce89ebdab206c"
+    },
+    {
+      "file": "run-1788825287747-62400/archive-members.json",
+      "bytes": 3965,
+      "sha256": "6059f1cd8917ae3831e492a415d087a2b7507014c131507044d4377328bf434f"
+    },
+    {
+      "file": "run-1788825287747-62400/bundle-graphs.json",
+      "bytes": 14988,
+      "sha256": "9fc7409abcb974944cbc6e02e4736ce63749e0b65e185b593a08cfa60f2e4a69"
+    },
+    {
+      "file": "run-1788825287747-62400/browser-probe.png",
+      "bytes": 99175,
+      "sha256": "fda2d5da1cd6cc12ed82a0bcdcf5ee9b44e24db2dc70b214d9f4bd943357d6c4"
+    },
+    {
+      "file": "run-1788825287747-62400/trace.zip",
+      "bytes": 131097,
+      "sha256": "7889c0e29d8b0cc400fad189e7406f29ac54898c16db5bed3e117d87ba02f1a4"
+    }
+  ]
+}

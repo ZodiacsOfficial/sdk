@@ -1,0 +1,222 @@
+// Serialized into an actual browser page. No Node imports or source-module mocks.
+export async function browserCases(expectedVersion) {
+  const core = window.__packedCore;
+  const geo = window.__packedGeo;
+  const receipt = window.__packedReceipt;
+  const observed = window.__privacy;
+  const checks = [];
+  const details = {};
+  const secret = 'SYNTHETIC_PRIVATE_FLAG';
+  const instant = '2001-12-21T09:00:00Z';
+  const base = { utc: instant, latitude: 40, longitude: -74, houseSystem: 'whole', timeKnown: true };
+  const assert = (pass, message) => { if (!pass) throw new Error(message); };
+  const equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  const reject = (action, messagePart) => {
+    let failure;
+    try { action(); } catch (error) { failure = error; }
+    assert(failure instanceof RangeError, 'Expected a RangeError');
+    assert(!failure.message.includes(secret), 'Error disclosed the synthetic flag marker');
+    if (messagePart) assert(failure.message.includes(messagePart), 'Unexpected validation boundary');
+    return { name: failure.name, message: failure.message };
+  };
+  const test = async (name, action) => {
+    try { const detail = await action(); checks.push({ name, pass: true, detail: detail ?? null }); }
+    catch (error) { checks.push({ name, pass: false, error: { name: error.name, message: error.message } }); }
+  };
+
+  await test('Real packed root/geo/receipt public exports and version', () => {
+    assert(core.ENGINE_VERSION === expectedVersion, 'Unexpected executed engine version');
+    for (const name of ['natalChart', 'positions', 'moonPhase', 'synastry', 'transits', 'saturnReturn']) assert(typeof core[name] === 'function', 'Missing root API');
+    for (const name of ['createNatalEnvelope', 'parseNatalEnvelope', 'serializeNatalEnvelope', 'natalReplayInput', 'redactNatalEnvelope']) assert(typeof receipt[name] === 'function' && !(name in core), 'Receipt entry isolation failed');
+    assert(equal(Object.keys(geo).sort(), ['createGeoNamesClient', 'offsetAt', 'resolveBirth', 'resolveLocalToUtc']), 'Unexpected geo exports');
+    assert(!('snapshotFlags' in core) && !('validateBirthSettings' in core), 'Internal validation helper leaked into public exports');
+    return { version: core.ENGINE_VERSION, rootExports: Object.keys(core).length, geoExports: Object.keys(geo), receiptExports: Object.keys(receipt) };
+  });
+
+  await test('Invalid civil settings reject before Intl with fixed diagnostics', () => {
+    const before = observed.intl.length;
+    observed.blockIntl = true;
+    try {
+      const local = { date: '2024-02-29', time: '12:00', timeZone: 'UTC', latitude: 40, longitude: -74 };
+      const cases = [
+        [{ timeKnown: 'false' }, 'timeKnown'], [{ timeKnown: 0 }, 'timeKnown'], [{ timeKnown: null }, 'timeKnown'],
+        [{ houseSystem: secret }, 'houseSystem'], [{ houseSystem: null }, 'houseSystem'],
+        [{ latitude: null, longitude: null }, 'latitude'], [{ latitude: '40' }, 'latitude'], [{ latitude: Infinity }, 'latitude'],
+        [{ latitude: 91 }, 'latitude'], [{ longitude: 181 }, 'longitude'], [{ longitude: undefined }, 'together'],
+        [{ time: null }, 'Local date/time'], [{ time: null, timeKnown: false }, 'Local date/time']
+      ];
+      const errors = cases.map(([change, label]) => reject(() => geo.resolveBirth({ ...local, ...change }), label));
+      assert(observed.intl.length === before, 'Invalid settings reached Intl');
+      return { cases: cases.length, intlCalls: observed.intl.length - before, errors };
+    } finally { observed.blockIntl = false; }
+  });
+
+  await test('Malformed/private flag values reject without coercion or slot getters', () => {
+    let hooks = 0;
+    const hook = () => { hooks++; throw new Error(secret); };
+    const accessor = [];
+    Object.defineProperty(accessor, '0', { get: hook });
+    const proxy = new Proxy([secret], { get(target, key, receiver) { if (key === 'length') return 0; return Reflect.get(target, key, receiver); } });
+    const cases = [[secret], 'lmt', new Set(['lmt']), { 0: 'lmt', length: 1 }, null, [null], [{}],
+      [[ 'lmt' ]], new Array(1), ['lmt\n'], ['dst-gap', 'dst-fold'], [{ toString: hook, valueOf: hook }], accessor, proxy];
+    const errors = cases.map(flags => reject(() => core.natalChart({ ...base, flags })));
+    assert(hooks === 0, 'A supplied flag hook executed');
+    return { cases: cases.length, hooks, errorNames: [...new Set(errors.map(error => error.name))] };
+  });
+
+  await test('Known duplicate limit and overridden iterator use canonical data slots', () => {
+    const flags = ['lmt'];
+    let calls = 0;
+    Object.defineProperty(flags, Symbol.iterator, { value() { calls++; throw new Error(secret); } });
+    assert(equal(core.natalChart({ ...base, flags }).flags, ['lmt']), 'Custom iterator replaced flag data');
+    assert(calls === 0, 'Custom iterator executed');
+    assert(equal(core.natalChart({ ...base, flags: new Array(64).fill('lmt') }).flags, ['lmt']), 'Supported duplicates did not collapse');
+    reject(() => core.natalChart({ ...base, flags: new Array(65).fill('lmt') }));
+    return { maximumAccepted: 64, rejectedLength: 65, iteratorCalls: calls };
+  });
+
+  await test('Correct polar echo normalizes and replays an actual packed receipt', () => {
+    const supplied = { ...base, latitude: 78, houseSystem: 'placidus', flags: ['polar-fallback', 'lmt', 'polar-fallback', 'lmt'] };
+    const before = JSON.stringify(supplied);
+    const chart = core.natalChart(supplied);
+    const control = core.natalChart({ ...supplied, flags: ['lmt'] });
+    assert(chart.input.houseSystem === 'placidus' && chart.houses.system === 'whole', 'Requested/actual house distinction lost');
+    assert(equal(chart.input.flags, ['lmt']) && equal(chart.flags, ['lmt', 'polar-fallback']), 'Derived echo was not canonicalized');
+    assert(equal(chart, control), 'Normalization changed numerical result');
+    assert(JSON.stringify(supplied) === before, 'Caller birth input mutated');
+    const envelope = receipt.createNatalEnvelope(chart);
+    const text = receipt.serializeNatalEnvelope(envelope);
+    const parsed = receipt.parseNatalEnvelope(text);
+    assert(parsed.ok, 'Actual receipt parsing failed');
+    assert(equal(core.natalChart(receipt.natalReplayInput(parsed.envelope)), chart), 'Actual receipt replay changed the chart');
+    details.polar = { requested: envelope.receipt.houses.requested, actual: envelope.receipt.houses.actual, inputFlags: envelope.receipt.inputFlags, resultFlags: envelope.receipt.resultFlags, receiptBytes: new TextEncoder().encode(text).length };
+    return details.polar;
+  });
+
+  await test('Unknown-time 08:30 stays a supplied reference, with one no-time flag', () => {
+    const chart = core.natalChart({ ...base, utc: '2001-12-21T08:30:00Z', timeKnown: false, flags: ['no-time', 'lmt', 'no-time'] });
+    assert(chart.angles === null && chart.houses === null, 'Unknown time produced houses or angles');
+    assert(equal(chart.input.flags, ['lmt']) && equal(chart.flags, ['lmt', 'no-time']), 'Unknown-time echo did not canonicalize');
+    const envelope = receipt.createNatalEnvelope(chart);
+    assert(envelope.receipt.instant === '2001-12-21T08:30:00.000Z', 'Reference instant changed');
+    assert(envelope.receipt.reference === 'supplied-instant', 'Unknown time was falsely classified as noon');
+    assert(envelope.receipt.houses.absenceReason === 'unknown-time', 'Wrong absence reason');
+    assert(equal(core.natalChart(receipt.natalReplayInput(envelope)), chart), 'Unknown-time receipt replay changed data');
+    return { instant: envelope.receipt.instant, reference: envelope.receipt.reference, flags: chart.flags, absence: envelope.receipt.houses.absenceReason };
+  });
+
+  await test('Contradictory derived assertions reject in real public wrappers', () => {
+    const invalid = [
+      { flags: ['no-time'] }, { flags: ['polar-fallback'] },
+      { houseSystem: 'placidus', flags: ['polar-fallback'] },
+      { timeKnown: false, houseSystem: 'placidus', flags: ['polar-fallback'] },
+      { latitude: undefined, longitude: undefined, houseSystem: 'placidus', flags: ['polar-fallback'] }
+    ];
+    let rejections = 0;
+    for (const change of invalid) for (const action of [input => core.natalChart(input), input => core.transits(input, instant), input => core.synastry(base, input), input => core.saturnReturn(input)]) {
+      reject(() => action({ ...base, ...change })); rejections++;
+    }
+    return { rejections, internalCalculationCounts: 'Not instrumented in browser' };
+  });
+
+  await test('Canonical Chart identity and frozen caller data are preserved', () => {
+    const chart = core.natalChart({ ...base, flags: ['lmt'] });
+    Object.freeze(chart.input.flags); Object.freeze(chart.input); Object.freeze(chart.flags); Object.freeze(chart);
+    assert(core.transits(chart, instant).natal === chart, 'Canonical transit chart identity changed');
+    const pair = core.synastry(chart, chart);
+    assert(pair.a === chart && pair.b === chart, 'Canonical synastry chart identity changed');
+    return { transitIdentity: true, synastryIdentity: true, callerFrozen: true };
+  });
+
+  await test('Supplied legacy Chart flag normalization keeps exact numerical references', () => {
+    const chart = core.natalChart({ ...base, timeKnown: false });
+    chart.input.flags = ['lmt', 'no-time']; chart.flags = ['lmt', 'no-time', 'no-time'];
+    const before = JSON.stringify(chart);
+    const normalized = core.transits(chart, instant).natal;
+    assert(normalized !== chart, 'Legacy Chart metadata did not get a separate result');
+    for (const field of ['bodies', 'aspects', 'angles', 'houses']) assert(normalized[field] === chart[field], 'Numerical reference changed');
+    assert(normalized.engineVersion === chart.engineVersion, 'Engine claim was rewritten');
+    assert(JSON.stringify(chart) === before, 'Original Chart mutated');
+    assert(equal(normalized.input.flags, ['lmt']) && equal(normalized.flags, ['lmt', 'no-time']), 'Supplied Chart flags not normalized');
+    assert(receipt.createNatalEnvelope(normalized).receipt.resultFlags.length === 2, 'Normalized Chart receipt failed');
+    return { originalUnchanged: true, numericalReferencesRetained: true, inputFlags: normalized.input.flags, resultFlags: normalized.flags };
+  });
+
+  await test('Supplied Chart missing/contradictory flag metadata rejects', () => {
+    let rejected = 0;
+    const alterations = [chart => { chart.flags.push(secret); }, chart => { chart.input.flags = ['no-time']; },
+      chart => { chart.flags.push('polar-fallback'); }, chart => { chart.flags.push('lmt'); },
+      chart => { chart.angles = undefined; }, chart => { chart.houses = undefined; }];
+    for (const alter of alterations) {
+      const chart = core.natalChart(base); alter(chart);
+      for (const action of [() => core.transits(chart, instant), () => core.synastry(chart, chart), () => core.saturnReturn(chart)]) { reject(action); rejected++; }
+    }
+    for (const change of [{ timeKnown: false }, { latitude: 78, houseSystem: 'placidus' }]) {
+      const chart = core.natalChart({ ...base, ...change }); chart.flags = [];
+      reject(() => core.transits(chart, instant)); rejected++;
+    }
+    return { rejected };
+  });
+
+  await test('Fresh birth and civil settings use captured getter values once', () => {
+    const source = {};
+    const counts = {};
+    for (const [key, first] of Object.entries({ ...base, flags: ['lmt'] })) Object.defineProperty(source, key, { get() { counts[key] = (counts[key] ?? 0) + 1; return counts[key] === 1 ? first : secret; } });
+    const actual = core.natalChart(source);
+    assert(actual.input.latitude === 40 && actual.input.longitude === -74 && actual.input.timeKnown === true && actual.input.houseSystem === 'whole', 'Unchecked later setting used');
+    assert(actual.input.utc.toISOString() === '2001-12-21T09:00:00.000Z' && equal(actual.flags, ['lmt']), 'Unchecked later instant/flag used');
+    assert(Object.values(counts).every(count => count === 1), 'Fresh birth property read more than once');
+    const civil = {};
+    const civilCounts = {};
+    for (const [key, first] of Object.entries({ date: '2024-02-29', time: '08:30', timeZone: 'UTC', latitude: 40, longitude: -74, houseSystem: 'whole', timeKnown: false })) Object.defineProperty(civil, key, { get() { civilCounts[key] = (civilCounts[key] ?? 0) + 1; return civilCounts[key] === 1 ? first : secret; } });
+    const resolved = geo.resolveBirth(civil);
+    assert(resolved.utc.toISOString() === '2024-02-29T08:30:00.000Z' && resolved.timeKnown === false, 'Civil snapshot changed');
+    assert(Object.values(civilCounts).every(count => count === 1), 'Civil property read more than once');
+    return { counts, civilCounts, caveat: 'Caller code can execute; this is not a same-realm sandbox' };
+  });
+
+  await test('Actual Chrome civil resolution retains Gregorian early years, gaps, folds and LMT', () => {
+    const cases = [
+      ['0000-02-29', '00:00', 'UTC', '0000-02-29T00:00:00.000Z', []],
+      ['0099-12-31', '00:00', 'UTC', '0099-12-31T00:00:00.000Z', []],
+      ['2024-03-10', '02:30', 'America/New_York', '2024-03-10T07:30:00.000Z', ['dst-gap']],
+      ['2024-11-03', '01:30', 'America/New_York', '2024-11-03T05:30:00.000Z', ['dst-fold']],
+      ['1907-07-06', '08:30', 'America/Mexico_City', '1907-07-06T15:06:36.000Z', ['lmt']]
+    ];
+    const results = cases.map(([date, time, timeZone, expected, flags]) => {
+      const resolved = geo.resolveLocalToUtc(date, time, timeZone);
+      assert(resolved.utc.toISOString() === expected && equal(resolved.flags, flags), 'Civil resolution control differs');
+      return { date, time, timeZone, instant: resolved.utc.toISOString(), flags: resolved.flags, offsetMinutes: resolved.offsetMinutes };
+    });
+    const noon = geo.resolveBirth({ date: '0000-02-29', timeZone: 'UTC' });
+    assert(noon.timeKnown === false && noon.utc.toISOString() === '0000-02-29T12:00:00.000Z', 'Default local noon changed');
+    return { results, noon: noon.utc.toISOString(), caveat: 'Finite cases in the observed Chrome timezone database only' };
+  });
+
+  await test('Actual civil flags pass into an unchanged-schema local-resolution receipt', () => {
+    const resolution = geo.resolveLocalToUtc('2024-03-10', '02:30', 'America/New_York');
+    const birth = geo.resolveBirth({ date: '2024-03-10', time: '02:30', timeZone: 'America/New_York', latitude: 40, longitude: -74, houseSystem: 'placidus' });
+    const chart = core.natalChart(birth);
+    const envelope = receipt.createNatalEnvelope(chart, { localResolution: {
+      date: '2024-03-10', time: '02:30', timeZone: 'America/New_York', offsetMinutes: resolution.offsetMinutes,
+      gapShiftMinutes: 60, policy: { fold: 'earlier', gap: 'shift-forward' }
+    } });
+    const parsed = receipt.parseNatalEnvelope(receipt.serializeNatalEnvelope(envelope));
+    assert(parsed.ok && equal(core.natalChart(receipt.natalReplayInput(parsed.envelope)), chart), 'Civil receipt replay changed calculation');
+    return { flags: chart.flags, receiptInputFlags: envelope.receipt.inputFlags, localResolution: envelope.receipt.localResolution };
+  });
+
+  await test('Actual Saturn results agree across compatible inputs without browser call-count claims', () => {
+    const chart = core.natalChart({ ...base, latitude: 78, houseSystem: 'placidus' });
+    const plain = core.saturnReturn(instant);
+    const raw = core.saturnReturn({ ...base, latitude: 78, houseSystem: 'placidus', flags: ['polar-fallback'] });
+    const supplied = core.saturnReturn(chart);
+    assert(equal(plain, raw) && equal(plain, supplied), 'Equivalent Saturn inputs changed return result');
+    return { seasons: plain.seasons.length, crossings: plain.seasons.reduce((sum, season) => sum + season.crossings.length, 0), counts: 'Internal invocation counts are covered by source tests, not instrumented here' };
+  });
+
+  document.getElementById('status').textContent = `${checks.filter(check => check.pass).length}/${checks.length} packed-browser checks passed. Synthetic inputs only.`;
+  const list = document.getElementById('checks');
+  for (const check of checks) { const item = document.createElement('li'); item.textContent = `${check.pass ? 'PASS' : 'FAIL'} — ${check.name}`; list.append(item); }
+  return { checks, details };
+}
