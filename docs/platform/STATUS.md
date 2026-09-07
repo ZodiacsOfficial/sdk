@@ -22,7 +22,11 @@ probes. Structurally invalid but parseable GeoNames JSON remains a confirmed
 pre-existing limitation requiring a deliberate schema/cache-policy follow-up.
 A complete portable receipt contract remains open in the site plan.
 
-Review delivery follows this checkpoint. This candidate is not npm-published,
+Delivered in [draft PR #7](https://github.com/ZodiacsOfficial/sdk/pull/7), stacked
+on #6. Archive/evidence commit `abefc7c347ed22708a6743713d58c843d7166d8e`
+was anonymously downloaded at 21:15 UTC with the recorded SHA-256 and 21,946
+bytes. Existing GitHub CI targets main PRs only, so no stacked-PR CI success
+is claimed; the required local gates above were actually run. This candidate is not npm-published,
 merged, production-deployed, externally adopted or cleared for unrestricted
 release. SDK PR #5's explicit do-not-merge/do-not-publish hold and required
 human/external review remain. Ownership SDK, Registry facts, manifests outside
