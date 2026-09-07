@@ -1,0 +1,73 @@
+{
+  "observedAt": "2026-09-07T20:58:26.594Z",
+  "baseCommit": "03bf77990f3014b9125eed4976d7a41200aac80d",
+  "node": "v22.23.2",
+  "isolatedCheckout": "/private/tmp/zodiacs-platform-geonames-retry",
+  "sourceCheckoutUnchanged": true,
+  "sourceFiles": [
+    {
+      "path": "packages/engine/src/geo/geonames.ts",
+      "sha256": "4872c94c5ccface076aa0dbab3f5c0209ed5e04d4f105d265cbc2844309f7f3a"
+    },
+    {
+      "path": "packages/engine/src/geo/geonames.test.ts",
+      "sha256": "8c63377f18da3716c9e7d64c72eedc927e58176853a65790f4be273c683c6806"
+    }
+  ],
+  "patch": {
+    "file": "geonames-retry.patch",
+    "sha256": "b564ad847dc99f1b7fb6dba0914dad15b791ff72562f16ddfa531302332fb73c"
+  },
+  "baseline": {
+    "expectedFailed": 8,
+    "passed": 2,
+    "log": "red.log"
+  },
+  "targeted": {
+    "passed": 50,
+    "files": 2,
+    "failed": 0,
+    "log": "green.log"
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "log": "typecheck.log"
+  },
+  "format": {
+    "exitCode": 0,
+    "log": "format.log"
+  },
+  "diffCheck": {
+    "exitCode": 0
+  },
+  "failureModes": [
+    "network rejection",
+    "HTTP503",
+    "JSON parsing rejection",
+    "AbortError from injected fetch bound to AbortController"
+  ],
+  "properties": [
+    "manual retry after rejection",
+    "shared concurrent pending requests",
+    "same rejection identity for waiting callers",
+    "successful cache retention",
+    "other shard/index preservation",
+    "no automatic retries",
+    "no short-query or absent-shard fetch"
+  ],
+  "archiveSha256": "f95c887deedb55f64b185ed4dd406b580b6d3287656ab5ec0557215fc02e5d17",
+  "notPerformed": [
+    "existing SDK/site source mutation",
+    "version bump",
+    "manifest or lockfile change",
+    "fresh install",
+    "full workspace suite",
+    "build",
+    "pack",
+    "network request",
+    "publication",
+    "push",
+    "PR",
+    "human review"
+  ]
+}

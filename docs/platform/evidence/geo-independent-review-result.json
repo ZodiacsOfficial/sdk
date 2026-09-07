@@ -1,0 +1,30 @@
+{
+  "kind": "zodiacs.geonames.independent-source-review.v1",
+  "node": "v22.23.2",
+  "baselineSdkHead": "03bf77990f3014b9125eed4976d7a41200aac80d",
+  "patchSha256": "b564ad847dc99f1b7fb6dba0914dad15b791ff72562f16ddfa531302332fb73c",
+  "reviewedSourceSha256": "4872c94c5ccface076aa0dbab3f5c0209ed5e04d4f105d265cbc2844309f7f3a",
+  "nativeReviewTests": {
+    "passed": 11,
+    "failed": 0,
+    "strictUnhandledRejections": true,
+    "log": "review-tests.log"
+  },
+  "patchPlusGeoTests": {
+    "passed": 50,
+    "failed": 0,
+    "files": 2,
+    "runner": "Vitest 2.1.9"
+  },
+  "verdict": "No blocker found for a source-only draft; required integrated gates and branch-base verification remain the integrator responsibility.",
+  "remainingPreExistingIssue": "Syntactically valid but structurally invalid JSON remains fulfilled and cached; confirmed against baseline and patch.",
+  "baselineSdkStatusAtArchiving": " M packages/engine/CHANGELOG.md\n M packages/engine/README.md\n M packages/engine/package.json\n M packages/engine/src/geo/geonames.ts\n M packages/engine/src/types.ts\n M packages/engine/typedoc.json\n?? packages/engine/src/geo/geonames.test.ts\n",
+  "scopeNote": "Integrator changes were present in the active SDK at archival time; this review made none. Final probes use only frozen isolated baseline/patched source copies.",
+  "files": {
+    "baseline-geonames.ts": "1a5bd049fc1451d9cd3e6eea8aa74137057a76481593e75786c320b0acd02363",
+    "packages/engine/src/geo/geonames.ts": "4872c94c5ccface076aa0dbab3f5c0209ed5e04d4f105d265cbc2844309f7f3a",
+    "adversarial-review.test.mjs": "8173274fb731ff3848ca96645f98ff72a46bae9b8527e02a465f608aed896220",
+    "review-tests.log": "aed0ff6fe1f44e3df2b08b95723c62bcdfecccd910c320634e92005efbd60a30",
+    "REVIEW.md": "ba4a492ef337ccc4b8c334ad089273eba76c4755ca6a84ac2614ea39891de432"
+  }
+}

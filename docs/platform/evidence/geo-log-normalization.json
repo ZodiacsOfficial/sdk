@@ -1,0 +1,103 @@
+{
+  "operation": "Strip terminal ANSI and trailing line whitespace; retain one final newline. No result rewriting.",
+  "files": [
+    {
+      "file": "geo-docs.log",
+      "rawSha256": "3b13696d4e16be89e6f014185bdddcd20ec2d9e5bb8b78e3f75d0c6e16374f16",
+      "storedSha256": "3b13696d4e16be89e6f014185bdddcd20ec2d9e5bb8b78e3f75d0c6e16374f16"
+    },
+    {
+      "file": "geo-lint.log",
+      "rawSha256": "d2f4720160e15bd9143c4ccf39036dd0792c413ad46f39e7c35f0148cd019fff",
+      "storedSha256": "8b2d183621b3b6794aa3009d48ca9d4c9e95ff5eb225c6b8eafb21732d7149af"
+    },
+    {
+      "file": "geo-typecheck.log",
+      "rawSha256": "e2d3788be7b4ca3b295e6164e2f1732d20ca120ae395cf040e6563cf8756bd4a",
+      "storedSha256": "8d21dfc06a591f2035361708b5245b9277ec46ff553dcff3702c224be2a8f16a"
+    },
+    {
+      "file": "geo-format.log",
+      "rawSha256": "5b7274a567cba35fe65522e300d64a8e11871ba858252aa63fd371edafb916a2",
+      "storedSha256": "5b7274a567cba35fe65522e300d64a8e11871ba858252aa63fd371edafb916a2"
+    },
+    {
+      "file": "geo-checksum.log",
+      "rawSha256": "210e30c8e0c21e3a8ea78f4b26306cd41769eb68aabf3a72bcdb065f8b7d6cac",
+      "storedSha256": "210e30c8e0c21e3a8ea78f4b26306cd41769eb68aabf3a72bcdb065f8b7d6cac"
+    },
+    {
+      "file": "geo-tests.log",
+      "rawSha256": "39a530176e4cf04cee168b08b695d9442af5e905e3e4fd1ebccf8b31a27feba4",
+      "storedSha256": "c705c7c2cc6ede79b2593e40fce2723b6fa77b5d651d275590fef0cbd2f20eaf"
+    },
+    {
+      "file": "geo-tests-node20.log",
+      "rawSha256": "d0d1657c9b387e11666f9a41c9e173a31a49eb53c6cb062ed6b8f6f205ce43e5",
+      "storedSha256": "638bfd885b88fdd7791e91cf1e480db4366aa98e2dca482c3777c775495b770f"
+    },
+    {
+      "file": "geo-build.log",
+      "rawSha256": "8010dca3d3a284c25ebbdf201872f6f2684362d763ace6ca349b171ca83654f2",
+      "storedSha256": "11527c7e9cf55e36a07dc28186b5bc7bcadfd5abe6e4b85cabc29c6ae5dcbb2f"
+    },
+    {
+      "file": "geo-exports.log",
+      "rawSha256": "860dd52dd5ebddf6f561d5f288cd0293a543b4631d1b82760c672779aa28972a",
+      "storedSha256": "860dd52dd5ebddf6f561d5f288cd0293a543b4631d1b82760c672779aa28972a"
+    },
+    {
+      "file": "geo-pack-dry.log",
+      "rawSha256": "ae433b9766c79b172414d69fa2da34e697fc38feee9bedd001c8aaa1c7ba9e5d",
+      "storedSha256": "ae433b9766c79b172414d69fa2da34e697fc38feee9bedd001c8aaa1c7ba9e5d"
+    },
+    {
+      "file": "geo-contents.log",
+      "rawSha256": "6241df88239995f06009024858030ad03bcf194f6d01c206fe6e2f31cc2c82a9",
+      "storedSha256": "6241df88239995f06009024858030ad03bcf194f6d01c206fe6e2f31cc2c82a9"
+    },
+    {
+      "file": "geo-neutrality.log",
+      "rawSha256": "c895534fb0f94b45547a0e8b22b9145ceaf5ace6ae3ff7c87bc67882d2c3fd18",
+      "storedSha256": "c895534fb0f94b45547a0e8b22b9145ceaf5ace6ae3ff7c87bc67882d2c3fd18"
+    }
+  ],
+  "archivedAuxiliaryRecords": [
+    {
+      "file": "geo-reproduction-red.log",
+      "operation": "Log ANSI/trailing whitespace normalization",
+      "rawSha256": "5ec59984a1a0c9913f399938ef7c53e15155d62bbb518194f6671fd35d54703e",
+      "storedSha256": "c3759efece77fcd766a2f0fd804f36667b3dd3b89a2c592dea6ca396d111da45"
+    },
+    {
+      "file": "geo-reproduction-green.log",
+      "operation": "Log ANSI/trailing whitespace normalization",
+      "rawSha256": "12eeeb6041be1da75e68cec1ebc260ee496c25a9f33cb4cd5fa86cb3be9eadf3",
+      "storedSha256": "4700a452039a411c26bd0f0b469c09a0e62a9de99d691ec471d9ec422212f12f"
+    },
+    {
+      "file": "geo-reproduction-result.json",
+      "operation": "Prettier formatting of archived copy; observations unchanged",
+      "rawSha256": "dd1099ffb219b677ebc9fc5be5924fd4d8a03adb24b921faf509cdeb7bcc51af",
+      "storedSha256": "dd1099ffb219b677ebc9fc5be5924fd4d8a03adb24b921faf509cdeb7bcc51af"
+    },
+    {
+      "file": "geo-independent-review-tests.log",
+      "operation": "Log ANSI/trailing whitespace normalization",
+      "rawSha256": "aed0ff6fe1f44e3df2b08b95723c62bcdfecccd910c320634e92005efbd60a30",
+      "storedSha256": "aed0ff6fe1f44e3df2b08b95723c62bcdfecccd910c320634e92005efbd60a30"
+    },
+    {
+      "file": "geo-independent-review-result.json",
+      "operation": "Prettier formatting of archived copy; observations unchanged",
+      "rawSha256": "2eb2e9694912591f046f0b2500cc81a411466611feb2d8a49becbdfdd9195265",
+      "storedSha256": "2eb2e9694912591f046f0b2500cc81a411466611feb2d8a49becbdfdd9195265"
+    },
+    {
+      "file": "geo-independent-REVIEW.md",
+      "operation": "Prettier formatting of archived copy; observations unchanged",
+      "rawSha256": "ba4a492ef337ccc4b8c334ad089273eba76c4755ca6a84ac2614ea39891de432",
+      "storedSha256": "ba4a492ef337ccc4b8c334ad089273eba76c4755ca6a84ac2614ea39891de432"
+    }
+  ]
+}
