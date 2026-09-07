@@ -1,0 +1,41 @@
+# GeoNames fulfilled JSON recovery patch
+
+This uncommitted source/test/documentation patch is isolated at `/private/tmp/zodiacs-platform-geo-schema`, based on delivered SDK PR8 head `b0d7f02549187a9c4a0ca5baa97cf3342fc60707`. No version, dependency manifest, ownership SDK API, current review branch source, site source, immutable archive, remote branch, or publication state was changed. Existing dependency installations were reused through symlinks; this is not a fresh consumer verification.
+
+## Reproduction before the fix
+
+`baseline-probe.json` records three explicit searches per synthetic scenario with an HTTP-200 JSON response on the first request and valid data available for the next request. A temporary error envelope or partial index produces repeated errors with just one fetch of the failing resource; it stays cached. A string coordinate is silently coerced to a plausible number. A `__proto__` region-table index returns an array as `City.admin1`. The separate preload mutation probe changes returned `timeZones` and clears `shards`, then observes the corrupted later metadata and an empty search without a shard request. No real service or personal input was involved.
+
+The initial regression run was red: **59 failed / 4 passed** among 63 tests (`red-schema.log`). The passing controls covered valid existing behavior. Four additional controls were then added for copied custom-fetch data, inherited/accessor index fields, and the known generation-coherence limitation.
+
+## Change and rationale
+
+`packages/engine/src/geo/geonames.ts` validates v1 index data and the whole requested shard inside the promise that is stored in the existing cache. A format failure now rejects that shared promise with a fixed `TypeError("Invalid GeoNames index data.")` or `TypeError("Invalid GeoNames shard data.")`; the existing identity-checked catch evicts only that failed resource. Concurrent waiters share the same error. A later explicit caller may retry. Valid and pending requests, other successful shards, and original fetch/HTTP/JSON-parsing/abort errors retain their existing behavior. There is no automatic network retry, eager shard load, timer, cancellation API, or changed endpoint.
+
+Validation follows the actual `scripts/build-cities.mjs` generator and checked-in assets: version 1; own source/count/string-table/shard fields; 0/a–z shard keys; eight-position rows; valid integer table references; integer hundredth-degree coordinates across the complete ±90°/±180° bounds; and nonnegative safe integer population. Empty admin/country labels, Unicode names, zero populations, and timezone strings unavailable in a host's Intl database remain supported. Extra index metadata is ignored rather than copied into output.
+
+Validating only inside `searchCities` would leave preload/cache state invalid, while per-search validation repeats work and can hide malformed later rows behind result limits. Skipping malformed rows would silently turn an invalid shard into an incomplete successful result. Whole-resource validation before cache success gives the existing eviction path one consistent decision. It costs one linear traversal of each downloaded index/shard and copies validated primitive tables/rows; it does not add work proportional to the full dataset on every search.
+
+`preload()` now copies its two exposed arrays. The API already returned a new outer metadata object and typed both arrays readonly; no stable-reference identity guarantee or identity-dependent repository use was found. The added snapshot documentation makes this explicit. A JavaScript caller relying on undocumented array reference equality will observe different array identities. Returned City objects already copy primitive result fields.
+
+`packages/engine/src/geo/geonames-schema.test.ts` adds 67 cases. The narrowly updated package README documents the new errors, retry semantics, snapshot arrays, and limitations.
+
+## Verification
+
+Commands run from the isolated checkout with Node v22.23.2 and the existing pnpm toolchain:
+
+- Initial red: `corepack pnpm exec vitest run packages/engine/src/geo/geonames-schema.test.ts --fileParallelism=false` → 59 failed, 4 passed.
+- Final engine suite: `corepack pnpm exec vitest run packages/engine/src --fileParallelism=false` → **377/377 tests**, 10 files (`engine-tests-final.log`). This includes prior network/HTTP/JSON-parser/AbortError identity and concurrent-fetch retry tests.
+- `corepack pnpm --filter @zodiacs/engine typecheck` → passed (`typecheck-final.log`).
+- `corepack pnpm --filter @zodiacs/engine build` → passed, including declaration generation (`build.log`). This builds only the scratch package and creates no tarball.
+- Prettier checks for the three changed files and `git diff --check` → passed.
+- `probe.mjs` before/after confirms that the first invalid response now rejects with the fixed format error and the next explicit request succeeds; metadata mutation no longer changes cache state (`fixed-probe.json`).
+- `corpus.mjs` uses synthetic file-backed fetch responses from **all 27 checked-in shards / 33,934 rows**. All rows validate, and one representative query per shard plus cache reuse has identical metadata/results/request order to the baseline, with 28 total requests per client. File hashes are in `asset-contract.json`; comparisons are in `corpus.json`. Timings are observational, not a benchmark or performance claim.
+
+## Limits and delivery state
+
+A syntactically valid shard from a different generation can reuse in-range table indices that select the wrong country/timezone in an older cached index. A specific test demonstrates this: a synthetic New Plymouth row is accepted with a cached UTC/Test country slot. v1 has no generation or content identity, so this cannot be authenticated by structural checks; a manifest/content-identity migration is outside this patch. Likewise, a valid cached index is not refreshed when another resource fails, and the advertised total is not checked across shards that were never requested.
+
+The client still relies on the supplied host for place facts and on the user's runtime for later timezone interpretation. It adds no response-size cap. Ordinary parsed JSON has no accessors, but a caller-supplied fetch is trusted executable code; nested accessors, iterators, or proxies it supplies are not sandboxed. Only own top-level index data descriptors are read without invoking those field getters.
+
+The engine source tests/build passed in an isolated Node22 checkout; no fresh install, browser, packed consumer, publication, deployment, human review, or external adoption is claimed. Root integration and independent model review remain separate. The reviewable patch is `geonames-schema.patch`; source and patch hashes are in `summary.json`.

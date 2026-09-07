@@ -1,0 +1,252 @@
+{
+  "source": "packages/engine/src/geo/geonames.ts",
+  "runtime": "v22.23.2",
+  "observedAt": "2026-09-07T22:48:51.628Z",
+  "scope": "Synthetic local fetch only; no network",
+  "runs": [
+    {
+      "label": "temporary index error envelope",
+      "requests": [
+        "index",
+        "index",
+        "shard"
+      ],
+      "calls": [
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Invalid GeoNames index data."
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "partial index upload",
+      "requests": [
+        "index",
+        "index",
+        "shard"
+      ],
+      "calls": [
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Invalid GeoNames index data."
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "temporary shard error envelope",
+      "requests": [
+        "index",
+        "shard",
+        "shard"
+      ],
+      "calls": [
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Invalid GeoNames shard data."
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "string coordinate shard",
+      "requests": [
+        "index",
+        "shard",
+        "shard"
+      ],
+      "calls": [
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Invalid GeoNames shard data."
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "prototype table index shard",
+      "requests": [
+        "index",
+        "shard",
+        "shard"
+      ],
+      "calls": [
+        {
+          "status": "rejected",
+          "name": "TypeError",
+          "message": "Invalid GeoNames shard data."
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        },
+        {
+          "status": "fulfilled",
+          "value": [
+            {
+              "name": "New Test City",
+              "admin1": "",
+              "country": "Test",
+              "latitude": 10,
+              "longitude": 20,
+              "timeZone": "UTC",
+              "population": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "preload caller mutation",
+      "metadataAfter": {
+        "version": 1,
+        "source": "Synthetic observation only",
+        "count": 1,
+        "timeZones": [
+          "UTC"
+        ],
+        "shards": [
+          "n"
+        ]
+      },
+      "citiesAfter": [
+        {
+          "name": "New Test City",
+          "admin1": "",
+          "country": "Test",
+          "latitude": 10,
+          "longitude": 20,
+          "timeZone": "UTC",
+          "population": 100
+        }
+      ],
+      "requests": [
+        "https://example.test/cities/index.json",
+        "https://example.test/cities/n.json"
+      ]
+    }
+  ]
+}

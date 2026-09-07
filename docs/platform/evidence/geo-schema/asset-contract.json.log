@@ -1,0 +1,105 @@
+{
+  "assetDirectory": "/Users/chiburashka/.codex/worktrees/4806/site/public/data/cities",
+  "generator": "/Users/chiburashka/.codex/worktrees/4806/site/scripts/build-cities.mjs",
+  "indexKeys": [
+    "version",
+    "source",
+    "count",
+    "tz",
+    "admin1",
+    "countries",
+    "shards"
+  ],
+  "version": 1,
+  "count": 33934,
+  "observedRows": 33934,
+  "shards": [
+    "0",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z"
+  ],
+  "tables": {
+    "tz": {
+      "count": 356,
+      "emptyStrings": 0
+    },
+    "admin1": {
+      "count": 2713,
+      "emptyStrings": 1
+    },
+    "countries": {
+      "count": 244,
+      "emptyStrings": 0
+    }
+  },
+  "rowLengths": [
+    8
+  ],
+  "lat100Range": [
+    -5481,
+    7822
+  ],
+  "lon100Range": [
+    -17617,
+    17936
+  ],
+  "populationRange": [
+    0,
+    24874500
+  ],
+  "integerNumbers": true,
+  "hashes": {
+    "0.json": "16ea2dec6345437c2763019ef55fb1d8cda37aa5c4b6253bffe439e64ef5b6ca",
+    "a.json": "eb2d002d5051abb7c1273a65f144452e426115dfe55182f6c94c7df3ef2a81cc",
+    "b.json": "bdd4aec7c2a01ef8124f4a76fd559adad4ebcbd57d8a6a60a691cda6270a52ef",
+    "c.json": "577020d0ef669d1f5b6e4039b288b99465e9f96dba9727f6acfae58641018a37",
+    "d.json": "f2a859d7b0e9ee1868055474d10664a8dbe07fb6a6f8bee80ef96c9c5b722fa4",
+    "e.json": "b2058da8fd6ff5de32765887c36e9136311f9915f7550776de0b72923b03cf8d",
+    "f.json": "d9a6cab7ac123bd21c38c6f65c5ffc59faef866a6c5a608d9cf89e76cc157676",
+    "g.json": "d5a9a522289e04267e7b79285018ca605ba7def17e5dd62d4603d524fd50ebd9",
+    "h.json": "3332c60cb92111a38bdefb3c113dc87cc9532e27f740492e31c709482ef7cd36",
+    "i.json": "6af7da8e526dd6b07a4adf44558b9f438ee22f45f0919514a9cfae71eb7c09de",
+    "index.json": "3efa920843be21788d47ed236109127a270025b1fc81aa2e3f6dae835c429dd6",
+    "j.json": "2ddcd1bd7d328449cee9542814eb5748a29abf9e268220d2993f783affc90b66",
+    "k.json": "af81cf18bb2e240c84386c1b3d638b0339e9bd4167f02628444566f977c60505",
+    "l.json": "03716f92fee2c31131bd9bf7dfb990b4961f6d59f546cf4bdb044ed045b36606",
+    "m.json": "10aed0e65dae57c7b085c004b4a0d56d697700fe07e551381af3a5e28840aa2c",
+    "n.json": "c40328109de4e462a8271d7624f15325ca613bb13605c69545e90d7eb9d95c9d",
+    "o.json": "1ccdd55b7ad24329d8f0cb034bce11d8c71c39d6a94c34fa6b37b752cefedf3f",
+    "p.json": "8eee53a07dcc3fbff1fb51daa7cdc7d23cce20acb749ef69411734c52f437a79",
+    "q.json": "7670b0decbecd77946e5b135700a748f6e3d26d6d1cea56072bde57408cf28a1",
+    "r.json": "6f52559395a0e3e0e517561b1b5110a29166eefb139b81e2d8a27132579278a9",
+    "s.json": "cc572d88c382c240689c1f36767680404645147b621090f21d09ceeb451d77c1",
+    "t.json": "451369386fff0190629494ba51902a38ce2a6053daa6e295104bc413fd9a0871",
+    "u.json": "938e42d09d21faaec927de3aa2a0564b9585bcd36dc55a2e309a94818c15946e",
+    "v.json": "b00260f5187c33c9d10c8a2aca6e70af69683ac121b56b964471b0e77699d67b",
+    "w.json": "4d6b34ace33ba80f7afb01c6ce2e9164c14ef9cce6cd62c3e25e447899a5dd46",
+    "x.json": "4a7ac144beeb074b20049b17e6746c69a3651fd4c28a476be0fbcf83351e5f51",
+    "y.json": "5bd12bf50e7ad24c9170dc55180152e12c62f3bcdfd0039687f1f8804d5dcae3",
+    "z.json": "44831ca9e9a5589bb745f93dcd1804eeb061df287e262fe1d8acb1e91242a369"
+  }
+}

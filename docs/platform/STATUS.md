@@ -1,5 +1,36 @@
 # SDK platform checkpoint
 
+## GeoNames schema/cache candidate
+
+Branch `codex/platform-geonames-schema` starts from delivered SDK #8 at
+`b0d7f02549187a9c4a0ca5baa97cf3342fc60707`. Candidate `0.1.1-rc.4` validates
+compact v1 GeoNames index/shard JSON before cache fulfillment and returns
+metadata array snapshots. Malformed successful responses reject with fixed
+schema errors and can be retried by a later explicit call. Valid/in-flight
+caches, original transport/parser rejections and request paths are preserved.
+
+Implemented and tested: **496 tests / 30 files** on Node 20 and 22; required
+workspace lint/typecheck/build/format/checksum/neutrality/export/content/dry-pack
+and TypeDoc gates pass. All 33,934 checked-in rows validate, and 27 sampled
+query results/metadata/request sequences agree with baseline. Nine independent
+strict-unhandled-rejection probes pass. Packaging and fresh consumers are
+pending at this source checkpoint; no new artifact or public delivery is claimed.
+
+Schema validation cannot authenticate place facts or detect in-range indices
+from the wrong dataset generation; that counterexample is tested and documented.
+Custom fetch code is trusted, not sandboxed. No new response-size budget, eager
+shard fetch, automatic retry, host-Intl timezone validation or new service is added.
+
+The site application stays on its immutable engine rc.1. Separately, site draft
+[#419](https://github.com/ZodiacsOfficial/site/pull/419) delivers standalone
+starter rc.3 with engine rc.3 and local receipt portability. This SDK candidate
+does not change either pin, account sync, saved records or the optional read-only
+ownership SDK. Earlier candidate sections below describe their own checkpoints.
+
+Explicit SDK #5 merge/publication hold and required review remain. No merge,
+npm publication, production deployment, external adoption or human certification
+is claimed. [Commands, counterexamples and exact evidence](EVIDENCE.md#geonames-schema-and-cache-integrity-candidate).
+
 ## Draft natal receipt candidate
 
 Branch `codex/platform-receipt-contract`, based on delivered GeoNames draft #7

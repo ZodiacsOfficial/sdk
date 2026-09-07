@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "scope": "Uncommitted isolated SDK source/test/documentation patch; no publication or immutable archive changes.",
+  "baseCommit": "b0d7f02549187a9c4a0ca5baa97cf3342fc60707",
+  "checkout": "/private/tmp/zodiacs-platform-geo-schema",
+  "files": {
+    "packages/engine/src/geo/geonames.ts": "fd4363799fb26f3682b8c54054afc07761d7c301cdb798e6afc40965df150437",
+    "packages/engine/src/geo/geonames-schema.test.ts": "9efcf6e241d2c727897d4617284343205a5a3ab8840cca85e6da3162f1a66863",
+    "packages/engine/README.md": "79115e37bbb1ee3471e8a250a1cba793a96c3d1206fe8a7549b56855132c2c88"
+  },
+  "patchSha256": "a0ba0bd58a66712110588fb114163ec7e037eed1fd7f1e49feec732fe4ab6328",
+  "runtime": "v22.23.2",
+  "dependencyMode": "Existing workspace dependencies reused through symlinks, not a fresh install or packed consumer verification.",
+  "baseline": {
+    "tests": 63,
+    "failed": 59,
+    "passed": 4,
+    "log": "red-schema.log",
+    "observationalProbe": "baseline-probe.json"
+  },
+  "after": {
+    "engineTests": 377,
+    "testFiles": 10,
+    "newSchemaTests": 67,
+    "log": "engine-tests-final.log",
+    "typecheck": "typecheck-final.log",
+    "build": "build.log",
+    "format": "format-check.log",
+    "observationalProbe": "fixed-probe.json"
+  },
+  "assetCompatibility": {
+    "indexVersion": 1,
+    "rows": 33934,
+    "shards": 27,
+    "sampledQueries": 27,
+    "sameResults": true,
+    "sameMetadata": true,
+    "sameRequests": true,
+    "requestsPerClient": 28,
+    "log": "corpus.json",
+    "hashes": "asset-contract.json"
+  },
+  "limits": [
+    "No authentication of place facts or dataset generation coherence",
+    "A structurally valid cached index remains cached if a changed shard fails validation",
+    "No aggregate count validation across unrequested shards",
+    "No host-dependent timezone validation",
+    "No sandbox for caller-supplied fetch code or non-JSON accessors/iterators",
+    "No new response-size limit",
+    "Chromium/browser verification and packed consumer checks were not part of this source patch"
+  ],
+  "status": "Implemented and locally verified in isolated tree; integrator and independent model review pending. Not packaged, versioned, committed, pushed, published, deployed, or externally adopted."
+}

@@ -182,3 +182,62 @@ No publication, production operation, outreach, account access or live GeoNames
 request occurred. Review/publication holds persist. A future site upgrade must
 be a separate reviewed pin/reference/provenance change; it must not overwrite
 rc.1 or silently alter saved calculation receipts.
+
+## GeoNames schema and cache integrity candidate
+
+Candidate rc.4 is based on SDK #8 `b0d7f025`; it changes the optional GeoNames
+client, tests and documentation. Numerical algorithms, Registry/ownership
+behavior, root dependencies and all existing archives are unchanged. Only the
+reported engine version changes for calculations. Central dependency/decision
+records remain in the site platform ledger.
+
+Before implementation, temporary HTTP-200 error envelopes and incomplete
+index/shard objects stayed fulfilled in the internal request cache. Three
+explicit caller attempts made only one failing resource fetch. A string
+`__proto__` table index escaped as an array-valued region, and mutating arrays
+returned by `preload()` changed later metadata/search. Baseline regressions:
+**59 failed / 4 valid controls passed**.
+[Observed counterexamples](evidence/geo-schema/baseline-probe.json.log),
+[initial regression failures](evidence/geo-schema/red-schema.log).
+
+The final client validates the generator's v1 shape inside the cached promise,
+so schema rejection follows the existing identity-guarded eviction path. It
+copies index tables/rows at validation and exposes fresh metadata arrays. The
+whole requested shard is checked before results; other successful/in-flight
+requests are preserved. Fixed schema errors contain no supplied body values.
+It accepts empty region/country labels, Unicode names, exact geographical
+endpoints and nonempty timezone strings independent of today's host ICU.
+
+The agent's isolated source suite passes **377 engine tests / 10 files**. Root's
+versioned integration passes the full **496 tests / 30 files** on Node 20.20.2
+and Node 22.23.2. Required lint, typecheck, registry checksum, neutrality, full
+workspace/example build, TypeDoc, module-resolution exports, package contents,
+dry-pack and format gates all pass. Initial build/typecheck were inadvertently
+started concurrently although example typecheck removes `.next`; both exited
+successfully, but they are superseded by the recorded **sequential** final build
+and typecheck before subsequent gates. No shared-output concurrency is relied on.
+
+All **33,934 checked-in rows in 27 shards** validate. A fixed 27-query comparison
+retains exact metadata, results and request ordering, with 28 requests per
+client. This is dataset compatibility, not independent verification of place
+facts. Nine independent Node 22 probes with strict unhandled-rejection handling
+pass on geo source SHA-256
+`fd4363799fb26f3682b8c54054afc07761d7c301cdb798e6afc40965df150437`: catch-triggered
+retry races, unrelated pending work, caller mutation, zero scalar coercions,
+27 table-index traps, full-shard rejection and eight baseline query comparisons.
+The reviewer did not author this implementation or repeat the full corpus.
+
+[Source implementation review](evidence/geo-schema/REVIEW.md.log),
+[corpus evidence](evidence/geo-schema/corpus.json.log),
+[independent review](evidence/geo-schema/independent-REVIEW.md.log),
+[independent probe](evidence/geo-schema/independent-probe.mjs.log),
+[exact input paths and hashes](evidence/geo-schema/inputs.json.log).
+
+A tested counterexample pairs a structurally valid shard with a differently
+ordered cached index: in-range indices silently choose the wrong country/zone.
+The v1 format has no content/generation identity to detect this. No aggregate
+count check across unrequested shards or successful-cache refresh is claimed.
+Caller-supplied fetch code and its accessors/iterators are not sandboxed. No new
+response-size budget is introduced. All network responses in source probes are
+synthetic; real browser/public packed-consumer acceptance is still pending.
+SDK #5's explicit do-not-merge/do-not-publish and required review remain.
