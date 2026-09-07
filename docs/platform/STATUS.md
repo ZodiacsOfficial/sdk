@@ -1,7 +1,42 @@
 # SDK platform checkpoint
 
+## Draft natal receipt candidate
+
+Branch `codex/platform-receipt-contract`, based on delivered GeoNames draft #7
+at `4f8903415e95a60969e84f7eb91e72f2f61ad315`. Runtime/source and TypeDoc are
+committed at `aaade67d0d49e8b10d1bc5c59cf345d6106dc270`. Engine `0.1.1-rc.3`
+adds the optional `/receipt` entry, a bounded Zodiacs draft envelope, requested
+and actual houses, captured time assumptions, and fixed-field redaction.
+[Draft reference and synthetic fixtures](receipt-draft-v1.md).
+
+Implemented, built, packed and locally tested: **429 tests / 29 files** on
+Node 20/22; required SDK gates; actual fresh packed consumers on both runtimes;
+finite parity with the site's rc.1; and separate tool-backed adversarial review.
+The first naming-guard failure and its narrow convention-wording correction
+are recorded, with the guard unchanged. [Evidence](EVIDENCE.md#draft-natal-receipt-candidate).
+
+The frozen rc.3 archive has SHA-256
+`aeab68793129517abe7498c5f5a17197d387eed7cbdaa9614f3b8cd939b11a17`.
+Delivered in [draft PR #8](https://github.com/ZodiacsOfficial/sdk/pull/8), stacked
+on #7. Artifact/evidence commit `2000377b1b537c1b08c873889059acc8edacc4fe`
+was anonymously downloaded with the exact bytes/digest at 22:05 UTC. A separate
+actual Chrome 152 probe also passed 23 codec assertions offline with Intl/storage
+blocked, zero network attempts and no ephemeris imports. No stacked SDK CI is
+claimed because the workflow currently targets main PRs only.
+No older artifact is replaced. Site/starter pins, account sync v1, saved-profile
+formats, ownership SDK, Registry data and root dependencies are unchanged.
+The account requested/actual compatibility defect remains open in the central
+plan. This additive codec does not complete all C02 integration requirements.
+
+No merge, npm publication, production release, external adoption or human
+certification is claimed. Explicit SDK #5 do-not-merge/do-not-publish and
+owner-reviewed release gates remain. Recalculation needs independently trusted
+matching engine/artifact/ephemeris/runtime facts; imported provenance is a claim.
+
+## Delivered GeoNames candidate
+
 The central program plan and decisions remain in the
-[site platform ledger](https://github.com/ZodiacsOfficial/site/blob/codex/platform-civil-inputs/docs/platform/STATUS.md).
+[site platform ledger](https://github.com/ZodiacsOfficial/site/blob/codex/platform-receipt-contract/docs/platform/STATUS.md).
 This SDK checkpoint records the bounded GeoNames follow-up to draft PR #6.
 
 Branch: `codex/platform-geonames-retry`. Source:

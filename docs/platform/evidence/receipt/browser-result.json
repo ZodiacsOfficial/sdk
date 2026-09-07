@@ -1,0 +1,195 @@
+{
+  "status": "passed",
+  "runtime": {
+    "node": "v22.23.2",
+    "chrome": "152.0.7977.83",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36"
+  },
+  "tests": [
+    {
+      "name": "polar: parsed",
+      "passed": true
+    },
+    {
+      "name": "polar: round trip",
+      "passed": true
+    },
+    {
+      "name": "polar: requested Placidus preserved",
+      "passed": true
+    },
+    {
+      "name": "polar: normalized instant retained",
+      "passed": true
+    },
+    {
+      "name": "polar: creation from validated fixture Chart",
+      "passed": true
+    },
+    {
+      "name": "polar: actual whole sign and polar flag",
+      "passed": true
+    },
+    {
+      "name": "polar: stored ASC precision",
+      "passed": true
+    },
+    {
+      "name": "polar: redaction excludes precise input and claims",
+      "passed": true
+    },
+    {
+      "name": "polar: secret absent from diagnostic",
+      "passed": true
+    },
+    {
+      "name": "polar: duplicate version keys rejected safely",
+      "passed": true
+    },
+    {
+      "name": "polar: invalid input diagnostic omits secret",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: parsed",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: round trip",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: requested Placidus preserved",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: normalized instant retained",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: creation from validated fixture Chart",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: 08:30 unknown reference preserved",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: absent time-dependent result",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: redaction excludes precise input and claims",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: secret absent from diagnostic",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: duplicate version keys rejected safely",
+      "passed": true
+    },
+    {
+      "name": "unknown-0830: invalid input diagnostic omits secret",
+      "passed": true
+    },
+    {
+      "name": "no blocked capability attempted",
+      "passed": true
+    }
+  ],
+  "exports": [
+    "NATAL_DIAGNOSTIC_SCHEMA",
+    "NATAL_ENVELOPE_LIMITS",
+    "NATAL_ENVELOPE_SCHEMA",
+    "NATAL_RECEIPT_SCHEMA",
+    "NatalEnvelopeError",
+    "createNatalEnvelope",
+    "natalReplayInput",
+    "parseNatalEnvelope",
+    "redactNatalEnvelope",
+    "serializeNatalEnvelope"
+  ],
+  "modules": [
+    {
+      "file": "packages/engine/dist/chunk-CPALRSPC.js",
+      "sha256": "9db1a3814ec9bd00a40d4bc295e348debd6108f62a322ed91d18610c81b9fb08",
+      "imports": []
+    },
+    {
+      "file": "packages/engine/dist/chunk-INI453VG.js",
+      "sha256": "e6f7c42bfdaee08361b37975c7a27a7a5400de35e9b44b71325d9f64ff5aa68d",
+      "imports": []
+    },
+    {
+      "file": "packages/engine/dist/receipt.js",
+      "sha256": "b42ea8dbedea62a02c3793acd7d22024b302681fea203657b02437cd25a17fea",
+      "imports": ["./chunk-CPALRSPC.js", "./chunk-INI453VG.js"]
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "polar",
+      "file": "docs/platform/fixtures/natal-envelope-draft-v1-polar.json",
+      "sha256": "b3fd9f48c09dec43985beef787728998253941c2d53228cf0110ac55409ecce9"
+    },
+    {
+      "name": "unknown-0830",
+      "file": "docs/platform/fixtures/natal-envelope-draft-v1-unknown-0830.json",
+      "sha256": "104d5dfdc4c5c6463ab183a1631eaaefa8bbc069b0ed7f7b01be014981de9bfd"
+    }
+  ],
+  "offlineDuringFunctions": true,
+  "networkAttemptsDuringFunctions": 0,
+  "serverRequestsDuringFunctions": 0,
+  "blockedCapabilities": [
+    "Intl",
+    "localStorage",
+    "sessionStorage",
+    "indexedDB",
+    "caches",
+    "fetch",
+    "XMLHttpRequest",
+    "WebSocket",
+    "EventSource",
+    "sendBeacon",
+    "serviceWorker",
+    "cookies"
+  ],
+  "blockedCapabilityAttempts": [],
+  "cookies": [],
+  "pageErrors": [],
+  "initialRequests": [
+    {
+      "url": "/",
+      "method": "GET",
+      "type": "document",
+      "postData": null
+    },
+    {
+      "url": "/modules/receipt.js",
+      "method": "GET",
+      "type": "script",
+      "postData": null
+    },
+    {
+      "url": "/modules/chunk-CPALRSPC.js",
+      "method": "GET",
+      "type": "script",
+      "postData": null
+    },
+    {
+      "url": "/modules/chunk-INI453VG.js",
+      "method": "GET",
+      "type": "script",
+      "postData": null
+    }
+  ],
+  "limitations": [
+    "Synthetic fixture parse/recreation only; no browser ephemeris recalculation",
+    "No cross-runtime astronomical equality claim",
+    "Local isolated test; no external adoption or release approval"
+  ]
+}

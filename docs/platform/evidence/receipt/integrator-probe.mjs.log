@@ -1,0 +1,119 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { createRequire } from 'node:module';
+const root='/private/tmp/zodiacs-platform-sdk';
+const require=createRequire(`${root}/packages/engine/package.json`);
+const ts=createRequire(`${root}/package.json`)('typescript');
+const cache=new Map();
+const sources={};
+function load(relative){
+ const file=path.join(root,relative);
+ if(cache.has(file))return cache.get(file).exports;
+ const source=fs.readFileSync(file,'utf8');sources[relative]=crypto.createHash('sha256').update(source).digest('hex');
+ const code=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+ const module={exports:{}};cache.set(file,module);
+ new Function('module','exports','require',code)(module,module.exports,specifier=>specifier.startsWith('.')?load(path.relative(root,path.resolve(path.dirname(file),specifier.replace(/\.js$/u,'.ts')))):require(specifier));
+ return module.exports;
+}
+const codec=load('packages/engine/src/receipt.ts');
+const {natalChart}=load('packages/engine/src/api.ts');
+const observations=[];
+const failures=[];
+function check(name,fn){
+ try{const result=fn();observations.push({name,result:result??'passed'});}
+ catch(error){failures.push({name,error:error.constructor.name,message:error.message});}
+}
+const expect=(condition,message)=>{if(!condition)throw new Error(message);};
+function roundTrip(chart){
+ const envelope=codec.createNatalEnvelope(chart);
+ const text=codec.serializeNatalEnvelope(envelope);
+ const decoded=codec.parseNatalEnvelope(text);
+ expect(decoded.ok,'Valid own envelope rejected');
+ expect(codec.serializeNatalEnvelope(decoded.envelope)===text,'Round trip changed encoded bytes');
+ return {envelope:decoded.envelope,text};
+}
+const chart=natalChart({utc:'2001-12-21T09:00:00.123Z',latitude:78.2232,longitude:15.6267,houseSystem:'placidus'});
+let example;
+check('own polar receipt preserves requested and actual independently',()=>{
+ example=roundTrip(chart);
+ const replay=codec.natalReplayInput(example.envelope);
+ expect(replay.houseSystem==='placidus','Replay dropped requested Placidus');
+ expect(example.envelope.receipt.houses.actual==='whole','Actual fallback not retained');
+ assert.deepEqual(example.envelope.result.bodies,chart.bodies,'Body values changed precision or order');
+ const again=natalChart(replay);
+ for(const field of ['bodies','angles','houses','aspects','flags'])assert.deepEqual(again[field],chart[field],`Replay changed ${field}`);
+ return {instant:example.envelope.receipt.instant,requested:replay.houseSystem,actual:example.envelope.receipt.houses.actual};
+});
+check('unknown time preserves arbitrary reference instant',()=>{
+ const unknown=natalChart({utc:'2000-02-29T08:30:12.345Z',timeKnown:false,houseSystem:'placidus'});
+ const {envelope}=roundTrip(unknown);
+ expect(envelope.receipt.reference==='supplied-instant','Unknown time inferred noon');
+ expect(envelope.receipt.houses.actual===null,'Unknown time got actual houses');
+ expect(new Date(codec.natalReplayInput(envelope).utc).toISOString()==='2000-02-29T08:30:12.345Z','Unknown-time reference changed');
+});
+check('no location does not invent actual houses',()=>{
+ const {envelope}=roundTrip(natalChart({utc:'2024-01-01T12:00:00Z',houseSystem:'placidus'}));
+ expect(envelope.receipt.houses.actual===null,'Missing-location chart got houses');
+ expect(envelope.receipt.houses.absenceReason==='missing-location','Missing location mislabeled');
+});
+if(example){
+ const rejected=[
+ ['unknown schema',e=>{e.schema='synthetic-private-unknown-schema';}],
+ ['unknown required feature',e=>{e.requiredFeatures=['synthetic-private-feature'];}],
+ ['invalid calendar instant',e=>{e.receipt.instant='2001-02-29T09:00:00.123Z';}],
+ ['ambiguous local timestamp',e=>{e.receipt.instant='2001-12-21T09:00:00.123';}],
+ ['excess instant precision',e=>{e.receipt.instant='2001-12-21T09:00:00.123456Z';}],
+ ['duplicate bodies',e=>{e.result.bodies[1].body=e.result.bodies[0].body;}],
+ ['invalid body longitude',e=>{e.result.bodies[0].lon=360;}],
+ ['NaN body from JSON null',e=>{e.result.bodies[0].lon=null;}],
+ ['conflicting actual houses',e=>{e.receipt.houses.actual='placidus';}],
+ ['unknown private flag',e=>{e.receipt.resultFlags.push('synthetic-private-flag');}],
+ ['unknown envelope key',e=>{e.privateName='synthetic-private-name';}],
+ ['prototype extension key',e=>{e.extensions=JSON.parse('{"__proto__":{"polluted":true}}');}],
+ ['deep extension',e=>{let v='end';for(let i=0;i<30;i++)v={next:v};e.extensions={nested:v};}],
+ ['large multibyte extension',e=>{e.extensions={private:'🪐'.repeat(20000)};}]
+ ];
+ for(const [name,mutate] of rejected)check(name,()=>{
+  const changed=JSON.parse(example.text);mutate(changed);
+  const result=codec.parseNatalEnvelope(JSON.stringify(changed));
+  expect(result.ok===false,'Hostile envelope accepted');
+  expect(!JSON.stringify(result).includes('synthetic-private'),'Parser error exposed supplied private value');
+  return result;
+ });
+ check('data-only extension survives and redaction excludes it',()=>{
+  const changed=JSON.parse(example.text);
+  changed.extensions={'org.example.notes':{privateName:'synthetic-private-person',notes:'<script>untrusted data only</script>',precise:1.2345678901234567}};
+  const result=codec.parseNatalEnvelope(JSON.stringify(changed));
+  expect(result.ok,'Data-only extension rejected');
+  assert.deepEqual(result.envelope.extensions,changed.extensions,'Data extension changed');
+  const redacted=codec.redactNatalEnvelope(result.envelope);
+  const output=JSON.stringify(redacted);
+  for(const forbidden of ['synthetic-private','<script>','2001-12-21','78.2232','15.6267','1.2345678901234567'])expect(!output.includes(forbidden),`Redaction copied sensitive value ${forbidden}`);
+  return redacted;
+ });
+ check('getter chart does not execute code',()=>{
+  let calls=0;
+  const hostile={};Object.defineProperty(hostile,'input',{enumerable:true,get(){calls++;throw new Error('synthetic-private-getter');}});
+  try{codec.createNatalEnvelope(hostile);}catch{}
+  expect(calls===0,'Creation executed getter');
+ });
+ check('Date override is not executed',()=>{
+  let calls=0;
+  const hostile=structuredClone(chart);
+  hostile.input.utc.toISOString=()=>{calls++;throw new Error('synthetic-private-date');};
+  try{codec.createNatalEnvelope(hostile);}catch{}
+  expect(calls===0,'Creation invoked Date.toISOString override');
+ });
+ check('serialization ignores no executable toJSON extension',()=>{
+  let calls=0;
+  const changed=JSON.parse(example.text);changed.extensions={toJSON(){calls++;return {leak:'synthetic-private-toJSON'};}};
+  try{codec.serializeNatalEnvelope(changed);}catch{}
+  expect(calls===0,'Serialization executed extension toJSON');
+ });
+}
+const report={observedAt:new Date().toISOString(),node:process.version,icu:process.versions.icu,tz:process.versions.tz,sources,exports:Object.keys(codec),observations,failures,scope:'Independent synthetic scratch probes against actual source. No network, persistence, source/test edits, build or imported provenance authentication.'};
+fs.writeFileSync('/private/tmp/zodiacs-platform-receipt-final-review/probe.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify(report,null,2));
+process.exitCode=failures.length?1:0;

@@ -1,0 +1,51 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {createRequire} from 'node:module';
+const root='/private/tmp/zodiacs-platform-sdk',require=createRequire(`${root}/packages/engine/package.json`),ts=createRequire(`${root}/package.json`)('typescript'),cache=new Map();
+function load(file){if(cache.has(file))return cache.get(file).exports;const code=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;const module={exports:{}};cache.set(file,module);new Function('module','exports','require',code)(module,module.exports,s=>s.startsWith('.')?load(path.resolve(path.dirname(file),s.replace(/\.js$/,'.ts'))):require(s));return module.exports;}
+const codec=load(`${root}/packages/engine/src/receipt.ts`),{natalChart}=load(`${root}/packages/engine/src/api.ts`),{resolveLocalToUtc}=load(`${root}/packages/engine/src/geo/timezone.ts`);
+const cases=[],failures=[];
+const expect=(condition,message)=>{if(!condition)throw new Error(message);};
+function run(name,action){try{cases.push({name,observed:action()??'passed'});}catch(error){failures.push({name,error:error.constructor.name,message:error.message});}}
+function localChart(date,time,timeZone,shift,timeKnown=true,reference='supplied-instant'){
+ const resolved=resolveLocalToUtc(date,time,timeZone);
+ const chart=natalChart({utc:resolved.utc,latitude:20,longitude:10,timeKnown,flags:resolved.flags,houseSystem:'placidus'});
+ const context={reference,localResolution:{date,time,timeZone,offsetMinutes:resolved.offsetMinutes,gapShiftMinutes:shift,policy:{fold:'earlier',gap:'shift-forward'}}};
+ const envelope=codec.createNatalEnvelope(chart,context),parsed=codec.parseNatalEnvelope(codec.serializeNatalEnvelope(envelope));
+ expect(parsed.ok,'Own captured local context rejected');
+ expect(parsed.envelope.receipt.instant===resolved.utc.toISOString(),'Local instant altered');
+ expect(parsed.envelope.receipt.localResolution.timeZone===timeZone,'Local zone altered');
+ return {instant:resolved.utc.toISOString(),flags:resolved.flags,offset:resolved.offsetMinutes,reference};
+}
+for(const [name,date,time,zone,shift,known,reference] of [
+ ['year zero leap UTC','0000-02-29','12:00','UTC',0,true,'supplied-instant'],
+ ['year99 UTC','0099-12-31','23:59','UTC',0,true,'supplied-instant'],
+ ['year zero offset boundary','0000-01-01','00:30','Etc/GMT-1',0,true,'supplied-instant'],
+ ['Mexico City LMT seconds','1907-07-06','08:30','America/Mexico_City',0,true,'supplied-instant'],
+ ['New York gap','2024-03-10','02:30','America/New_York',60,true,'supplied-instant'],
+ ['New York fold','2024-11-03','01:30','America/New_York',0,true,'supplied-instant'],
+ ['Lord Howe half-hour gap','2024-10-06','02:15','Australia/Lord_Howe',30,true,'supplied-instant'],
+ ['Apia skipped noon','2011-12-30','12:00','Pacific/Apia',1440,false,'local-noon'],
+])run(name,()=>localChart(date,time,zone,shift,known,reference));
+for(const source of ['2001-12-21T09:00:00-00:00','2001-12-21T16:00:00+07:00','2001-12-21T09:00Z','0000-02-29','0099-12-31T23:59:59.123Z'])run(`source spelling ${source}`,()=>{
+ const chart=natalChart({utc:source,timeKnown:false});
+ const envelope=codec.createNatalEnvelope(chart,{sourceInstant:source});
+ const parsed=codec.parseNatalEnvelope(codec.serializeNatalEnvelope(envelope));
+ expect(parsed.ok,'SourceInstant own round trip rejected');
+ expect(parsed.envelope.receipt.sourceInstant===source,'Source spelling changed');
+ expect(!JSON.stringify(codec.redactNatalEnvelope(parsed.envelope)).includes(source),'Redaction copied source instant');
+ return {source:parsed.envelope.receipt.sourceInstant,instant:parsed.envelope.receipt.instant};
+});
+for(const instant of ['2001-01-01T12:00:00.001Z','2001-01-01T12:00:01.000Z','2001-01-01T08:30:00.000Z'])run(`reject inexact UTC noon ${instant}`,()=>{
+ let rejected=false;try{codec.createNatalEnvelope(natalChart({utc:instant,timeKnown:false}),{reference:'utc-noon'});}catch(error){rejected=error.code==='invalid_context';}expect(rejected,'Inexact noon claim accepted');
+});
+run('no codec Intl re-resolution or fetch',()=>{
+ const chart=natalChart({utc:'2024-03-10T07:30:00Z',timeKnown:false,flags:['dst-gap']});
+ const originalIntl=Intl.DateTimeFormat,originalFetch=globalThis.fetch;let attempted=0;
+ Intl.DateTimeFormat=function(){attempted++;throw new Error('No runtime re-resolution permitted');};globalThis.fetch=()=>{attempted++;throw new Error('No network permitted');};
+ try{codec.createNatalEnvelope(chart,{localResolution:{date:'2024-03-10',time:'02:30',timeZone:'America/New_York',offsetMinutes:-240,gapShiftMinutes:60,policy:{fold:'earlier',gap:'shift-forward'}}});}finally{Intl.DateTimeFormat=originalIntl;globalThis.fetch=originalFetch;}
+ expect(attempted===0,'Codec consulted live Intl or network');
+});
+const report={observedAt:new Date().toISOString(),node:process.version,icu:process.versions.icu,tz:process.versions.tz,sourceSha256:crypto.createHash('sha256').update(fs.readFileSync(`${root}/packages/engine/src/receipt.ts`)).digest('hex'),cases,failures,scope:'Synthetic local source probes; temporal controls use this runtime ICU and public natal calculation before codec invocation. Not independent historical tzdb validation.'};
+fs.writeFileSync('/private/tmp/zodiacs-platform-receipt-final-review/temporal.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));process.exitCode=failures.length?1:0;

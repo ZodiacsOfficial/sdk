@@ -1,0 +1,90 @@
+{
+  "status": "passed",
+  "runtime": {
+    "node": "v22.23.2",
+    "v8": "12.4.254.21-node.56",
+    "icu": "78.2"
+  },
+  "engineVersion": "0.1.1-rc.3",
+  "fixtureKind": "synthetic",
+  "provenanceInFixtures": null,
+  "claims": [
+    "built public-module generation",
+    "parse and serialization round trips",
+    "same-build recalculation for these two synthetic cases only"
+  ],
+  "notClaims": [
+    "independent astronomical accuracy",
+    "external adoption",
+    "published npm release",
+    "cross-version or cross-runtime numerical equality"
+  ],
+  "identity": [
+    {
+      "file": "packages/engine/src/receipt.ts",
+      "sha256": "6a2513769934da7b72ab2e07c66df2d48e49fe2d8a8b54b737c2424d301778d8"
+    },
+    {
+      "file": "packages/engine/src/receipt-json.ts",
+      "sha256": "da5627224b593769eea8f1d434815ad34f422f44e1ef38a6687f86d8ccf8dd5c"
+    },
+    {
+      "file": "packages/engine/src/types.ts",
+      "sha256": "48c67ff2add881f2d7b1a2e1d9eaf18b669dcfb8791692493b2a9b91bcdae37e"
+    },
+    {
+      "file": "packages/engine/dist/receipt.js",
+      "sha256": "b42ea8dbedea62a02c3793acd7d22024b302681fea203657b02437cd25a17fea"
+    },
+    {
+      "file": "packages/engine/dist/index.js",
+      "sha256": "1513fe879efd6baf187bb64a6c2bea8c5ed16906032ba55fda22d9b322ca03a9"
+    }
+  ],
+  "results": [
+    {
+      "file": "docs/platform/fixtures/natal-envelope-draft-v1-polar.json",
+      "bytes": 7049,
+      "sha256": "3167ad4a2b6dafb3234832fe7f032567cedc1bf11b9d2f80a9dbccc78d45881a",
+      "roundTrip": true,
+      "sameBuildRecalculation": true,
+      "requested": "placidus",
+      "instant": "2001-12-21T09:00:00.000Z",
+      "timeKnown": true,
+      "redacted": {
+        "schema": "zodiacs.natal-diagnostic.draft-v1",
+        "status": "redacted-not-anonymous",
+        "timeKnown": true,
+        "houses": {
+          "absenceReason": null,
+          "actual": "whole",
+          "requested": "placidus"
+        },
+        "inputFlags": [],
+        "resultFlags": ["polar-fallback"]
+      }
+    },
+    {
+      "file": "docs/platform/fixtures/natal-envelope-draft-v1-unknown-0830.json",
+      "bytes": 6709,
+      "sha256": "5e6d368a9c5ebeb794a801dbabcc2a97804377616f2931adfa5aa94bc8ed3823",
+      "roundTrip": true,
+      "sameBuildRecalculation": true,
+      "requested": "placidus",
+      "instant": "2001-12-21T08:30:00.000Z",
+      "timeKnown": false,
+      "redacted": {
+        "schema": "zodiacs.natal-diagnostic.draft-v1",
+        "status": "redacted-not-anonymous",
+        "timeKnown": false,
+        "houses": {
+          "absenceReason": "unknown-time",
+          "actual": null,
+          "requested": "placidus"
+        },
+        "inputFlags": [],
+        "resultFlags": ["no-time"]
+      }
+    }
+  ]
+}

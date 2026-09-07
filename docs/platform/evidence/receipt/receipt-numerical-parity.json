@@ -1,0 +1,10 @@
+{
+  "capturedAt": "2026-09-07T21:56:59.937Z",
+  "result": "passed",
+  "cases": 96,
+  "previous": "0.1.1-rc.1",
+  "candidate": "0.1.1-rc.3",
+  "runtime": "v22.23.2",
+  "comparison": "Exact public natal-chart equality with engineVersion omitted, plus codec replay equality on current version with absent input.flags normalized to an empty list. No numerical rounding. Synthetic finite corpus, not independent astronomical accuracy evidence.",
+  "harnessCorrection": "The initial replay check incorrectly required absent optional input.flags and [] to be structurally identical. The explicit normalization above fixes the assertion; production code was unchanged."
+}

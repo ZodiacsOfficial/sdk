@@ -1,0 +1,36 @@
+RUN  v2.1.9 /private/tmp/zodiacs-platform-sdk
+
+ ✓ packages/engine/src/receipt.test.ts (36 tests) 283ms
+ ✓ packages/sdk/src/core/identity.test.ts (12 tests) 9ms
+ ✓ packages/sdk/src/core/solana.test.ts (11 tests) 23ms
+ ✓ packages/sdk/src/core/canonical-registry.test.ts (12 tests) 16ms
+ ✓ packages/sdk/src/core/base.test.ts (9 tests) 7ms
+ ✓ packages/engine/src/engine.test.ts (24 tests) 101ms
+ ✓ packages/sdk/src/react/hooks.test.ts (7 tests) 25ms
+ ✓ packages/engine/src/geo/geonames.test.ts (10 tests) 19ms
+ ✓ packages/sdk/src/market/adapters.test.ts (13 tests) 7ms
+ ✓ packages/engine/src/public-input.test.ts (77 tests) 30ms
+ ✓ packages/engine/src/geo.test.ts (40 tests) 30ms
+ ✓ packages/widgets/src/index.test.ts (8 tests) 7ms
+ ✓ packages/engine/src/receipt-json.test.ts (88 tests) 10ms
+ ✓ packages/sdk/src/core/format.test.ts (16 tests) 16ms
+ ✓ packages/engine/src/houses-regression.test.ts (6 tests) 121ms
+ ✓ packages/engine/src/returns-bounds.test.ts (15 tests) 14ms
+ ✓ packages/sdk/src/testing.test.ts (3 tests) 6ms
+ ✓ packages/engine/src/returns-crossings.test.ts (14 tests) 3ms
+ ✓ packages/sdk/src/ui/registry.test.tsx (4 tests) 5ms
+ ✓ packages/sdk/src/react/context.test.ts (2 tests) 4ms
+ ✓ packages/sdk/src/core/package-posture.test.ts (1 test) 2ms
+ ✓ packages/sdk/src/assets.test.ts (3 tests) 6ms
+ ✓ packages/sdk/src/ui/ZodiacAssetCard.test.tsx (2 tests) 6ms
+ ✓ packages/sdk/src/core/registry.test.ts (6 tests) 2ms
+ ✓ packages/sdk/src/core/season.test.ts (4 tests) 2ms
+ ✓ packages/sdk/src/core/address.test.ts (3 tests) 8ms
+ ✓ packages/sdk/src/core/docs-posture.test.ts (1 test) 20ms
+ ✓ packages/sdk/src/core/read-only-posture.test.ts (1 test) 3ms
+ ✓ packages/sdk/src/ui/ZodiacMarketStrip.test.tsx (1 test) 2ms
+
+ Test Files  29 passed (29)
+      Tests  429 passed (429)
+   Start at  21:59:42
+   Duration  6.30s (transform 379ms, setup 0ms, collect 2.32s, tests 788ms, environment 3ms, prepare 961ms)

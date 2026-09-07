@@ -1,0 +1,134 @@
+{
+  "observedAt": "2026-09-07T21:57:00.861Z",
+  "node": "v22.23.2",
+  "icu": "78.2",
+  "tz": "2026a",
+  "sourceSha256": "6a2513769934da7b72ab2e07c66df2d48e49fe2d8a8b54b737c2424d301778d8",
+  "cases": [
+    {
+      "name": "year zero leap UTC",
+      "observed": {
+        "instant": "0000-02-29T12:00:00.000Z",
+        "flags": [],
+        "offset": 0,
+        "reference": "supplied-instant"
+      }
+    },
+    {
+      "name": "year99 UTC",
+      "observed": {
+        "instant": "0099-12-31T23:59:00.000Z",
+        "flags": [],
+        "offset": 0,
+        "reference": "supplied-instant"
+      }
+    },
+    {
+      "name": "year zero offset boundary",
+      "observed": {
+        "instant": "-000001-12-31T23:30:00.000Z",
+        "flags": [],
+        "offset": 60,
+        "reference": "supplied-instant"
+      }
+    },
+    {
+      "name": "Mexico City LMT seconds",
+      "observed": {
+        "instant": "1907-07-06T15:06:36.000Z",
+        "flags": ["lmt"],
+        "offset": -396.6,
+        "reference": "supplied-instant"
+      }
+    },
+    {
+      "name": "New York gap",
+      "observed": {
+        "instant": "2024-03-10T07:30:00.000Z",
+        "flags": ["dst-gap"],
+        "offset": -240,
+        "reference": "supplied-instant"
+      }
+    },
+    {
+      "name": "New York fold",
+      "observed": {
+        "instant": "2024-11-03T05:30:00.000Z",
+        "flags": ["dst-fold"],
+        "offset": -240,
+        "reference": "supplied-instant"
+      }
+    },
+    {
+      "name": "Lord Howe half-hour gap",
+      "observed": {
+        "instant": "2024-10-05T15:45:00.000Z",
+        "flags": ["dst-gap"],
+        "offset": 660,
+        "reference": "supplied-instant"
+      }
+    },
+    {
+      "name": "Apia skipped noon",
+      "observed": {
+        "instant": "2011-12-30T22:00:00.000Z",
+        "flags": ["dst-gap"],
+        "offset": 840,
+        "reference": "local-noon"
+      }
+    },
+    {
+      "name": "source spelling 2001-12-21T09:00:00-00:00",
+      "observed": {
+        "source": "2001-12-21T09:00:00-00:00",
+        "instant": "2001-12-21T09:00:00.000Z"
+      }
+    },
+    {
+      "name": "source spelling 2001-12-21T16:00:00+07:00",
+      "observed": {
+        "source": "2001-12-21T16:00:00+07:00",
+        "instant": "2001-12-21T09:00:00.000Z"
+      }
+    },
+    {
+      "name": "source spelling 2001-12-21T09:00Z",
+      "observed": {
+        "source": "2001-12-21T09:00Z",
+        "instant": "2001-12-21T09:00:00.000Z"
+      }
+    },
+    {
+      "name": "source spelling 0000-02-29",
+      "observed": {
+        "source": "0000-02-29",
+        "instant": "0000-02-29T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "source spelling 0099-12-31T23:59:59.123Z",
+      "observed": {
+        "source": "0099-12-31T23:59:59.123Z",
+        "instant": "0099-12-31T23:59:59.123Z"
+      }
+    },
+    {
+      "name": "reject inexact UTC noon 2001-01-01T12:00:00.001Z",
+      "observed": "passed"
+    },
+    {
+      "name": "reject inexact UTC noon 2001-01-01T12:00:01.000Z",
+      "observed": "passed"
+    },
+    {
+      "name": "reject inexact UTC noon 2001-01-01T08:30:00.000Z",
+      "observed": "passed"
+    },
+    {
+      "name": "no codec Intl re-resolution or fetch",
+      "observed": "passed"
+    }
+  ],
+  "failures": [],
+  "scope": "Synthetic local source probes; temporal controls use this runtime ICU and public natal calculation before codec invocation. Not independent historical tzdb validation."
+}
