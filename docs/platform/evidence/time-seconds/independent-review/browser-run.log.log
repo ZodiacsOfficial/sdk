@@ -1,0 +1,28 @@
+{
+  "browser": "152.0.7977.83",
+  "playwright": "1.61.1",
+  "transitions": 37,
+  "corrected": 15,
+  "instantsChanged": 0,
+  "settings": 6,
+  "rejectedSettings": 17,
+  "receipts": 7,
+  "afterImport": {
+    "fetch": 0,
+    "xhr": 0,
+    "beacon": 0,
+    "localStorage": 0,
+    "sessionStorage": 0,
+    "indexedDB": 0
+  },
+  "afterChecks": {
+    "fetch": 0,
+    "xhr": 0,
+    "beacon": 0,
+    "localStorage": 0,
+    "sessionStorage": 0,
+    "indexedDB": 0
+  },
+  "externalRequests": 0,
+  "pageErrors": 0
+}

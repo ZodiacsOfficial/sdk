@@ -1,0 +1,136 @@
+
+ RUN  v2.1.9 /private/tmp/zodiacs-platform-sdk-seconds
+
+ ❯ packages/engine/src/geo/timezone-precision.test.ts (14 tests | 10 failed) 65ms
+   × second-precise local minute matching > resolves 1914-01-01 00:00 in America/Manaus without shortening candidate wall times 4ms
+     → expected [] to deeply equal [ 'dst-gap' ]
+   × second-precise local minute matching > resolves 1914-01-01 00:01 in America/Manaus without shortening candidate wall times 1ms
+     → expected [ 'dst-fold' ] to deeply equal []
+   × second-precise local minute matching > resolves 1914-01-01 12:00 in America/Manaus without shortening candidate wall times 1ms
+     → expected [ 'dst-fold' ] to deeply equal []
+   × second-precise local minute matching > resolves 1884-01-01 00:00 in America/Dawson_Creek without shortening candidate wall times 1ms
+     → expected [] to deeply equal [ 'dst-gap' ]
+   × second-precise local minute matching > resolves 1884-01-01 00:01 in America/Dawson_Creek without shortening candidate wall times 1ms
+     → expected [ 'dst-fold' ] to deeply equal []
+   × second-precise local minute matching > resolves 1883-11-18 11:59 in America/Denver without shortening candidate wall times 1ms
+     → expected [ 'dst-fold', 'lmt' ] to deeply equal [ 'lmt' ]
+   × second-precise local minute matching > resolves 1911-12-31 23:59 in Africa/Ndjamena without shortening candidate wall times 0ms
+     → expected [ 'dst-fold', 'lmt' ] to deeply equal [ 'lmt' ]
+   × second-precise local minute matching > retains the actual 1914-01-01 gap in America/Manaus through the public receipt codec 20ms
+     → Natal envelope rejected: invalid_context.
+   × second-precise local minute matching > retains the actual 1884-01-01 gap in America/Dawson_Creek through the public receipt codec 2ms
+     → Natal envelope rejected: invalid_context.
+   × second-precise local minute matching > keeps unknown-time local noon ordinary immediately after a seconds-sized gap 0ms
+     → expected [ 'dst-fold' ] to deeply equal []
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/engine/src/geo/timezone-precision.test.ts > second-precise local minute matching > resolves 1914-01-01 00:00 in America/Manaus without shortening candidate wall times
+ FAIL  packages/engine/src/geo/timezone-precision.test.ts > second-precise local minute matching > resolves 1884-01-01 00:00 in America/Dawson_Creek without shortening candidate wall times
+AssertionError: expected [] to deeply equal [ 'dst-gap' ]
+
+- Expected
++ Received
+
+- Array [
+-   "dst-gap",
+- ]
++ Array []
+
+ ❯ packages/engine/src/geo/timezone-precision.test.ts:26:26
+     24|     const result = resolveLocalToUtc(date, time, zone);
+     25|     expect(result.utc.toISOString()).toBe(instant);
+     26|     expect(result.flags).toEqual(flags);
+       |                          ^
+     27|     expect(result.utc.getUTCMilliseconds()).toBe(0);
+     28|     const birth = resolveBirth({ date, time, timeZone: zone });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  packages/engine/src/geo/timezone-precision.test.ts > second-precise local minute matching > resolves 1914-01-01 00:01 in America/Manaus without shortening candidate wall times
+ FAIL  packages/engine/src/geo/timezone-precision.test.ts > second-precise local minute matching > resolves 1914-01-01 12:00 in America/Manaus without shortening candidate wall times
+ FAIL  packages/engine/src/geo/timezone-precision.test.ts > second-precise local minute matching > resolves 1884-01-01 00:01 in America/Dawson_Creek without shortening candidate wall times
+AssertionError: expected [ 'dst-fold' ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   "dst-fold",
++ ]
+
+ ❯ packages/engine/src/geo/timezone-precision.test.ts:26:26
+     24|     const result = resolveLocalToUtc(date, time, zone);
+     25|     expect(result.utc.toISOString()).toBe(instant);
+     26|     expect(result.flags).toEqual(flags);
+       |                          ^
+     27|     expect(result.utc.getUTCMilliseconds()).toBe(0);
+     28|     const birth = resolveBirth({ date, time, timeZone: zone });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  packages/engine/src/geo/timezone-precision.test.ts > second-precise local minute matching > resolves 1883-11-18 11:59 in America/Denver without shortening candidate wall times
+ FAIL  packages/engine/src/geo/timezone-precision.test.ts > second-precise local minute matching > resolves 1911-12-31 23:59 in Africa/Ndjamena without shortening candidate wall times
+AssertionError: expected [ 'dst-fold', 'lmt' ] to deeply equal [ 'lmt' ]
+
+- Expected
++ Received
+
+  Array [
++   "dst-fold",
+    "lmt",
+  ]
+
+ ❯ packages/engine/src/geo/timezone-precision.test.ts:26:26
+     24|     const result = resolveLocalToUtc(date, time, zone);
+     25|     expect(result.utc.toISOString()).toBe(instant);
+     26|     expect(result.flags).toEqual(flags);
+       |                          ^
+     27|     expect(result.utc.getUTCMilliseconds()).toBe(0);
+     28|     const birth = resolveBirth({ date, time, timeZone: zone });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  packages/engine/src/geo/timezone-precision.test.ts > second-precise local minute matching > retains the actual 1914-01-01 gap in America/Manaus through the public receipt codec
+ FAIL  packages/engine/src/geo/timezone-precision.test.ts > second-precise local minute matching > retains the actual 1884-01-01 gap in America/Dawson_Creek through the public receipt codec
+NatalEnvelopeError: Natal envelope rejected: invalid_context.
+ ❯ fail packages/engine/src/receipt.ts:174:9
+    172| 
+    173| function fail(code: NatalEnvelopeErrorCode): never {
+    174|   throw new NatalEnvelopeError(code);
+       |         ^
+    175| }
+    176| function guarded<T>(action: () => T): T {
+ ❯ guarded packages/engine/src/receipt.ts:181:12
+ ❯ Module.createNatalEnvelope packages/engine/src/receipt.ts:638:10
+ ❯ packages/engine/src/geo/timezone-precision.test.ts:38:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  packages/engine/src/geo/timezone-precision.test.ts > second-precise local minute matching > keeps unknown-time local noon ordinary immediately after a seconds-sized gap
+AssertionError: expected [ 'dst-fold' ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   "dst-fold",
++ ]
+
+ ❯ packages/engine/src/geo/timezone-precision.test.ts:53:25
+     51|     const input = resolveBirth({ date: "1914-01-01", timeZone: "Americ…
+     52|     expect(input.utc).toEqual(new Date("1914-01-01T16:00:00.000Z"));
+     53|     expect(input.flags).toEqual([]);
+       |                         ^
+     54|     expect(input.timeKnown).toBe(false);
+     55|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+ Test Files  1 failed (1)
+      Tests  10 failed | 4 passed (14)
+   Start at  12:43:37
+   Duration  414ms (transform 111ms, setup 0ms, collect 132ms, tests 65ms, environment 0ms, prepare 37ms)
+

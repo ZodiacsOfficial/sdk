@@ -1,0 +1,31 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+const work = path.dirname(new URL(import.meta.url).pathname);
+const sdk='/private/tmp/zodiacs-platform-sdk-seconds', site='/Users/chiburashka/.codex/worktrees/4806/site';
+const identityFile='/private/tmp/zodiacs-platform-sdk-seconds-evidence/source-identity.json';
+const identity=JSON.parse(fs.readFileSync(identityFile));
+const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+fs.copyFileSync(identityFile,path.join(work,'author-source-identity.json'));
+const verify=()=>Object.entries(identity.files).map(([file,expected])=>{const actual=sha(fs.readFileSync(path.join(sdk,file)));if(expected!==actual)throw new Error(`Frozen source changed: ${file}`);return{file,expected,actual};});
+const before=verify();
+const paths=execFileSync('git',['ls-tree','-r','--name-only',identity.base,'--','packages/engine/src','packages/engine/package.json','packages/engine/README.md','packages/engine/CHANGELOG.md'],{cwd:sdk,encoding:'utf8'}).trim().split('\n').filter(Boolean);
+for(const file of paths){const bytes=execFileSync('git',['show',`${identity.base}:${file}`],{cwd:sdk});for(const kind of ['baseline','candidate']){const target=path.join(work,kind,file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,bytes);}}
+for(const file of Object.keys(identity.files)){const target=path.join(work,'candidate',file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.copyFileSync(path.join(sdk,file),target);}
+const dependencies=[
+ ['esbuild',path.join(site,'node_modules/esbuild')],
+ ['@esbuild/darwin-arm64',path.join(site,'node_modules/@esbuild/darwin-arm64')],
+ ['astronomy-engine',path.join(sdk,'packages/engine/node_modules/astronomy-engine')],
+ ['playwright-core',path.join(site,'node_modules/playwright-core')],
+];
+const dependencyFiles=[];
+function hashTree(dir,prefix){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const file=path.join(dir,entry.name);if(entry.isSymbolicLink())throw new Error('Dependency copy retained symlink');if(entry.isDirectory())hashTree(file,prefix);else dependencyFiles.push({path:path.relative(prefix,file),bytes:fs.statSync(file).size,sha256:sha(fs.readFileSync(file))});}}
+const dependencyPackages=[];
+for(const[name,source]of dependencies){const resolved=fs.realpathSync(source),target=path.join(work,'node_modules',name);fs.mkdirSync(path.dirname(target),{recursive:true});fs.cpSync(resolved,target,{recursive:true,dereference:true});hashTree(target,work);const pkg=JSON.parse(fs.readFileSync(path.join(target,'package.json')));dependencyPackages.push({name,version:pkg.version,source:resolved});}
+const parent='/private/tmp/zodiacs-platform-site-receipt-export-review/time-edge-search/resolver-followup';
+fs.copyFileSync(path.join(parent,'result.json'),path.join(work,'retained-controls-and-model.json'));
+fs.copyFileSync(path.join(parent,'PLAN.md'),path.join(work,'retained-resolver-followup.md'));
+fs.writeFileSync(path.join(work,'dependency-hashes.json'),JSON.stringify({dependencyPackages,files:dependencyFiles},null,2)+'\n');
+const output={at:new Date().toISOString(),base:identity.base,version:identity.version,before,after:verify(),baseSourceFiles:paths.length,scopeDiff:execFileSync('git',['diff','--name-only',identity.base],{cwd:sdk,encoding:'utf8'}).trim().split('\n').filter(Boolean),untracked:execFileSync('git',['ls-files','--others','--exclude-standard'],{cwd:sdk,encoding:'utf8'}).trim().split('\n').filter(Boolean),ownershipDiff:execFileSync('git',['diff','--name-only',identity.base,'--','packages/sdk'],{cwd:sdk,encoding:'utf8'}).trim(),dependencyPackages,dependencyFileCount:dependencyFiles.length};
+fs.writeFileSync(path.join(work,'setup-identity.json'),JSON.stringify(output,null,2)+'\n');console.log(JSON.stringify({baseSourceFiles:paths.length,dependencyFileCount:dependencyFiles.length,frozenFiles:before.length,ownershipDiff:output.ownershipDiff}));

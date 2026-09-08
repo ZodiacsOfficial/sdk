@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+import http from 'node:http';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+const work=path.dirname(new URL(import.meta.url).pathname),{chromium}=createRequire(path.join(work,'node_modules/playwright-core/package.json'))('./index.js');
+const retained=JSON.parse(fs.readFileSync(path.join(work,'retained-controls-and-model.json')));
+const allowedZones=new Set(['America/Manaus','America/Caracas','America/Dawson_Creek','America/Denver','Africa/Ndjamena','America/Mexico_City','America/New_York','Australia/Lord_Howe','Pacific/Apia','UTC','Etc/GMT-1']);
+const subset=retained.results.filter(row=>allowedZones.has(row.zone));
+let browser;const externalRequests=[],pageErrors=[];
+const staticFiles=new Set(['/baseline-subject.mjs','/candidate-subject.mjs','/checks.mjs']);
+const server=http.createServer((req,res)=>{const pathname=new URL(req.url,'http://localhost').pathname;if(pathname==='/'){res.writeHead(200,{'Content-Type':'text/html'});res.end('<!doctype html><title>Isolated resolver review</title>');return;}if(staticFiles.has(pathname)){res.writeHead(200,{'Content-Type':'text/javascript'});res.end(fs.readFileSync(path.join(work,pathname.slice(1))));return;}res.writeHead(404);res.end();});
+await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+const origin=`http://127.0.0.1:${server.address().port}`;
+try{
+ browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true,args:['--disable-background-networking']});
+ const context=await browser.newContext();
+ await context.route('**/*',async route=>{const url=route.request().url();if(!url.startsWith(origin+'/')){externalRequests.push(url);await route.abort();return;}await route.continue();});
+ await context.addInitScript(()=>{window.__sideEffects={fetch:0,xhr:0,beacon:0,localStorage:0,sessionStorage:0,indexedDB:0};window.fetch=()=>{window.__sideEffects.fetch++;throw new Error('Unexpected fetch');};window.XMLHttpRequest=function(){window.__sideEffects.xhr++;throw new Error('Unexpected XHR');};navigator.sendBeacon=()=>{window.__sideEffects.beacon++;throw new Error('Unexpected beacon');};for(const key of ['localStorage','sessionStorage'])Object.defineProperty(window,key,{get(){window.__sideEffects[key]++;throw new Error('Unexpected storage');}});IDBFactory.prototype.open=function(){window.__sideEffects.indexedDB++;throw new Error('Unexpected IndexedDB');};});
+ const page=await context.newPage();page.on('pageerror',error=>pageErrors.push(error.message));await page.goto(origin);
+ const result=await page.evaluate(async controls=>{const [baseline,candidate,checks]=await Promise.all([import('/baseline-subject.mjs'),import('/candidate-subject.mjs'),import('/checks.mjs')]);const afterImport={...window.__sideEffects};const transitions=checks.transitionChecks(baseline,candidate,controls),settings=checks.settingsChecks(baseline,candidate),receipts=checks.receiptChecks(baseline,candidate);return{userAgent:navigator.userAgent,afterImport,afterChecks:{...window.__sideEffects},transitions,settings,receipts};},subset);
+ if(externalRequests.length||pageErrors.length||Object.values(result.afterChecks).some(count=>count!==0))throw new Error('Unexpected browser external request, error or data side effect');
+ const output={at:new Date().toISOString(),browser:browser.version(),playwright:JSON.parse(fs.readFileSync(path.join(work,'node_modules/playwright-core/package.json'))).version,runnerNode:process.version,purpose:'Actual native Chrome in disposable context, isolated static module server, physical frozen rc.6/baseline source bundles. Runtime ICU/tzdb versions are not exposed by this browser.',externalRequests,pageErrors,...result};
+ fs.writeFileSync(path.join(work,'browser-result.json'),JSON.stringify(output,null,2)+'\n');console.log(JSON.stringify({browser:output.browser,playwright:output.playwright,transitions:result.transitions.count,corrected:result.transitions.corrected,instantsChanged:result.transitions.instantsChanged,settings:result.settings.validCount,rejectedSettings:result.settings.rejectedCount,receipts:result.receipts.length,afterImport:result.afterImport,afterChecks:result.afterChecks,externalRequests:externalRequests.length,pageErrors:pageErrors.length},null,2));
+ await context.close();
+}finally{if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));}

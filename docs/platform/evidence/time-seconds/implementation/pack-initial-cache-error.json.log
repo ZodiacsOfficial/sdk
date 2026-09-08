@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "EPERM",
+    "summary": "Your cache folder contains root-owned files, due to a bug in previous versions of npm which has since been addressed.\n\nTo permanently fix this problem, please run:\n  sudo chown -R 501:20 \"/Users/chiburashka/.openclaw/workspace/.npm-cache\"",
+    "detail": ""
+  }
+}

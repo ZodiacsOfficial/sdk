@@ -1,0 +1,14 @@
+import os,json,subprocess,time,datetime,pathlib
+root=pathlib.Path('/private/tmp/zodiacs-platform-sdk-seconds')
+out=pathlib.Path('/private/tmp/zodiacs-platform-sdk-seconds-evidence/release');out.mkdir(parents=True,exist_ok=True)
+env=os.environ.copy();env['PATH']='/private/tmp/zodiacs-platform-runtime/node_modules/node/bin:/private/tmp/zodiacs-platform-runtime/node_modules/.bin:'+env['PATH'];env['COREPACK_HOME']='/private/tmp/zodiacs-platform-corepack-seconds'
+commands=[('test',['corepack','pnpm','test']),('lint',['corepack','pnpm','lint']),('build',['corepack','pnpm','build']),('typecheck',['corepack','pnpm','typecheck']),('format',['corepack','pnpm','format:check']),('checksum',['corepack','pnpm','registry:checksum']),('exports',['corepack','pnpm','exports:smoke']),('pack-dry',['corepack','pnpm','pack:dry-run']),('contents',['corepack','pnpm','package:contents']),('neutrality',['corepack','pnpm','neutrality:guard']),('docs',['corepack','pnpm','docs:engine'])]
+steps=[]
+for name,args in commands:
+ started=datetime.datetime.now(datetime.timezone.utc).isoformat();t=time.monotonic()
+ with (out/(name+'.log')).open('w') as log:
+  p=subprocess.run(args,cwd=root,env=env,stdout=log,stderr=subprocess.STDOUT)
+ step={'name':name,'command':args,'startedAt':started,'elapsedSeconds':round(time.monotonic()-t,3),'exitCode':p.returncode,'log':name+'.log'};steps.append(step)
+ (out/'gates.json').write_text(json.dumps({'base':'224863ebea0ab62d0eff721a53f5ab2a1bfc756f','version':'0.1.1-rc.6','runtime':'Node22.23.2','steps':steps},indent=2)+'\n')
+ print(json.dumps(step),flush=True)
+ if p.returncode:raise SystemExit(p.returncode)

@@ -1,5 +1,37 @@
 # SDK platform checkpoint
 
+## Historical local-time precision candidate
+
+Branch `codex/platform-time-seconds` starts from delivered draft #10 at
+`224863ebea0ab62d0eff721a53f5ab2a1bfc756f`. Engine **0.1.1-rc.6** matches the
+complete civil timestamp, including seconds and milliseconds. It corrects
+missed historical gaps and false folds without changing tested instants or
+core numerical formulas. Earlier receipts and artifacts remain immutable.
+
+Local acceptance passes **579 tests / 32 files on Node 22 and 24**, required
+workspace build/lint/typecheck/format/checksum/export/content/neutrality/dry-pack
+and TypeDoc gates. Two fresh external consumers pass against the exact 23-file
+archive, SHA-256 `09c3e63432f8ba2e9df05af137c42f65ab039740a207a89418d9e6470ea3db3e`.
+Independent copied-source review passes 278 Node controls and 37 native Chrome
+controls, seven receipt/replay controls per runtime, settings/rejection checks,
+with expected flag corrections and no tested instant/offset/numerical changes.
+[Commands and bounded review](EVIDENCE.md#historical-local-time-precision-candidate).
+Source/artifact draft delivery and public-byte verification are not yet claimed.
+
+The existing three-sample offset policy is retained and not certified complete.
+A distinct site date-endpoint defect affects Toronto's 1919 midnight gap,
+Apia's skipped date, and library year-zero rollover; it is recorded for separate
+correction. Precision matching does not resolve that different boundary policy.
+
+The site platform drafts currently use engine rc.5; starter rc.3 stays immutable.
+Site draft #426 adds an inactive receipt store, while a separately reviewed
+consumer download slice preserves unsupported or inconsistent chart inputs
+without exporting misleading receipts. No SDK change touches their source.
+SDK #5 is freshly read at `cced0116`, still draft with zero submitted reviews
+and an explicit do-not-merge/do-not-publish hold. Ownership SDK, remote protocols,
+licenses, publication authority, human review and production are unchanged.
+The candidate history below describes its own earlier checkpoints.
+
 ## Public flags and civil settings candidate
 
 Branch `codex/platform-input-flags` starts from delivered SDK #9 at

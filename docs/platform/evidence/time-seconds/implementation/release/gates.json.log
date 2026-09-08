@@ -1,0 +1,139 @@
+{
+  "base": "224863ebea0ab62d0eff721a53f5ab2a1bfc756f",
+  "version": "0.1.1-rc.6",
+  "runtime": "Node22.23.2",
+  "steps": [
+    {
+      "name": "test",
+      "command": [
+        "corepack",
+        "pnpm",
+        "test"
+      ],
+      "startedAt": "2026-09-08T05:49:23.027931+00:00",
+      "elapsedSeconds": 6.124,
+      "exitCode": 0,
+      "log": "test.log"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "corepack",
+        "pnpm",
+        "lint"
+      ],
+      "startedAt": "2026-09-08T05:49:29.152880+00:00",
+      "elapsedSeconds": 4.335,
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "corepack",
+        "pnpm",
+        "build"
+      ],
+      "startedAt": "2026-09-08T05:49:33.488749+00:00",
+      "elapsedSeconds": 35.08,
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "corepack",
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAt": "2026-09-08T05:50:08.570059+00:00",
+      "elapsedSeconds": 7.205,
+      "exitCode": 0,
+      "log": "typecheck.log"
+    },
+    {
+      "name": "format",
+      "command": [
+        "corepack",
+        "pnpm",
+        "format:check"
+      ],
+      "startedAt": "2026-09-08T05:50:15.775706+00:00",
+      "elapsedSeconds": 1.619,
+      "exitCode": 0,
+      "log": "format.log"
+    },
+    {
+      "name": "checksum",
+      "command": [
+        "corepack",
+        "pnpm",
+        "registry:checksum"
+      ],
+      "startedAt": "2026-09-08T05:50:17.394953+00:00",
+      "elapsedSeconds": 0.335,
+      "exitCode": 0,
+      "log": "checksum.log"
+    },
+    {
+      "name": "exports",
+      "command": [
+        "corepack",
+        "pnpm",
+        "exports:smoke"
+      ],
+      "startedAt": "2026-09-08T05:50:17.730621+00:00",
+      "elapsedSeconds": 1.571,
+      "exitCode": 0,
+      "log": "exports.log"
+    },
+    {
+      "name": "pack-dry",
+      "command": [
+        "corepack",
+        "pnpm",
+        "pack:dry-run"
+      ],
+      "startedAt": "2026-09-08T05:50:19.302397+00:00",
+      "elapsedSeconds": 5.855,
+      "exitCode": 0,
+      "log": "pack-dry.log"
+    },
+    {
+      "name": "contents",
+      "command": [
+        "corepack",
+        "pnpm",
+        "package:contents"
+      ],
+      "startedAt": "2026-09-08T05:50:25.157873+00:00",
+      "elapsedSeconds": 1.472,
+      "exitCode": 0,
+      "log": "contents.log"
+    },
+    {
+      "name": "neutrality",
+      "command": [
+        "corepack",
+        "pnpm",
+        "neutrality:guard"
+      ],
+      "startedAt": "2026-09-08T05:50:26.629742+00:00",
+      "elapsedSeconds": 0.422,
+      "exitCode": 0,
+      "log": "neutrality.log"
+    },
+    {
+      "name": "docs",
+      "command": [
+        "corepack",
+        "pnpm",
+        "docs:engine"
+      ],
+      "startedAt": "2026-09-08T05:50:27.052270+00:00",
+      "elapsedSeconds": 2.14,
+      "exitCode": 0,
+      "log": "docs.log"
+    }
+  ]
+}

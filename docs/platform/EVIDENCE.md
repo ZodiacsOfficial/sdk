@@ -459,3 +459,62 @@ stacked on #9, at acceptance checkpoint
 main PRs; the required local gates above were executed and no passing stacked
 CI is claimed. The central site ledger tracks its separate artifact adoption
 and account compatibility work. This delivery does not lift SDK #5's hold.
+
+## Historical local-time precision candidate
+
+Base is actual SDK #10 head `224863ebea0ab62d0eff721a53f5ab2a1bfc756f`, freshly
+read alongside SDK #5's body/reviews. Root is author/integrator; the real
+`/root/adoption_review/time_context_edges` agent independently copied and tested
+frozen source, without using root's generated build output.
+
+Actual Manaus `1914-01-01 00:00` resolves to `04:00:04Z` with a four-second
+forward shift. The previous minute-only match omitted `dst-gap`, and the next
+minute/noon received false `dst-fold`. Root's first 14 regression tests produce
+10 failures / 4 passes against unchanged source. The corrected comparator
+passes the expanded 17 regressions, including Caracas's fractional final offset,
+Dawson Creek's 56-second gap and Denver's genuine four-second fold.
+
+Decision: keep Gregorian wall formatting and match full seconds/milliseconds
+against the explicit `HH:MM:00.000` input. An integer-offset arithmetic comparator
+was considered and independently checked 834 times, but retaining the formatted
+comparison preserves the existing independent wall/offset agreement with a
+smaller structural change. Round only floating-point offset conversion to integer
+milliseconds; never remove historical seconds or invent flags in an adapter.
+Keep strict guards, requested settings, earlier-fold and shift-forward policies,
+and the existing ±36-hour candidate sampling. A synthetic two-transition model
+shows why precision alone cannot prove that the samples discover every offset.
+
+Root full acceptance: **579 tests / 32 files on Node 22.23.2 and Node 24.19.0**;
+all eleven required sequential workspace gates and generated TypeDoc pass.
+[Raw commands/exits](evidence/time-seconds/implementation/release/gates.json.log),
+[29-record implementation manifest](evidence/time-seconds/implementation/manifest.json).
+The first pack command could not write the preconfigured cache outside the
+sandbox. It was repeated using a dedicated temporary cache; no ownership or
+permissions were changed. Both fresh consumer installs/types/runtime checks
+pass against the same actual archive. Archive version **0.1.1-rc.6**, 23 files,
+36,591 packed bytes / 122,552 unpacked bytes, SHA-256
+`09c3e63432f8ba2e9df05af137c42f65ab039740a207a89418d9e6470ea3db3e`.
+
+Independent Node review: **278** transition/guard cases, **140** expected flag
+corrections and zero changed tested instants/offsets. Independent Chrome 152:
+**37** selected cases, **15** expected flag corrections, zero changed instants.
+Both runtimes pass six settings controls, seventeen invalid settings controls,
+and seven actual receipt serialization/parse/replay comparisons against rc.5
+numerical results. Browser fetch/XHR/beacon/storage/IndexedDB and external request
+observations are zero; local resolution legitimately uses Intl. Browser ICU/tzdb
+versions are not inferred. Actual source and dependency hashes are retained.
+[Independent review](evidence/time-seconds/independent-review/REVIEW.md.log),
+[93-record manifest](evidence/time-seconds/independent-review/manifest.json), SHA-256
+`5f6565e6ca0b04059dff727931abd09438b3b9fd3b095a746a855cda5432d282`.
+Two reviewer-harness mistakes (replay instant type and JSON key-order comparison)
+are retained and distinguished from product failures. All six frozen source
+hashes match after review; generated documentation is separately root-verified.
+
+The exact source is implemented/tested, not yet claimed pushed or available as
+public artifact bytes by this entry. Existing release hold, human/expert/legal
+review and production authority remain. The separate site endpoint defects
+require a first-existing-instant-of-date policy and explicit skipped-date handling;
+neither is silently folded into birth-time gap resolution here. Broader numerical
+range, degenerate angles, historical data authenticity and complete transition
+discovery remain outside this finite acceptance. No old receipt is rewritten,
+no package is published to npm, and no live site or ownership SDK is changed.
