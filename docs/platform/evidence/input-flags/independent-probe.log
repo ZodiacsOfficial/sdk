@@ -1,0 +1,24 @@
+
+ RUN  v2.1.9 /private/tmp/zodiacs-platform-input-flags-review
+
+ ✓ probe.test.ts > independent flags compatibility controls > accepts typed 'unknown 08:30' echo and preserves receipt replay
+ ✓ probe.test.ts > independent flags compatibility controls > accepts typed 'polar requested Placidus' echo and preserves receipt replay
+ ✓ probe.test.ts > independent flags compatibility controls > distinguishes known time without place from unknown time at a known place
+ ✓ probe.test.ts > independent flags compatibility controls > keeps canonical frozen Chart identity and legacy normalization shallow
+ ✓ probe.test.ts > independent flags compatibility controls > normalizes reordered result flags while retaining numerical references and original input
+ ✓ probe.test.ts > independent flags compatibility controls > rejects contradictory precomputed flag metadata across all wrappers without natal recomputation
+ ✓ probe.test.ts > independent flags compatibility controls > does not misrepresent flag consistency as numerical authentication
+ ✓ probe.test.ts > independent flags compatibility controls > ignores flag iterators and coercion hooks while rejecting missing/accessor indices
+ ✓ probe.test.ts > independent flags compatibility controls > does not let a flag Proxy length getter hide an unsupported own slot
+ ✓ probe.test.ts > independent flags compatibility controls > bounds the snapshot before computation while preserving a valid duplicate list
+ ✓ probe.test.ts > independent flags compatibility controls > captures each natal scalar and flags once even if getters subsequently change
+ ✓ probe.test.ts > independent flags compatibility controls > extra Saturn natal computation is exclusive to an explicit raw polar assertion
+ ✓ probe.test.ts > independent flags compatibility controls > rejects invalid civil settings before Intl and preserves explicit unknown-time reference
+ ✓ probe.test.ts > independent flags compatibility controls > captures civil resolver settings and wall fields once before resolution
+
+ Test Files  1 passed (1)
+      Tests  14 passed (14)
+   Start at  06:33:56
+   Duration  468ms (transform 168ms, setup 0ms, collect 198ms, tests 121ms, environment 0ms, prepare 42ms)
+
+JSON report written to /private/tmp/zodiacs-platform-input-flags-review/result.json

@@ -1,5 +1,36 @@
 # SDK platform checkpoint
 
+## Public flags and civil settings candidate
+
+Branch `codex/platform-input-flags` starts from delivered SDK #9 at
+`84897ffb6e044469875d381bdc0acbd39c995ffb`. Engine `0.1.1-rc.5` preserves all
+five typed flag values, checks derived compatibility echoes, produces canonical
+metadata once and captures validated public/civil settings before use. Correct
+unknown-time and polar echoes now round-trip through the existing receipt schema.
+Malformed/private/contradictory flags reject. Supplied Charts receive metadata
+consistency checks, not astronomical authentication.
+
+Implemented and locally tested: **562 tests / 31 files** on Node 20 and 22;
+all required workspace and TypeDoc gates pass. The final build and typecheck ran
+sequentially. The independent reviewer passed 14 additional frozen-source
+controls; original-source regressions were 61 failed / 5 passed. Frozen source
+`97f5e8d01828f4b85ffa845825dee9acff4695e4` and archive carrier
+`333369256af683c560603dd1e6411dd7a07adb1f` are pushed. The 23-file archive
+has SHA-256 `1809c1686843a6be148eb185535e32059a20c35896e29ccfc7583a6b2738da65`;
+its anonymous public bytes match. Two actual fresh consumers pass types/public
+controls; 480 numerical parity and 480 echo controls pass. Actual Chrome passes
+26 aggregate packed-browser acceptance checks, including 14 runtime case groups.
+The isolated consumer audit is zero. Delivered in [draft PR #10](https://github.com/ZodiacsOfficial/sdk/pull/10),
+stacked on #9. Existing CI targets main PRs only; passing stacked CI is not
+claimed. [Exact commands, compatibility and limits](EVIDENCE.md#public-flags-and-civil-settings-candidate).
+
+The site application retains engine rc.1 and standalone starter rc.3 retains
+engine rc.3. Previous artifacts, internal calculation formulas, receipt schema,
+account/storage protocols and the optional read-only ownership SDK are unchanged.
+Fresh remote reads still show SDK #5's explicit hold and no submitted review;
+engine/widgets are not npm-published. Source implementation and internal review
+are not release authorization, production deployment or external adoption.
+
 ## GeoNames schema/cache candidate
 
 Branch `codex/platform-geonames-schema` starts from delivered SDK #8 at

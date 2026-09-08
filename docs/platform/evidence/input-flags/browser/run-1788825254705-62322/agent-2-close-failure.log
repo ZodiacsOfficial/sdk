@@ -1,0 +1,8 @@
+$ agent-browser close
+✗ Session name 'zodiacs-input-flags-62322' is too long. Socket path would be 105 bytes (max 103).
+Use a shorter session name or set AGENT_BROWSER_SOCKET_DIR to a shorter path.
+
+Command failed: /private/tmp/zodiacs-platform-browser/node_modules/.bin/agent-browser --config /private/tmp/zodiacs-platform-input-flags-browser/run-1788825254705-62322/agent-browser-config.json --session zodiacs-input-flags-62322 --namespace zodiacs-input-flags-62322 close
+✗ Session name 'zodiacs-input-flags-62322' is too long. Socket path would be 105 bytes (max 103).
+Use a shorter session name or set AGENT_BROWSER_SOCKET_DIR to a shorter path.
+

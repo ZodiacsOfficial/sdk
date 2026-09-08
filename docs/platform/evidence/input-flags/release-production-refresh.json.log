@@ -1,0 +1,15 @@
+{
+  "observedAt": "2026-09-07T23:43:05.586Z",
+  "id": "dpl_BrntzbFYa2gzetKWgeq91GFeaM6W",
+  "state": "READY",
+  "alias": [
+    "zodiacs.org",
+    "www.zodiacs.org",
+    "zodiacs-org.vercel.app",
+    "zodiacs-org-zodiacsofficial.vercel.app",
+    "zodiacs-org-git-main-zodiacsofficial.vercel.app"
+  ],
+  "target": "production",
+  "sourceCommit": "7f953e3fca0e7d5009e5602a1dad69edff0f54cc",
+  "readyAt": "2026-09-07T15:59:50.000Z"
+}

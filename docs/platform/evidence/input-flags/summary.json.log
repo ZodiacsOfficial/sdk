@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "d190d97c981c7cacc6eb4ab6a49bdb8451ca3459",
+  "checkout": "/private/tmp/zodiacs-platform-input-flags",
+  "runtime": "v22.23.2",
+  "scope": "Uncommitted isolated public-input/civil-resolution flag compatibility patch; /internal computation, receipt schema, package version and active branches unchanged.",
+  "files": {
+    "packages/engine/src/api.ts": "33566edb5a1fd1c6092f769c01e91b67904d3018afccfbe8bdc69857ce19871a",
+    "packages/engine/src/birth-input.ts": "144fd683942ec434088c6a214dbe1f0b87cba13f545c38deaca8e5fcaf12581e",
+    "packages/engine/src/geo/timezone.ts": "5f83d4aebe7a5eb32939a63a249492fe512864fe55209e86f4d129ef535145c9",
+    "packages/engine/src/input-flags.test.ts": "0a1ef19d3fa5cf5d7a2f20aa0a8d65b5c21a67f1612208700e0e2d0905070132",
+    "packages/engine/src/receipt.test.ts": "93675aae9213493c8939089769c502f4b4cf31aece77d82a4c55cd9f91ab24bf",
+    "packages/engine/src/types.ts": "9464ee12edffc3773cd89fa6a2f1117291051ec8796be056cff8a32fca05e044",
+    "packages/engine/README.md": "4128a5028580a7bd1cdf3c172352277edeeba0278899aba0b4aa9c8a4912d1ce"
+  },
+  "patchSha256": "33f03b34d580b042ee35337d44a62c6ce112980c924c1017a9713db6fbc6f12a",
+  "baseline": {
+    "syntheticBirthCases": 18,
+    "syntheticCivilCases": 12,
+    "probe": "baseline.json",
+    "finalRegressionTests": 66,
+    "failed": 61,
+    "passed": 5,
+    "log": "red-final-suite.log",
+    "initialHarnessCaveat": "Initial red.log retained. A naive Intl constructor spy created invalid native-brand cached formatters on baseline execution. Final red suite uses a forwarding constructor spy and original d190 runtime in separate baseline-checkout."
+  },
+  "verification": {
+    "engineTests": 443,
+    "engineTestFiles": 11,
+    "newFlagTests": 66,
+    "engineTestsLog": "engine-tests-final.log",
+    "typecheck": "typecheck-final.log",
+    "build": "build.log",
+    "exports": "exports-smoke.log",
+    "optionalGeoGraph": "geo-build-graph.json",
+    "format": "format-check.log",
+    "afterProbe": "fixed.json",
+    "independentModelReview": "/private/tmp/zodiacs-platform-input-flags-review/result.json",
+    "independentCases": 14
+  },
+  "compatibility": {
+    "publishedChartFlagUnion": "unchanged, all five values",
+    "rawArrayLimit": 64,
+    "duplicates": "known duplicates collapse in first-occurrence order",
+    "canonicalInput": "time-resolution assertions only",
+    "derivedInputValues": "compatibility assertions checked against actual new calculation, or supplied precomputed result consistency",
+    "ordinarySaturnExtraNatalCalls": 0,
+    "rawPolarAssertionSaturnExtraNatalCalls": 1,
+    "precomputedChartExtraNatalCalls": 0,
+    "canonicalChartIdentity": "preserved at call time",
+    "legacyChartNormalization": "shallow metadata copy; numerical arrays and engine version retained"
+  },
+  "limitations": [
+    "Time-resolution flags are claims; UTC alone cannot verify historical civil-time facts",
+    "Supplied Chart bodies/angles/cusps are not recomputed or authenticated; only flag metadata consistency is checked",
+    "Caller-owned Chart objects are not frozen",
+    "Same-realm getters and Proxy code are not sandboxed",
+    "The unsupported internal computeChart entry is unchanged",
+    "Arrays above 64 raw entries now reject; valid duplicates below this limit canonicalize",
+    "Input flags become canonical semantic metadata, not the original submitted array",
+    "Existing dependencies were reused; no fresh install or packed consumer/browser verification in this patch"
+  ],
+  "status": "Implemented and locally tested in an isolated tree, with independent model review passed. Awaiting accountable integrator decision. Not versioned, packaged, committed, pushed, published, deployed, or externally adopted."
+}

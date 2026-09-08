@@ -1,0 +1,15 @@
+# Independent input-flags review preparation
+
+Status: probe design only; no final acceptance claim. Implementation owner is still replacing repeated input reads with shared snapshots. Final execution will use a frozen copied runtime source tree and record all hashes. Shared source is not edited by this reviewer.
+
+The bounded probe will target:
+
+- Compatible typed `no-time` and `polar-fallback` echoes, including duplicate/reordered echoes from existing Chart results. Compare fresh outputs with identical inputs carrying only canonical time flags. Preserve unknown 08:30 and requested Placidus on receipt replay.
+- Contradictions across known/unknown time, complete/missing location, requested Whole Sign/Placidus and supplied actual house-system metadata. Reject private/unknown values, combined gap/fold and malformed arrays before expensive work.
+- Canonical precomputed Chart object identity, frozen Chart compatibility, and unchanged numerical array identity for the shallow normalization of legacy echoes. Deliberately coherent but altered numerical values remain unverified supplied claims; no authenticity assertion or ephemeris recomputation is expected.
+- Metadata that disappears or changes across property reads. Check one-read settings/instant snapshots for fresh natal, civil resolution and Saturn paths; inspect the Chart classifier separately. Missing angles/houses and unknown actual systems must not silently satisfy metadata consistency.
+- Flag arrays with index getters, hostile iterators, scalar coercion hooks, sparse/inherited slots, bounded duplicate lists and Proxy length tricks. Distinguish ordinary hostile data validation from a broader same-realm Proxy sandbox claim.
+- Real computation-call spies: ordinary/raw-date/unknown-time Saturn performs no extra natal computation; explicit valid raw polar assertion performs exactly one; rejected assertion performs no return search. Canonical supplied Charts do not rerun natal computation.
+- Invalid civil scalar settings are rejected before any Intl construction. Preserve explicit unknown-time 08:30, absent-time local noon and accepted historical-year behavior without rerunning the full temporal corpus.
+
+The independent suite will use synthetic fixtures and stub only the expensive Saturn return search for call-count tests. Actual natal chart and receipt operations remain real. It will not repeat the implementation author's full engine suite or claim astronomical authentication.

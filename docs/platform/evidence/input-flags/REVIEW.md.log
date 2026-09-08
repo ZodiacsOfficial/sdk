@@ -1,0 +1,53 @@
+# Public birth flag compatibility and civil settings
+
+The isolated checkout `/private/tmp/zodiacs-platform-input-flags` is based on SDK rc.4 source `d190d97c981c7cacc6eb4ab6a49bdb8451ca3459`. This is an uncommitted source patch. It does not change active SDK/site source, the published five-value `ChartFlag` type, receipt wire schema, internal `computeChart`, package version, dependency manifest, immutable artifacts, remote state, or storage/account protocols.
+
+## Before-change counterexamples
+
+`probe.mjs` produces `baseline.json` and `fixed.json` from synthetic local inputs, with no network or personal data. The original accepts a private marker as both input and output flags; a bare `"lmt"` string becomes three character flags; Set values are accepted despite the array contract; null members flow into results; duplicates and simultaneous gap/fold assertions propagate. A known-time chart can simultaneously carry `no-time`, and a whole-sign or successful low-latitude Placidus calculation can be labeled `polar-fallback`.
+
+The original public type permits correct derived echoes too. `timeKnown:false, flags:["no-time"]` and an actual Placidus fallback with `flags:["polar-fallback"]` both create duplicate result flags, then fail the unchanged receipt creator. A simplistic time-only input allowlist would break those currently typed callers. Civil `resolveBirth` also accepts invalid boolean/house/coordinate values that its claimed `BirthInput` consumer then rejects, or silently defaults null settings.
+
+Current site callers were inspected: live calculation inputs pass `resolveLocalToUtc().flags`, while saved summary result flags remain separate. The site uses the unsupported internal engine adapter and its existing candidate pin; this patch does not migrate it. The standalone example uses public natalChart without supplied flags, and receipt replay supplies time assertions only.
+
+## Chosen bounded semantics
+
+The five input enum values remain accepted. Arrays must have at most **64 raw entries** and known primitive strings in own data slots. This permits reasonable duplicate/derived echoes while bounding duplicate scanning. Known duplicates collapse in first-occurrence order; unknown strings, sparse/accessor slots, non-array iterables and gap-plus-fold contradictions reject with fixed RangeErrors that do not echo flag values. Index slots and a captured own length descriptor are inspected without custom iteration or scalar coercion.
+
+Time-resolution flags (`dst-gap`, `dst-fold`, `lmt`) remain supplied claims. UTC alone cannot verify them. `no-time`/`polar-fallback` are compatibility assertions, not overrides: no-time requires `timeKnown:false`, and polar fallback must agree with the actual calculated result. The public Chart input becomes canonical semantic input containing only distinct time assertions; result flags contain each actual derived fact once. This deliberately does not preserve the raw submitted array or its duplicates.
+
+The shared scalar helper returns validated settings snapshots reused by the core and civil wrappers. Fresh public inputs use captured UTC/flags/settings, so later getter values cannot substitute unchecked values during calculation. Civil time is captured once too; an explicit null time rejects instead of becoming noon. Valid omitted-time local noon and explicit unknown-time reference instants retain their prior meaning. Neither the helper nor the public API sandboxes arbitrary same-realm executable getters or Proxy code.
+
+### Exact call paths and cost
+
+1. `natalChart`: validate/snapshot → canonical ChartInput → existing computeChart **once** → check derived assertions → return canonical Chart. No internal computation or astronomy formula changed.
+2. `transits`/`synastry` with raw BirthInput: use that natal path. With a supplied Chart: validate flag shape/claims against supplied time/settings and house/angle presence/system; require necessary derived result flags; preserve all numerical arrays/results and engine version. Already canonical Charts retain object identity; compatible duplicate/derived flag metadata gets a shallow copy. No natal computation occurs for supplied Charts. This is consistency of supplied claims, not verified computation or general Chart-body validation.
+3. `saturnReturn` with a DateInput or ordinary BirthInput: retains **zero extra natal calculations**. A raw birth that explicitly asserts polar-fallback requires **one intentional natal computation** to verify real fallback before the return scan. A contradictory claim stops before the scan. A supplied Chart gets only the consistency path, with no natal recomputation. The validated UTC snapshot is used directly; no recursion or second raw-input spread/revalidation.
+4. `resolveBirth`: shared settings snapshot/validation before Intl → one captured local time → existing civil resolver → BirthInput using those captured settings. It still generates its own time flags; an unrelated extra flags field is ignored as before.
+
+Precomputed Chart checks happen at call time. The caller owns those objects and can mutate them later; they are not frozen. An independent test deliberately changes a body longitude and confirms that flag consistency is not falsely advertised as astronomical authentication.
+
+## Changed files
+
+- `packages/engine/src/birth-input.ts`: new pure settings/flag helpers, no astronomy or timezone dependency.
+- `packages/engine/src/api.ts`: public snapshots, canonical flags, derived assertion checks and supplied-Chart handling.
+- `packages/engine/src/geo/timezone.ts`: reuse settings snapshot and capture optional time once.
+- `packages/engine/src/input-flags.test.ts`: 66 targeted regressions/controls.
+- `packages/engine/src/receipt.test.ts`: its existing forged-Chart test now mutates a valid Chart after public calculation, preserving the codec's independent hostile-input coverage. Receipt implementation is untouched.
+- `packages/engine/src/types.ts`: documentation only, union/API types unchanged.
+- `packages/engine/README.md`: flag normalization, bounds, compatibility, call costs and limits.
+
+## Evidence
+
+Runtime: Node **v22.23.2**, existing dependency installation reused through scratch symlinks. No fresh install or packed consumer is claimed. Commands use the session's existing Node/pnpm PATH and COREPACK_HOME.
+
+- Final regression tests against original d190 source in `baseline-checkout`: **61 failed / 5 passed**, 66 tests (`red-final-suite.log`). Initial `red.log` is retained but has an Intl spy harness artifact: its naive constructor spy could create invalid-brand cached formatters during baseline execution. The final forwarding spy preserves valid native objects. The unmocked baseline probe separately establishes the product defects.
+- `corepack pnpm exec vitest run packages/engine/src --fileParallelism=false`: **443/443 tests**, 11 files (`engine-tests-final.log`). Includes 66 new flag/civil cases, existing historical gap/fold/LMT tests, numerical regressions and receipt tests.
+- `corepack pnpm --filter @zodiacs/engine typecheck`: passed (`typecheck-final.log`).
+- `corepack pnpm --filter @zodiacs/engine build`: passed, including declaration generation (`build.log`).
+- Existing module-resolution/export smoke: passed (`exports-smoke.log`). Controlled built optional geo import graph remains free of astronomy/Node/external imports (`geo-build-graph.json`).
+- Seven-file Prettier check and `git diff --check`: passed.
+- Before/after observational probe covers **18 birth cases and 12 civil cases**. Correct derived echoes now create/replay unchanged-schema receipts; private/malformed/contradictory cases reject.
+- Independent model review: **14/14 targeted controls passed**, including changing getters, Proxy length trap, missing house/angle metadata, receipt replay, identity/immutability, intentionally unverified body mutation, and Saturn call counts. Exact independent evidence: `/private/tmp/zodiacs-platform-input-flags-review/`. This is not human or external adopter review.
+
+The patch is `input-flags.patch`; source/patch hashes and compact results are in `summary.json`. Root integration remains the next step. No version bump, pack, commit, push, PR, publication, deployment, migration or external adoption occurred in this subtask.

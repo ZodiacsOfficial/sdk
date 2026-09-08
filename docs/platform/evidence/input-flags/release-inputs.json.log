@@ -1,0 +1,77 @@
+[
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/build.log",
+    "stored": "docs/platform/evidence/input-flags/release-build.log",
+    "sha256": "81a618cb84fb4b04e3472da720686df64d6e6b51ba3b7f6a80fba30a41b3fa45"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/docs-engine.log",
+    "stored": "docs/platform/evidence/input-flags/release-docs-engine.log",
+    "sha256": "d7a9991cf57c8e0eb62e4e39fa2b1b36aa77f142e151c09bb624223697fc30b5"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/exports-smoke.log",
+    "stored": "docs/platform/evidence/input-flags/release-exports-smoke.log",
+    "sha256": "83a27fea0014c908bfe53e99910910b8461a20f06088460c72ed5adf3242c335"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/format-check.log",
+    "stored": "docs/platform/evidence/input-flags/release-format-check.log",
+    "sha256": "5b7274a567cba35fe65522e300d64a8e11871ba858252aa63fd371edafb916a2"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/gates.json",
+    "stored": "docs/platform/evidence/input-flags/release-gates.json.log",
+    "sha256": "bdb3f8bbf4df799fe2f6d91e02dd1c59bf9b1bad07ba61ec9b518adf7ece0ae1"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/lint.log",
+    "stored": "docs/platform/evidence/input-flags/release-lint.log",
+    "sha256": "17e363894c98c555ca91f378402accfff9f70f64ab485dff839ee9e6aabc0e77"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/neutrality-guard.log",
+    "stored": "docs/platform/evidence/input-flags/release-neutrality-guard.log",
+    "sha256": "c895534fb0f94b45547a0e8b22b9145ceaf5ace6ae3ff7c87bc67882d2c3fd18"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/pack-dry-run.log",
+    "stored": "docs/platform/evidence/input-flags/release-pack-dry-run.log",
+    "sha256": "ec93245307e322afdee843f9ed42478fadb74e140e2154125e2aef26de8e72f3"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/package-contents.log",
+    "stored": "docs/platform/evidence/input-flags/release-package-contents.log",
+    "sha256": "e89ef18fc4869f405632f36573f708b09073061e7845cece3121456a084b5fdc"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/production-refresh.json",
+    "stored": "docs/platform/evidence/input-flags/release-production-refresh.json.log",
+    "sha256": "c5da1e0b7d40733086e74e93b6631d954893da374558b05312004eae8a425a80"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/registry-checksum.log",
+    "stored": "docs/platform/evidence/input-flags/release-registry-checksum.log",
+    "sha256": "210e30c8e0c21e3a8ea78f4b26306cd41769eb68aabf3a72bcdb065f8b7d6cac"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/release-refresh.json",
+    "stored": "docs/platform/evidence/input-flags/release-release-refresh.json.log",
+    "sha256": "56e5ad8d9474013fa55003c550826e329539f93eb63d3fa9697f0147fe8708d0"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/test.log",
+    "stored": "docs/platform/evidence/input-flags/release-test.log",
+    "sha256": "33ed87972e32be41cf07cbbf8a97c3bb78523285833ddcd9a269c18f571926aa"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/test20.log",
+    "stored": "docs/platform/evidence/input-flags/release-test20.log",
+    "sha256": "9da7d8cccdceb775d84e2bf5f3980102d7578340d2d1e9da5f552cf6a7442fc8"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/typecheck.log",
+    "stored": "docs/platform/evidence/input-flags/release-typecheck.log",
+    "sha256": "75684d338c8f65ea63f18fb422f0a1f0dc710b44065070c6a9418b8050285ab8"
+  }
+]

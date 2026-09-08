@@ -1,0 +1,897 @@
+{
+  "status": "passed",
+  "runtime": {
+    "node": "v22.23.2",
+    "chrome": "152.0.7977.83",
+    "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "esbuild": "0.28.1",
+    "ephemeris": "2.1.19"
+  },
+  "identity": {
+    "consumer": "/var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-jKe2mv",
+    "archive": "/private/tmp/zodiacs-platform-input-flags-package/zodiacs-engine-0.1.1-rc.5.tgz",
+    "archiveSHA256": "1809c1686843a6be148eb185535e32059a20c35896e29ccfc7583a6b2738da65",
+    "archiveBytes": 36065,
+    "version": "0.1.1-rc.5",
+    "sourceCommitClaim": "97f5e8d01828f4b85ffa845825dee9acff4695e4",
+    "memberCount": 23,
+    "unpackedBytes": 121212,
+    "memberHashes": [
+      {
+        "name": "LICENSE",
+        "bytes": 1068,
+        "sha256": "9a8ab25f278db9d59a00ee82d1a82d63ee4891a9c417c53b4e2b9942aaab10df"
+      },
+      {
+        "name": "NOTICE",
+        "bytes": 1378,
+        "sha256": "06a8e2e2bae6d6113e738f8c4ee3869f698fbf39756a26ce842d549dde423450"
+      },
+      {
+        "name": "dist/chunk-4YKOFVM6.js",
+        "bytes": 4644,
+        "sha256": "5d795078c6cfc19404f933c87c3748946706ab30631d6b4b4b695a227dc8b803"
+      },
+      {
+        "name": "dist/chunk-CPALRSPC.js",
+        "bytes": 1459,
+        "sha256": "9db1a3814ec9bd00a40d4bc295e348debd6108f62a322ed91d18610c81b9fb08"
+      },
+      {
+        "name": "dist/chunk-INI453VG.js",
+        "bytes": 4693,
+        "sha256": "e6f7c42bfdaee08361b37975c7a27a7a5400de35e9b44b71325d9f64ff5aa68d"
+      },
+      {
+        "name": "dist/chunk-K5MRTCWE.js",
+        "bytes": 2593,
+        "sha256": "2048e88750394d48837acb55735f872be9128b2f2d3d37af7134026a9f0e976d"
+      },
+      {
+        "name": "dist/chunk-PD4H342X.js",
+        "bytes": 4213,
+        "sha256": "5852fc08c1f56052de23dc2f018b3bcd6e75b080c18c9d9b5a793a2be49bf4c0"
+      },
+      {
+        "name": "dist/geo.js",
+        "bytes": 11616,
+        "sha256": "9d45088e73e9dadf8083c3673d12e5e8affedd17d1796a6fb0f3b0ec6ae679f5"
+      },
+      {
+        "name": "dist/index.js",
+        "bytes": 13163,
+        "sha256": "46306e0005fc4dd86eaa62a062f8e54957bceb0e672a6f073f920434d2b2ef3b"
+      },
+      {
+        "name": "dist/internal-math.js",
+        "bytes": 591,
+        "sha256": "8c058be3014be9d5443a87cd09413ecec21af89fe599ebe9ed4e58a8cda9870a"
+      },
+      {
+        "name": "dist/internal.js",
+        "bytes": 245,
+        "sha256": "5a913b0ebbe34440e13f65d5ecddd7c2f5454746eb8d1861ff5bc1ec8ae88c52"
+      },
+      {
+        "name": "dist/receipt.js",
+        "bytes": 24948,
+        "sha256": "b42ea8dbedea62a02c3793acd7d22024b302681fea203657b02437cd25a17fea"
+      },
+      {
+        "name": "package.json",
+        "bytes": 2154,
+        "sha256": "84206969fb8c9c78c1abee1cfb4ebeda6b862c77bff0e5f7effc2ebc47826387"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "bytes": 5628,
+        "sha256": "8dded1aea3cc4318a0a07f2777892584709a7543a3d33f2b773fb92d132c93fe"
+      },
+      {
+        "name": "LICENSING.md",
+        "bytes": 2591,
+        "sha256": "8a2010524ad7ebf388dabe0bda5ed2ed8753b8bb112f284f0c23826546410096"
+      },
+      {
+        "name": "README.md",
+        "bytes": 15784,
+        "sha256": "4bb5149b88c323e4730687e92c17ab55c2742f8fe2ac2bc218408cffdb559e1c"
+      },
+      {
+        "name": "dist/geo.d.ts",
+        "bytes": 2172,
+        "sha256": "0454dda71c0559da5a0f792ed592d07f610132a601e67c8ed37eddf2d22b774d"
+      },
+      {
+        "name": "dist/index.d.ts",
+        "bytes": 4010,
+        "sha256": "3c4063793f944f3cb0b1e07338c4c24becb6480aacede5cf3199bd18186403fa"
+      },
+      {
+        "name": "dist/internal-math-2qAGGDMX.d.ts",
+        "bytes": 5630,
+        "sha256": "2eb16b632345cade067e9a415b4d5d96252af3dbb247b8c24fecfe2840dc64a0"
+      },
+      {
+        "name": "dist/internal-math.d.ts",
+        "bytes": 595,
+        "sha256": "0a648b1bba45a089192ef6804dfb640ba45e07f307807a64f48e3b3c99c0248c"
+      },
+      {
+        "name": "dist/internal.d.ts",
+        "bytes": 502,
+        "sha256": "68eacb2ef7bc5be384d027cba266256baa440460c94539f36edbde95f9b1649e"
+      },
+      {
+        "name": "dist/receipt.d.ts",
+        "bytes": 6522,
+        "sha256": "7ca8a71659c70c1fb15a98506bd63d0e77f32f7018c914d4ba0ace1ec7ad7d54"
+      },
+      {
+        "name": "dist/types-CHoIZzek.d.ts",
+        "bytes": 5013,
+        "sha256": "08b23ad16ae93803ed08f9b9dda797e8c46fa3d14dac3bae5debd3f984288a85"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "name": "Exact immutable archive SHA256 matches supplied identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh installed package is inside consumer, not a workspace symlink",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Every installed archive member matches exact packed bytes",
+      "pass": true,
+      "detail": {
+        "members": 23
+      }
+    },
+    {
+      "name": "Executed package metadata identifies the ESM engine candidate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Optional geo and receipt graphs omit root ephemeris and ownership modules",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Core graph omits optional geo and receipt implementation",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Actual agent-browser server preflight loads meaningful content without overlays or errors",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Armed privacy and Intl observers detect negative controls without transmitting",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Candidate module import attempts no storage, fetch or Intl access",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Real packed root/geo/receipt public exports and version",
+      "pass": true,
+      "detail": {
+        "version": "0.1.1-rc.5",
+        "rootExports": 35,
+        "geoExports": [
+          "createGeoNamesClient",
+          "offsetAt",
+          "resolveBirth",
+          "resolveLocalToUtc"
+        ],
+        "receiptExports": [
+          "NATAL_DIAGNOSTIC_SCHEMA",
+          "NATAL_ENVELOPE_LIMITS",
+          "NATAL_ENVELOPE_SCHEMA",
+          "NATAL_RECEIPT_SCHEMA",
+          "NatalEnvelopeError",
+          "createNatalEnvelope",
+          "natalReplayInput",
+          "parseNatalEnvelope",
+          "redactNatalEnvelope",
+          "serializeNatalEnvelope"
+        ]
+      }
+    },
+    {
+      "name": "Invalid civil settings reject before Intl with fixed diagnostics",
+      "pass": true,
+      "detail": {
+        "cases": 13,
+        "intlCalls": 0,
+        "errors": [
+          {
+            "name": "RangeError",
+            "message": "timeKnown must be a boolean."
+          },
+          {
+            "name": "RangeError",
+            "message": "timeKnown must be a boolean."
+          },
+          {
+            "name": "RangeError",
+            "message": "timeKnown must be a boolean."
+          },
+          {
+            "name": "RangeError",
+            "message": "houseSystem must be \"whole\" or \"placidus\"."
+          },
+          {
+            "name": "RangeError",
+            "message": "houseSystem must be \"whole\" or \"placidus\"."
+          },
+          {
+            "name": "RangeError",
+            "message": "latitude must be between -90 and 90 degrees."
+          },
+          {
+            "name": "RangeError",
+            "message": "latitude must be between -90 and 90 degrees."
+          },
+          {
+            "name": "RangeError",
+            "message": "latitude must be between -90 and 90 degrees."
+          },
+          {
+            "name": "RangeError",
+            "message": "latitude must be between -90 and 90 degrees."
+          },
+          {
+            "name": "RangeError",
+            "message": "longitude must be between -180 and 180 degrees."
+          },
+          {
+            "name": "RangeError",
+            "message": "latitude and longitude must be supplied together."
+          },
+          {
+            "name": "RangeError",
+            "message": "Local date/time must use YYYY-MM-DD and HH:MM strings."
+          },
+          {
+            "name": "RangeError",
+            "message": "Local date/time must use YYYY-MM-DD and HH:MM strings."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Malformed/private flag values reject without coercion or slot getters",
+      "pass": true,
+      "detail": {
+        "cases": 14,
+        "hooks": 0,
+        "errorNames": [
+          "RangeError"
+        ]
+      }
+    },
+    {
+      "name": "Known duplicate limit and overridden iterator use canonical data slots",
+      "pass": true,
+      "detail": {
+        "maximumAccepted": 64,
+        "rejectedLength": 65,
+        "iteratorCalls": 0
+      }
+    },
+    {
+      "name": "Correct polar echo normalizes and replays an actual packed receipt",
+      "pass": true,
+      "detail": {
+        "requested": "placidus",
+        "actual": "whole",
+        "inputFlags": [
+          "lmt"
+        ],
+        "resultFlags": [
+          "lmt",
+          "polar-fallback"
+        ],
+        "receiptBytes": 4553
+      }
+    },
+    {
+      "name": "Unknown-time 08:30 stays a supplied reference, with one no-time flag",
+      "pass": true,
+      "detail": {
+        "instant": "2001-12-21T08:30:00.000Z",
+        "reference": "supplied-instant",
+        "flags": [
+          "lmt",
+          "no-time"
+        ],
+        "absence": "unknown-time"
+      }
+    },
+    {
+      "name": "Contradictory derived assertions reject in real public wrappers",
+      "pass": true,
+      "detail": {
+        "rejections": 20,
+        "internalCalculationCounts": "Not instrumented in browser"
+      }
+    },
+    {
+      "name": "Canonical Chart identity and frozen caller data are preserved",
+      "pass": true,
+      "detail": {
+        "transitIdentity": true,
+        "synastryIdentity": true,
+        "callerFrozen": true
+      }
+    },
+    {
+      "name": "Supplied legacy Chart flag normalization keeps exact numerical references",
+      "pass": true,
+      "detail": {
+        "originalUnchanged": true,
+        "numericalReferencesRetained": true,
+        "inputFlags": [
+          "lmt"
+        ],
+        "resultFlags": [
+          "lmt",
+          "no-time"
+        ]
+      }
+    },
+    {
+      "name": "Supplied Chart missing/contradictory flag metadata rejects",
+      "pass": true,
+      "detail": {
+        "rejected": 20
+      }
+    },
+    {
+      "name": "Fresh birth and civil settings use captured getter values once",
+      "pass": true,
+      "detail": {
+        "counts": {
+          "houseSystem": 1,
+          "timeKnown": 1,
+          "latitude": 1,
+          "longitude": 1,
+          "flags": 1,
+          "utc": 1
+        },
+        "civilCounts": {
+          "houseSystem": 1,
+          "timeKnown": 1,
+          "latitude": 1,
+          "longitude": 1,
+          "time": 1,
+          "date": 1,
+          "timeZone": 1
+        },
+        "caveat": "Caller code can execute; this is not a same-realm sandbox"
+      }
+    },
+    {
+      "name": "Actual Chrome civil resolution retains Gregorian early years, gaps, folds and LMT",
+      "pass": true,
+      "detail": {
+        "results": [
+          {
+            "date": "0000-02-29",
+            "time": "00:00",
+            "timeZone": "UTC",
+            "instant": "0000-02-29T00:00:00.000Z",
+            "flags": [],
+            "offsetMinutes": 0
+          },
+          {
+            "date": "0099-12-31",
+            "time": "00:00",
+            "timeZone": "UTC",
+            "instant": "0099-12-31T00:00:00.000Z",
+            "flags": [],
+            "offsetMinutes": 0
+          },
+          {
+            "date": "2024-03-10",
+            "time": "02:30",
+            "timeZone": "America/New_York",
+            "instant": "2024-03-10T07:30:00.000Z",
+            "flags": [
+              "dst-gap"
+            ],
+            "offsetMinutes": -240
+          },
+          {
+            "date": "2024-11-03",
+            "time": "01:30",
+            "timeZone": "America/New_York",
+            "instant": "2024-11-03T05:30:00.000Z",
+            "flags": [
+              "dst-fold"
+            ],
+            "offsetMinutes": -240
+          },
+          {
+            "date": "1907-07-06",
+            "time": "08:30",
+            "timeZone": "America/Mexico_City",
+            "instant": "1907-07-06T15:06:36.000Z",
+            "flags": [
+              "lmt"
+            ],
+            "offsetMinutes": -396.6
+          }
+        ],
+        "noon": "0000-02-29T12:00:00.000Z",
+        "caveat": "Finite cases in the observed Chrome timezone database only"
+      }
+    },
+    {
+      "name": "Actual civil flags pass into an unchanged-schema local-resolution receipt",
+      "pass": true,
+      "detail": {
+        "flags": [
+          "dst-gap"
+        ],
+        "receiptInputFlags": [
+          "dst-gap"
+        ],
+        "localResolution": {
+          "date": "2024-03-10",
+          "gapShiftMinutes": 60,
+          "offsetMinutes": -240,
+          "policy": {
+            "fold": "earlier",
+            "gap": "shift-forward"
+          },
+          "time": "02:30",
+          "timeZone": "America/New_York"
+        }
+      }
+    },
+    {
+      "name": "Actual Saturn results agree across compatible inputs without browser call-count claims",
+      "pass": true,
+      "detail": {
+        "seasons": 3,
+        "crossings": 5,
+        "counts": "Internal invocation counts are covered by source tests, not instrumented here"
+      }
+    },
+    {
+      "name": "Packed computation and receipt replay execute offline with zero fetch/storage attempts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Only the exact four local static resources were requested, with no input values or bodies",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh context remains cookie-free without CSP or browser errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "consoleErrors": [],
+        "violations": []
+      }
+    }
+  ],
+  "browserResult": {
+    "checks": [
+      {
+        "name": "Real packed root/geo/receipt public exports and version",
+        "pass": true,
+        "detail": {
+          "version": "0.1.1-rc.5",
+          "rootExports": 35,
+          "geoExports": [
+            "createGeoNamesClient",
+            "offsetAt",
+            "resolveBirth",
+            "resolveLocalToUtc"
+          ],
+          "receiptExports": [
+            "NATAL_DIAGNOSTIC_SCHEMA",
+            "NATAL_ENVELOPE_LIMITS",
+            "NATAL_ENVELOPE_SCHEMA",
+            "NATAL_RECEIPT_SCHEMA",
+            "NatalEnvelopeError",
+            "createNatalEnvelope",
+            "natalReplayInput",
+            "parseNatalEnvelope",
+            "redactNatalEnvelope",
+            "serializeNatalEnvelope"
+          ]
+        }
+      },
+      {
+        "name": "Invalid civil settings reject before Intl with fixed diagnostics",
+        "pass": true,
+        "detail": {
+          "cases": 13,
+          "intlCalls": 0,
+          "errors": [
+            {
+              "name": "RangeError",
+              "message": "timeKnown must be a boolean."
+            },
+            {
+              "name": "RangeError",
+              "message": "timeKnown must be a boolean."
+            },
+            {
+              "name": "RangeError",
+              "message": "timeKnown must be a boolean."
+            },
+            {
+              "name": "RangeError",
+              "message": "houseSystem must be \"whole\" or \"placidus\"."
+            },
+            {
+              "name": "RangeError",
+              "message": "houseSystem must be \"whole\" or \"placidus\"."
+            },
+            {
+              "name": "RangeError",
+              "message": "latitude must be between -90 and 90 degrees."
+            },
+            {
+              "name": "RangeError",
+              "message": "latitude must be between -90 and 90 degrees."
+            },
+            {
+              "name": "RangeError",
+              "message": "latitude must be between -90 and 90 degrees."
+            },
+            {
+              "name": "RangeError",
+              "message": "latitude must be between -90 and 90 degrees."
+            },
+            {
+              "name": "RangeError",
+              "message": "longitude must be between -180 and 180 degrees."
+            },
+            {
+              "name": "RangeError",
+              "message": "latitude and longitude must be supplied together."
+            },
+            {
+              "name": "RangeError",
+              "message": "Local date/time must use YYYY-MM-DD and HH:MM strings."
+            },
+            {
+              "name": "RangeError",
+              "message": "Local date/time must use YYYY-MM-DD and HH:MM strings."
+            }
+          ]
+        }
+      },
+      {
+        "name": "Malformed/private flag values reject without coercion or slot getters",
+        "pass": true,
+        "detail": {
+          "cases": 14,
+          "hooks": 0,
+          "errorNames": [
+            "RangeError"
+          ]
+        }
+      },
+      {
+        "name": "Known duplicate limit and overridden iterator use canonical data slots",
+        "pass": true,
+        "detail": {
+          "maximumAccepted": 64,
+          "rejectedLength": 65,
+          "iteratorCalls": 0
+        }
+      },
+      {
+        "name": "Correct polar echo normalizes and replays an actual packed receipt",
+        "pass": true,
+        "detail": {
+          "requested": "placidus",
+          "actual": "whole",
+          "inputFlags": [
+            "lmt"
+          ],
+          "resultFlags": [
+            "lmt",
+            "polar-fallback"
+          ],
+          "receiptBytes": 4553
+        }
+      },
+      {
+        "name": "Unknown-time 08:30 stays a supplied reference, with one no-time flag",
+        "pass": true,
+        "detail": {
+          "instant": "2001-12-21T08:30:00.000Z",
+          "reference": "supplied-instant",
+          "flags": [
+            "lmt",
+            "no-time"
+          ],
+          "absence": "unknown-time"
+        }
+      },
+      {
+        "name": "Contradictory derived assertions reject in real public wrappers",
+        "pass": true,
+        "detail": {
+          "rejections": 20,
+          "internalCalculationCounts": "Not instrumented in browser"
+        }
+      },
+      {
+        "name": "Canonical Chart identity and frozen caller data are preserved",
+        "pass": true,
+        "detail": {
+          "transitIdentity": true,
+          "synastryIdentity": true,
+          "callerFrozen": true
+        }
+      },
+      {
+        "name": "Supplied legacy Chart flag normalization keeps exact numerical references",
+        "pass": true,
+        "detail": {
+          "originalUnchanged": true,
+          "numericalReferencesRetained": true,
+          "inputFlags": [
+            "lmt"
+          ],
+          "resultFlags": [
+            "lmt",
+            "no-time"
+          ]
+        }
+      },
+      {
+        "name": "Supplied Chart missing/contradictory flag metadata rejects",
+        "pass": true,
+        "detail": {
+          "rejected": 20
+        }
+      },
+      {
+        "name": "Fresh birth and civil settings use captured getter values once",
+        "pass": true,
+        "detail": {
+          "counts": {
+            "houseSystem": 1,
+            "timeKnown": 1,
+            "latitude": 1,
+            "longitude": 1,
+            "flags": 1,
+            "utc": 1
+          },
+          "civilCounts": {
+            "houseSystem": 1,
+            "timeKnown": 1,
+            "latitude": 1,
+            "longitude": 1,
+            "time": 1,
+            "date": 1,
+            "timeZone": 1
+          },
+          "caveat": "Caller code can execute; this is not a same-realm sandbox"
+        }
+      },
+      {
+        "name": "Actual Chrome civil resolution retains Gregorian early years, gaps, folds and LMT",
+        "pass": true,
+        "detail": {
+          "results": [
+            {
+              "date": "0000-02-29",
+              "time": "00:00",
+              "timeZone": "UTC",
+              "instant": "0000-02-29T00:00:00.000Z",
+              "flags": [],
+              "offsetMinutes": 0
+            },
+            {
+              "date": "0099-12-31",
+              "time": "00:00",
+              "timeZone": "UTC",
+              "instant": "0099-12-31T00:00:00.000Z",
+              "flags": [],
+              "offsetMinutes": 0
+            },
+            {
+              "date": "2024-03-10",
+              "time": "02:30",
+              "timeZone": "America/New_York",
+              "instant": "2024-03-10T07:30:00.000Z",
+              "flags": [
+                "dst-gap"
+              ],
+              "offsetMinutes": -240
+            },
+            {
+              "date": "2024-11-03",
+              "time": "01:30",
+              "timeZone": "America/New_York",
+              "instant": "2024-11-03T05:30:00.000Z",
+              "flags": [
+                "dst-fold"
+              ],
+              "offsetMinutes": -240
+            },
+            {
+              "date": "1907-07-06",
+              "time": "08:30",
+              "timeZone": "America/Mexico_City",
+              "instant": "1907-07-06T15:06:36.000Z",
+              "flags": [
+                "lmt"
+              ],
+              "offsetMinutes": -396.6
+            }
+          ],
+          "noon": "0000-02-29T12:00:00.000Z",
+          "caveat": "Finite cases in the observed Chrome timezone database only"
+        }
+      },
+      {
+        "name": "Actual civil flags pass into an unchanged-schema local-resolution receipt",
+        "pass": true,
+        "detail": {
+          "flags": [
+            "dst-gap"
+          ],
+          "receiptInputFlags": [
+            "dst-gap"
+          ],
+          "localResolution": {
+            "date": "2024-03-10",
+            "gapShiftMinutes": 60,
+            "offsetMinutes": -240,
+            "policy": {
+              "fold": "earlier",
+              "gap": "shift-forward"
+            },
+            "time": "02:30",
+            "timeZone": "America/New_York"
+          }
+        }
+      },
+      {
+        "name": "Actual Saturn results agree across compatible inputs without browser call-count claims",
+        "pass": true,
+        "detail": {
+          "seasons": 3,
+          "crossings": 5,
+          "counts": "Internal invocation counts are covered by source tests, not instrumented here"
+        }
+      }
+    ],
+    "details": {
+      "polar": {
+        "requested": "placidus",
+        "actual": "whole",
+        "inputFlags": [
+          "lmt"
+        ],
+        "resultFlags": [
+          "lmt",
+          "polar-fallback"
+        ],
+        "receiptBytes": 4553
+      }
+    }
+  },
+  "observations": {
+    "blocked": [],
+    "fetch": [],
+    "intl": [
+      "construct",
+      "construct",
+      "construct",
+      "construct",
+      "construct",
+      "construct"
+    ],
+    "violations": [],
+    "blockIntl": false
+  },
+  "observerControls": {
+    "blocked": [
+      "localStorage",
+      "cookie-write",
+      "sendBeacon"
+    ],
+    "fetch": [
+      {
+        "attempted": true
+      }
+    ],
+    "intl": [
+      "construct"
+    ],
+    "violations": [],
+    "blockIntl": false
+  },
+  "requests": [
+    {
+      "url": "/",
+      "method": "GET",
+      "postData": null,
+      "type": "document"
+    },
+    {
+      "url": "/root.js",
+      "method": "GET",
+      "postData": null,
+      "type": "script"
+    },
+    {
+      "url": "/geo.js",
+      "method": "GET",
+      "postData": null,
+      "type": "script"
+    },
+    {
+      "url": "/receipt.js",
+      "method": "GET",
+      "postData": null,
+      "type": "script"
+    }
+  ],
+  "serverRequests": [
+    {
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "method": "GET",
+      "path": "/root.js"
+    },
+    {
+      "method": "GET",
+      "path": "/geo.js"
+    },
+    {
+      "method": "GET",
+      "path": "/receipt.js"
+    }
+  ],
+  "blockedRoutes": [],
+  "errors": [],
+  "consoleErrors": [],
+  "cleanup": {
+    "browserClosed": true,
+    "contextClosed": true,
+    "agentBrowserClosed": true,
+    "serverClosed": true,
+    "authenticationCopied": false,
+    "serverListening": false
+  },
+  "limitations": [
+    "Finite synthetic cases in the observed Chrome runtime; no universal timezone or numerical-accuracy claim.",
+    "Source commit is an integrator-supplied provenance claim; exact archive hash and all installed member bytes are independently verified.",
+    "Supplied Chart checks establish flag-metadata consistency at call time, not verified numerical computation or authenticated provenance.",
+    "Local capability observers and an offline browser context do not sandbox hostile same-realm JavaScript.",
+    "Saturn calculation call counts are covered by source tests and independent source review; production bundles are not instrumented here.",
+    "No site migration, release publication, deployment, external network service or external adoption is exercised."
+  ]
+}

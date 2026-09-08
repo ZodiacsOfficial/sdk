@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+const previousDir='/var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-vE97u9';
+const currentDir=process.argv[2];assert(currentDir);
+const imported=(dir,name)=>import(pathToFileURL(`${dir}/node_modules/@zodiacs/engine/dist/${name}.js`));
+const previous=await imported(previousDir,'index'),current=await imported(currentDir,'index'),receipt=await imported(currentDir,'receipt');
+const ephemeris=dir=>JSON.parse(readFileSync(`${dir}/node_modules/astronomy-engine/package.json`)).version;
+assert.equal(previous.ENGINE_VERSION,'0.1.1-rc.4');assert.equal(current.ENGINE_VERSION,'0.1.1-rc.5');assert.equal(ephemeris(previousDir),ephemeris(currentDir));
+let cases=0,echoCases=0;
+for(const utc of ['1907-07-06T15:06:36Z','2001-12-21T09:00:00Z','2024-11-03T05:30:00Z'])
+for(const latitude of [-78.2232,-40,0,78.2232])
+for(const longitude of [-74,15.6267])
+for(const houseSystem of ['whole','placidus'])
+for(const timeKnown of [false,true])
+for(const flags of [[],['lmt'],['dst-fold'],['dst-gap'],['lmt','dst-fold']]){
+ const input={utc,latitude,longitude,houseSystem,timeKnown,flags};
+ const a=previous.natalChart(input),b=current.natalChart(input);
+ const {engineVersion:av,...ar}=a,{engineVersion:bv,...br}=b;assert.deepEqual(ar,br);
+ const echoed=current.natalChart({...input,flags:[...b.flags,...b.flags]});assert.deepEqual(echoed,b);echoCases++;
+ const envelope=receipt.createNatalEnvelope(b,{sourceInstant:utc});
+ const parsed=receipt.parseNatalEnvelope(receipt.serializeNatalEnvelope(envelope));assert(parsed.ok);
+ assert.deepEqual(current.natalChart(receipt.natalReplayInput(parsed.envelope)),b);
+ assert.equal(current.synastry(b,b).a,b);
+ cases++;
+}
+const result={observedAt:new Date().toISOString(),result:'passed',cases,echoCases,previous:previous.ENGINE_VERSION,current:current.ENGINE_VERSION,ephemeris:ephemeris(currentDir),node:process.version,previousDir,currentDir,scope:'Exact public natal-chart equality for 480 finite synthetic cases after excluding only engineVersion, with 480 duplicate result-flag echo controls and unchanged-schema receipt replay. Supplied Chart identity preserved. Actual installed packages; no rounding or independent astronomical accuracy claim.'};
+writeFileSync('/private/tmp/zodiacs-platform-input-flags-release/packed-parity.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
