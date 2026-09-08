@@ -452,3 +452,10 @@ results/captures/trace are retained without source changes.
 All authorized local package acceptance is complete for this bounded candidate.
 Required external/human review and SDK #5's explicit release hold are unchanged.
 No npm publication, merge, production deployment or external adoption occurred.
+
+Delivered as [draft PR #10](https://github.com/ZodiacsOfficial/sdk/pull/10),
+stacked on #9, at acceptance checkpoint
+`785e3ea154c28e890ecc97ce2284ee3e9f48a4a7`. The existing CI workflow only targets
+main PRs; the required local gates above were executed and no passing stacked
+CI is claimed. The central site ledger tracks its separate artifact adoption
+and account compatibility work. This delivery does not lift SDK #5's hold.
