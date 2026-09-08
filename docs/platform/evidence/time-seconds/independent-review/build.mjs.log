@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { createRequire } from 'node:module';
+const work=path.dirname(new URL(import.meta.url).pathname),{build}=createRequire(path.join(work,'node_modules/esbuild/package.json'))('./lib/main.js');
+const records=[];
+for(const kind of ['baseline','candidate']){
+ const entry=path.join(work,`${kind}-entry.ts`);
+ fs.writeFileSync(entry,`export { offsetAt, resolveBirth, resolveLocalToUtc } from './${kind}/packages/engine/src/geo/timezone';\nexport { natalChart, ENGINE_VERSION } from './${kind}/packages/engine/src/index';\nexport { createNatalEnvelope, serializeNatalEnvelope, parseNatalEnvelope, natalReplayInput } from './${kind}/packages/engine/src/receipt';\n`);
+ const result=await build({entryPoints:[entry],outfile:path.join(work,`${kind}-subject.mjs`),platform:'browser',format:'esm',target:'es2022',bundle:true,metafile:true,nodePaths:[path.join(work,'node_modules')]});
+ const inputs=Object.keys(result.metafile.inputs).map(file=>{const full=path.resolve(work,file);if(!full.startsWith(work+'/'))throw new Error('Build escaped physical scratch source/dependencies');return{path:path.relative(work,full),sha256:createHash('sha256').update(fs.readFileSync(full)).digest('hex')};});
+ records.push({kind,inputs,bundleSha256:createHash('sha256').update(fs.readFileSync(path.join(work,`${kind}-subject.mjs`))).digest('hex')});
+}
+fs.writeFileSync(path.join(work,'bundle-inputs.json'),JSON.stringify(records,null,2)+'\n');console.log(JSON.stringify(records.map(({kind,inputs,bundleSha256})=>({kind,inputCount:inputs.length,bundleSha256}))));

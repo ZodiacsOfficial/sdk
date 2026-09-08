@@ -1,0 +1,11 @@
+file:///private/tmp/zodiacs-platform-sdk-seconds-independent-review/checks.mjs:78
+  invariant(replay.utc.getTime()===fresh.utc.getTime(),'Replay instant changed');invariant(envelope.receipt.sourceInstant===null,'Invented source instant');
+                       ^
+
+TypeError: replay.utc.getTime is not a function
+    at file:///private/tmp/zodiacs-platform-sdk-seconds-independent-review/checks.mjs:78:24
+    at Array.map (<anonymous>)
+    at receiptChecks (file:///private/tmp/zodiacs-platform-sdk-seconds-independent-review/checks.mjs:68:18)
+    at file:///private/tmp/zodiacs-platform-sdk-seconds-independent-review/node-run.mjs:6:126
+
+Node.js v22.23.2

@@ -14,19 +14,18 @@ computes tropical planetary positions, natal charts, transit snapshots,
 synastry, Moon phase, and Saturn-return seasons. It is synchronous,
 side-effect-free, ESM-only, and performs no network request from its core entry
 point.</p>
-<p><strong>Release candidate: 0.1.1-rc.5.</strong> Public npm lookups for this package returned
+<p><strong>Release candidate: 0.1.1-rc.6.</strong> Public npm lookups for this package returned
 404 on 2026-09-07. The expansion release remains held for review and operator
 publication authority. Install the exact candidate tarball supplied with the
 review, retaining its SHA-256 receipt:</p>
-<pre><code class="sh"><span class="hl-0">pnpm</span><span class="hl-1"> </span><span class="hl-2">add</span><span class="hl-1"> </span><span class="hl-2">./zodiacs-engine-0.1.1-rc.5.tgz</span>
+<pre><code class="sh"><span class="hl-0">pnpm</span><span class="hl-1"> </span><span class="hl-2">add</span><span class="hl-1"> </span><span class="hl-2">./zodiacs-engine-0.1.1-rc.6.tgz</span>
 </code><button type="button">Copy</button></pre>
 
 <p>From the candidate source checkout, run <code>corepack pnpm --filter @zodiacs/engine build</code>, then <code>npm pack --ignore-scripts</code> in <code>packages/engine</code>. Test the packed
-file in a clean consumer using <code>corepack pnpm --filter @zodiacs/engine consumer:smoke /absolute/path/to/zodiacs-engine-0.1.1-rc.5.tgz</code>. The smoke check
+file in a clean consumer using <code>corepack pnpm --filter @zodiacs/engine consumer:smoke /absolute/path/to/zodiacs-engine-0.1.1-rc.6.tgz</code>. The smoke check
 downloads the artifact's public dependencies and TypeScript 5.9.3; its output
 records the artifact hash, runtime and isolated consumer directory. A packed
-candidate is not a published release. This rc.3 follow-up adds an optional draft natal receipt codec; the site and public starter continue to use their
-immutable rc.1 artifact until a separate integration is reviewed.</p>
+candidate is not a published release. This candidate corrects historical seconds-sized gap and fold classification in local time resolution. The site platform draft retains its immutable rc.5 archive, and the standalone starter retains rc.3, until their separate integrations are reviewed.</p>
 <h2 id="natal-chart-in-10-lines" class="tsd-anchor-link">Natal chart in 10 lines<a href="#natal-chart-in-10-lines" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <pre><code class="ts"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">natalChart</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;@zodiacs/engine&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">chart</span><span class="hl-1"> = </span><span class="hl-0">natalChart</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-4">utc:</span><span class="hl-1"> </span><span class="hl-2">&quot;1990-06-15T12:30:00Z&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">latitude:</span><span class="hl-1"> </span><span class="hl-7">40.7128</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">longitude:</span><span class="hl-1"> -</span><span class="hl-7">74.006</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">houseSystem:</span><span class="hl-1"> </span><span class="hl-2">&quot;whole&quot;</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-4">chart</span><span class="hl-1">.</span><span class="hl-4">bodies</span><span class="hl-1">, </span><span class="hl-4">chart</span><span class="hl-1">.</span><span class="hl-4">houses</span><span class="hl-1">);</span>
 </code><button type="button">Copy</button></pre>

@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+const start=new Date().toISOString();let networkCalls=0;
+globalThis.fetch=()=>{networkCalls++;throw new Error('Unexpected network call from resolver/core/receipt');};
+const [baseline,candidate,{transitionChecks,settingsChecks,receiptChecks}]=await Promise.all([import('./baseline-subject.mjs'),import('./candidate-subject.mjs'),import('./checks.mjs')]);
+const retained=JSON.parse(fs.readFileSync(new URL('./retained-controls-and-model.json',import.meta.url)));
+const transitions=transitionChecks(baseline,candidate,retained.results),settings=settingsChecks(baseline,candidate),receipts=receiptChecks(baseline,candidate);
+if(networkCalls!==0)throw new Error('Network calls observed');
+const output={startedAt:start,endedAt:new Date().toISOString(),node:process.version,icu:process.versions.icu,tzdb:process.versions.tz,purpose:'Independent execution of physically copied actual frozen rc.6 and baseline rc.5 source; no product edits.',networkCalls,transitions,settings,receipts};
+fs.writeFileSync(new URL('./node-result.json',import.meta.url),JSON.stringify(output,null,2)+'\n');
+console.log(JSON.stringify({node:process.version,icu:process.versions.icu,tzdb:process.versions.tz,transitionCases:transitions.count,corrected:transitions.corrected,instantsChanged:transitions.instantsChanged,trueDenverFold:transitions.trueDenverFold,validSettings:settings.validCount,rejectedSettings:settings.rejectedCount,receipts:receipts.length,networkCalls},null,2));

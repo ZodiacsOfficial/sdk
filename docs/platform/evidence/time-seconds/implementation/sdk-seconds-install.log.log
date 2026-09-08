@@ -1,0 +1,91 @@
+Scope: all 8 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +731
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 731, reused 0, downloaded 70, added 70
+Progress: resolved 731, reused 0, downloaded 147, added 146
+Progress: resolved 731, reused 0, downloaded 208, added 215
+Progress: resolved 731, reused 0, downloaded 233, added 245
+Progress: resolved 731, reused 0, downloaded 289, added 303
+Progress: resolved 731, reused 0, downloaded 310, added 328
+Progress: resolved 731, reused 0, downloaded 365, added 386
+Progress: resolved 731, reused 0, downloaded 387, added 410
+Progress: resolved 731, reused 0, downloaded 453, added 479
+Progress: resolved 731, reused 0, downloaded 491, added 522
+Progress: resolved 731, reused 0, downloaded 534, added 575
+Progress: resolved 731, reused 0, downloaded 577, added 622
+Progress: resolved 731, reused 0, downloaded 596, added 646
+Progress: resolved 731, reused 0, downloaded 627, added 679
+Progress: resolved 731, reused 0, downloaded 652, added 704
+Progress: resolved 731, reused 0, downloaded 660, added 716
+Progress: resolved 731, reused 0, downloaded 660, added 720
+Progress: resolved 731, reused 0, downloaded 662, added 722
+Progress: resolved 731, reused 0, downloaded 663, added 724
+Progress: resolved 731, reused 0, downloaded 663, added 725
+Progress: resolved 731, reused 0, downloaded 664, added 725
+Progress: resolved 731, reused 0, downloaded 664, added 726
+Progress: resolved 731, reused 0, downloaded 664, added 731, done
+.../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.27.7/node_modules/esbuild postinstall$ node install.js
+.../node_modules/utf-8-validate install$ node-gyp-build
+.../node_modules/utf-8-validate install$ node-gyp-build
+.../node_modules/bufferutil install$ node-gyp-build
+.../esbuild@0.21.5/node_modules/esbuild postinstall: Done
+.../keccak@3.0.4/node_modules/keccak install$ node-gyp-build || exit 0
+.../esbuild@0.27.7/node_modules/esbuild postinstall: Done
+.../sharp@0.34.5/node_modules/sharp install$ node install/check.js || npm run build
+.../node_modules/utf-8-validate install: Done
+.../node_modules/utf-8-validate install: Done
+.../node_modules/bufferutil install: Done
+.../keccak@3.0.4/node_modules/keccak install: gyp info it worked if it ends with ok
+.../keccak@3.0.4/node_modules/keccak install: gyp info using node-gyp@10.2.0
+.../keccak@3.0.4/node_modules/keccak install: gyp info using node@22.23.2 | darwin | arm64
+.../keccak@3.0.4/node_modules/keccak install: gyp info find Python using Python version 3.9.6 found at "/Applications/Xcode.app/Contents/Developer/usr/bin/python3"
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn /Applications/Xcode.app/Contents/Developer/usr/bin/python3
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args [
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '/private/tmp/zodiacs-platform-corepack-seconds/v1/pnpm/9.15.0/dist/node_modules/node-gyp/gyp/gyp_main.py',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args 'binding.gyp',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-f',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args 'make',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-I',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '/private/tmp/zodiacs-platform-sdk-seconds/node_modules/.pnpm/keccak@3.0.4/node_modules/keccak/build/config.gypi',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-I',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '/private/tmp/zodiacs-platform-corepack-seconds/v1/pnpm/9.15.0/dist/node_modules/node-gyp/addon.gypi',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-I',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '/Users/chiburashka/Library/Caches/node-gyp/22.23.2/include/node/common.gypi',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-Dlibrary=shared_library',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-Dvisibility=default',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-Dnode_root_dir=/Users/chiburashka/Library/Caches/node-gyp/22.23.2',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-Dnode_gyp_dir=/private/tmp/zodiacs-platform-corepack-seconds/v1/pnpm/9.15.0/dist/node_modules/node-gyp',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-Dnode_lib_file=/Users/chiburashka/Library/Caches/node-gyp/22.23.2/<(target_arch)/node.lib',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-Dmodule_root_dir=/private/tmp/zodiacs-platform-sdk-seconds/node_modules/.pnpm/keccak@3.0.4/node_modules/keccak',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-Dnode_engine=v8',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '--depth=.',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '--no-parallel',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '--generator-output',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args 'build',
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args '-Goutput_dir=.'
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args ]
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn make
+.../keccak@3.0.4/node_modules/keccak install: gyp info spawn args [ 'BUILDTYPE=Release', '-C', 'build' ]
+.../keccak@3.0.4/node_modules/keccak install:   CC(target) Release/obj.target/keccak/src/libkeccak-64/KeccakSpongeWidth1600.o
+.../keccak@3.0.4/node_modules/keccak install:   CC(target) Release/obj.target/keccak/src/libkeccak-64/KeccakP-1600-opt64.o
+.../sharp@0.34.5/node_modules/sharp install: Done
+.../keccak@3.0.4/node_modules/keccak install:   LIBTOOL-STATIC Release/keccak.a
+.../keccak@3.0.4/node_modules/keccak install:   CXX(target) Release/obj.target/addon/src/addon.o
+.../keccak@3.0.4/node_modules/keccak install:   SOLINK_MODULE(target) Release/addon.node
+.../keccak@3.0.4/node_modules/keccak install: gyp info ok 
+.../keccak@3.0.4/node_modules/keccak install: Done
+
+devDependencies:
++ @types/react 18.3.29
++ @vitejs/plugin-react 4.7.0
++ prettier 3.8.3
++ react 18.3.1
++ react-dom 18.3.1
++ tsup 8.5.1
++ typescript 5.9.3
++ vitest 2.1.9
+
+Done in 37.6s

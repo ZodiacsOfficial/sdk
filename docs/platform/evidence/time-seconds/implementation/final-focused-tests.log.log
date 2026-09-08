@@ -1,0 +1,11 @@
+
+ RUN  v2.1.9 /private/tmp/zodiacs-platform-sdk-seconds
+
+ ✓ packages/engine/src/geo.test.ts (40 tests) 79ms
+ ✓ packages/engine/src/geo/timezone-precision.test.ts (17 tests) 52ms
+
+ Test Files  2 passed (2)
+      Tests  57 passed (57)
+   Start at  12:46:06
+   Duration  588ms (transform 254ms, setup 0ms, collect 303ms, tests 131ms, environment 0ms, prepare 215ms)
+

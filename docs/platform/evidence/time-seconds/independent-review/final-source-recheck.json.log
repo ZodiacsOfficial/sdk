@@ -1,0 +1,58 @@
+{
+  "at": "2026-09-08T05:57:45.247Z",
+  "base": "224863ebea0ab62d0eff721a53f5ab2a1bfc756f",
+  "allFrozenFilesMatch": true,
+  "files": [
+    {
+      "file": "packages/engine/CHANGELOG.md",
+      "expected": "a5e81b23b9b9664c72b76408bbe096117b5e00e0bd67f6fc297e203821439f0c",
+      "actual": "a5e81b23b9b9664c72b76408bbe096117b5e00e0bd67f6fc297e203821439f0c",
+      "matches": true
+    },
+    {
+      "file": "packages/engine/README.md",
+      "expected": "e2f4242bd330ccc4ac63df238c9e3561d4b3ea4a6eb8b8f9fd2de8cffae7d7b2",
+      "actual": "e2f4242bd330ccc4ac63df238c9e3561d4b3ea4a6eb8b8f9fd2de8cffae7d7b2",
+      "matches": true
+    },
+    {
+      "file": "packages/engine/package.json",
+      "expected": "b9318c0a5afca031f3a823c6f5001337949ab15b9fbc63f7caa0ea10df02fddc",
+      "actual": "b9318c0a5afca031f3a823c6f5001337949ab15b9fbc63f7caa0ea10df02fddc",
+      "matches": true
+    },
+    {
+      "file": "packages/engine/src/geo/timezone.ts",
+      "expected": "11f7370996a00fff9e1315be4c2fcdbe4641b1b41482e760e3a436995ec04494",
+      "actual": "11f7370996a00fff9e1315be4c2fcdbe4641b1b41482e760e3a436995ec04494",
+      "matches": true
+    },
+    {
+      "file": "packages/engine/src/types.ts",
+      "expected": "b56e35fb04903af94fbd0bbb98e4e8d99c298646ef68ddcefca12672d7397a3e",
+      "actual": "b56e35fb04903af94fbd0bbb98e4e8d99c298646ef68ddcefca12672d7397a3e",
+      "matches": true
+    },
+    {
+      "file": "packages/engine/src/geo/timezone-precision.test.ts",
+      "expected": "a3bfd13af4483b13e5426ce062340d6f730ec3ee75c92937a9b559ba3f1c33a1",
+      "actual": "a3bfd13af4483b13e5426ce062340d6f730ec3ee75c92937a9b559ba3f1c33a1",
+      "matches": true
+    }
+  ],
+  "ownershipDiff": "",
+  "currentTrackedDiff": [
+    "docs/engine-api/index.html",
+    "docs/engine-api/media/CHANGELOG.md",
+    "docs/engine-api/variables/index.ENGINE_VERSION.html",
+    "packages/engine/CHANGELOG.md",
+    "packages/engine/README.md",
+    "packages/engine/package.json",
+    "packages/engine/src/geo/timezone.ts",
+    "packages/engine/src/types.ts"
+  ],
+  "currentUntracked": [
+    "packages/engine/src/geo/timezone-precision.test.ts"
+  ],
+  "note": "Root may generate docs during its full gates. This review accepts the six frozen source files and independently copied baseline only; generated root docs are outside its tested bundles."
+}
