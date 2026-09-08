@@ -16,7 +16,10 @@ Independent copied-source review passes 278 Node controls and 37 native Chrome
 controls, seven receipt/replay controls per runtime, settings/rejection checks,
 with expected flag corrections and no tested instant/offset/numerical changes.
 [Commands and bounded review](EVIDENCE.md#historical-local-time-precision-candidate).
-Source/artifact draft delivery and public-byte verification are not yet claimed.
+Delivered in [draft #11](https://github.com/ZodiacsOfficial/sdk/pull/11).
+Source `fb57af7a2cd7c30983cc8fb655183d5a11f9cf30`; immutable artifact carrier
+`51129a197cd3f2a2a8c966fb797ea4da1e147b3d`. Anonymous public archive bytes
+match the tested SHA-256. This is review availability, not npm publication.
 
 The existing three-sample offset policy is retained and not certified complete.
 A distinct site date-endpoint defect affects Toronto's 1919 midnight gap,

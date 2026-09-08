@@ -518,3 +518,18 @@ neither is silently folded into birth-time gap resolution here. Broader numerica
 range, degenerate angles, historical data authenticity and complete transition
 discovery remain outside this finite acceptance. No old receipt is rewritten,
 no package is published to npm, and no live site or ownership SDK is changed.
+
+### rc.6 draft and anonymous artifact verification
+
+Draft [#11](https://github.com/ZodiacsOfficial/sdk/pull/11) is created and its
+actual base/head/files inspected. Source commit is
+`fb57af7a2cd7c30983cc8fb655183d5a11f9cf30`; archive carrier is
+`51129a197cd3f2a2a8c966fb797ea4da1e147b3d`. An unauthenticated fetch of
+[the immutable rc.6 archive](https://raw.githubusercontent.com/ZodiacsOfficial/sdk/51129a197cd3f2a2a8c966fb797ea4da1e147b3d/artifacts/zodiacs-engine-0.1.1-rc.6.tgz)
+returns exactly 36,591 bytes and SHA-256
+`09c3e63432f8ba2e9df05af137c42f65ab039740a207a89418d9e6470ea3db3e`, matching
+the two tested consumer archives. [Public-byte receipt](evidence/time-seconds/public/verification.json.log),
+[actual draft/file receipt](evidence/time-seconds/public/draft-pr.json.log).
+Existing SDK CI only targets main-based PRs; no passing stacked CI is claimed.
+No hold is cleared, package published, site adopted/deployed or outside user
+claimed. Later documentation-only heads are distinct from the tested source.
