@@ -1,0 +1,6 @@
+
+> zodiacs-sdk-workspace@ format:check /private/tmp/zodiacs-r3-sdk
+> prettier --check "**/*.{ts,tsx,js,jsx,mjs,json,md,yml,yaml}"
+
+Checking formatting...
+All matched files use Prettier code style!

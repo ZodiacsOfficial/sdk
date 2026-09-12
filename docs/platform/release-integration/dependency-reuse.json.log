@@ -1,0 +1,19 @@
+{
+  "at": "2026-09-12T15:14:20.081131+00:00",
+  "method": "APFS copy-on-write cp -cR; symlinks preserved",
+  "source": "/private/tmp/zodiacs-platform-sdk-seconds",
+  "destination": "/private/tmp/zodiacs-r3-sdk",
+  "paths": [
+    "node_modules",
+    "packages/sdk/node_modules",
+    "packages/engine/node_modules",
+    "examples/base-app/node_modules",
+    "examples/simastry-aura/node_modules",
+    "examples/nextjs/node_modules",
+    "apps/zodia/node_modules"
+  ],
+  "sourceLockSha256": "39bac5c10d3799a089662b409280288c6ab38772ab490151c420ceeab4c8c95e",
+  "destinationLockSha256": "39bac5c10d3799a089662b409280288c6ab38772ab490151c420ceeab4c8c95e",
+  "installMetadataSha256": "2ec4352672aaf183d777528fd1edfaf725b7850545041bd18aeb69329d9300df",
+  "failedFreshInstall": "install.log"
+}

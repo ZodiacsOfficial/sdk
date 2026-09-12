@@ -1,0 +1,20 @@
+{
+  "at": "2026-09-12T15:17:58.257811+00:00",
+  "installedVersions": {
+    "tsup": "8.5.1",
+    "typescript": "5.9.3",
+    "vitest": "2.1.9",
+    "astronomy-engine": "2.1.19"
+  },
+  "allProductionAuditFindings": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "rootPackageSha256": "bf1798c47c17d8ac5d243a97bf0478052763101d45bb655508f9a30ad0cfb3fd",
+  "lockSha256": "39bac5c10d3799a089662b409280288c6ab38772ab490151c420ceeab4c8c95e",
+  "consumerLockSha256": "1e9c7f581afad62a139a22bfd527a70917a063df45578e05d231f10a5b0b10b1"
+}

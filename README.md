@@ -11,6 +11,14 @@ public ownership, computes identity context, and gives astrology apps a factual
 ownership layer for shelves, receipts, profiles, Aura pages, and AI astrology
 context.
 
+**Release integration checkpoint (2026-09-12):** `@zodiacs/sdk@1.0.1` remains
+the published read-only ownership package. Engine `0.1.1-rc.6` and widgets
+`0.1.0` are unpublished review candidates. The explicit SDK #5 **do not merge /
+do not publish** hold also applies to the integration draft. See the
+[current source, artifact, verification and rollback record](docs/platform/release-integration/README.md).
+Older package instructions describe their own candidate checkpoints; they do
+not authorize publication or establish current npm availability.
+
 For browser-first natal charts, compatibility, transits, Moon phases, and
 Saturn returns, see the sibling [`@zodiacs/engine`](packages/engine/README.md)
 package. For typed mounts of the official iframe embeds, see
