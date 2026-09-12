@@ -1,0 +1,350 @@
+
+ RUN  v2.1.9 /private/tmp/zodiacs-platform-input-flags
+
+ ❯ packages/engine/src/input-flags.test.ts (55 tests | 51 failed) 167ms
+   × public birth flag boundary > rejects private string with a fixed error before chart computation 25ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects bare string with a fixed error before chart computation 2ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects Set with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects array-like object with a fixed error before chart computation 0ms
+     → expected TypeError: birth.flags is not iterable to be an instance of RangeError
+   × public birth flag boundary > rejects null with a fixed error before chart computation 0ms
+     → expected TypeError: birth.flags is not iterable to be an instance of RangeError
+   × public birth flag boundary > rejects boolean with a fixed error before chart computation 0ms
+     → expected TypeError: birth.flags is not iterable to be an instance of RangeError
+   × public birth flag boundary > rejects number with a fixed error before chart computation 0ms
+     → expected TypeError: birth.flags is not iterable to be an instance of RangeError
+   × public birth flag boundary > rejects null member with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects numeric member with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects object member with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects nested array with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects unknown string with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects empty string with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects case mismatch with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects whitespace with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects sparse array with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects opposing time assertions with a fixed error before chart computation 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > does not coerce flag members or invoke array member getters/iterators 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects derived-flag contradiction: known time marked unknown 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects derived-flag contradiction: default known time marked unknown 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects derived-flag contradiction: whole-sign request marked fallback 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects derived-flag contradiction: low-latitude Placidus without fallback 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects derived-flag contradiction: unknown time marked fallback 2ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects derived-flag contradiction: no location marked fallback 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > canonicalizes 'unknown-time echo' without changing numerical results and round-trips a receipt 3ms
+     → expected [ 'no-time' ] to deeply equal []
+   × public birth flag boundary > canonicalizes 'polar fallback echo' without changing numerical results and round-trips a receipt 1ms
+     → expected [ 'polar-fallback' ] to deeply equal []
+   × public birth flag boundary > canonicalizes 'duplicate compatible claims' without changing numerical results and round-trips a receipt 2ms
+     → expected [ 'no-time', 'lmt', 'lmt', 'no-time' ] to deeply equal [ 'lmt' ]
+   × public birth flag boundary > rejects unknown and contradictory birth flags in transits 2ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects unknown and contradictory birth flags in first synastry input 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects unknown and contradictory birth flags in second synastry input 1ms
+     → expected undefined to be an instance of RangeError
+   × public birth flag boundary > rejects unknown and contradictory birth flags in Saturn returns 45ms
+     → expected undefined to be an instance of RangeError
+   × precomputed Chart flag compatibility > normalizes a correct legacy derived echo without mutating/recomputing numerical data 4ms
+     → expected { input: { …(6) }, …(6) } not to be { input: { …(6) }, …(6) } // Object.is equality
+   × precomputed Chart flag compatibility > rejects unknown input flag for every Chart wrapper 1ms
+     → expected undefined to be an instance of RangeError
+   × precomputed Chart flag compatibility > rejects unknown result flag for every Chart wrapper 1ms
+     → expected undefined to be an instance of RangeError
+   × precomputed Chart flag compatibility > rejects forged no-time input for every Chart wrapper 1ms
+     → expected undefined to be an instance of RangeError
+   × precomputed Chart flag compatibility > rejects forged polar input for every Chart wrapper 1ms
+     → expected undefined to be an instance of RangeError
+   × precomputed Chart flag compatibility > rejects forged no-time result for every Chart wrapper 1ms
+     → expected undefined to be an instance of RangeError
+   × precomputed Chart flag compatibility > rejects forged polar result for every Chart wrapper 1ms
+     → expected undefined to be an instance of RangeError
+   × precomputed Chart flag compatibility > rejects unrecorded time assertion for every Chart wrapper 1ms
+     → expected undefined to be an instance of RangeError
+   × Saturn flag validation calculation cost > uses zero natal calculations for ordinary inputs or supplied Charts, one only for raw polar assertions 1ms
+     → expected "computeChart" to be called 1 times, but got 0 times
+   × civil birth settings meet the public core boundary > rejects string timeKnown before running the civil resolver 39ms
+     → expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+   × civil birth settings meet the public core boundary > rejects number timeKnown before running the civil resolver 1ms
+     → expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+   × civil birth settings meet the public core boundary > rejects null timeKnown before running the civil resolver 0ms
+     → expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+   × civil birth settings meet the public core boundary > rejects unknown house system before running the civil resolver 0ms
+     → expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+   × civil birth settings meet the public core boundary > rejects null house system before running the civil resolver 0ms
+     → expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+   × civil birth settings meet the public core boundary > rejects null coordinates before running the civil resolver 0ms
+     → expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+   × civil birth settings meet the public core boundary > rejects string latitude before running the civil resolver 0ms
+     → expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+   × civil birth settings meet the public core boundary > rejects out-of-range latitude before running the civil resolver 0ms
+     → expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+   × civil birth settings meet the public core boundary > rejects out-of-range longitude before running the civil resolver 0ms
+     → expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+   × civil birth settings meet the public core boundary > rejects nonfinite latitude before running the civil resolver 0ms
+     → expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+   × civil birth settings meet the public core boundary > preserves unknown-time supplied reference and absent-time local noon semantics 1ms
+     → Method Intl.DateTimeFormat.prototype.formatToParts called on incompatible receiver #<t>
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 51 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects private string with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects bare string with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects Set with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects null member with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects numeric member with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects object member with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects nested array with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects unknown string with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects empty string with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects case mismatch with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects whitespace with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects sparse array with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects opposing time assertions with a fixed error before chart computation
+AssertionError: expected undefined to be an instance of RangeError
+ ❯ rejectsPrivately packages/engine/src/input-flags.test.ts:18:19
+     16|   let failure: unknown;
+     17|   try { action(); } catch (error) { failure = error; }
+     18|   expect(failure).toBeInstanceOf(RangeError);
+       |                   ^
+     19|   expect((failure as Error).message).not.toContain(secret);
+     20| }
+ ❯ packages/engine/src/input-flags.test.ts:34:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects array-like object with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects null with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects boolean with a fixed error before chart computation
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects number with a fixed error before chart computation
+AssertionError: expected TypeError: birth.flags is not iterable to be an instance of RangeError
+ ❯ rejectsPrivately packages/engine/src/input-flags.test.ts:18:19
+     16|   let failure: unknown;
+     17|   try { action(); } catch (error) { failure = error; }
+     18|   expect(failure).toBeInstanceOf(RangeError);
+       |                   ^
+     19|   expect((failure as Error).message).not.toContain(secret);
+     20| }
+ ❯ packages/engine/src/input-flags.test.ts:34:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > does not coerce flag members or invoke array member getters/iterators
+AssertionError: expected undefined to be an instance of RangeError
+ ❯ rejectsPrivately packages/engine/src/input-flags.test.ts:18:19
+     16|   let failure: unknown;
+     17|   try { action(); } catch (error) { failure = error; }
+     18|   expect(failure).toBeInstanceOf(RangeError);
+       |                   ^
+     19|   expect((failure as Error).message).not.toContain(secret);
+     20| }
+ ❯ packages/engine/src/input-flags.test.ts:41:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects derived-flag contradiction: known time marked unknown
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects derived-flag contradiction: default known time marked unknown
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects derived-flag contradiction: whole-sign request marked fallback
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects derived-flag contradiction: low-latitude Placidus without fallback
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects derived-flag contradiction: unknown time marked fallback
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects derived-flag contradiction: no location marked fallback
+AssertionError: expected undefined to be an instance of RangeError
+ ❯ rejectsPrivately packages/engine/src/input-flags.test.ts:18:19
+     16|   let failure: unknown;
+     17|   try { action(); } catch (error) { failure = error; }
+     18|   expect(failure).toBeInstanceOf(RangeError);
+       |                   ^
+     19|   expect((failure as Error).message).not.toContain(secret);
+     20| }
+ ❯ packages/engine/src/input-flags.test.ts:59:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > canonicalizes 'unknown-time echo' without changing numerical results and round-trips a receipt
+AssertionError: expected [ 'no-time' ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   "no-time",
++ ]
+
+ ❯ packages/engine/src/input-flags.test.ts:74:31
+     72|     const timeFlags = expected.filter((flag) => flag !== "no-time" && …
+     73|     const control = natalChart({ ...supplied, flags: timeFlags });
+     74|     expect(chart.input.flags).toEqual(timeFlags);
+       |                               ^
+     75|     expect(chart.flags).toEqual(expected);
+     76|     expect(chart.bodies).toEqual(control.bodies);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > canonicalizes 'polar fallback echo' without changing numerical results and round-trips a receipt
+AssertionError: expected [ 'polar-fallback' ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   "polar-fallback",
++ ]
+
+ ❯ packages/engine/src/input-flags.test.ts:74:31
+     72|     const timeFlags = expected.filter((flag) => flag !== "no-time" && …
+     73|     const control = natalChart({ ...supplied, flags: timeFlags });
+     74|     expect(chart.input.flags).toEqual(timeFlags);
+       |                               ^
+     75|     expect(chart.flags).toEqual(expected);
+     76|     expect(chart.bodies).toEqual(control.bodies);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > canonicalizes 'duplicate compatible claims' without changing numerical results and round-trips a receipt
+AssertionError: expected [ 'no-time', 'lmt', 'lmt', 'no-time' ] to deeply equal [ 'lmt' ]
+
+- Expected
++ Received
+
+  Array [
++   "no-time",
+    "lmt",
++   "lmt",
++   "no-time",
+  ]
+
+ ❯ packages/engine/src/input-flags.test.ts:74:31
+     72|     const timeFlags = expected.filter((flag) => flag !== "no-time" && …
+     73|     const control = natalChart({ ...supplied, flags: timeFlags });
+     74|     expect(chart.input.flags).toEqual(timeFlags);
+       |                               ^
+     75|     expect(chart.flags).toEqual(expected);
+     76|     expect(chart.bodies).toEqual(control.bodies);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects unknown and contradictory birth flags in transits
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects unknown and contradictory birth flags in first synastry input
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects unknown and contradictory birth flags in second synastry input
+ FAIL  packages/engine/src/input-flags.test.ts > public birth flag boundary > rejects unknown and contradictory birth flags in Saturn returns
+AssertionError: expected undefined to be an instance of RangeError
+ ❯ rejectsPrivately packages/engine/src/input-flags.test.ts:18:19
+     16|   let failure: unknown;
+     17|   try { action(); } catch (error) { failure = error; }
+     18|   expect(failure).toBeInstanceOf(RangeError);
+       |                   ^
+     19|   expect((failure as Error).message).not.toContain(secret);
+     20| }
+ ❯ packages/engine/src/input-flags.test.ts:108:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > precomputed Chart flag compatibility > normalizes a correct legacy derived echo without mutating/recomputing numerical data
+AssertionError: expected { input: { …(6) }, …(6) } not to be { input: { …(6) }, …(6) } // Object.is equality
+
+Compared values have no visual difference.
+
+ ❯ packages/engine/src/input-flags.test.ts:129:28
+    127|     const calculate = vi.spyOn(ephemeris, "computeChart");
+    128|     const normalized = transits(chart, instant).natal;
+    129|     expect(normalized).not.toBe(chart);
+       |                            ^
+    130|     expect(normalized.input.flags).toEqual(["lmt"]);
+    131|     expect(normalized.flags).toEqual(["lmt", "no-time"]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > precomputed Chart flag compatibility > rejects unknown input flag for every Chart wrapper
+ FAIL  packages/engine/src/input-flags.test.ts > precomputed Chart flag compatibility > rejects unknown result flag for every Chart wrapper
+ FAIL  packages/engine/src/input-flags.test.ts > precomputed Chart flag compatibility > rejects forged no-time input for every Chart wrapper
+ FAIL  packages/engine/src/input-flags.test.ts > precomputed Chart flag compatibility > rejects forged polar input for every Chart wrapper
+ FAIL  packages/engine/src/input-flags.test.ts > precomputed Chart flag compatibility > rejects forged no-time result for every Chart wrapper
+ FAIL  packages/engine/src/input-flags.test.ts > precomputed Chart flag compatibility > rejects forged polar result for every Chart wrapper
+ FAIL  packages/engine/src/input-flags.test.ts > precomputed Chart flag compatibility > rejects unrecorded time assertion for every Chart wrapper
+AssertionError: expected undefined to be an instance of RangeError
+ ❯ rejectsPrivately packages/engine/src/input-flags.test.ts:18:19
+     16|   let failure: unknown;
+     17|   try { action(); } catch (error) { failure = error; }
+     18|   expect(failure).toBeInstanceOf(RangeError);
+       |                   ^
+     19|   expect((failure as Error).message).not.toContain(secret);
+     20| }
+ ❯ packages/engine/src/input-flags.test.ts:151:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > Saturn flag validation calculation cost > uses zero natal calculations for ordinary inputs or supplied Charts, one only for raw polar assertions
+AssertionError: expected "computeChart" to be called 1 times, but got 0 times
+ ❯ packages/engine/src/input-flags.test.ts:169:19
+    167|     expect(scan).toHaveBeenCalledTimes(4);
+    168|     saturnReturn({ ...base, latitude: 78, houseSystem: "placidus", fla…
+    169|     expect(natal).toHaveBeenCalledTimes(1);
+       |                   ^
+    170|     expect(scan).toHaveBeenCalledTimes(5);
+    171|     rejectsPrivately(() => saturnReturn({ ...base, houseSystem: "placi…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > rejects string timeKnown before running the civil resolver
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > rejects number timeKnown before running the civil resolver
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > rejects null timeKnown before running the civil resolver
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > rejects unknown house system before running the civil resolver
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > rejects null house system before running the civil resolver
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > rejects null coordinates before running the civil resolver
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > rejects string latitude before running the civil resolver
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > rejects out-of-range latitude before running the civil resolver
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > rejects out-of-range longitude before running the civil resolver
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > rejects nonfinite latitude before running the civil resolver
+AssertionError: expected TypeError: Method Intl.DateTimeFormat.pro… to be an instance of RangeError
+ ❯ rejectsPrivately packages/engine/src/input-flags.test.ts:18:19
+     16|   let failure: unknown;
+     17|   try { action(); } catch (error) { failure = error; }
+     18|   expect(failure).toBeInstanceOf(RangeError);
+       |                   ^
+     19|   expect((failure as Error).message).not.toContain(secret);
+     20| }
+ ❯ packages/engine/src/input-flags.test.ts:187:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/51]⎯
+
+ FAIL  packages/engine/src/input-flags.test.ts > civil birth settings meet the public core boundary > preserves unknown-time supplied reference and absent-time local noon semantics
+TypeError: Method Intl.DateTimeFormat.prototype.formatToParts called on incompatible receiver #<t>
+ ❯ offsetAt packages/engine/src/geo/timezone.ts:72:6
+     70|   }
+     71|   const name = offsetFormatter(timeZone)
+     72|     .formatToParts(utcMilliseconds)
+       |      ^
+     73|     .find((part) => part.type === "timeZoneName")?.value;
+     74|   const match = (name ?? "GMT").match(/^GMT(?:([+-])(\d{1,2})(?::(\d{2…
+ ❯ resolveLocalToUtc packages/engine/src/geo/timezone.ts:144:5
+ ❯ Module.resolveBirth packages/engine/src/geo/timezone.ts:203:22
+ ❯ packages/engine/src/input-flags.test.ts:192:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/51]⎯
+
+ Test Files  1 failed (1)
+      Tests  51 failed | 4 passed (55)
+   Start at  06:21:40
+   Duration  515ms (transform 147ms, setup 0ms, collect 185ms, tests 167ms, environment 0ms, prepare 41ms)
+

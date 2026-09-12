@@ -1,0 +1,51 @@
+{
+  "at": "2026-09-12T15:12:34.321311+00:00",
+  "records": [
+    {
+      "package": "@zodiacs/sdk",
+      "url": "https://registry.npmjs.org/@zodiacs%2fsdk",
+      "status": 200,
+      "distTags": {
+        "rc": "1.0.0-rc.1",
+        "latest": "1.0.1"
+      },
+      "publishedVersions": [
+        "1.0.0-rc.1",
+        "1.0.0",
+        "1.0.1"
+      ],
+      "latestDist": {
+        "integrity": "sha512-BqU6/3UULkxg9T563f7nT8GyrzvlnzASw3zwF5QdQTaIcDzG0yA0qk5KwdtsJBe8DS7uotVXxSWaeUhBQOVXdQ==",
+        "shasum": "18cfdbed1a64ddf8bf42a14465ea6c7b0ea27eed",
+        "tarball": "https://registry.npmjs.org/@zodiacs/sdk/-/sdk-1.0.1.tgz",
+        "fileCount": 55,
+        "unpackedSize": 953520,
+        "signatures": [
+          {
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+            "sig": "MEUCIFut7RfUzad6vy7+223ctq5GhVysRDmHKu5yamBwEft+AiEAoAL+v0NIwZ0Fi+OFgo/cekzAp9uH+yF2rQEk3Oh0fyw="
+          }
+        ]
+      },
+      "responseSha256": "04ef6a6c2056777200945c1f3a2f9dff29cd52d5ba2621b1203bec10dfc001d1"
+    },
+    {
+      "package": "@zodiacs/engine",
+      "url": "https://registry.npmjs.org/@zodiacs%2fengine",
+      "status": 404,
+      "response": {
+        "error": "Not found"
+      },
+      "responseSha256": "c8d3eae160a892e32837db3dcae515e843e5383fef52b8141940c8bcf8b6d59f"
+    },
+    {
+      "package": "@zodiacs/widgets",
+      "url": "https://registry.npmjs.org/@zodiacs%2fwidgets",
+      "status": 404,
+      "response": {
+        "error": "Not found"
+      },
+      "responseSha256": "c8d3eae160a892e32837db3dcae515e843e5383fef52b8141940c8bcf8b6d59f"
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFile, writeFile } from 'node:fs/promises';
+import { createServer } from 'node:http';
+import { basename, dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { chromium } from '/Users/chiburashka/.codex/worktrees/4806/site/node_modules/playwright-core/index.mjs';
+import { findChromium, STABLE_CHROMIUM_ARGS } from '/Users/chiburashka/.codex/worktrees/4806/site/tests/visual/browser.mjs';
+
+const sdk = '/private/tmp/zodiacs-platform-sdk';
+const out = dirname(fileURLToPath(import.meta.url));
+const dist = join(sdk, 'packages/engine/dist');
+const assets = new Map();
+const modules = [];
+const visited = new Set();
+const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+async function visit(file) {
+  if (visited.has(file)) return;
+  visited.add(file);
+  assert.equal(dirname(file), dist);
+  const source = await readFile(file, 'utf8');
+  assert.equal(/\bimport\s*\(/u.test(source), false, 'Receipt graph has no dynamic imports');
+  const specifiers = [...source.matchAll(/\bfrom\s*["']([^"']+)["']|\bimport\s*["']([^"']+)["']/gu)].map((match) => match[1] ?? match[2]);
+  for (const specifier of specifiers) {
+    assert.match(specifier, /^\.\/[^/]+\.js$/u, 'Only local built modules in receipt graph');
+    await visit(resolve(dirname(file), specifier));
+  }
+  assert.doesNotMatch(source, /\/\/ (?:src\/ephemeris\.ts|.*astronomy-engine)|\b(?:GeoVector|GeoMoon|AstroTime)\s*\(/u);
+  const route = `/modules/${basename(file)}`;
+  modules.push({ file: `packages/engine/dist/${basename(file)}`, sha256: hash(source), imports: specifiers });
+  assets.set(route, { type: 'text/javascript', body: source });
+}
+await visit(join(dist, 'receipt.js'));
+assert.equal(modules.length, 3);
+assets.set('/', { type: 'text/html', body: '<!doctype html><html lang="en"><meta charset="utf-8"><link rel="icon" href="data:,"><title>Synthetic receipt browser probe</title><body><h1>Synthetic receipt browser probe</h1><p id="status">Loading isolated receipt module.</p></body></html>' });
+const fixtures = [];
+for (const name of ['polar', 'unknown-0830']) {
+  const file = `docs/platform/fixtures/natal-envelope-draft-v1-${name}.json`;
+  const json = await readFile(join(sdk, file), 'utf8');
+  fixtures.push({ name, file, json, sha256: hash(json) });
+}
+const serverRequests = [];
+const server = createServer((request, response) => {
+  serverRequests.push({ method: request.method, path: request.url });
+  const asset = assets.get(request.url);
+  if (request.method !== 'GET' || !asset) { response.writeHead(404).end(); return; }
+  response.writeHead(200, { 'Content-Type': `${asset.type}; charset=utf-8`, 'Cache-Control': 'no-store', 'Content-Security-Policy': "default-src 'none'; script-src 'self'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'" });
+  response.end(asset.body);
+});
+let browser;
+let context;
+const browserRequests = [];
+const pageErrors = [];
+try {
+  await new Promise((ok, fail) => { server.once('error', fail); server.listen(0, '127.0.0.1', ok); });
+  const address = server.address();
+  assert.ok(address && typeof address !== 'string');
+  const baseURL = `http://127.0.0.1:${address.port}`;
+  const executablePath = await findChromium();
+  browser = await chromium.launch({ executablePath, headless: true, args: STABLE_CHROMIUM_ARGS });
+  context = await browser.newContext({ viewport: { width: 1000, height: 700 }, timezoneId: 'UTC', reducedMotion: 'reduce' });
+  context.on('request', (request) => browserRequests.push({ url: request.url(), method: request.method(), type: request.resourceType(), postData: request.postData() }));
+  await context.addInitScript(() => {
+    window.__receiptBlockedCalls = [];
+    const blocked = (name) => function () { window.__receiptBlockedCalls.push(name); throw new Error('Blocked test capability'); };
+    for (const name of ['localStorage', 'sessionStorage', 'indexedDB', 'caches']) {
+      Object.defineProperty(window, name, { configurable: true, get: blocked(name) });
+    }
+    for (const name of ['fetch', 'XMLHttpRequest', 'WebSocket', 'EventSource']) {
+      Object.defineProperty(window, name, { configurable: true, value: blocked(name) });
+    }
+    Object.defineProperty(navigator, 'sendBeacon', { configurable: true, value: blocked('sendBeacon') });
+    Object.defineProperty(navigator, 'serviceWorker', { configurable: true, get: blocked('serviceWorker') });
+    Object.defineProperty(document, 'cookie', { configurable: true, get: blocked('cookie-read'), set: blocked('cookie-write') });
+  });
+  const page = await context.newPage();
+  page.on('pageerror', (error) => pageErrors.push(error.message));
+  await page.goto(baseURL, { waitUntil: 'load' });
+  await page.evaluate(async () => {
+    // Playwright initializes its own utility before this callback. Block Intl
+    // before importing any tested module without breaking the test transport.
+    Object.defineProperty(window, 'Intl', { configurable: true, get() {
+      window.__receiptBlockedCalls.push('Intl'); throw new Error('Blocked test capability');
+    } });
+    window.__receiptCodec = await import('/modules/receipt.js');
+  });
+  const before = browserRequests.length;
+  const serverBefore = serverRequests.length;
+  await context.setOffline(true);
+  const results = await page.evaluate((inputs) => {
+    const api = window.__receiptCodec;
+    const checks = [];
+    const check = (name, actual) => { checks.push({ name, passed: Boolean(actual) }); if (!actual) throw new Error(`Synthetic check failed: ${name}`); };
+    for (const { name, json } of inputs) {
+      const parsed = api.parseNatalEnvelope(json);
+      check(`${name}: parsed`, parsed.ok);
+      const text = api.serializeNatalEnvelope(parsed.envelope);
+      const next = api.parseNatalEnvelope(text);
+      check(`${name}: round trip`, next.ok && api.serializeNatalEnvelope(next.envelope) === text);
+      const replay = api.natalReplayInput(parsed.envelope);
+      check(`${name}: requested Placidus preserved`, replay.houseSystem === 'placidus');
+      check(`${name}: normalized instant retained`, replay.utc === parsed.envelope.receipt.instant);
+      const source = parsed.envelope;
+      const recreated = api.createNatalEnvelope({
+        input: { ...replay, utc: new Date(replay.utc) },
+        ...source.result,
+        flags: source.receipt.resultFlags,
+        engineVersion: source.receipt.engine.version
+      }, { sourceInstant: source.receipt.sourceInstant });
+      check(`${name}: creation from validated fixture Chart`, api.serializeNatalEnvelope(recreated) === text);
+      if (name === 'polar') {
+        check(`${name}: actual whole sign and polar flag`, source.receipt.houses.actual === 'whole' && JSON.stringify(source.receipt.resultFlags) === '["polar-fallback"]');
+        check(`${name}: stored ASC precision`, Math.abs(source.result.angles.asc - 23.871984112302016) < 1e-8);
+      } else {
+        check(`${name}: 08:30 unknown reference preserved`, replay.timeKnown === false && replay.utc === '2001-12-21T08:30:00.000Z' && source.receipt.reference === 'supplied-instant');
+        check(`${name}: absent time-dependent result`, source.result.angles === null && source.result.houses === null && JSON.stringify(source.receipt.resultFlags) === '["no-time"]');
+      }
+      const secret = 'SYNTHETIC-SECRET-DO-NOT-EMIT';
+      const sentinel = structuredClone(source);
+      sentinel.extensions = { note: secret };
+      sentinel.receipt.provenance = { status: 'claimed', runtime: { name: secret } };
+      const redacted = api.redactNatalEnvelope(sentinel);
+      check(`${name}: redaction excludes precise input and claims`, JSON.stringify(redacted) === JSON.stringify({
+        schema: 'zodiacs.natal-diagnostic.draft-v1', status: 'redacted-not-anonymous', timeKnown: source.receipt.timeKnown,
+        houses: { ...source.receipt.houses }, inputFlags: source.receipt.inputFlags, resultFlags: source.receipt.resultFlags
+      }));
+      check(`${name}: secret absent from diagnostic`, !JSON.stringify(redacted).includes(secret));
+      const duplicate = `{"schema":"unsupported","schema":${JSON.stringify(source.schema)},"extensions":{"note":${JSON.stringify(secret)}}}`;
+      check(`${name}: duplicate version keys rejected safely`, JSON.stringify(api.parseNatalEnvelope(duplicate)) === '{"ok":false,"code":"invalid_json"}');
+      const malformed = structuredClone(source);
+      malformed.receipt.sourceInstant = `${secret}-2001-02-29T09:00:00Z`;
+      check(`${name}: invalid input diagnostic omits secret`, JSON.stringify(api.parseNatalEnvelope(JSON.stringify(malformed))) === '{"ok":false,"code":"invalid_context"}');
+    }
+    check('no blocked capability attempted', window.__receiptBlockedCalls.length === 0);
+    document.getElementById('status').textContent = `${checks.length} synthetic codec checks passed offline; no network, Intl, or storage capability used.`;
+    return { checks, blockedCalls: window.__receiptBlockedCalls, runtime: { userAgent: navigator.userAgent }, exports: Object.keys(api).sort() };
+  }, fixtures.map(({ name, json }) => ({ name, json })));
+  assert.equal(browserRequests.length, before);
+  assert.equal(serverRequests.length, serverBefore);
+  assert.deepEqual(await context.cookies(), []);
+  assert.deepEqual(pageErrors, []);
+  assert.ok(browserRequests.every((request) => request.method === 'GET' && request.postData === null && request.url.startsWith(baseURL) && assets.has(new URL(request.url).pathname)));
+  assert.equal(browserRequests.filter((request) => request.type === 'script').length, 3);
+  await page.screenshot({ path: join(out, 'browser-probe.png'), fullPage: true, animations: 'disabled' });
+  const evidence = {
+    status: 'passed', runtime: { node: process.version, chrome: browser.version(), executablePath, ...results.runtime },
+    tests: results.checks, exports: results.exports, modules, fixtures: fixtures.map(({ json, ...identity }) => identity),
+    offlineDuringFunctions: true, networkAttemptsDuringFunctions: browserRequests.length - before,
+    serverRequestsDuringFunctions: serverRequests.length - serverBefore, blockedCapabilities: ['Intl', 'localStorage', 'sessionStorage', 'indexedDB', 'caches', 'fetch', 'XMLHttpRequest', 'WebSocket', 'EventSource', 'sendBeacon', 'serviceWorker', 'cookies'],
+    blockedCapabilityAttempts: results.blockedCalls, cookies: [], pageErrors,
+    initialRequests: browserRequests.map((request) => ({ ...request, url: new URL(request.url).pathname })),
+    limitations: ['Synthetic fixture parse/recreation only; no browser ephemeris recalculation', 'No cross-runtime astronomical equality claim', 'Local isolated test; no external adoption or release approval']
+  };
+  await writeFile(join(out, 'browser-result.json'), JSON.stringify(evidence, null, 2) + '\n');
+  console.log(JSON.stringify(evidence, null, 2));
+} finally {
+  if (context) await context.close();
+  if (browser) await browser.close();
+  if (server.listening) await new Promise((ok, fail) => server.close((error) => error ? fail(error) : ok()));
+}

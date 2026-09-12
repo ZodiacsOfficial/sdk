@@ -1,0 +1,62 @@
+[
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/pack-attempt-1.log",
+    "stored": "docs/platform/evidence/input-flags/delivery-pack-attempt-1.log",
+    "sha256": "5daba51cadfd6b437884cefeebb6d40abf5685250d43ab2b78bef9f3a37604a2"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/pack.log",
+    "stored": "docs/platform/evidence/input-flags/delivery-pack.log",
+    "sha256": "deec7066e3702ee336187ba515845e3a82478bbb9cae60381065de94d9253e91"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/pack-inventory.json",
+    "stored": "docs/platform/evidence/input-flags/delivery-pack-inventory.json.log",
+    "sha256": "42f4a695df7fc38e4c87c104f7f70dcfe7ae3c5e8fca09c70e89bac20a252cee"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/artifact.json",
+    "stored": "docs/platform/evidence/input-flags/delivery-artifact.json.log",
+    "sha256": "e172f06a22a1d2adbe7e6441563410d0572369bcc467493d9f35eeab51131603"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/consumer20.log",
+    "stored": "docs/platform/evidence/input-flags/delivery-consumer20.log",
+    "sha256": "54d3a916c0029a378f5207c068b5f482e0ca13e5cb2f16a0467dff510e83615e"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/consumer22.log",
+    "stored": "docs/platform/evidence/input-flags/delivery-consumer22.log",
+    "sha256": "19691a87624c045377440a85ee8ff7e0007083b6faaecfa642240d220dabc47d"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/consumer-audit.json",
+    "stored": "docs/platform/evidence/input-flags/delivery-consumer-audit.json.log",
+    "sha256": "b6712766ae51e2ff9780a9b422c95f36a54e179768d1cd70d640a5ad1b12c61d"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/packed-parity.mjs",
+    "stored": "docs/platform/evidence/input-flags/delivery-packed-parity.mjs.log",
+    "sha256": "12520b79e2ae1a9d041acff9e66b721cd2ac621bd77b02b059ae917e31dbd117"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/packed-parity.log",
+    "stored": "docs/platform/evidence/input-flags/delivery-packed-parity.log",
+    "sha256": "4c2aa7e83752f39be43d48b80f394c3f86bd41ec2fec4ae5a4e5b60636852873"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/packed-parity.json",
+    "stored": "docs/platform/evidence/input-flags/delivery-packed-parity.json.log",
+    "sha256": "eed30eec832992b5f1ef2c59d09ccdc55783ac33ba1e089a4b648fd79776a71b"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/public-artifact.json",
+    "stored": "docs/platform/evidence/input-flags/delivery-public-artifact.json.log",
+    "sha256": "fb3daf1a6df11595821173f5aedf23259961b62bcdef7ca832d3e7ca1a4db3df"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-release/source-format.log",
+    "stored": "docs/platform/evidence/input-flags/delivery-source-format.log",
+    "sha256": "5b7274a567cba35fe65522e300d64a8e11871ba858252aa63fd371edafb916a2"
+  }
+]

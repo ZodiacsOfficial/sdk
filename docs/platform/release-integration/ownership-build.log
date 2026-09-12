@@ -1,0 +1,50 @@
+
+> @zodiacs/sdk@1.0.1 build /private/tmp/zodiacs-r3-sdk/packages/sdk
+> tsup src/index.ts src/core.ts src/market.ts src/registry.ts src/base.ts src/solana.ts src/identity.ts src/react.ts src/ui.ts src/testing.ts src/assets.ts --format esm --dts --clean --tsconfig tsconfig.build.json --external react --external react/jsx-runtime --external viem
+
+CLI Building entry: src/assets.ts, src/base.ts, src/core.ts, src/identity.ts, src/index.ts, src/market.ts, src/react.ts, src/registry.ts, src/solana.ts, src/testing.ts, src/ui.ts
+CLI Using tsconfig: tsconfig.build.json
+CLI tsup v8.5.1
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+ESM dist/assets.js         4.79 KB
+ESM dist/solana.js         982.00 B
+ESM dist/market.js         8.67 KB
+ESM dist/chunk-OQRNN4ZK.js 13.51 KB
+ESM dist/core.js           6.51 KB
+ESM dist/chunk-EUVBYB2J.js 10.01 KB
+ESM dist/identity.js       1.31 KB
+ESM dist/index.js          6.51 KB
+ESM dist/chunk-7HMQU4CK.js 2.13 KB
+ESM dist/react.js          1.14 KB
+ESM dist/chunk-MKSOIAQJ.js 10.98 KB
+ESM dist/testing.js        9.15 KB
+ESM dist/chunk-P7VARAEK.js 3.86 KB
+ESM dist/chunk-B3IR6HZ4.js 14.14 KB
+ESM dist/chunk-ROY7M27V.js 9.19 KB
+ESM dist/registry.js       3.24 KB
+ESM dist/ui.js             17.17 KB
+ESM dist/chunk-FDACS4HF.js 22.91 KB
+ESM dist/chunk-EY5ZPYKH.js 18.99 KB
+ESM dist/base.js           699.00 B
+ESM ⚡️ Build success in 23ms
+DTS Build start
+DTS ⚡️ Build success in 2095ms
+DTS dist/base.d.ts                       709.00 B
+DTS dist/assets.d.ts                     6.38 KB
+DTS dist/testing.d.ts                    2.88 KB
+DTS dist/react.d.ts                      5.25 KB
+DTS dist/ui.d.ts                         6.45 KB
+DTS dist/market.d.ts                     3.09 KB
+DTS dist/identity.d.ts                   1.59 KB
+DTS dist/solana.d.ts                     2.31 KB
+DTS dist/core.d.ts                       12.21 KB
+DTS dist/registry.d.ts                   2.38 KB
+DTS dist/index.d.ts                      5.53 KB
+DTS dist/official-registry-DaxQ8uKE.d.ts 3.12 KB
+DTS dist/base-DCwbiCq3.d.ts              1.97 KB
+DTS dist/identity-CHINNYtE.d.ts          4.69 KB
+DTS dist/verification-DuaE0jgZ.d.ts      2.47 KB
+DTS dist/types-BP3P1yrY.d.ts             15.66 KB
+DTS dist/registry-Ddg-N52-.d.ts          12.35 KB

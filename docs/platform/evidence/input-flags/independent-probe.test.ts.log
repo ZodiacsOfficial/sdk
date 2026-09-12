@@ -1,0 +1,142 @@
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { natalChart, transits, synastry, saturnReturn } from './src/index.ts';
+import { resolveBirth } from './src/geo.ts';
+import { createNatalEnvelope, serializeNatalEnvelope, parseNatalEnvelope, natalReplayInput } from './src/receipt.ts';
+import * as ephemeris from './src/ephemeris.ts';
+import * as returns from './src/returns.ts';
+
+const at='2001-12-21T08:30:00Z';
+const base={utc:at,latitude:40,longitude:-74,houseSystem:'whole',timeKnown:true};
+const secret='SYNTHETIC_PRIVATE_FLAG_SENTINEL';
+const asAny=(value:unknown):any=>value;
+function fixedFailure(action:()=>unknown){
+  let failure:any;try{action()}catch(error){failure=error}
+  expect(failure).toBeInstanceOf(RangeError);expect(failure.message).not.toContain(secret);
+  return failure;
+}
+function freezeChart(chart:any){
+  Object.freeze(chart.input.flags);Object.freeze(chart.input);Object.freeze(chart.flags);
+  Object.freeze(chart.bodies);Object.freeze(chart.aspects);
+  if(chart.houses){Object.freeze(chart.houses.cusps);Object.freeze(chart.houses)}
+  if(chart.angles)Object.freeze(chart.angles);return Object.freeze(chart);
+}
+afterEach(()=>vi.restoreAllMocks());
+
+describe('independent flags compatibility controls',()=>{
+  it.each([
+    {name:'unknown 08:30',input:{...base,timeKnown:false,flags:['no-time','lmt','no-time']},canonical:['lmt'],derived:'no-time'},
+    {name:'polar requested Placidus',input:{...base,latitude:78,houseSystem:'placidus',flags:['polar-fallback','dst-fold','polar-fallback']},canonical:['dst-fold'],derived:'polar-fallback'}
+  ])('accepts typed $name echo and preserves receipt replay',({input,canonical,derived})=>{
+    const snapshot=structuredClone(input),chart=natalChart(asAny(input));
+    const control=natalChart(asAny({...input,flags:canonical}));
+    expect(input).toEqual(snapshot);expect(chart).toEqual(control);expect(chart.input.flags).toEqual(canonical);
+    expect(chart.flags).toEqual([...canonical,derived]);
+    const envelope=createNatalEnvelope(chart,{sourceInstant:at});
+    const parsed=parseNatalEnvelope(serializeNatalEnvelope(envelope));expect(parsed.ok).toBe(true);
+    if(!parsed.ok)throw new Error('Synthetic receipt unexpectedly rejected');
+    const replay=natalReplayInput(parsed.envelope);expect(replay.utc).toBe('2001-12-21T08:30:00.000Z');
+    expect(replay.houseSystem).toBe(input.houseSystem);expect(natalChart(replay)).toEqual(chart);
+  });
+
+  it('distinguishes known time without place from unknown time at a known place',()=>{
+    const noPlace=natalChart({utc:at,timeKnown:true,houseSystem:'placidus',flags:['lmt']});
+    expect(noPlace.flags).toEqual(['lmt']);expect(noPlace.angles).toBeNull();expect(noPlace.houses).toBeNull();
+    const unknown=natalChart(asAny({...base,timeKnown:false,houseSystem:'placidus',flags:['no-time']}));
+    expect(unknown.flags).toEqual(['no-time']);expect(unknown.houses).toBeNull();
+    for(const flag of ['no-time','polar-fallback'])fixedFailure(()=>natalChart(asAny({utc:at,timeKnown:true,houseSystem:'placidus',flags:[flag]})));
+    fixedFailure(()=>natalChart(asAny({...base,timeKnown:false,houseSystem:'placidus',flags:['no-time','polar-fallback']})));
+  });
+
+  it('keeps canonical frozen Chart identity and legacy normalization shallow',()=>{
+    const canonical=freezeChart(natalChart(asAny({...base,latitude:78,houseSystem:'placidus'})));
+    const natal=vi.spyOn(ephemeris,'computeChart');
+    expect(transits(canonical,at).natal).toBe(canonical);const pair=synastry(canonical,canonical);expect(pair.a).toBe(canonical);expect(pair.b).toBe(canonical);
+    const echoed={...canonical,input:{...canonical.input,flags:['polar-fallback','polar-fallback']},flags:['polar-fallback','polar-fallback']};
+    const before=structuredClone(echoed);const normalized=transits(asAny(echoed),at).natal;
+    expect(normalized).not.toBe(echoed);expect(normalized.input.flags).toEqual([]);expect(normalized.flags).toEqual(['polar-fallback']);
+    for(const field of ['bodies','aspects','angles','houses'])expect(asAny(normalized)[field]).toBe(asAny(echoed)[field]);
+    expect(echoed).toEqual(before);expect(natal).not.toHaveBeenCalled();expect(createNatalEnvelope(normalized).receipt.houses.requested).toBe('placidus');
+  });
+
+  it('normalizes reordered result flags while retaining numerical references and original input',()=>{
+    const original=natalChart(asAny({...base,timeKnown:false,flags:['lmt','dst-fold']}));
+    const chart={...original,flags:['no-time','dst-fold','lmt']};
+    const output=transits(asAny(chart),at).natal;
+    expect(output.flags).toEqual(['lmt','dst-fold','no-time']);expect(output.input).toBe(chart.input);
+    expect(output.bodies).toBe(chart.bodies);expect(output.aspects).toBe(chart.aspects);expect(chart.flags).toEqual(['no-time','dst-fold','lmt']);
+  });
+
+  it('rejects contradictory precomputed flag metadata across all wrappers without natal recomputation',()=>{
+    const control=natalChart(asAny(base));const scan=vi.spyOn(returns,'computeSaturnReturns').mockReturnValue({natalLon:0,natalRetrograde:false,seasons:[]});
+    const natal=vi.spyOn(ephemeris,'computeChart');
+    const cases=[{...control,flags:[secret]},{...control,flags:['no-time']},{...control,houses:{...control.houses,system:'unsupported'}},{...control,angles:undefined},{...control,houses:undefined}];
+    for(const chart of cases){fixedFailure(()=>transits(asAny(chart),at));fixedFailure(()=>synastry(asAny(chart),control));fixedFailure(()=>saturnReturn(asAny(chart)))}
+    expect(natal).not.toHaveBeenCalled();expect(scan).not.toHaveBeenCalled();
+  });
+
+  it('does not misrepresent flag consistency as numerical authentication',()=>{
+    const chart=natalChart(asAny({...base,latitude:78,houseSystem:'placidus'}));
+    const before=chart.bodies[0]!.lon;chart.bodies[0]!.lon+=0.001;
+    expect(chart.bodies[0]!.lon).not.toBe(before);
+    const natal=vi.spyOn(ephemeris,'computeChart');
+    expect(transits(chart,at).natal).toBe(chart);expect(natal).not.toHaveBeenCalled();
+  });
+
+  it('ignores flag iterators and coercion hooks while rejecting missing/accessor indices',()=>{
+    const hook=vi.fn(()=>{throw new Error(secret)});
+    const flags=['lmt'];Object.defineProperty(flags,Symbol.iterator,{value:hook});
+    expect(natalChart(asAny({...base,flags})).flags).toEqual(['lmt']);
+    const getter:any[]=[];Object.defineProperty(getter,'0',{get:hook});
+    const inherited:any[]=[];inherited.length=1;Object.setPrototypeOf(inherited,Object.assign(Object.create(Array.prototype),{0:'lmt'}));
+    for(const bad of [getter,inherited,[{toString:hook,valueOf:hook}],new Array(1)])fixedFailure(()=>natalChart(asAny({...base,flags:bad})));
+    expect(hook).not.toHaveBeenCalled();
+  });
+
+  it('does not let a flag Proxy length getter hide an unsupported own slot',()=>{
+    const flags=new Proxy([secret],{get(target,key,receiver){return key==='length'?0:Reflect.get(target,key,receiver)}});
+    fixedFailure(()=>natalChart(asAny({...base,flags})));
+  });
+
+  it('bounds the snapshot before computation while preserving a valid duplicate list',()=>{
+    expect(natalChart(asAny({...base,flags:Array(64).fill('lmt')})).flags).toEqual(['lmt']);
+    const natal=vi.spyOn(ephemeris,'computeChart');fixedFailure(()=>natalChart(asAny({...base,flags:Array(65).fill('lmt')})));expect(natal).not.toHaveBeenCalled();
+  });
+
+  it('captures each natal scalar and flags once even if getters subsequently change',()=>{
+    const first={utc:at,latitude:78,longitude:0,houseSystem:'placidus',timeKnown:true,flags:['polar-fallback']};
+    const second={utc:'2030-01-01T00:00:00Z',latitude:0,longitude:180,houseSystem:'whole',timeKnown:false,flags:[secret]};
+    const counts:Record<string,number>={};const input:Record<string,unknown>={};
+    for(const key of Object.keys(first))Object.defineProperty(input,key,{enumerable:true,get(){counts[key]=(counts[key]??0)+1;return asAny(counts[key]===1?first:second)[key]}});
+    const chart=natalChart(asAny(input));expect(chart.input.utc.toISOString()).toBe('2001-12-21T08:30:00.000Z');expect(chart.input.latitude).toBe(78);expect(chart.input.houseSystem).toBe('placidus');expect(chart.flags).toEqual(['polar-fallback']);
+    expect(Object.values(counts)).toEqual(Array(6).fill(1));
+  });
+
+  it('extra Saturn natal computation is exclusive to an explicit raw polar assertion',()=>{
+    const chart=natalChart(asAny({...base,latitude:78,houseSystem:'placidus'}));
+    const scan=vi.spyOn(returns,'computeSaturnReturns').mockReturnValue({natalLon:0,natalRetrograde:false,seasons:[]});const natal=vi.spyOn(ephemeris,'computeChart');
+    for(const input of [at,base,{...base,timeKnown:false,flags:['no-time']},chart])saturnReturn(asAny(input));
+    expect(natal).not.toHaveBeenCalled();expect(scan).toHaveBeenCalledTimes(4);
+    let flagReads=0,utcReads=0,houseReads=0;const polar={latitude:78,longitude:0,timeKnown:true,get flags(){flagReads++;return flagReads===1?['polar-fallback']:[secret]},get utc(){utcReads++;return utcReads===1?at:'2030-01-01T00:00:00Z'},get houseSystem(){houseReads++;return houseReads===1?'placidus':'whole'}};
+    saturnReturn(asAny(polar));expect(natal).toHaveBeenCalledTimes(1);expect(scan).toHaveBeenCalledTimes(5);expect(flagReads).toBe(1);expect(utcReads).toBe(1);expect(houseReads).toBe(1);
+    expect(scan.mock.calls[4]![0].toISOString()).toBe('2001-12-21T08:30:00.000Z');
+    fixedFailure(()=>saturnReturn(asAny({...base,houseSystem:'placidus',flags:['polar-fallback']})));expect(natal).toHaveBeenCalledTimes(2);expect(scan).toHaveBeenCalledTimes(5);
+  });
+
+  it('rejects invalid civil settings before Intl and preserves explicit unknown-time reference',()=>{
+    const intl=vi.spyOn(Intl,'DateTimeFormat');
+    const civil={date:'2001-12-21',time:'08:30',timeZone:'UTC',latitude:40,longitude:-74};
+    for(const change of [{timeKnown:'false'},{houseSystem:secret},{latitude:null,longitude:null},{latitude:Infinity},{latitude:40,longitude:undefined},{time:null}])fixedFailure(()=>resolveBirth(asAny({...civil,...change})));
+    expect(intl).not.toHaveBeenCalled();
+    intl.mockRestore();
+    const unknown=resolveBirth({...civil,timeKnown:false});expect(unknown.utc.toISOString()).toBe('2001-12-21T08:30:00.000Z');expect(unknown.timeKnown).toBe(false);
+    const absent=resolveBirth({date:'0000-02-29',timeZone:'UTC'});expect(absent.utc.toISOString()).toBe('0000-02-29T12:00:00.000Z');expect(absent.timeKnown).toBe(false);
+  });
+
+  it('captures civil resolver settings and wall fields once before resolution',()=>{
+    const first={date:'2001-12-21',time:'08:30',timeZone:'UTC',latitude:40,longitude:-74,houseSystem:'placidus',timeKnown:false};
+    const later={date:'invalid',time:'invalid',timeZone:secret,latitude:99,longitude:999,houseSystem:secret,timeKnown:secret};
+    const calls:Record<string,number>={};const input:Record<string,unknown>={};
+    for(const key of Object.keys(first))Object.defineProperty(input,key,{get(){calls[key]=(calls[key]??0)+1;return asAny(calls[key]===1?first:later)[key]}});
+    const resolved=resolveBirth(asAny(input));expect(resolved.utc.toISOString()).toBe('2001-12-21T08:30:00.000Z');expect(resolved.timeKnown).toBe(false);expect(resolved.latitude).toBe(40);expect(resolved.houseSystem).toBe('placidus');expect(Object.values(calls)).toEqual(Array(7).fill(1));
+  });
+});

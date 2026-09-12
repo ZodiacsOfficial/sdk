@@ -1,0 +1,26 @@
+{
+  "observedAt": "2026-09-07T23:07:57.837437+00:00",
+  "heads": {
+    "site": "7f953e3fca0e7d5009e5602a1dad69edff0f54cc",
+    "sdk": "b49e0f14f9f17bc84db39486f2c4bb075e0ae3ff"
+  },
+  "npm": {
+    "engine": {
+      "status": 404
+    },
+    "widgets": {
+      "status": 404
+    },
+    "sdk": {
+      "status": 200,
+      "latest": "1.0.1"
+    }
+  },
+  "sdk5": {
+    "head": "cced011659d48877b8b73b8a85796815234cf741",
+    "state": "OPEN",
+    "draft": true,
+    "reviews": 0,
+    "explicitHold": true
+  }
+}

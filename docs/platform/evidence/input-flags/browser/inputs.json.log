@@ -1,0 +1,182 @@
+[
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/README.md",
+    "stored": "docs/platform/evidence/input-flags/browser/README.md.log",
+    "bytes": 4516,
+    "sha256": "afc4f109b0bd0f5ecb2b43d3514e7ce9d542e1c03e297576eb7e567e08f4d754"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/browser-probe.mjs",
+    "stored": "docs/platform/evidence/input-flags/browser/browser-probe.mjs.log",
+    "bytes": 18261,
+    "sha256": "436695bef90ba13b1ff6c7f29c1495e52c79309ab0c2ea09b5c5228bdaa47067"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/cases.mjs",
+    "stored": "docs/platform/evidence/input-flags/browser/cases.mjs.log",
+    "bytes": 16300,
+    "sha256": "1be160482572480bd22baa0fc5d3e28c11020bc853acd3dc5f648cacabbfbbaf"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/manifest.json",
+    "stored": "docs/platform/evidence/input-flags/browser/manifest.json.log",
+    "bytes": 6176,
+    "sha256": "7c67353323516bbc29d6f181b62f1d0983b628f3149575d8f1cc501a724d6fbe"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825254705-62322/agent-1-open-failure.log",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/agent-1-open-failure.log",
+    "bytes": 699,
+    "sha256": "4685bc4672460c5344583cc9c7927110bbcf20c5ba77e0c4ea10b6fa09e9c640"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825254705-62322/agent-2-close-failure.log",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/agent-2-close-failure.log",
+    "bytes": 655,
+    "sha256": "21512f75b3d80919cc0398f2f9061cfba988328c25d9a2c971c6a1234a50cae5"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825254705-62322/agent-browser-config.json",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/agent-browser-config.json.log",
+    "bytes": 3,
+    "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825254705-62322/archive-members.json",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/archive-members.json.log",
+    "bytes": 3965,
+    "sha256": "6059f1cd8917ae3831e492a415d087a2b7507014c131507044d4377328bf434f"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825254705-62322/browser-probe.mjs",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/browser-probe.mjs.log",
+    "bytes": 18199,
+    "sha256": "a72356e63e4df98c6d297d806450c35d269be4791a5e686ebffa7c224a9c04df"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825254705-62322/browser-result.json",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/browser-result.json.log",
+    "bytes": 7581,
+    "sha256": "39be8d2d58eeb9336090c756759463796c12d5e5480dd275bbeb26cb527870ca"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825254705-62322/bundle-graphs.json",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/bundle-graphs.json.log",
+    "bytes": 14988,
+    "sha256": "9fc7409abcb974944cbc6e02e4736ce63749e0b65e185b593a08cfa60f2e4a69"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825254705-62322/cases.mjs",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/cases.mjs.log",
+    "bytes": 16300,
+    "sha256": "1be160482572480bd22baa0fc5d3e28c11020bc853acd3dc5f648cacabbfbbaf"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/agent-1-open.log",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-1-open.log",
+    "bytes": 141,
+    "sha256": "c450b4ef29d194a520f0b0bd78a063eab6f258bcd3c30ac15b687a79ac5abfbb"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/agent-2-wait.log",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-2-wait.log",
+    "bytes": 49,
+    "sha256": "60b9972fbc32dcda9832a32e7ed4ae42b4ccd4665515b985aa51a710c2528cfc"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/agent-3-eval.log",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-3-eval.log",
+    "bytes": 338,
+    "sha256": "afaaa28454eee3568aa6286d4482a67ac5f8c5ed921d1a215d168c1ca8bd1ad1"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/agent-4-snapshot.log",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-4-snapshot.log",
+    "bytes": 229,
+    "sha256": "655930ff10426afa1921a262b92c96cae9f187088421455000aee9b947bcbdae"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/agent-5-snapshot.log",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-5-snapshot.log",
+    "bytes": 92,
+    "sha256": "246fecde93d293df1f9e0840e5e23829e096efee21c791db612765ffc01cd288"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/agent-6-errors.log",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-6-errors.log",
+    "bytes": 23,
+    "sha256": "19361d50a1c335d77b9088c29de7b89032508af6212e0f661266c23e142d5a88"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/agent-7-screenshot.log",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-7-screenshot.log",
+    "bytes": 234,
+    "sha256": "412d328328075ef6357d98147ecbc26bb369ebebf5f28aac3fe726eaf5a25ad3"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/agent-8-close.log",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-8-close.log",
+    "bytes": 41,
+    "sha256": "58e095d4bd20a60ed7683a53ac578e2788ff2b7eb3b77665045d41fe97452543"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/agent-browser-config.json",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-browser-config.json.log",
+    "bytes": 3,
+    "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/archive-members.json",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/archive-members.json.log",
+    "bytes": 3965,
+    "sha256": "6059f1cd8917ae3831e492a415d087a2b7507014c131507044d4377328bf434f"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/browser-probe.mjs",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/browser-probe.mjs.log",
+    "bytes": 18261,
+    "sha256": "436695bef90ba13b1ff6c7f29c1495e52c79309ab0c2ea09b5c5228bdaa47067"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/browser-probe.png",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/browser-probe.png",
+    "bytes": 99175,
+    "sha256": "fda2d5da1cd6cc12ed82a0bcdcf5ee9b44e24db2dc70b214d9f4bd943357d6c4"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/browser-result.json",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/browser-result.json.log",
+    "bytes": 25160,
+    "sha256": "bfbdfd6770c26b432cd49317e3d0a17f0fddea290d2a41865ccce89ebdab206c"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/bundle-graphs.json",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/bundle-graphs.json.log",
+    "bytes": 14988,
+    "sha256": "9fc7409abcb974944cbc6e02e4736ce63749e0b65e185b593a08cfa60f2e4a69"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/cases.mjs",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/cases.mjs.log",
+    "bytes": 16300,
+    "sha256": "1be160482572480bd22baa0fc5d3e28c11020bc853acd3dc5f648cacabbfbbaf"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/preflight.png",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/preflight.png",
+    "bytes": 18831,
+    "sha256": "981bfd5b8100fcbd111b10b16c0ffabfca741d3c5ae65640617f2f0fe9d6c1e7"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/run-1788825287747-62400/trace.zip",
+    "stored": "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/trace.zip",
+    "bytes": 131097,
+    "sha256": "7889c0e29d8b0cc400fad189e7406f29ac54898c16db5bed3e117d87ba02f1a4"
+  },
+  {
+    "source": "/private/tmp/zodiacs-platform-input-flags-browser/summary.json",
+    "stored": "docs/platform/evidence/input-flags/browser/summary.json.log",
+    "bytes": 2697,
+    "sha256": "63e9027f1ef62c77bdc87bece2f8c4251a7abd57edad17ea393dc61032c6cd2a"
+  }
+]

@@ -1,0 +1,6538 @@
+{
+  "startedAt": "2026-09-08T05:53:32.183Z",
+  "endedAt": "2026-09-08T05:53:32.312Z",
+  "node": "v22.23.2",
+  "icu": "78.2",
+  "tzdb": "2026a",
+  "purpose": "Independent execution of physically copied actual frozen rc.6 and baseline rc.5 source; no product edits.",
+  "networkCalls": 0,
+  "transitions": {
+    "count": 278,
+    "corrected": 140,
+    "instantsChanged": 0,
+    "fullWallPostconditions": 278,
+    "trueDenverFold": {
+      "first": "1883-11-18T18:59:56.000Z",
+      "second": "1883-11-18T19:00:00.000Z",
+      "millisecondsApart": 4000,
+      "bothExact": true,
+      "earlierSelected": true
+    },
+    "results": [
+      {
+        "date": "1911-12-31",
+        "time": "23:58",
+        "zone": "Africa/Ndjamena",
+        "baseline": {
+          "instant": "1911-12-31T22:57:48.000Z",
+          "offsetMinutes": 60.2,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1911-12-31T22:57:48.000Z",
+          "offsetMinutes": 60.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1911-12-31",
+        "time": "23:59",
+        "zone": "Africa/Ndjamena",
+        "baseline": {
+          "instant": "1911-12-31T22:58:48.000Z",
+          "offsetMinutes": 60.2,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1911-12-31T22:58:48.000Z",
+          "offsetMinutes": 60.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1912-01-01",
+        "time": "00:00",
+        "zone": "Africa/Ndjamena",
+        "baseline": {
+          "instant": "1911-12-31T23:00:00.000Z",
+          "offsetMinutes": 60,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1911-12-31T23:00:00.000Z",
+          "offsetMinutes": 60,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1912-01-01",
+        "time": "00:01",
+        "zone": "Africa/Ndjamena",
+        "baseline": {
+          "instant": "1911-12-31T23:01:00.000Z",
+          "offsetMinutes": 60,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1911-12-31T23:01:00.000Z",
+          "offsetMinutes": 60,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1912-01-01",
+        "time": "00:02",
+        "zone": "Africa/Ndjamena",
+        "baseline": {
+          "instant": "1911-12-31T23:02:00.000Z",
+          "offsetMinutes": 60,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1911-12-31T23:02:00.000Z",
+          "offsetMinutes": 60,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1911-12-31",
+        "time": "23:57",
+        "zone": "Africa/Ndjamena",
+        "baseline": {
+          "instant": "1911-12-31T22:56:48.000Z",
+          "offsetMinutes": 60.2,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1911-12-31T22:56:48.000Z",
+          "offsetMinutes": 60.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "11:58",
+        "zone": "America/Anchorage",
+        "baseline": {
+          "instant": "1900-08-20T21:57:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T21:57:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "11:59",
+        "zone": "America/Anchorage",
+        "baseline": {
+          "instant": "1900-08-20T21:58:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T21:58:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "12:00",
+        "zone": "America/Anchorage",
+        "baseline": {
+          "instant": "1900-08-20T22:00:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1900-08-20T22:00:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "12:01",
+        "zone": "America/Anchorage",
+        "baseline": {
+          "instant": "1900-08-20T22:01:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1900-08-20T22:01:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "12:02",
+        "zone": "America/Anchorage",
+        "baseline": {
+          "instant": "1900-08-20T22:02:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1900-08-20T22:02:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "11:57",
+        "zone": "America/Anchorage",
+        "baseline": {
+          "instant": "1900-08-20T21:56:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T21:56:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:58",
+        "zone": "America/Caracas",
+        "baseline": {
+          "instant": "1890-01-01T04:25:44.000Z",
+          "offsetMinutes": -267.73333333333335,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:25:44.000Z",
+          "offsetMinutes": -267.73333333333335,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:59",
+        "zone": "America/Caracas",
+        "baseline": {
+          "instant": "1890-01-01T04:26:44.000Z",
+          "offsetMinutes": -267.73333333333335,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:26:44.000Z",
+          "offsetMinutes": -267.73333333333335,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:00",
+        "zone": "America/Caracas",
+        "baseline": {
+          "instant": "1890-01-01T04:27:44.000Z",
+          "offsetMinutes": -267.6666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:27:44.000Z",
+          "offsetMinutes": -267.6666666666667,
+          "flags": [
+            "dst-gap",
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 4000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:01",
+        "zone": "America/Caracas",
+        "baseline": {
+          "instant": "1890-01-01T04:28:40.000Z",
+          "offsetMinutes": -267.6666666666667,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:28:40.000Z",
+          "offsetMinutes": -267.6666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:02",
+        "zone": "America/Caracas",
+        "baseline": {
+          "instant": "1890-01-01T04:29:40.000Z",
+          "offsetMinutes": -267.6666666666667,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:29:40.000Z",
+          "offsetMinutes": -267.6666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-12-31",
+        "time": "23:58",
+        "zone": "America/Dawson_Creek",
+        "baseline": {
+          "instant": "1884-01-01T07:58:56.000Z",
+          "offsetMinutes": -480.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1884-01-01T07:58:56.000Z",
+          "offsetMinutes": -480.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-12-31",
+        "time": "23:59",
+        "zone": "America/Dawson_Creek",
+        "baseline": {
+          "instant": "1884-01-01T07:59:56.000Z",
+          "offsetMinutes": -480.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1884-01-01T07:59:56.000Z",
+          "offsetMinutes": -480.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1884-01-01",
+        "time": "00:00",
+        "zone": "America/Dawson_Creek",
+        "baseline": {
+          "instant": "1884-01-01T08:00:56.000Z",
+          "offsetMinutes": -480,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1884-01-01T08:00:56.000Z",
+          "offsetMinutes": -480,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 56000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1884-01-01",
+        "time": "00:01",
+        "zone": "America/Dawson_Creek",
+        "baseline": {
+          "instant": "1884-01-01T08:01:00.000Z",
+          "offsetMinutes": -480,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1884-01-01T08:01:00.000Z",
+          "offsetMinutes": -480,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1884-01-01",
+        "time": "00:02",
+        "zone": "America/Dawson_Creek",
+        "baseline": {
+          "instant": "1884-01-01T08:02:00.000Z",
+          "offsetMinutes": -480,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1884-01-01T08:02:00.000Z",
+          "offsetMinutes": -480,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "11:58",
+        "zone": "America/Denver",
+        "baseline": {
+          "instant": "1883-11-18T18:57:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:57:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "11:59",
+        "zone": "America/Denver",
+        "baseline": {
+          "instant": "1883-11-18T18:58:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:58:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:00",
+        "zone": "America/Denver",
+        "baseline": {
+          "instant": "1883-11-18T18:59:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:59:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:01",
+        "zone": "America/Denver",
+        "baseline": {
+          "instant": "1883-11-18T19:01:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1883-11-18T19:01:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:02",
+        "zone": "America/Denver",
+        "baseline": {
+          "instant": "1883-11-18T19:02:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1883-11-18T19:02:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1902-06-14",
+        "time": "23:58",
+        "zone": "America/Glace_Bay",
+        "baseline": {
+          "instant": "1902-06-15T03:57:48.000Z",
+          "offsetMinutes": -239.8,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1902-06-15T03:57:48.000Z",
+          "offsetMinutes": -239.8,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1902-06-14",
+        "time": "23:59",
+        "zone": "America/Glace_Bay",
+        "baseline": {
+          "instant": "1902-06-15T03:58:48.000Z",
+          "offsetMinutes": -239.8,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1902-06-15T03:58:48.000Z",
+          "offsetMinutes": -239.8,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1902-06-15",
+        "time": "00:00",
+        "zone": "America/Glace_Bay",
+        "baseline": {
+          "instant": "1902-06-15T04:00:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1902-06-15T04:00:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1902-06-15",
+        "time": "00:01",
+        "zone": "America/Glace_Bay",
+        "baseline": {
+          "instant": "1902-06-15T04:01:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1902-06-15T04:01:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1902-06-15",
+        "time": "00:02",
+        "zone": "America/Glace_Bay",
+        "baseline": {
+          "instant": "1902-06-15T04:02:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1902-06-15T04:02:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1902-06-14",
+        "time": "23:57",
+        "zone": "America/Glace_Bay",
+        "baseline": {
+          "instant": "1902-06-15T03:56:48.000Z",
+          "offsetMinutes": -239.8,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1902-06-15T03:56:48.000Z",
+          "offsetMinutes": -239.8,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-29",
+        "time": "23:58",
+        "zone": "America/Goose_Bay",
+        "baseline": {
+          "instant": "1935-03-30T03:28:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:28:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-29",
+        "time": "23:59",
+        "zone": "America/Goose_Bay",
+        "baseline": {
+          "instant": "1935-03-30T03:29:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:29:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-30",
+        "time": "00:00",
+        "zone": "America/Goose_Bay",
+        "baseline": {
+          "instant": "1935-03-30T03:30:52.000Z",
+          "offsetMinutes": -210,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:30:52.000Z",
+          "offsetMinutes": -210,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 52000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-30",
+        "time": "00:01",
+        "zone": "America/Goose_Bay",
+        "baseline": {
+          "instant": "1935-03-30T03:31:00.000Z",
+          "offsetMinutes": -210,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:31:00.000Z",
+          "offsetMinutes": -210,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-30",
+        "time": "00:02",
+        "zone": "America/Goose_Bay",
+        "baseline": {
+          "instant": "1935-03-30T03:32:00.000Z",
+          "offsetMinutes": -210,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:32:00.000Z",
+          "offsetMinutes": -210,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:58",
+        "zone": "America/Havana",
+        "baseline": {
+          "instant": "1890-01-01T05:27:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:27:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:59",
+        "zone": "America/Havana",
+        "baseline": {
+          "instant": "1890-01-01T05:28:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:28:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:00",
+        "zone": "America/Havana",
+        "baseline": {
+          "instant": "1890-01-01T05:29:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:29:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:01",
+        "zone": "America/Havana",
+        "baseline": {
+          "instant": "1890-01-01T05:30:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:30:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:02",
+        "zone": "America/Havana",
+        "baseline": {
+          "instant": "1890-01-01T05:31:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:31:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:57",
+        "zone": "America/Havana",
+        "baseline": {
+          "instant": "1890-01-01T05:26:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:26:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:58",
+        "zone": "America/Lima",
+        "baseline": {
+          "instant": "1890-01-01T05:06:12.000Z",
+          "offsetMinutes": -308.2,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:06:12.000Z",
+          "offsetMinutes": -308.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:59",
+        "zone": "America/Lima",
+        "baseline": {
+          "instant": "1890-01-01T05:07:12.000Z",
+          "offsetMinutes": -308.2,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:07:12.000Z",
+          "offsetMinutes": -308.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:00",
+        "zone": "America/Lima",
+        "baseline": {
+          "instant": "1890-01-01T05:08:36.000Z",
+          "offsetMinutes": -308.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:08:36.000Z",
+          "offsetMinutes": -308.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:01",
+        "zone": "America/Lima",
+        "baseline": {
+          "instant": "1890-01-01T05:09:36.000Z",
+          "offsetMinutes": -308.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:09:36.000Z",
+          "offsetMinutes": -308.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:02",
+        "zone": "America/Lima",
+        "baseline": {
+          "instant": "1890-01-01T05:10:36.000Z",
+          "offsetMinutes": -308.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:10:36.000Z",
+          "offsetMinutes": -308.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:57",
+        "zone": "America/Lima",
+        "baseline": {
+          "instant": "1890-01-01T05:05:12.000Z",
+          "offsetMinutes": -308.2,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:05:12.000Z",
+          "offsetMinutes": -308.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:58",
+        "zone": "America/Managua",
+        "baseline": {
+          "instant": "1890-01-01T05:43:08.000Z",
+          "offsetMinutes": -345.1333333333333,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:43:08.000Z",
+          "offsetMinutes": -345.1333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:59",
+        "zone": "America/Managua",
+        "baseline": {
+          "instant": "1890-01-01T05:44:08.000Z",
+          "offsetMinutes": -345.1333333333333,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:44:08.000Z",
+          "offsetMinutes": -345.1333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:00",
+        "zone": "America/Managua",
+        "baseline": {
+          "instant": "1890-01-01T05:45:12.000Z",
+          "offsetMinutes": -345.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:45:12.000Z",
+          "offsetMinutes": -345.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:01",
+        "zone": "America/Managua",
+        "baseline": {
+          "instant": "1890-01-01T05:46:12.000Z",
+          "offsetMinutes": -345.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:46:12.000Z",
+          "offsetMinutes": -345.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:02",
+        "zone": "America/Managua",
+        "baseline": {
+          "instant": "1890-01-01T05:47:12.000Z",
+          "offsetMinutes": -345.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:47:12.000Z",
+          "offsetMinutes": -345.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:57",
+        "zone": "America/Managua",
+        "baseline": {
+          "instant": "1890-01-01T05:42:08.000Z",
+          "offsetMinutes": -345.1333333333333,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:42:08.000Z",
+          "offsetMinutes": -345.1333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1913-12-31",
+        "time": "23:58",
+        "zone": "America/Manaus",
+        "baseline": {
+          "instant": "1914-01-01T03:58:04.000Z",
+          "offsetMinutes": -240.06666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1914-01-01T03:58:04.000Z",
+          "offsetMinutes": -240.06666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1913-12-31",
+        "time": "23:59",
+        "zone": "America/Manaus",
+        "baseline": {
+          "instant": "1914-01-01T03:59:04.000Z",
+          "offsetMinutes": -240.06666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1914-01-01T03:59:04.000Z",
+          "offsetMinutes": -240.06666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1914-01-01",
+        "time": "00:00",
+        "zone": "America/Manaus",
+        "baseline": {
+          "instant": "1914-01-01T04:00:04.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1914-01-01T04:00:04.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 4000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1914-01-01",
+        "time": "00:01",
+        "zone": "America/Manaus",
+        "baseline": {
+          "instant": "1914-01-01T04:01:00.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1914-01-01T04:01:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1914-01-01",
+        "time": "00:02",
+        "zone": "America/Manaus",
+        "baseline": {
+          "instant": "1914-01-01T04:02:00.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1914-01-01T04:02:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1910-12-31",
+        "time": "23:58",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1911-01-01T03:38:40.000Z",
+          "offsetMinutes": -220.66666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1911-01-01T03:38:40.000Z",
+          "offsetMinutes": -220.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1910-12-31",
+        "time": "23:59",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1911-01-01T03:39:40.000Z",
+          "offsetMinutes": -220.66666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1911-01-01T03:39:40.000Z",
+          "offsetMinutes": -220.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1911-01-01",
+        "time": "00:00",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1911-01-01T03:40:52.000Z",
+          "offsetMinutes": -220.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1911-01-01T03:40:52.000Z",
+          "offsetMinutes": -220.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1911-01-01",
+        "time": "00:01",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1911-01-01T03:41:52.000Z",
+          "offsetMinutes": -220.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1911-01-01T03:41:52.000Z",
+          "offsetMinutes": -220.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1911-01-01",
+        "time": "00:02",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1911-01-01T03:42:52.000Z",
+          "offsetMinutes": -220.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1911-01-01T03:42:52.000Z",
+          "offsetMinutes": -220.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1910-12-31",
+        "time": "23:57",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1911-01-01T03:37:40.000Z",
+          "offsetMinutes": -220.66666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1911-01-01T03:37:40.000Z",
+          "offsetMinutes": -220.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1934-12-31",
+        "time": "23:58",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1935-01-01T03:38:52.000Z",
+          "offsetMinutes": -220.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-01-01T03:38:52.000Z",
+          "offsetMinutes": -220.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1934-12-31",
+        "time": "23:59",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1935-01-01T03:39:52.000Z",
+          "offsetMinutes": -220.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-01-01T03:39:52.000Z",
+          "offsetMinutes": -220.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-01-01",
+        "time": "00:00",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1935-01-01T03:40:52.000Z",
+          "offsetMinutes": -220.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-01-01T03:40:52.000Z",
+          "offsetMinutes": -220.6,
+          "flags": [
+            "dst-gap",
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 16000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-01-01",
+        "time": "00:01",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1935-01-01T03:41:36.000Z",
+          "offsetMinutes": -220.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-01-01T03:41:36.000Z",
+          "offsetMinutes": -220.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-01-01",
+        "time": "00:02",
+        "zone": "America/Paramaribo",
+        "baseline": {
+          "instant": "1935-01-01T03:42:36.000Z",
+          "offsetMinutes": -220.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-01-01T03:42:36.000Z",
+          "offsetMinutes": -220.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:58",
+        "zone": "America/Port-au-Prince",
+        "baseline": {
+          "instant": "1890-01-01T04:47:20.000Z",
+          "offsetMinutes": -289.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:47:20.000Z",
+          "offsetMinutes": -289.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:59",
+        "zone": "America/Port-au-Prince",
+        "baseline": {
+          "instant": "1890-01-01T04:48:20.000Z",
+          "offsetMinutes": -289.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:48:20.000Z",
+          "offsetMinutes": -289.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:00",
+        "zone": "America/Port-au-Prince",
+        "baseline": {
+          "instant": "1890-01-01T04:49:20.000Z",
+          "offsetMinutes": -289,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:49:20.000Z",
+          "offsetMinutes": -289,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 20000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:01",
+        "zone": "America/Port-au-Prince",
+        "baseline": {
+          "instant": "1890-01-01T04:50:00.000Z",
+          "offsetMinutes": -289,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:50:00.000Z",
+          "offsetMinutes": -289,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:02",
+        "zone": "America/Port-au-Prince",
+        "baseline": {
+          "instant": "1890-01-01T04:51:00.000Z",
+          "offsetMinutes": -289,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:51:00.000Z",
+          "offsetMinutes": -289,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:58",
+        "zone": "America/Punta_Arenas",
+        "baseline": {
+          "instant": "1890-01-01T04:41:40.000Z",
+          "offsetMinutes": -283.6666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:41:40.000Z",
+          "offsetMinutes": -283.6666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:59",
+        "zone": "America/Punta_Arenas",
+        "baseline": {
+          "instant": "1890-01-01T04:42:40.000Z",
+          "offsetMinutes": -283.6666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:42:40.000Z",
+          "offsetMinutes": -283.6666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:00",
+        "zone": "America/Punta_Arenas",
+        "baseline": {
+          "instant": "1890-01-01T04:43:40.000Z",
+          "offsetMinutes": -282.75,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:43:40.000Z",
+          "offsetMinutes": -282.75,
+          "flags": [
+            "dst-gap",
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 55000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:01",
+        "zone": "America/Punta_Arenas",
+        "baseline": {
+          "instant": "1890-01-01T04:43:45.000Z",
+          "offsetMinutes": -282.75,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:43:45.000Z",
+          "offsetMinutes": -282.75,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:02",
+        "zone": "America/Punta_Arenas",
+        "baseline": {
+          "instant": "1890-01-01T04:44:45.000Z",
+          "offsetMinutes": -282.75,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:44:45.000Z",
+          "offsetMinutes": -282.75,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:58",
+        "zone": "America/Santo_Domingo",
+        "baseline": {
+          "instant": "1890-01-01T04:37:36.000Z",
+          "offsetMinutes": -279.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:37:36.000Z",
+          "offsetMinutes": -279.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:59",
+        "zone": "America/Santo_Domingo",
+        "baseline": {
+          "instant": "1890-01-01T04:38:36.000Z",
+          "offsetMinutes": -279.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:38:36.000Z",
+          "offsetMinutes": -279.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:00",
+        "zone": "America/Santo_Domingo",
+        "baseline": {
+          "instant": "1890-01-01T04:40:00.000Z",
+          "offsetMinutes": -280,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:40:00.000Z",
+          "offsetMinutes": -280,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:01",
+        "zone": "America/Santo_Domingo",
+        "baseline": {
+          "instant": "1890-01-01T04:41:00.000Z",
+          "offsetMinutes": -280,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:41:00.000Z",
+          "offsetMinutes": -280,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:02",
+        "zone": "America/Santo_Domingo",
+        "baseline": {
+          "instant": "1890-01-01T04:42:00.000Z",
+          "offsetMinutes": -280,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:42:00.000Z",
+          "offsetMinutes": -280,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:57",
+        "zone": "America/Santo_Domingo",
+        "baseline": {
+          "instant": "1890-01-01T04:36:36.000Z",
+          "offsetMinutes": -279.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T04:36:36.000Z",
+          "offsetMinutes": -279.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "11:58",
+        "zone": "America/Shiprock",
+        "baseline": {
+          "instant": "1883-11-18T18:57:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:57:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "11:59",
+        "zone": "America/Shiprock",
+        "baseline": {
+          "instant": "1883-11-18T18:58:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:58:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:00",
+        "zone": "America/Shiprock",
+        "baseline": {
+          "instant": "1883-11-18T18:59:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:59:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:01",
+        "zone": "America/Shiprock",
+        "baseline": {
+          "instant": "1883-11-18T19:01:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1883-11-18T19:01:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:02",
+        "zone": "America/Shiprock",
+        "baseline": {
+          "instant": "1883-11-18T19:02:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1883-11-18T19:02:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-29",
+        "time": "23:58",
+        "zone": "America/St_Johns",
+        "baseline": {
+          "instant": "1935-03-30T03:28:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:28:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-29",
+        "time": "23:59",
+        "zone": "America/St_Johns",
+        "baseline": {
+          "instant": "1935-03-30T03:29:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:29:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-30",
+        "time": "00:00",
+        "zone": "America/St_Johns",
+        "baseline": {
+          "instant": "1935-03-30T03:30:52.000Z",
+          "offsetMinutes": -210,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:30:52.000Z",
+          "offsetMinutes": -210,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 52000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-30",
+        "time": "00:01",
+        "zone": "America/St_Johns",
+        "baseline": {
+          "instant": "1935-03-30T03:31:00.000Z",
+          "offsetMinutes": -210,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:31:00.000Z",
+          "offsetMinutes": -210,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-30",
+        "time": "00:02",
+        "zone": "America/St_Johns",
+        "baseline": {
+          "instant": "1935-03-30T03:32:00.000Z",
+          "offsetMinutes": -210,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:32:00.000Z",
+          "offsetMinutes": -210,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-19",
+        "time": "23:58",
+        "zone": "America/Whitehorse",
+        "baseline": {
+          "instant": "1900-08-20T08:58:12.000Z",
+          "offsetMinutes": -540.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T08:58:12.000Z",
+          "offsetMinutes": -540.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-19",
+        "time": "23:59",
+        "zone": "America/Whitehorse",
+        "baseline": {
+          "instant": "1900-08-20T08:59:12.000Z",
+          "offsetMinutes": -540.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T08:59:12.000Z",
+          "offsetMinutes": -540.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "00:00",
+        "zone": "America/Whitehorse",
+        "baseline": {
+          "instant": "1900-08-20T09:00:12.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1900-08-20T09:00:12.000Z",
+          "offsetMinutes": -540,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 12000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "00:01",
+        "zone": "America/Whitehorse",
+        "baseline": {
+          "instant": "1900-08-20T09:01:00.000Z",
+          "offsetMinutes": -540,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T09:01:00.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "00:02",
+        "zone": "America/Whitehorse",
+        "baseline": {
+          "instant": "1900-08-20T09:02:00.000Z",
+          "offsetMinutes": -540,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T09:02:00.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Antarctica/DumontDUrville",
+        "baseline": {
+          "instant": "1879-12-31T14:09:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:09:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Antarctica/DumontDUrville",
+        "baseline": {
+          "instant": "1879-12-31T14:10:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:10:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Antarctica/DumontDUrville",
+        "baseline": {
+          "instant": "1879-12-31T14:11:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:11:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Antarctica/DumontDUrville",
+        "baseline": {
+          "instant": "1879-12-31T14:12:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:12:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Antarctica/DumontDUrville",
+        "baseline": {
+          "instant": "1879-12-31T14:13:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:13:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Antarctica/DumontDUrville",
+        "baseline": {
+          "instant": "1879-12-31T14:08:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:08:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:58",
+        "zone": "Asia/Baghdad",
+        "baseline": {
+          "instant": "1889-12-31T21:00:20.000Z",
+          "offsetMinutes": 177.66666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1889-12-31T21:00:20.000Z",
+          "offsetMinutes": 177.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:59",
+        "zone": "Asia/Baghdad",
+        "baseline": {
+          "instant": "1889-12-31T21:01:20.000Z",
+          "offsetMinutes": 177.66666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1889-12-31T21:01:20.000Z",
+          "offsetMinutes": 177.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:00",
+        "zone": "Asia/Baghdad",
+        "baseline": {
+          "instant": "1889-12-31T21:02:24.000Z",
+          "offsetMinutes": 177.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1889-12-31T21:02:24.000Z",
+          "offsetMinutes": 177.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:01",
+        "zone": "Asia/Baghdad",
+        "baseline": {
+          "instant": "1889-12-31T21:03:24.000Z",
+          "offsetMinutes": 177.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1889-12-31T21:03:24.000Z",
+          "offsetMinutes": 177.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:02",
+        "zone": "Asia/Baghdad",
+        "baseline": {
+          "instant": "1889-12-31T21:04:24.000Z",
+          "offsetMinutes": 177.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1889-12-31T21:04:24.000Z",
+          "offsetMinutes": 177.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:57",
+        "zone": "Asia/Baghdad",
+        "baseline": {
+          "instant": "1889-12-31T20:59:20.000Z",
+          "offsetMinutes": 177.66666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1889-12-31T20:59:20.000Z",
+          "offsetMinutes": 177.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-27",
+        "time": "23:58",
+        "zone": "Asia/Calcutta",
+        "baseline": {
+          "instant": "1854-06-27T18:04:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:04:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-27",
+        "time": "23:59",
+        "zone": "Asia/Calcutta",
+        "baseline": {
+          "instant": "1854-06-27T18:05:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:05:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-28",
+        "time": "00:00",
+        "zone": "Asia/Calcutta",
+        "baseline": {
+          "instant": "1854-06-27T18:06:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:06:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-28",
+        "time": "00:01",
+        "zone": "Asia/Calcutta",
+        "baseline": {
+          "instant": "1854-06-27T18:07:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:07:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-28",
+        "time": "00:02",
+        "zone": "Asia/Calcutta",
+        "baseline": {
+          "instant": "1854-06-27T18:08:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:08:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-27",
+        "time": "23:57",
+        "zone": "Asia/Calcutta",
+        "baseline": {
+          "instant": "1854-06-27T18:03:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:03:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Asia/Colombo",
+        "baseline": {
+          "instant": "1879-12-31T18:38:36.000Z",
+          "offsetMinutes": 319.4,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T18:38:36.000Z",
+          "offsetMinutes": 319.4,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Asia/Colombo",
+        "baseline": {
+          "instant": "1879-12-31T18:39:36.000Z",
+          "offsetMinutes": 319.4,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T18:39:36.000Z",
+          "offsetMinutes": 319.4,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Asia/Colombo",
+        "baseline": {
+          "instant": "1879-12-31T18:40:36.000Z",
+          "offsetMinutes": 319.53333333333336,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T18:40:36.000Z",
+          "offsetMinutes": 319.53333333333336,
+          "flags": [
+            "dst-gap",
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 8000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Asia/Colombo",
+        "baseline": {
+          "instant": "1879-12-31T18:41:28.000Z",
+          "offsetMinutes": 319.53333333333336,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T18:41:28.000Z",
+          "offsetMinutes": 319.53333333333336,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Asia/Colombo",
+        "baseline": {
+          "instant": "1879-12-31T18:42:28.000Z",
+          "offsetMinutes": 319.53333333333336,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T18:42:28.000Z",
+          "offsetMinutes": 319.53333333333336,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Asia/Jerusalem",
+        "baseline": {
+          "instant": "1879-12-31T21:37:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:37:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Asia/Jerusalem",
+        "baseline": {
+          "instant": "1879-12-31T21:38:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:38:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Asia/Jerusalem",
+        "baseline": {
+          "instant": "1879-12-31T21:39:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:39:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Asia/Jerusalem",
+        "baseline": {
+          "instant": "1879-12-31T21:40:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:40:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Asia/Jerusalem",
+        "baseline": {
+          "instant": "1879-12-31T21:41:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:41:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Asia/Jerusalem",
+        "baseline": {
+          "instant": "1879-12-31T21:36:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:36:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-27",
+        "time": "23:58",
+        "zone": "Asia/Kolkata",
+        "baseline": {
+          "instant": "1854-06-27T18:04:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:04:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-27",
+        "time": "23:59",
+        "zone": "Asia/Kolkata",
+        "baseline": {
+          "instant": "1854-06-27T18:05:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:05:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-28",
+        "time": "00:00",
+        "zone": "Asia/Kolkata",
+        "baseline": {
+          "instant": "1854-06-27T18:06:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:06:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-28",
+        "time": "00:01",
+        "zone": "Asia/Kolkata",
+        "baseline": {
+          "instant": "1854-06-27T18:07:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:07:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-28",
+        "time": "00:02",
+        "zone": "Asia/Kolkata",
+        "baseline": {
+          "instant": "1854-06-27T18:08:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:08:40.000Z",
+          "offsetMinutes": 353.3333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1854-06-27",
+        "time": "23:57",
+        "zone": "Asia/Kolkata",
+        "baseline": {
+          "instant": "1854-06-27T18:03:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1854-06-27T18:03:32.000Z",
+          "offsetMinutes": 353.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1924-05-01",
+        "time": "23:58",
+        "zone": "Asia/Tbilisi",
+        "baseline": {
+          "instant": "1924-05-01T20:58:49.000Z",
+          "offsetMinutes": 179.18333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1924-05-01T20:58:49.000Z",
+          "offsetMinutes": 179.18333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1924-05-01",
+        "time": "23:59",
+        "zone": "Asia/Tbilisi",
+        "baseline": {
+          "instant": "1924-05-01T20:59:49.000Z",
+          "offsetMinutes": 179.18333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1924-05-01T20:59:49.000Z",
+          "offsetMinutes": 179.18333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1924-05-02",
+        "time": "00:00",
+        "zone": "Asia/Tbilisi",
+        "baseline": {
+          "instant": "1924-05-01T21:00:49.000Z",
+          "offsetMinutes": 180,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1924-05-01T21:00:49.000Z",
+          "offsetMinutes": 180,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 49000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1924-05-02",
+        "time": "00:01",
+        "zone": "Asia/Tbilisi",
+        "baseline": {
+          "instant": "1924-05-01T21:01:00.000Z",
+          "offsetMinutes": 180,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1924-05-01T21:01:00.000Z",
+          "offsetMinutes": 180,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1924-05-02",
+        "time": "00:02",
+        "zone": "Asia/Tbilisi",
+        "baseline": {
+          "instant": "1924-05-01T21:02:00.000Z",
+          "offsetMinutes": 180,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1924-05-01T21:02:00.000Z",
+          "offsetMinutes": 180,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Asia/Tel_Aviv",
+        "baseline": {
+          "instant": "1879-12-31T21:37:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:37:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Asia/Tel_Aviv",
+        "baseline": {
+          "instant": "1879-12-31T21:38:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:38:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Asia/Tel_Aviv",
+        "baseline": {
+          "instant": "1879-12-31T21:39:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:39:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Asia/Tel_Aviv",
+        "baseline": {
+          "instant": "1879-12-31T21:40:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:40:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Asia/Tel_Aviv",
+        "baseline": {
+          "instant": "1879-12-31T21:41:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:41:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Asia/Tel_Aviv",
+        "baseline": {
+          "instant": "1879-12-31T21:36:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:36:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1913-12-31",
+        "time": "23:58",
+        "zone": "Brazil/West",
+        "baseline": {
+          "instant": "1914-01-01T03:58:04.000Z",
+          "offsetMinutes": -240.06666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1914-01-01T03:58:04.000Z",
+          "offsetMinutes": -240.06666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1913-12-31",
+        "time": "23:59",
+        "zone": "Brazil/West",
+        "baseline": {
+          "instant": "1914-01-01T03:59:04.000Z",
+          "offsetMinutes": -240.06666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1914-01-01T03:59:04.000Z",
+          "offsetMinutes": -240.06666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1914-01-01",
+        "time": "00:00",
+        "zone": "Brazil/West",
+        "baseline": {
+          "instant": "1914-01-01T04:00:04.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1914-01-01T04:00:04.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 4000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1914-01-01",
+        "time": "00:01",
+        "zone": "Brazil/West",
+        "baseline": {
+          "instant": "1914-01-01T04:01:00.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1914-01-01T04:01:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1914-01-01",
+        "time": "00:02",
+        "zone": "Brazil/West",
+        "baseline": {
+          "instant": "1914-01-01T04:02:00.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1914-01-01T04:02:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-29",
+        "time": "23:58",
+        "zone": "Canada/Newfoundland",
+        "baseline": {
+          "instant": "1935-03-30T03:28:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:28:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-29",
+        "time": "23:59",
+        "zone": "Canada/Newfoundland",
+        "baseline": {
+          "instant": "1935-03-30T03:29:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:29:52.000Z",
+          "offsetMinutes": -210.86666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-30",
+        "time": "00:00",
+        "zone": "Canada/Newfoundland",
+        "baseline": {
+          "instant": "1935-03-30T03:30:52.000Z",
+          "offsetMinutes": -210,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:30:52.000Z",
+          "offsetMinutes": -210,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 52000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-30",
+        "time": "00:01",
+        "zone": "Canada/Newfoundland",
+        "baseline": {
+          "instant": "1935-03-30T03:31:00.000Z",
+          "offsetMinutes": -210,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:31:00.000Z",
+          "offsetMinutes": -210,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1935-03-30",
+        "time": "00:02",
+        "zone": "Canada/Newfoundland",
+        "baseline": {
+          "instant": "1935-03-30T03:32:00.000Z",
+          "offsetMinutes": -210,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1935-03-30T03:32:00.000Z",
+          "offsetMinutes": -210,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-19",
+        "time": "23:58",
+        "zone": "Canada/Yukon",
+        "baseline": {
+          "instant": "1900-08-20T08:58:12.000Z",
+          "offsetMinutes": -540.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T08:58:12.000Z",
+          "offsetMinutes": -540.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-19",
+        "time": "23:59",
+        "zone": "Canada/Yukon",
+        "baseline": {
+          "instant": "1900-08-20T08:59:12.000Z",
+          "offsetMinutes": -540.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T08:59:12.000Z",
+          "offsetMinutes": -540.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "00:00",
+        "zone": "Canada/Yukon",
+        "baseline": {
+          "instant": "1900-08-20T09:00:12.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1900-08-20T09:00:12.000Z",
+          "offsetMinutes": -540,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 12000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "00:01",
+        "zone": "Canada/Yukon",
+        "baseline": {
+          "instant": "1900-08-20T09:01:00.000Z",
+          "offsetMinutes": -540,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T09:01:00.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "00:02",
+        "zone": "Canada/Yukon",
+        "baseline": {
+          "instant": "1900-08-20T09:02:00.000Z",
+          "offsetMinutes": -540,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T09:02:00.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:58",
+        "zone": "Cuba",
+        "baseline": {
+          "instant": "1890-01-01T05:27:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:27:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:59",
+        "zone": "Cuba",
+        "baseline": {
+          "instant": "1890-01-01T05:28:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:28:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:00",
+        "zone": "Cuba",
+        "baseline": {
+          "instant": "1890-01-01T05:29:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:29:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:01",
+        "zone": "Cuba",
+        "baseline": {
+          "instant": "1890-01-01T05:30:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:30:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1890-01-01",
+        "time": "00:02",
+        "zone": "Cuba",
+        "baseline": {
+          "instant": "1890-01-01T05:31:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:31:36.000Z",
+          "offsetMinutes": -329.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1889-12-31",
+        "time": "23:57",
+        "zone": "Cuba",
+        "baseline": {
+          "instant": "1890-01-01T05:26:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1890-01-01T05:26:28.000Z",
+          "offsetMinutes": -329.46666666666664,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Europe/Chisinau",
+        "baseline": {
+          "instant": "1879-12-31T22:02:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:02:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Europe/Chisinau",
+        "baseline": {
+          "instant": "1879-12-31T22:03:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:03:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Europe/Chisinau",
+        "baseline": {
+          "instant": "1879-12-31T22:05:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:05:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Europe/Chisinau",
+        "baseline": {
+          "instant": "1879-12-31T22:06:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:06:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Europe/Chisinau",
+        "baseline": {
+          "instant": "1879-12-31T22:07:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:07:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Europe/Chisinau",
+        "baseline": {
+          "instant": "1879-12-31T22:01:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:01:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Europe/Minsk",
+        "baseline": {
+          "instant": "1879-12-31T22:07:44.000Z",
+          "offsetMinutes": 110.26666666666667,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:07:44.000Z",
+          "offsetMinutes": 110.26666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Europe/Minsk",
+        "baseline": {
+          "instant": "1879-12-31T22:08:44.000Z",
+          "offsetMinutes": 110.26666666666667,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:08:44.000Z",
+          "offsetMinutes": 110.26666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Europe/Minsk",
+        "baseline": {
+          "instant": "1879-12-31T22:10:00.000Z",
+          "offsetMinutes": 110,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:10:00.000Z",
+          "offsetMinutes": 110,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Europe/Minsk",
+        "baseline": {
+          "instant": "1879-12-31T22:11:00.000Z",
+          "offsetMinutes": 110,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:11:00.000Z",
+          "offsetMinutes": 110,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Europe/Minsk",
+        "baseline": {
+          "instant": "1879-12-31T22:12:00.000Z",
+          "offsetMinutes": 110,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:12:00.000Z",
+          "offsetMinutes": 110,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Europe/Minsk",
+        "baseline": {
+          "instant": "1879-12-31T22:06:44.000Z",
+          "offsetMinutes": 110.26666666666667,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:06:44.000Z",
+          "offsetMinutes": 110.26666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Europe/Simferopol",
+        "baseline": {
+          "instant": "1879-12-31T21:41:36.000Z",
+          "offsetMinutes": 136.4,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:41:36.000Z",
+          "offsetMinutes": 136.4,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Europe/Simferopol",
+        "baseline": {
+          "instant": "1879-12-31T21:42:36.000Z",
+          "offsetMinutes": 136.4,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:42:36.000Z",
+          "offsetMinutes": 136.4,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Europe/Simferopol",
+        "baseline": {
+          "instant": "1879-12-31T21:44:00.000Z",
+          "offsetMinutes": 136,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:44:00.000Z",
+          "offsetMinutes": 136,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Europe/Simferopol",
+        "baseline": {
+          "instant": "1879-12-31T21:45:00.000Z",
+          "offsetMinutes": 136,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:45:00.000Z",
+          "offsetMinutes": 136,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Europe/Simferopol",
+        "baseline": {
+          "instant": "1879-12-31T21:46:00.000Z",
+          "offsetMinutes": 136,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:46:00.000Z",
+          "offsetMinutes": 136,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Europe/Simferopol",
+        "baseline": {
+          "instant": "1879-12-31T21:40:36.000Z",
+          "offsetMinutes": 136.4,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:40:36.000Z",
+          "offsetMinutes": 136.4,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Europe/Tiraspol",
+        "baseline": {
+          "instant": "1879-12-31T22:02:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:02:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Europe/Tiraspol",
+        "baseline": {
+          "instant": "1879-12-31T22:03:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:03:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Europe/Tiraspol",
+        "baseline": {
+          "instant": "1879-12-31T22:05:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:05:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Europe/Tiraspol",
+        "baseline": {
+          "instant": "1879-12-31T22:06:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:06:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Europe/Tiraspol",
+        "baseline": {
+          "instant": "1879-12-31T22:07:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:07:00.000Z",
+          "offsetMinutes": 115,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Europe/Tiraspol",
+        "baseline": {
+          "instant": "1879-12-31T22:01:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T22:01:40.000Z",
+          "offsetMinutes": 115.33333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Israel",
+        "baseline": {
+          "instant": "1879-12-31T21:37:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:37:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Israel",
+        "baseline": {
+          "instant": "1879-12-31T21:38:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:38:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Israel",
+        "baseline": {
+          "instant": "1879-12-31T21:39:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:39:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Israel",
+        "baseline": {
+          "instant": "1879-12-31T21:40:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:40:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Israel",
+        "baseline": {
+          "instant": "1879-12-31T21:41:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:41:20.000Z",
+          "offsetMinutes": 140.66666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Israel",
+        "baseline": {
+          "instant": "1879-12-31T21:36:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T21:36:06.000Z",
+          "offsetMinutes": 140.9,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "11:58",
+        "zone": "MST7MDT",
+        "baseline": {
+          "instant": "1883-11-18T18:57:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:57:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "11:59",
+        "zone": "MST7MDT",
+        "baseline": {
+          "instant": "1883-11-18T18:58:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:58:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:00",
+        "zone": "MST7MDT",
+        "baseline": {
+          "instant": "1883-11-18T18:59:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:59:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:01",
+        "zone": "MST7MDT",
+        "baseline": {
+          "instant": "1883-11-18T19:01:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1883-11-18T19:01:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:02",
+        "zone": "MST7MDT",
+        "baseline": {
+          "instant": "1883-11-18T19:02:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1883-11-18T19:02:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "11:58",
+        "zone": "Navajo",
+        "baseline": {
+          "instant": "1883-11-18T18:57:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:57:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "11:59",
+        "zone": "Navajo",
+        "baseline": {
+          "instant": "1883-11-18T18:58:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:58:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:00",
+        "zone": "Navajo",
+        "baseline": {
+          "instant": "1883-11-18T18:59:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:59:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:01",
+        "zone": "Navajo",
+        "baseline": {
+          "instant": "1883-11-18T19:01:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1883-11-18T19:01:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:02",
+        "zone": "Navajo",
+        "baseline": {
+          "instant": "1883-11-18T19:02:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1883-11-18T19:02:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Pacific/Chuuk",
+        "baseline": {
+          "instant": "1879-12-31T14:09:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:09:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Pacific/Chuuk",
+        "baseline": {
+          "instant": "1879-12-31T14:10:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:10:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Pacific/Chuuk",
+        "baseline": {
+          "instant": "1879-12-31T14:11:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:11:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Pacific/Chuuk",
+        "baseline": {
+          "instant": "1879-12-31T14:12:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:12:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Pacific/Chuuk",
+        "baseline": {
+          "instant": "1879-12-31T14:13:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:13:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Pacific/Chuuk",
+        "baseline": {
+          "instant": "1879-12-31T14:08:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:08:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1912-09-30",
+        "time": "23:58",
+        "zone": "Pacific/Gambier",
+        "baseline": {
+          "instant": "1912-10-01T08:57:48.000Z",
+          "offsetMinutes": -539.8,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1912-10-01T08:57:48.000Z",
+          "offsetMinutes": -539.8,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1912-09-30",
+        "time": "23:59",
+        "zone": "Pacific/Gambier",
+        "baseline": {
+          "instant": "1912-10-01T08:58:48.000Z",
+          "offsetMinutes": -539.8,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1912-10-01T08:58:48.000Z",
+          "offsetMinutes": -539.8,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1912-10-01",
+        "time": "00:00",
+        "zone": "Pacific/Gambier",
+        "baseline": {
+          "instant": "1912-10-01T09:00:00.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1912-10-01T09:00:00.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1912-10-01",
+        "time": "00:01",
+        "zone": "Pacific/Gambier",
+        "baseline": {
+          "instant": "1912-10-01T09:01:00.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1912-10-01T09:01:00.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1912-10-01",
+        "time": "00:02",
+        "zone": "Pacific/Gambier",
+        "baseline": {
+          "instant": "1912-10-01T09:02:00.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1912-10-01T09:02:00.000Z",
+          "offsetMinutes": -540,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1912-09-30",
+        "time": "23:57",
+        "zone": "Pacific/Gambier",
+        "baseline": {
+          "instant": "1912-10-01T08:56:48.000Z",
+          "offsetMinutes": -539.8,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1912-10-01T08:56:48.000Z",
+          "offsetMinutes": -539.8,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1952-10-15",
+        "time": "23:58",
+        "zone": "Pacific/Niue",
+        "baseline": {
+          "instant": "1952-10-16T11:17:40.000Z",
+          "offsetMinutes": -679.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1952-10-16T11:17:40.000Z",
+          "offsetMinutes": -679.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1952-10-15",
+        "time": "23:59",
+        "zone": "Pacific/Niue",
+        "baseline": {
+          "instant": "1952-10-16T11:18:40.000Z",
+          "offsetMinutes": -679.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1952-10-16T11:18:40.000Z",
+          "offsetMinutes": -679.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1952-10-16",
+        "time": "00:00",
+        "zone": "Pacific/Niue",
+        "baseline": {
+          "instant": "1952-10-16T11:20:00.000Z",
+          "offsetMinutes": -680,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1952-10-16T11:20:00.000Z",
+          "offsetMinutes": -680,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1952-10-16",
+        "time": "00:01",
+        "zone": "Pacific/Niue",
+        "baseline": {
+          "instant": "1952-10-16T11:21:00.000Z",
+          "offsetMinutes": -680,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1952-10-16T11:21:00.000Z",
+          "offsetMinutes": -680,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1952-10-16",
+        "time": "00:02",
+        "zone": "Pacific/Niue",
+        "baseline": {
+          "instant": "1952-10-16T11:22:00.000Z",
+          "offsetMinutes": -680,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1952-10-16T11:22:00.000Z",
+          "offsetMinutes": -680,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1952-10-15",
+        "time": "23:57",
+        "zone": "Pacific/Niue",
+        "baseline": {
+          "instant": "1952-10-16T11:16:40.000Z",
+          "offsetMinutes": -679.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1952-10-16T11:16:40.000Z",
+          "offsetMinutes": -679.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-12-31",
+        "time": "23:58",
+        "zone": "Pacific/Norfolk",
+        "baseline": {
+          "instant": "1900-12-31T12:46:08.000Z",
+          "offsetMinutes": 671.8666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-12-31T12:46:08.000Z",
+          "offsetMinutes": 671.8666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-12-31",
+        "time": "23:59",
+        "zone": "Pacific/Norfolk",
+        "baseline": {
+          "instant": "1900-12-31T12:47:08.000Z",
+          "offsetMinutes": 671.8666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-12-31T12:47:08.000Z",
+          "offsetMinutes": 671.8666666666667,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1901-01-01",
+        "time": "00:00",
+        "zone": "Pacific/Norfolk",
+        "baseline": {
+          "instant": "1900-12-31T12:48:08.000Z",
+          "offsetMinutes": 672,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1900-12-31T12:48:08.000Z",
+          "offsetMinutes": 672,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 8000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1901-01-01",
+        "time": "00:01",
+        "zone": "Pacific/Norfolk",
+        "baseline": {
+          "instant": "1900-12-31T12:49:00.000Z",
+          "offsetMinutes": 672,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-12-31T12:49:00.000Z",
+          "offsetMinutes": 672,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1901-01-01",
+        "time": "00:02",
+        "zone": "Pacific/Norfolk",
+        "baseline": {
+          "instant": "1900-12-31T12:50:00.000Z",
+          "offsetMinutes": 672,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-12-31T12:50:00.000Z",
+          "offsetMinutes": 672,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Pacific/Port_Moresby",
+        "baseline": {
+          "instant": "1879-12-31T14:09:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:09:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Pacific/Port_Moresby",
+        "baseline": {
+          "instant": "1879-12-31T14:10:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:10:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Pacific/Port_Moresby",
+        "baseline": {
+          "instant": "1879-12-31T14:11:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:11:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Pacific/Port_Moresby",
+        "baseline": {
+          "instant": "1879-12-31T14:12:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:12:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Pacific/Port_Moresby",
+        "baseline": {
+          "instant": "1879-12-31T14:13:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:13:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Pacific/Port_Moresby",
+        "baseline": {
+          "instant": "1879-12-31T14:08:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:08:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1945-09-09",
+        "time": "23:58",
+        "zone": "Pacific/Tongatapu",
+        "baseline": {
+          "instant": "1945-09-09T11:38:48.000Z",
+          "offsetMinutes": 739.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1945-09-09T11:38:48.000Z",
+          "offsetMinutes": 739.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1945-09-09",
+        "time": "23:59",
+        "zone": "Pacific/Tongatapu",
+        "baseline": {
+          "instant": "1945-09-09T11:39:48.000Z",
+          "offsetMinutes": 739.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1945-09-09T11:39:48.000Z",
+          "offsetMinutes": 739.2,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1945-09-10",
+        "time": "00:00",
+        "zone": "Pacific/Tongatapu",
+        "baseline": {
+          "instant": "1945-09-09T11:40:48.000Z",
+          "offsetMinutes": 740,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1945-09-09T11:40:48.000Z",
+          "offsetMinutes": 740,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 48000,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1945-09-10",
+        "time": "00:01",
+        "zone": "Pacific/Tongatapu",
+        "baseline": {
+          "instant": "1945-09-09T11:41:00.000Z",
+          "offsetMinutes": 740,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1945-09-09T11:41:00.000Z",
+          "offsetMinutes": 740,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1945-09-10",
+        "time": "00:02",
+        "zone": "Pacific/Tongatapu",
+        "baseline": {
+          "instant": "1945-09-09T11:42:00.000Z",
+          "offsetMinutes": 740,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1945-09-09T11:42:00.000Z",
+          "offsetMinutes": 740,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Pacific/Truk",
+        "baseline": {
+          "instant": "1879-12-31T14:09:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:09:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Pacific/Truk",
+        "baseline": {
+          "instant": "1879-12-31T14:10:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:10:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Pacific/Truk",
+        "baseline": {
+          "instant": "1879-12-31T14:11:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:11:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Pacific/Truk",
+        "baseline": {
+          "instant": "1879-12-31T14:12:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:12:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Pacific/Truk",
+        "baseline": {
+          "instant": "1879-12-31T14:13:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:13:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Pacific/Truk",
+        "baseline": {
+          "instant": "1879-12-31T14:08:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:08:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:58",
+        "zone": "Pacific/Yap",
+        "baseline": {
+          "instant": "1879-12-31T14:09:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:09:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:59",
+        "zone": "Pacific/Yap",
+        "baseline": {
+          "instant": "1879-12-31T14:10:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:10:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:00",
+        "zone": "Pacific/Yap",
+        "baseline": {
+          "instant": "1879-12-31T14:11:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:11:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:01",
+        "zone": "Pacific/Yap",
+        "baseline": {
+          "instant": "1879-12-31T14:12:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:12:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1880-01-01",
+        "time": "00:02",
+        "zone": "Pacific/Yap",
+        "baseline": {
+          "instant": "1879-12-31T14:13:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:13:28.000Z",
+          "offsetMinutes": 588.5333333333333,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1879-12-31",
+        "time": "23:57",
+        "zone": "Pacific/Yap",
+        "baseline": {
+          "instant": "1879-12-31T14:08:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1879-12-31T14:08:20.000Z",
+          "offsetMinutes": 588.6666666666666,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "11:58",
+        "zone": "US/Alaska",
+        "baseline": {
+          "instant": "1900-08-20T21:57:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T21:57:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "11:59",
+        "zone": "US/Alaska",
+        "baseline": {
+          "instant": "1900-08-20T21:58:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T21:58:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "12:00",
+        "zone": "US/Alaska",
+        "baseline": {
+          "instant": "1900-08-20T22:00:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1900-08-20T22:00:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "12:01",
+        "zone": "US/Alaska",
+        "baseline": {
+          "instant": "1900-08-20T22:01:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1900-08-20T22:01:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "12:02",
+        "zone": "US/Alaska",
+        "baseline": {
+          "instant": "1900-08-20T22:02:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1900-08-20T22:02:00.000Z",
+          "offsetMinutes": -600,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1900-08-20",
+        "time": "11:57",
+        "zone": "US/Alaska",
+        "baseline": {
+          "instant": "1900-08-20T21:56:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1900-08-20T21:56:36.000Z",
+          "offsetMinutes": -599.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "11:58",
+        "zone": "US/Mountain",
+        "baseline": {
+          "instant": "1883-11-18T18:57:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:57:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "11:59",
+        "zone": "US/Mountain",
+        "baseline": {
+          "instant": "1883-11-18T18:58:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:58:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:00",
+        "zone": "US/Mountain",
+        "baseline": {
+          "instant": "1883-11-18T18:59:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1883-11-18T18:59:56.000Z",
+          "offsetMinutes": -419.93333333333334,
+          "flags": [
+            "dst-fold",
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:01",
+        "zone": "US/Mountain",
+        "baseline": {
+          "instant": "1883-11-18T19:01:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1883-11-18T19:01:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1883-11-18",
+        "time": "12:02",
+        "zone": "US/Mountain",
+        "baseline": {
+          "instant": "1883-11-18T19:02:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "1883-11-18T19:02:00.000Z",
+          "offsetMinutes": -420,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1907-07-06",
+        "time": "08:30",
+        "zone": "America/Mexico_City",
+        "baseline": {
+          "instant": "1907-07-06T15:06:36.000Z",
+          "offsetMinutes": -396.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "candidate": {
+          "instant": "1907-07-06T15:06:36.000Z",
+          "offsetMinutes": -396.6,
+          "flags": [
+            "lmt"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "2024-03-10",
+        "time": "02:30",
+        "zone": "America/New_York",
+        "baseline": {
+          "instant": "2024-03-10T07:30:00.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "candidate": {
+          "instant": "2024-03-10T07:30:00.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 3600000,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "2024-11-03",
+        "time": "01:30",
+        "zone": "America/New_York",
+        "baseline": {
+          "instant": "2024-11-03T05:30:00.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "2024-11-03T05:30:00.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "2024-10-06",
+        "time": "02:15",
+        "zone": "Australia/Lord_Howe",
+        "baseline": {
+          "instant": "2024-10-05T15:45:00.000Z",
+          "offsetMinutes": 660,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "candidate": {
+          "instant": "2024-10-05T15:45:00.000Z",
+          "offsetMinutes": 660,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 1800000,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "2024-04-07",
+        "time": "01:45",
+        "zone": "Australia/Lord_Howe",
+        "baseline": {
+          "instant": "2024-04-06T14:45:00.000Z",
+          "offsetMinutes": 660,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "2024-04-06T14:45:00.000Z",
+          "offsetMinutes": 660,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "2011-12-30",
+        "time": "12:00",
+        "zone": "Pacific/Apia",
+        "baseline": {
+          "instant": "2011-12-30T22:00:00.000Z",
+          "offsetMinutes": 840,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "candidate": {
+          "instant": "2011-12-30T22:00:00.000Z",
+          "offsetMinutes": 840,
+          "flags": [
+            "dst-gap"
+          ]
+        },
+        "shiftMilliseconds": 86400000,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "1914-01-01",
+        "time": "12:00",
+        "zone": "America/Manaus",
+        "baseline": {
+          "instant": "1914-01-01T16:00:00.000Z",
+          "offsetMinutes": -240,
+          "flags": [
+            "dst-fold"
+          ]
+        },
+        "candidate": {
+          "instant": "1914-01-01T16:00:00.000Z",
+          "offsetMinutes": -240,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": true,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "0000-02-29",
+        "time": "12:00",
+        "zone": "UTC",
+        "baseline": {
+          "instant": "0000-02-29T12:00:00.000Z",
+          "offsetMinutes": 0,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "0000-02-29T12:00:00.000Z",
+          "offsetMinutes": 0,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "0000-01-01",
+        "time": "00:30",
+        "zone": "Etc/GMT-1",
+        "baseline": {
+          "instant": "-000001-12-31T23:30:00.000Z",
+          "offsetMinutes": 60,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "-000001-12-31T23:30:00.000Z",
+          "offsetMinutes": 60,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "0099-12-31",
+        "time": "12:00",
+        "zone": "UTC",
+        "baseline": {
+          "instant": "0099-12-31T12:00:00.000Z",
+          "offsetMinutes": 0,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "0099-12-31T12:00:00.000Z",
+          "offsetMinutes": 0,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      },
+      {
+        "date": "0100-01-01",
+        "time": "12:00",
+        "zone": "UTC",
+        "baseline": {
+          "instant": "0100-01-01T12:00:00.000Z",
+          "offsetMinutes": 0,
+          "flags": []
+        },
+        "candidate": {
+          "instant": "0100-01-01T12:00:00.000Z",
+          "offsetMinutes": 0,
+          "flags": []
+        },
+        "shiftMilliseconds": 0,
+        "flagsCorrected": false,
+        "secondsPostcondition": true,
+        "millisecondsPostcondition": true
+      }
+    ]
+  },
+  "settings": {
+    "validCount": 6,
+    "rejectedCount": 17,
+    "valid": [
+      {
+        "name": "omitted-time-default-noon",
+        "timeKnown": false,
+        "instant": "1914-01-01T16:00:00.000Z",
+        "flags": []
+      },
+      {
+        "name": "supplied-time-infers-known",
+        "timeKnown": true,
+        "instant": "1914-01-01T04:01:00.000Z",
+        "flags": []
+      },
+      {
+        "name": "false-without-time-noon",
+        "timeKnown": false,
+        "instant": "1914-01-01T16:00:00.000Z",
+        "flags": []
+      },
+      {
+        "name": "false-with-explicit-time-preserves-existing-contract",
+        "timeKnown": false,
+        "instant": "1914-01-01T12:30:00.000Z",
+        "flags": []
+      },
+      {
+        "name": "true-with-explicit-time",
+        "timeKnown": true,
+        "instant": "1914-01-01T04:00:04.000Z",
+        "flags": [
+          "dst-gap"
+        ]
+      },
+      {
+        "name": "year-zero-noon",
+        "timeKnown": false,
+        "instant": "0000-02-29T12:00:00.000Z",
+        "flags": []
+      }
+    ],
+    "rejected": [
+      {
+        "name": "missing-known-time",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "malformed-timeKnown-false",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "malformed-timeKnown-0",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "malformed-timeKnown-null",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "malformed-timeKnown-[object Object]",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "invalid-house",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "unpaired-coordinate",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "latitude-infinity",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "longitude-outside-range",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "impossible-date",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "date-suffix",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "invalid-time-even-when-unknown",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "time-suffix",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "missing-zone",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "invalid-zone",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "null-input",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      },
+      {
+        "name": "array-input",
+        "baselineRejected": true,
+        "candidateRejected": true,
+        "guardUnchanged": true
+      }
+    ]
+  },
+  "receipts": [
+    {
+      "name": "manaus-gap",
+      "instant": "1914-01-01T04:00:04.000Z",
+      "timeKnown": true,
+      "flags": [
+        "dst-gap"
+      ],
+      "gapShiftMinutes": 0.06666666666666667,
+      "baselineContextSucceeded": false,
+      "candidateContextSucceeded": true,
+      "codecRoundtrip": true,
+      "replayNumericsEqual": true,
+      "baselineNumericsEqual": true,
+      "sourceInstant": null,
+      "houseAbsence": null,
+      "wireBytes": 4481
+    },
+    {
+      "name": "caracas-LMT-gap",
+      "instant": "1890-01-01T04:27:44.000Z",
+      "timeKnown": true,
+      "flags": [
+        "dst-gap",
+        "lmt"
+      ],
+      "gapShiftMinutes": 0.06666666666666667,
+      "baselineContextSucceeded": false,
+      "candidateContextSucceeded": true,
+      "codecRoundtrip": true,
+      "replayNumericsEqual": true,
+      "baselineNumericsEqual": true,
+      "sourceInstant": null,
+      "houseAbsence": null,
+      "wireBytes": 4916
+    },
+    {
+      "name": "dawson-gap",
+      "instant": "1884-01-01T08:00:56.000Z",
+      "timeKnown": true,
+      "flags": [
+        "dst-gap"
+      ],
+      "gapShiftMinutes": 0.9333333333333333,
+      "baselineContextSucceeded": false,
+      "candidateContextSucceeded": true,
+      "codecRoundtrip": true,
+      "replayNumericsEqual": true,
+      "baselineNumericsEqual": true,
+      "sourceInstant": null,
+      "houseAbsence": null,
+      "wireBytes": 5143
+    },
+    {
+      "name": "denver-true-fold",
+      "instant": "1883-11-18T18:59:56.000Z",
+      "timeKnown": true,
+      "flags": [
+        "dst-fold",
+        "lmt"
+      ],
+      "gapShiftMinutes": 0,
+      "baselineContextSucceeded": true,
+      "candidateContextSucceeded": true,
+      "codecRoundtrip": true,
+      "replayNumericsEqual": true,
+      "baselineNumericsEqual": true,
+      "sourceInstant": null,
+      "houseAbsence": null,
+      "wireBytes": 4967
+    },
+    {
+      "name": "mexico-LMT",
+      "instant": "1907-07-06T15:06:36.000Z",
+      "timeKnown": true,
+      "flags": [
+        "lmt"
+      ],
+      "gapShiftMinutes": 0,
+      "baselineContextSucceeded": true,
+      "candidateContextSucceeded": true,
+      "codecRoundtrip": true,
+      "replayNumericsEqual": true,
+      "baselineNumericsEqual": true,
+      "sourceInstant": null,
+      "houseAbsence": null,
+      "wireBytes": 4640
+    },
+    {
+      "name": "manaus-unknown-noon",
+      "instant": "1914-01-01T16:00:00.000Z",
+      "timeKnown": false,
+      "flags": [],
+      "gapShiftMinutes": 0,
+      "baselineContextSucceeded": true,
+      "candidateContextSucceeded": true,
+      "codecRoundtrip": true,
+      "replayNumericsEqual": true,
+      "baselineNumericsEqual": true,
+      "sourceInstant": null,
+      "houseAbsence": "unknown-time",
+      "wireBytes": 4094
+    },
+    {
+      "name": "apia-skipped-noon",
+      "instant": "2011-12-30T22:00:00.000Z",
+      "timeKnown": false,
+      "flags": [
+        "dst-gap"
+      ],
+      "gapShiftMinutes": 1440,
+      "baselineContextSucceeded": true,
+      "candidateContextSucceeded": true,
+      "codecRoundtrip": true,
+      "replayNumericsEqual": true,
+      "baselineNumericsEqual": true,
+      "sourceInstant": null,
+      "houseAbsence": "unknown-time",
+      "wireBytes": 4119
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "status": "passed",
+  "runtime": "v22.23.2",
+  "sourceSHA256": "fd4363799fb26f3682b8c54054afc07761d7c301cdb798e6afc40965df150437",
+  "baselineSHA256": "4872c94c5ccface076aa0dbab3f5c0209ed5e04d4f105d265cbc2844309f7f3a",
+  "checks": [
+    {
+      "name": "Index fanout with retry started from first rejection handler keeps replacement cache",
+      "status": "passed",
+      "detail": {
+        "concurrentInitialCallers": 12,
+        "indexRequests": 2,
+        "sharedOriginalError": true
+      }
+    },
+    {
+      "name": "Shard rejection/retry interleaving preserves pending successful shard and new retry",
+      "status": "passed",
+      "detail": {
+        "index": 1,
+        "n": 2,
+        "s": 1
+      }
+    },
+    {
+      "name": "Repeated malformed-JSON and shape failures retry only when caller asks",
+      "status": "passed",
+      "detail": {
+        "requests": 4,
+        "errors": [
+          "SyntaxError",
+          "TypeError",
+          "TypeError"
+        ]
+      }
+    },
+    {
+      "name": "Caller mutations across metadata, fetch-owned tables/rows and city results cannot poison cache",
+      "status": "passed",
+      "detail": {
+        "requests": 2,
+        "isolatedLayers": [
+          "metadata",
+          "fetch-owned index",
+          "fetch-owned rows",
+          "returned city"
+        ]
+      }
+    },
+    {
+      "name": "Validation never coerces hostile scalar coordinate or table-index objects",
+      "status": "passed",
+      "detail": {
+        "positions": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "coercions": 0
+      }
+    },
+    {
+      "name": "Index table address trap strings are rejected without exposing inherited array members",
+      "status": "passed",
+      "detail": {
+        "rejected": 27
+      }
+    },
+    {
+      "name": "Nested malformed row outside requested prefix and beyond early-break threshold rejects whole shard",
+      "status": "passed",
+      "detail": {
+        "requests": 3
+      }
+    },
+    {
+      "name": "Boundary-valid synthetic data preserves baseline results, ranking and request ordering",
+      "status": "passed",
+      "detail": {
+        "queries": 8,
+        "requestSequence": [
+          "/data/index.json",
+          "/data/n.json",
+          "/data/0.json"
+        ]
+      }
+    },
+    {
+      "name": "Same-realm custom accessors remain trusted code as documented, not a parsed-JSON guarantee",
+      "status": "passed",
+      "detail": {
+        "accessorReads": 1,
+        "classification": "documented trusted custom-fetch limitation, not a new blocker"
+      }
+    }
+  ],
+  "scope": "Independent fixed synthetic controls; no real place data, shared edits, network, full corpus rerun or publication."
+}

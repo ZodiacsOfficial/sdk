@@ -1,0 +1,2 @@
+$ agent-browser eval JSON.stringify({content:document.body.innerText.trim().length>0,overlay:!!document.querySelector("[data-nextjs-dialog],.vite-error-overlay,#webpack-dev-server-client-overlay"),heading:document.querySelector("h1")?.textContent})
+"{\"content\":true,\"overlay\":false,\"heading\":\"Installed rc.5 browser acceptance\"}"

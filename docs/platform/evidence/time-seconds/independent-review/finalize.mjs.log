@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+const work=path.dirname(new URL(import.meta.url).pathname),sdk='/private/tmp/zodiacs-platform-sdk-seconds';
+const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const identity=JSON.parse(fs.readFileSync(path.join(work,'author-source-identity.json')));
+const files=Object.entries(identity.files).map(([file,expected])=>{const actual=sha(fs.readFileSync(path.join(sdk,file)));if(actual!==expected)throw new Error('Frozen source changed during review');return{file,expected,actual,matches:true};});
+const scope={at:new Date().toISOString(),base:identity.base,allFrozenFilesMatch:true,files,ownershipDiff:execFileSync('git',['diff','--name-only',identity.base,'--','packages/sdk'],{cwd:sdk,encoding:'utf8'}).trim(),currentTrackedDiff:execFileSync('git',['diff','--name-only',identity.base],{cwd:sdk,encoding:'utf8'}).trim().split('\n').filter(Boolean),currentUntracked:execFileSync('git',['ls-files','--others','--exclude-standard'],{cwd:sdk,encoding:'utf8'}).trim().split('\n').filter(Boolean),note:'Root may generate docs during its full gates. This review accepts the six frozen source files and independently copied baseline only; generated root docs are outside its tested bundles.'};
+fs.writeFileSync(path.join(work,'final-source-recheck.json'),JSON.stringify(scope,null,2)+'\n');
+const delivery=path.join(work,'delivery');fs.mkdirSync(delivery,{recursive:true});const entries=[];
+function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){if(dir===work&&['node_modules','delivery'].includes(entry.name))continue;const full=path.join(dir,entry.name);if(entry.isDirectory()){walk(full);continue;}const relative=path.relative(work,full),target=path.join(delivery,relative+'.log');fs.mkdirSync(path.dirname(target),{recursive:true});const bytes=fs.readFileSync(full);fs.writeFileSync(target,bytes);entries.push({path:relative+'.log',originalPath:relative,bytes:bytes.length,sha256:sha(bytes)});}}
+walk(work);entries.sort((a,b)=>a.path.localeCompare(b.path));const manifest={at:new Date().toISOString(),source:work,scope:'Independent frozen SDK rc.6 seconds-precision review. Physically copied dependency bytes are indexed by dependency-hashes.json.log and remain in scratch.',files:entries};fs.writeFileSync(path.join(delivery,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');console.log(JSON.stringify({records:entries.length,allFrozenFilesMatch:true,ownershipDiffEmpty:scope.ownershipDiff==='',manifestSha256:sha(fs.readFileSync(path.join(delivery,'manifest.json')))}));

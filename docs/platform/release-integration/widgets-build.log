@@ -1,0 +1,15 @@
+
+> @zodiacs/widgets@0.1.0 build /private/tmp/zodiacs-r3-sdk/packages/widgets
+> tsup src/index.ts --format esm --dts --clean --tsconfig tsconfig.build.json
+
+CLI Building entry: src/index.ts
+CLI Using tsconfig: tsconfig.build.json
+CLI tsup v8.5.1
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+ESM dist/index.js 5.11 KB
+ESM ⚡️ Build success in 11ms
+DTS Build start
+DTS ⚡️ Build success in 310ms
+DTS dist/index.d.ts 3.23 KB

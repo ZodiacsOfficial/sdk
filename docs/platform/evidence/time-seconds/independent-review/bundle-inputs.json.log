@@ -1,0 +1,142 @@
+[
+  {
+    "kind": "baseline",
+    "inputs": [
+      {
+        "path": "baseline/packages/engine/src/birth-input.ts",
+        "sha256": "144fd683942ec434088c6a214dbe1f0b87cba13f545c38deaca8e5fcaf12581e"
+      },
+      {
+        "path": "baseline/packages/engine/src/geo/timezone.ts",
+        "sha256": "5f83d4aebe7a5eb32939a63a249492fe512864fe55209e86f4d129ef535145c9"
+      },
+      {
+        "path": "node_modules/astronomy-engine/esm/astronomy.js",
+        "sha256": "068f1445ed0c636c94818fe6d20d7d125120e605e0bab9fc4675c3d531be5ad7"
+      },
+      {
+        "path": "baseline/packages/engine/src/aspects.ts",
+        "sha256": "f0c69b344ea2c1808c9e18da13ffd89daf05898a3fce4d004778b8cb8bc5a154"
+      },
+      {
+        "path": "baseline/packages/engine/src/signs.ts",
+        "sha256": "25b7cc9006624254995bd21f5dbaef92f4e61ef476b570589122a034896072dd"
+      },
+      {
+        "path": "baseline/packages/engine/src/houses.ts",
+        "sha256": "c2f0ba0649778efd160986c592648951beb4069afc9049f7fde3f7587e45b8f6"
+      },
+      {
+        "path": "baseline/packages/engine/src/types.ts",
+        "sha256": "39c5df88fb26df2f47de6e6e6bd6a4f6557b38d637aa80fac1af7487f5cdcd6f"
+      },
+      {
+        "path": "baseline/packages/engine/src/ephemeris.ts",
+        "sha256": "3481029c0836bcf641bb4e2f9bea8e57d01358babce07bda6de8fdc9a9fe4418"
+      },
+      {
+        "path": "baseline/packages/engine/src/returns.ts",
+        "sha256": "cccc2e526ea00f8a5466a8d5784d8cc2b9b191f639794435a4e273e2288a087c"
+      },
+      {
+        "path": "baseline/packages/engine/src/synastry.ts",
+        "sha256": "482ad89ae8df0bc5f3e8813d39400e8d3f7ceff4cad8d79fa0b5cdf3627ac1f7"
+      },
+      {
+        "path": "baseline/packages/engine/src/date-input.ts",
+        "sha256": "f9db8865bf143d6334eb93d9618f50aa6a81ba32273b0a103d2a83e3c8014675"
+      },
+      {
+        "path": "baseline/packages/engine/src/api.ts",
+        "sha256": "33566edb5a1fd1c6092f769c01e91b67904d3018afccfbe8bdc69857ce19871a"
+      },
+      {
+        "path": "baseline/packages/engine/src/index.ts",
+        "sha256": "8a8b8237391d42b42c1f4354456ba3ee5b9b603c771eda56949d47f831f4f37c"
+      },
+      {
+        "path": "baseline/packages/engine/src/receipt-json.ts",
+        "sha256": "da5627224b593769eea8f1d434815ad34f422f44e1ef38a6687f86d8ccf8dd5c"
+      },
+      {
+        "path": "baseline/packages/engine/src/receipt.ts",
+        "sha256": "6a2513769934da7b72ab2e07c66df2d48e49fe2d8a8b54b737c2424d301778d8"
+      },
+      {
+        "path": "baseline-entry.ts",
+        "sha256": "19e5145a2027d10ee438c324aa61881a67b6d82cb048c783d9146c5ba68f6ae7"
+      }
+    ],
+    "bundleSha256": "073a2d5a82fad6b718cbd67fd00fb38c68cbf65427c664ff8b4cb7896b901147"
+  },
+  {
+    "kind": "candidate",
+    "inputs": [
+      {
+        "path": "candidate/packages/engine/src/birth-input.ts",
+        "sha256": "144fd683942ec434088c6a214dbe1f0b87cba13f545c38deaca8e5fcaf12581e"
+      },
+      {
+        "path": "candidate/packages/engine/src/geo/timezone.ts",
+        "sha256": "11f7370996a00fff9e1315be4c2fcdbe4641b1b41482e760e3a436995ec04494"
+      },
+      {
+        "path": "node_modules/astronomy-engine/esm/astronomy.js",
+        "sha256": "068f1445ed0c636c94818fe6d20d7d125120e605e0bab9fc4675c3d531be5ad7"
+      },
+      {
+        "path": "candidate/packages/engine/src/aspects.ts",
+        "sha256": "f0c69b344ea2c1808c9e18da13ffd89daf05898a3fce4d004778b8cb8bc5a154"
+      },
+      {
+        "path": "candidate/packages/engine/src/signs.ts",
+        "sha256": "25b7cc9006624254995bd21f5dbaef92f4e61ef476b570589122a034896072dd"
+      },
+      {
+        "path": "candidate/packages/engine/src/houses.ts",
+        "sha256": "c2f0ba0649778efd160986c592648951beb4069afc9049f7fde3f7587e45b8f6"
+      },
+      {
+        "path": "candidate/packages/engine/src/types.ts",
+        "sha256": "b56e35fb04903af94fbd0bbb98e4e8d99c298646ef68ddcefca12672d7397a3e"
+      },
+      {
+        "path": "candidate/packages/engine/src/ephemeris.ts",
+        "sha256": "3481029c0836bcf641bb4e2f9bea8e57d01358babce07bda6de8fdc9a9fe4418"
+      },
+      {
+        "path": "candidate/packages/engine/src/returns.ts",
+        "sha256": "cccc2e526ea00f8a5466a8d5784d8cc2b9b191f639794435a4e273e2288a087c"
+      },
+      {
+        "path": "candidate/packages/engine/src/synastry.ts",
+        "sha256": "482ad89ae8df0bc5f3e8813d39400e8d3f7ceff4cad8d79fa0b5cdf3627ac1f7"
+      },
+      {
+        "path": "candidate/packages/engine/src/date-input.ts",
+        "sha256": "f9db8865bf143d6334eb93d9618f50aa6a81ba32273b0a103d2a83e3c8014675"
+      },
+      {
+        "path": "candidate/packages/engine/src/api.ts",
+        "sha256": "33566edb5a1fd1c6092f769c01e91b67904d3018afccfbe8bdc69857ce19871a"
+      },
+      {
+        "path": "candidate/packages/engine/src/index.ts",
+        "sha256": "8a8b8237391d42b42c1f4354456ba3ee5b9b603c771eda56949d47f831f4f37c"
+      },
+      {
+        "path": "candidate/packages/engine/src/receipt-json.ts",
+        "sha256": "da5627224b593769eea8f1d434815ad34f422f44e1ef38a6687f86d8ccf8dd5c"
+      },
+      {
+        "path": "candidate/packages/engine/src/receipt.ts",
+        "sha256": "6a2513769934da7b72ab2e07c66df2d48e49fe2d8a8b54b737c2424d301778d8"
+      },
+      {
+        "path": "candidate-entry.ts",
+        "sha256": "4cb67cfdbf265249805af91a453255b69536a9a62b4230c601092e3eb0667ee9"
+      }
+    ],
+    "bundleSha256": "1f86f0565c6d414ea580388918729b171f20ce89ab3c9a873fb621138e8700e1"
+  }
+]

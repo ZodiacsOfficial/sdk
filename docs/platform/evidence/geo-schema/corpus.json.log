@@ -1,0 +1,1734 @@
+{
+  "runtime": "v22.23.2",
+  "observedAt": "2026-09-07T22:50:49.985Z",
+  "scope": "All checked-in local asset shards, synthetic file-backed fetch only, no network. One query per shard plus cache reuse, not exhaustive semantic validation of place facts.",
+  "rowsValidated": 33934,
+  "shards": 27,
+  "equalOutputs": true,
+  "equalMetadata": true,
+  "equalRequests": true,
+  "comparisons": [
+    {
+      "file": "/private/tmp/zodiacs-platform-geo-schema-evidence/baseline-geonames.ts",
+      "sourceSha256": "4872c94c5ccface076aa0dbab3f5c0209ed5e04d4f105d265cbc2844309f7f3a",
+      "metadata": {
+        "version": 1,
+        "source": "GeoNames cities15000 (CC BY 4.0)",
+        "count": 33934,
+        "timeZones": [
+          "Europe/Andorra",
+          "Asia/Dubai",
+          "Asia/Kabul",
+          "America/Antigua",
+          "America/Anguilla",
+          "Europe/Tirane",
+          "Asia/Yerevan",
+          "Africa/Luanda",
+          "America/Argentina/Buenos_Aires",
+          "America/Argentina/Cordoba",
+          "America/Argentina/Salta",
+          "America/Argentina/Tucuman",
+          "America/Argentina/San_Juan",
+          "America/Argentina/Ushuaia",
+          "America/Argentina/Catamarca",
+          "America/Argentina/Jujuy",
+          "America/Argentina/Mendoza",
+          "America/Argentina/San_Luis",
+          "America/Argentina/Rio_Gallegos",
+          "America/Argentina/La_Rioja",
+          "Pacific/Pago_Pago",
+          "Europe/Vienna",
+          "Australia/Adelaide",
+          "Australia/Perth",
+          "Australia/Brisbane",
+          "Australia/Darwin",
+          "Australia/Melbourne",
+          "Australia/Sydney",
+          "Australia/Hobart",
+          "Australia/Broken_Hill",
+          "America/Aruba",
+          "Europe/Mariehamn",
+          "Asia/Baku",
+          "Europe/Sarajevo",
+          "America/Barbados",
+          "Asia/Dhaka",
+          "Europe/Brussels",
+          "Africa/Ouagadougou",
+          "Europe/Sofia",
+          "Asia/Bahrain",
+          "Africa/Bujumbura",
+          "Africa/Porto-Novo",
+          "America/St_Barthelemy",
+          "Atlantic/Bermuda",
+          "Asia/Brunei",
+          "America/La_Paz",
+          "America/Kralendijk",
+          "America/Fortaleza",
+          "America/Recife",
+          "America/Belem",
+          "America/Maceio",
+          "America/Manaus",
+          "America/Bahia",
+          "America/Araguaina",
+          "America/Santarem",
+          "America/Sao_Paulo",
+          "America/Cuiaba",
+          "America/Campo_Grande",
+          "America/Rio_Branco",
+          "America/Porto_Velho",
+          "America/Eirunepe",
+          "America/Boa_Vista",
+          "America/Nassau",
+          "Asia/Thimphu",
+          "Africa/Gaborone",
+          "Europe/Minsk",
+          "America/Belize",
+          "America/Vancouver",
+          "America/Toronto",
+          "America/Edmonton",
+          "America/Halifax",
+          "America/Winnipeg",
+          "America/St_Johns",
+          "America/Moncton",
+          "America/Dawson_Creek",
+          "America/Glace_Bay",
+          "America/Regina",
+          "America/Swift_Current",
+          "America/Whitehorse",
+          "Indian/Cocos",
+          "Africa/Lubumbashi",
+          "Africa/Kinshasa",
+          "Africa/Bangui",
+          "Africa/Brazzaville",
+          "Europe/Zurich",
+          "Africa/Abidjan",
+          "Pacific/Rarotonga",
+          "America/Santiago",
+          "America/Punta_Arenas",
+          "America/Coyhaique",
+          "Africa/Douala",
+          "Asia/Shanghai",
+          "Asia/Urumqi",
+          "Asia/Macau",
+          "America/Bogota",
+          "America/Costa_Rica",
+          "America/Havana",
+          "Atlantic/Cape_Verde",
+          "America/Curacao",
+          "Indian/Christmas",
+          "Asia/Famagusta",
+          "Asia/Nicosia",
+          "Europe/Prague",
+          "Europe/Berlin",
+          "Africa/Djibouti",
+          "Europe/Copenhagen",
+          "America/Dominica",
+          "America/Santo_Domingo",
+          "Africa/Algiers",
+          "America/Guayaquil",
+          "Europe/Tallinn",
+          "Africa/Cairo",
+          "Africa/El_Aaiun",
+          "Africa/Asmara",
+          "Europe/Madrid",
+          "Atlantic/Canary",
+          "Africa/Ceuta",
+          "Africa/Addis_Ababa",
+          "Europe/Helsinki",
+          "Pacific/Fiji",
+          "Atlantic/Stanley",
+          "Pacific/Pohnpei",
+          "Atlantic/Faroe",
+          "Europe/Paris",
+          "Africa/Libreville",
+          "Europe/London",
+          "America/Grenada",
+          "Asia/Tbilisi",
+          "Europe/Moscow",
+          "America/Cayenne",
+          "Europe/Guernsey",
+          "Africa/Accra",
+          "Europe/Gibraltar",
+          "America/Nuuk",
+          "Africa/Banjul",
+          "Africa/Conakry",
+          "America/Guadeloupe",
+          "Africa/Malabo",
+          "Europe/Athens",
+          "Atlantic/South_Georgia",
+          "America/Guatemala",
+          "Pacific/Guam",
+          "Africa/Bissau",
+          "America/Guyana",
+          "Asia/Hong_Kong",
+          "America/Tegucigalpa",
+          "Europe/Zagreb",
+          "America/Port-au-Prince",
+          "Europe/Budapest",
+          "Asia/Jakarta",
+          "Asia/Makassar",
+          "Asia/Jayapura",
+          "Asia/Pontianak",
+          "Asia/Ho_Chi_Minh",
+          "Europe/Dublin",
+          "Asia/Jerusalem",
+          "Europe/Isle_of_Man",
+          "Asia/Kolkata",
+          "Asia/Baghdad",
+          "Asia/Tehran",
+          "Atlantic/Reykjavik",
+          "Europe/Rome",
+          "Europe/Jersey",
+          "America/Jamaica",
+          "Asia/Amman",
+          "Asia/Tokyo",
+          "Africa/Nairobi",
+          "Asia/Bishkek",
+          "Asia/Phnom_Penh",
+          "Pacific/Tarawa",
+          "Indian/Comoro",
+          "America/St_Kitts",
+          "Asia/Pyongyang",
+          "Asia/Seoul",
+          "Asia/Kuwait",
+          "America/Cayman",
+          "Asia/Aqtau",
+          "Asia/Aqtobe",
+          "Asia/Atyrau",
+          "Asia/Oral",
+          "Asia/Almaty",
+          "Asia/Qyzylorda",
+          "Asia/Qostanay",
+          "Asia/Vientiane",
+          "Asia/Beirut",
+          "America/St_Lucia",
+          "Europe/Vaduz",
+          "Asia/Colombo",
+          "Africa/Monrovia",
+          "Africa/Maseru",
+          "Europe/Vilnius",
+          "Europe/Luxembourg",
+          "Europe/Riga",
+          "Africa/Tripoli",
+          "Africa/Casablanca",
+          "Europe/Monaco",
+          "Europe/Chisinau",
+          "Europe/Podgorica",
+          "America/Marigot",
+          "Indian/Antananarivo",
+          "Pacific/Majuro",
+          "Europe/Skopje",
+          "Africa/Bamako",
+          "Asia/Yangon",
+          "Asia/Hovd",
+          "Asia/Ulaanbaatar",
+          "Pacific/Saipan",
+          "America/Martinique",
+          "Africa/Nouakchott",
+          "America/Montserrat",
+          "Europe/Malta",
+          "Indian/Mauritius",
+          "Indian/Maldives",
+          "Africa/Blantyre",
+          "America/Monterrey",
+          "America/Mexico_City",
+          "America/Merida",
+          "America/Cancun",
+          "America/Matamoros",
+          "America/Hermosillo",
+          "America/Mazatlan",
+          "America/Tijuana",
+          "America/Ojinaga",
+          "America/Chihuahua",
+          "America/Bahia_Banderas",
+          "America/Ciudad_Juarez",
+          "Asia/Kuala_Lumpur",
+          "Asia/Kuching",
+          "Africa/Maputo",
+          "Africa/Windhoek",
+          "Pacific/Noumea",
+          "Africa/Niamey",
+          "Pacific/Norfolk",
+          "Africa/Lagos",
+          "America/Managua",
+          "Europe/Amsterdam",
+          "Europe/Oslo",
+          "Asia/Kathmandu",
+          "Pacific/Nauru",
+          "Pacific/Niue",
+          "Pacific/Auckland",
+          "Asia/Muscat",
+          "America/Panama",
+          "America/Lima",
+          "Pacific/Tahiti",
+          "Pacific/Port_Moresby",
+          "Pacific/Bougainville",
+          "Asia/Manila",
+          "Asia/Karachi",
+          "Europe/Warsaw",
+          "America/Miquelon",
+          "Pacific/Pitcairn",
+          "America/Puerto_Rico",
+          "Asia/Gaza",
+          "Asia/Hebron",
+          "Europe/Lisbon",
+          "Atlantic/Madeira",
+          "Atlantic/Azores",
+          "Pacific/Palau",
+          "America/Asuncion",
+          "Asia/Qatar",
+          "Indian/Reunion",
+          "Europe/Bucharest",
+          "Europe/Belgrade",
+          "Asia/Yekaterinburg",
+          "Europe/Volgograd",
+          "Europe/Samara",
+          "Europe/Kaliningrad",
+          "Europe/Saratov",
+          "Europe/Kirov",
+          "Europe/Ulyanovsk",
+          "Europe/Astrakhan",
+          "Asia/Barnaul",
+          "Asia/Novokuznetsk",
+          "Asia/Krasnoyarsk",
+          "Asia/Tomsk",
+          "Asia/Novosibirsk",
+          "Asia/Irkutsk",
+          "Asia/Omsk",
+          "Asia/Yakutsk",
+          "Asia/Vladivostok",
+          "Asia/Chita",
+          "Asia/Kamchatka",
+          "Asia/Sakhalin",
+          "Asia/Magadan",
+          "Asia/Anadyr",
+          "Africa/Kigali",
+          "Asia/Riyadh",
+          "Pacific/Guadalcanal",
+          "Indian/Mahe",
+          "Africa/Khartoum",
+          "Europe/Stockholm",
+          "Asia/Singapore",
+          "Atlantic/St_Helena",
+          "Europe/Ljubljana",
+          "Arctic/Longyearbyen",
+          "Europe/Bratislava",
+          "Africa/Freetown",
+          "Europe/San_Marino",
+          "Africa/Dakar",
+          "Africa/Mogadishu",
+          "America/Paramaribo",
+          "Africa/Juba",
+          "Africa/Sao_Tome",
+          "America/El_Salvador",
+          "America/Lower_Princes",
+          "Asia/Damascus",
+          "Africa/Mbabane",
+          "America/Grand_Turk",
+          "Africa/Ndjamena",
+          "Indian/Kerguelen",
+          "Africa/Lome",
+          "Asia/Bangkok",
+          "Asia/Dushanbe",
+          "Asia/Dili",
+          "Asia/Ashgabat",
+          "Africa/Tunis",
+          "Pacific/Tongatapu",
+          "Europe/Istanbul",
+          "America/Port_of_Spain",
+          "Pacific/Funafuti",
+          "Asia/Taipei",
+          "Africa/Dar_es_Salaam",
+          "Europe/Kyiv",
+          "Europe/Simferopol",
+          "Africa/Kampala",
+          "America/New_York",
+          "America/Chicago",
+          "America/Indiana/Indianapolis",
+          "America/Kentucky/Louisville",
+          "America/Indiana/Vincennes",
+          "America/Detroit",
+          "America/Los_Angeles",
+          "America/Phoenix",
+          "America/Denver",
+          "America/Juneau",
+          "America/Boise",
+          "America/North_Dakota/New_Salem",
+          "Pacific/Honolulu",
+          "America/Anchorage",
+          "America/Montevideo",
+          "Asia/Samarkand",
+          "Asia/Tashkent",
+          "Europe/Vatican",
+          "America/St_Vincent",
+          "America/Caracas",
+          "America/Tortola",
+          "America/St_Thomas",
+          "Pacific/Efate",
+          "Pacific/Wallis",
+          "Pacific/Apia",
+          "Asia/Aden",
+          "Indian/Mayotte",
+          "Africa/Johannesburg",
+          "Africa/Lusaka",
+          "Africa/Harare"
+        ],
+        "shards": [
+          "0",
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i",
+          "j",
+          "k",
+          "l",
+          "m",
+          "n",
+          "o",
+          "p",
+          "q",
+          "r",
+          "s",
+          "t",
+          "u",
+          "v",
+          "w",
+          "x",
+          "y",
+          "z"
+        ]
+      },
+      "requests": [
+        "index.json",
+        "0.json",
+        "a.json",
+        "b.json",
+        "c.json",
+        "d.json",
+        "e.json",
+        "f.json",
+        "g.json",
+        "h.json",
+        "i.json",
+        "j.json",
+        "k.json",
+        "l.json",
+        "m.json",
+        "n.json",
+        "o.json",
+        "p.json",
+        "q.json",
+        "r.json",
+        "s.json",
+        "t.json",
+        "u.json",
+        "v.json",
+        "w.json",
+        "x.json",
+        "y.json",
+        "z.json"
+      ],
+      "outputs": [
+        {
+          "key": "0",
+          "query": "6th of October City",
+          "cities": [
+            {
+              "name": "6th of October City",
+              "admin1": "Giza",
+              "country": "Egypt",
+              "latitude": 29.82,
+              "longitude": 31.05,
+              "timeZone": "Africa/Cairo",
+              "population": 368650
+            }
+          ]
+        },
+        {
+          "key": "a",
+          "query": "Ahmedabad",
+          "cities": [
+            {
+              "name": "Ahmedabad",
+              "admin1": "Gujarat",
+              "country": "India",
+              "latitude": 23.03,
+              "longitude": 72.59,
+              "timeZone": "Asia/Kolkata",
+              "population": 6357693
+            }
+          ]
+        },
+        {
+          "key": "b",
+          "query": "Beijing",
+          "cities": [
+            {
+              "name": "Beijing",
+              "admin1": "Beijing",
+              "country": "China",
+              "latitude": 39.91,
+              "longitude": 116.4,
+              "timeZone": "Asia/Shanghai",
+              "population": 18960744
+            }
+          ]
+        },
+        {
+          "key": "c",
+          "query": "Chengdu",
+          "cities": [
+            {
+              "name": "Chengdu",
+              "admin1": "Sichuan",
+              "country": "China",
+              "latitude": 30.67,
+              "longitude": 104.07,
+              "timeZone": "Asia/Shanghai",
+              "population": 13568357
+            }
+          ]
+        },
+        {
+          "key": "d",
+          "query": "Delhi",
+          "cities": [
+            {
+              "name": "Delhi",
+              "admin1": "Delhi",
+              "country": "India",
+              "latitude": 28.65,
+              "longitude": 77.23,
+              "timeZone": "Asia/Kolkata",
+              "population": 11034555
+            },
+            {
+              "name": "Delhi Cantonment",
+              "admin1": "Delhi",
+              "country": "India",
+              "latitude": 28.6,
+              "longitude": 77.13,
+              "timeZone": "Asia/Kolkata",
+              "population": 110351
+            }
+          ]
+        },
+        {
+          "key": "e",
+          "query": "Ecatepec de Morelos",
+          "cities": [
+            {
+              "name": "Ecatepec de Morelos",
+              "admin1": "Mexico",
+              "country": "Mexico",
+              "latitude": 19.6,
+              "longitude": -99.06,
+              "timeZone": "America/Mexico_City",
+              "population": 1645352
+            }
+          ]
+        },
+        {
+          "key": "f",
+          "query": "Foshan",
+          "cities": [
+            {
+              "name": "Foshan",
+              "admin1": "Guangdong",
+              "country": "China",
+              "latitude": 23.03,
+              "longitude": 113.13,
+              "timeZone": "Asia/Shanghai",
+              "population": 9042509
+            }
+          ]
+        },
+        {
+          "key": "g",
+          "query": "Guangzhou",
+          "cities": [
+            {
+              "name": "Guangzhou",
+              "admin1": "Guangdong",
+              "country": "China",
+              "latitude": 23.12,
+              "longitude": 113.25,
+              "timeZone": "Asia/Shanghai",
+              "population": 16096724
+            }
+          ]
+        },
+        {
+          "key": "h",
+          "query": "Ho Chi Minh City",
+          "cities": [
+            {
+              "name": "Ho Chi Minh City",
+              "admin1": "Ho Chi Minh City (HCMC)",
+              "country": "Vietnam",
+              "latitude": 10.82,
+              "longitude": 106.63,
+              "timeZone": "Asia/Ho_Chi_Minh",
+              "population": 14002598
+            }
+          ]
+        },
+        {
+          "key": "i",
+          "query": "Istanbul",
+          "cities": [
+            {
+              "name": "Istanbul",
+              "admin1": "Istanbul",
+              "country": "Turkey",
+              "latitude": 41.01,
+              "longitude": 28.95,
+              "timeZone": "Europe/Istanbul",
+              "population": 15701602
+            }
+          ]
+        },
+        {
+          "key": "j",
+          "query": "Johannesburg",
+          "cities": [
+            {
+              "name": "Johannesburg",
+              "admin1": "Gauteng",
+              "country": "South Africa",
+              "latitude": -26.2,
+              "longitude": 28.04,
+              "timeZone": "Africa/Johannesburg",
+              "population": 9418183
+            }
+          ]
+        },
+        {
+          "key": "k",
+          "query": "Kinshasa",
+          "cities": [
+            {
+              "name": "Kinshasa",
+              "admin1": "Kinshasa",
+              "country": "Democratic Republic of the Congo",
+              "latitude": -4.33,
+              "longitude": 15.31,
+              "timeZone": "Africa/Kinshasa",
+              "population": 16000000
+            }
+          ]
+        },
+        {
+          "key": "l",
+          "query": "Lagos",
+          "cities": [
+            {
+              "name": "Lagos",
+              "admin1": "Lagos",
+              "country": "Nigeria",
+              "latitude": 6.45,
+              "longitude": 3.39,
+              "timeZone": "Africa/Lagos",
+              "population": 15388000
+            },
+            {
+              "name": "Lagos de Moreno",
+              "admin1": "Jalisco",
+              "country": "Mexico",
+              "latitude": 21.36,
+              "longitude": -101.93,
+              "timeZone": "America/Mexico_City",
+              "population": 98206
+            },
+            {
+              "name": "Lagos",
+              "admin1": "Faro",
+              "country": "Portugal",
+              "latitude": 37.1,
+              "longitude": -8.67,
+              "timeZone": "Europe/Lisbon",
+              "population": 33494
+            }
+          ]
+        },
+        {
+          "key": "m",
+          "query": "Mumbai",
+          "cities": [
+            {
+              "name": "Mumbai",
+              "admin1": "Maharashtra",
+              "country": "India",
+              "latitude": 19.07,
+              "longitude": 72.88,
+              "timeZone": "Asia/Kolkata",
+              "population": 12691836
+            }
+          ]
+        },
+        {
+          "key": "n",
+          "query": "Nanjing",
+          "cities": [
+            {
+              "name": "Nanjing",
+              "admin1": "Jiangsu",
+              "country": "China",
+              "latitude": 32.06,
+              "longitude": 118.78,
+              "timeZone": "Asia/Shanghai",
+              "population": 9314685
+            }
+          ]
+        },
+        {
+          "key": "o",
+          "query": "Osaka",
+          "cities": [
+            {
+              "name": "Osaka",
+              "admin1": "Osaka",
+              "country": "Japan",
+              "latitude": 34.69,
+              "longitude": 135.5,
+              "timeZone": "Asia/Tokyo",
+              "population": 2753862
+            }
+          ]
+        },
+        {
+          "key": "p",
+          "query": "Puxi",
+          "cities": [
+            {
+              "name": "Puxi",
+              "admin1": "Shanghai",
+              "country": "China",
+              "latitude": 31.24,
+              "longitude": 121.47,
+              "timeZone": "Asia/Shanghai",
+              "population": 6683712
+            }
+          ]
+        },
+        {
+          "key": "q",
+          "query": "Qingdao",
+          "cities": [
+            {
+              "name": "Qingdao",
+              "admin1": "Shandong",
+              "country": "China",
+              "latitude": 36.06,
+              "longitude": 120.38,
+              "timeZone": "Asia/Shanghai",
+              "population": 7172451
+            }
+          ]
+        },
+        {
+          "key": "r",
+          "query": "Rio de Janeiro",
+          "cities": [
+            {
+              "name": "Rio de Janeiro",
+              "admin1": "Rio de Janeiro",
+              "country": "Brazil",
+              "latitude": -22.91,
+              "longitude": -43.18,
+              "timeZone": "America/Sao_Paulo",
+              "population": 6747815
+            }
+          ]
+        },
+        {
+          "key": "s",
+          "query": "Shanghai",
+          "cities": [
+            {
+              "name": "Shanghai",
+              "admin1": "Shanghai",
+              "country": "China",
+              "latitude": 31.22,
+              "longitude": 121.46,
+              "timeZone": "Asia/Shanghai",
+              "population": 24874500
+            }
+          ]
+        },
+        {
+          "key": "t",
+          "query": "Tianjin",
+          "cities": [
+            {
+              "name": "Tianjin",
+              "admin1": "Tianjin",
+              "country": "China",
+              "latitude": 39.14,
+              "longitude": 117.18,
+              "timeZone": "Asia/Shanghai",
+              "population": 11090314
+            }
+          ]
+        },
+        {
+          "key": "u",
+          "query": "UEruemqi",
+          "cities": [
+            {
+              "name": "Ürümqi",
+              "admin1": "Xinjiang",
+              "country": "China",
+              "latitude": 43.8,
+              "longitude": 87.6,
+              "timeZone": "Asia/Urumqi",
+              "population": 3029372
+            }
+          ]
+        },
+        {
+          "key": "v",
+          "query": "Vadodara",
+          "cities": [
+            {
+              "name": "Vadodara",
+              "admin1": "Gujarat",
+              "country": "India",
+              "latitude": 22.3,
+              "longitude": 73.21,
+              "timeZone": "Asia/Kolkata",
+              "population": 1822221
+            }
+          ]
+        },
+        {
+          "key": "w",
+          "query": "Wuhan",
+          "cities": [
+            {
+              "name": "Wuhan",
+              "admin1": "Hubei",
+              "country": "China",
+              "latitude": 30.58,
+              "longitude": 114.27,
+              "timeZone": "Asia/Shanghai",
+              "population": 10392693
+            }
+          ]
+        },
+        {
+          "key": "x",
+          "query": "Xi'an",
+          "cities": [
+            {
+              "name": "Xi’an",
+              "admin1": "Shaanxi",
+              "country": "China",
+              "latitude": 34.26,
+              "longitude": 108.93,
+              "timeZone": "Asia/Shanghai",
+              "population": 9600000
+            }
+          ]
+        },
+        {
+          "key": "y",
+          "query": "Yangon",
+          "cities": [
+            {
+              "name": "Yangon",
+              "admin1": "Yangon",
+              "country": "Myanmar",
+              "latitude": 16.81,
+              "longitude": 96.16,
+              "timeZone": "Asia/Yangon",
+              "population": 4477638
+            }
+          ]
+        },
+        {
+          "key": "z",
+          "query": "Zhengzhou",
+          "cities": [
+            {
+              "name": "Zhengzhou",
+              "admin1": "Henan",
+              "country": "China",
+              "latitude": 34.76,
+              "longitude": 113.65,
+              "timeZone": "Asia/Shanghai",
+              "population": 4253913
+            }
+          ]
+        }
+      ],
+      "elapsedMs": 56.42291700000004
+    },
+    {
+      "file": "/private/tmp/zodiacs-platform-geo-schema/packages/engine/src/geo/geonames.ts",
+      "sourceSha256": "fd4363799fb26f3682b8c54054afc07761d7c301cdb798e6afc40965df150437",
+      "metadata": {
+        "version": 1,
+        "source": "GeoNames cities15000 (CC BY 4.0)",
+        "count": 33934,
+        "timeZones": [
+          "Europe/Andorra",
+          "Asia/Dubai",
+          "Asia/Kabul",
+          "America/Antigua",
+          "America/Anguilla",
+          "Europe/Tirane",
+          "Asia/Yerevan",
+          "Africa/Luanda",
+          "America/Argentina/Buenos_Aires",
+          "America/Argentina/Cordoba",
+          "America/Argentina/Salta",
+          "America/Argentina/Tucuman",
+          "America/Argentina/San_Juan",
+          "America/Argentina/Ushuaia",
+          "America/Argentina/Catamarca",
+          "America/Argentina/Jujuy",
+          "America/Argentina/Mendoza",
+          "America/Argentina/San_Luis",
+          "America/Argentina/Rio_Gallegos",
+          "America/Argentina/La_Rioja",
+          "Pacific/Pago_Pago",
+          "Europe/Vienna",
+          "Australia/Adelaide",
+          "Australia/Perth",
+          "Australia/Brisbane",
+          "Australia/Darwin",
+          "Australia/Melbourne",
+          "Australia/Sydney",
+          "Australia/Hobart",
+          "Australia/Broken_Hill",
+          "America/Aruba",
+          "Europe/Mariehamn",
+          "Asia/Baku",
+          "Europe/Sarajevo",
+          "America/Barbados",
+          "Asia/Dhaka",
+          "Europe/Brussels",
+          "Africa/Ouagadougou",
+          "Europe/Sofia",
+          "Asia/Bahrain",
+          "Africa/Bujumbura",
+          "Africa/Porto-Novo",
+          "America/St_Barthelemy",
+          "Atlantic/Bermuda",
+          "Asia/Brunei",
+          "America/La_Paz",
+          "America/Kralendijk",
+          "America/Fortaleza",
+          "America/Recife",
+          "America/Belem",
+          "America/Maceio",
+          "America/Manaus",
+          "America/Bahia",
+          "America/Araguaina",
+          "America/Santarem",
+          "America/Sao_Paulo",
+          "America/Cuiaba",
+          "America/Campo_Grande",
+          "America/Rio_Branco",
+          "America/Porto_Velho",
+          "America/Eirunepe",
+          "America/Boa_Vista",
+          "America/Nassau",
+          "Asia/Thimphu",
+          "Africa/Gaborone",
+          "Europe/Minsk",
+          "America/Belize",
+          "America/Vancouver",
+          "America/Toronto",
+          "America/Edmonton",
+          "America/Halifax",
+          "America/Winnipeg",
+          "America/St_Johns",
+          "America/Moncton",
+          "America/Dawson_Creek",
+          "America/Glace_Bay",
+          "America/Regina",
+          "America/Swift_Current",
+          "America/Whitehorse",
+          "Indian/Cocos",
+          "Africa/Lubumbashi",
+          "Africa/Kinshasa",
+          "Africa/Bangui",
+          "Africa/Brazzaville",
+          "Europe/Zurich",
+          "Africa/Abidjan",
+          "Pacific/Rarotonga",
+          "America/Santiago",
+          "America/Punta_Arenas",
+          "America/Coyhaique",
+          "Africa/Douala",
+          "Asia/Shanghai",
+          "Asia/Urumqi",
+          "Asia/Macau",
+          "America/Bogota",
+          "America/Costa_Rica",
+          "America/Havana",
+          "Atlantic/Cape_Verde",
+          "America/Curacao",
+          "Indian/Christmas",
+          "Asia/Famagusta",
+          "Asia/Nicosia",
+          "Europe/Prague",
+          "Europe/Berlin",
+          "Africa/Djibouti",
+          "Europe/Copenhagen",
+          "America/Dominica",
+          "America/Santo_Domingo",
+          "Africa/Algiers",
+          "America/Guayaquil",
+          "Europe/Tallinn",
+          "Africa/Cairo",
+          "Africa/El_Aaiun",
+          "Africa/Asmara",
+          "Europe/Madrid",
+          "Atlantic/Canary",
+          "Africa/Ceuta",
+          "Africa/Addis_Ababa",
+          "Europe/Helsinki",
+          "Pacific/Fiji",
+          "Atlantic/Stanley",
+          "Pacific/Pohnpei",
+          "Atlantic/Faroe",
+          "Europe/Paris",
+          "Africa/Libreville",
+          "Europe/London",
+          "America/Grenada",
+          "Asia/Tbilisi",
+          "Europe/Moscow",
+          "America/Cayenne",
+          "Europe/Guernsey",
+          "Africa/Accra",
+          "Europe/Gibraltar",
+          "America/Nuuk",
+          "Africa/Banjul",
+          "Africa/Conakry",
+          "America/Guadeloupe",
+          "Africa/Malabo",
+          "Europe/Athens",
+          "Atlantic/South_Georgia",
+          "America/Guatemala",
+          "Pacific/Guam",
+          "Africa/Bissau",
+          "America/Guyana",
+          "Asia/Hong_Kong",
+          "America/Tegucigalpa",
+          "Europe/Zagreb",
+          "America/Port-au-Prince",
+          "Europe/Budapest",
+          "Asia/Jakarta",
+          "Asia/Makassar",
+          "Asia/Jayapura",
+          "Asia/Pontianak",
+          "Asia/Ho_Chi_Minh",
+          "Europe/Dublin",
+          "Asia/Jerusalem",
+          "Europe/Isle_of_Man",
+          "Asia/Kolkata",
+          "Asia/Baghdad",
+          "Asia/Tehran",
+          "Atlantic/Reykjavik",
+          "Europe/Rome",
+          "Europe/Jersey",
+          "America/Jamaica",
+          "Asia/Amman",
+          "Asia/Tokyo",
+          "Africa/Nairobi",
+          "Asia/Bishkek",
+          "Asia/Phnom_Penh",
+          "Pacific/Tarawa",
+          "Indian/Comoro",
+          "America/St_Kitts",
+          "Asia/Pyongyang",
+          "Asia/Seoul",
+          "Asia/Kuwait",
+          "America/Cayman",
+          "Asia/Aqtau",
+          "Asia/Aqtobe",
+          "Asia/Atyrau",
+          "Asia/Oral",
+          "Asia/Almaty",
+          "Asia/Qyzylorda",
+          "Asia/Qostanay",
+          "Asia/Vientiane",
+          "Asia/Beirut",
+          "America/St_Lucia",
+          "Europe/Vaduz",
+          "Asia/Colombo",
+          "Africa/Monrovia",
+          "Africa/Maseru",
+          "Europe/Vilnius",
+          "Europe/Luxembourg",
+          "Europe/Riga",
+          "Africa/Tripoli",
+          "Africa/Casablanca",
+          "Europe/Monaco",
+          "Europe/Chisinau",
+          "Europe/Podgorica",
+          "America/Marigot",
+          "Indian/Antananarivo",
+          "Pacific/Majuro",
+          "Europe/Skopje",
+          "Africa/Bamako",
+          "Asia/Yangon",
+          "Asia/Hovd",
+          "Asia/Ulaanbaatar",
+          "Pacific/Saipan",
+          "America/Martinique",
+          "Africa/Nouakchott",
+          "America/Montserrat",
+          "Europe/Malta",
+          "Indian/Mauritius",
+          "Indian/Maldives",
+          "Africa/Blantyre",
+          "America/Monterrey",
+          "America/Mexico_City",
+          "America/Merida",
+          "America/Cancun",
+          "America/Matamoros",
+          "America/Hermosillo",
+          "America/Mazatlan",
+          "America/Tijuana",
+          "America/Ojinaga",
+          "America/Chihuahua",
+          "America/Bahia_Banderas",
+          "America/Ciudad_Juarez",
+          "Asia/Kuala_Lumpur",
+          "Asia/Kuching",
+          "Africa/Maputo",
+          "Africa/Windhoek",
+          "Pacific/Noumea",
+          "Africa/Niamey",
+          "Pacific/Norfolk",
+          "Africa/Lagos",
+          "America/Managua",
+          "Europe/Amsterdam",
+          "Europe/Oslo",
+          "Asia/Kathmandu",
+          "Pacific/Nauru",
+          "Pacific/Niue",
+          "Pacific/Auckland",
+          "Asia/Muscat",
+          "America/Panama",
+          "America/Lima",
+          "Pacific/Tahiti",
+          "Pacific/Port_Moresby",
+          "Pacific/Bougainville",
+          "Asia/Manila",
+          "Asia/Karachi",
+          "Europe/Warsaw",
+          "America/Miquelon",
+          "Pacific/Pitcairn",
+          "America/Puerto_Rico",
+          "Asia/Gaza",
+          "Asia/Hebron",
+          "Europe/Lisbon",
+          "Atlantic/Madeira",
+          "Atlantic/Azores",
+          "Pacific/Palau",
+          "America/Asuncion",
+          "Asia/Qatar",
+          "Indian/Reunion",
+          "Europe/Bucharest",
+          "Europe/Belgrade",
+          "Asia/Yekaterinburg",
+          "Europe/Volgograd",
+          "Europe/Samara",
+          "Europe/Kaliningrad",
+          "Europe/Saratov",
+          "Europe/Kirov",
+          "Europe/Ulyanovsk",
+          "Europe/Astrakhan",
+          "Asia/Barnaul",
+          "Asia/Novokuznetsk",
+          "Asia/Krasnoyarsk",
+          "Asia/Tomsk",
+          "Asia/Novosibirsk",
+          "Asia/Irkutsk",
+          "Asia/Omsk",
+          "Asia/Yakutsk",
+          "Asia/Vladivostok",
+          "Asia/Chita",
+          "Asia/Kamchatka",
+          "Asia/Sakhalin",
+          "Asia/Magadan",
+          "Asia/Anadyr",
+          "Africa/Kigali",
+          "Asia/Riyadh",
+          "Pacific/Guadalcanal",
+          "Indian/Mahe",
+          "Africa/Khartoum",
+          "Europe/Stockholm",
+          "Asia/Singapore",
+          "Atlantic/St_Helena",
+          "Europe/Ljubljana",
+          "Arctic/Longyearbyen",
+          "Europe/Bratislava",
+          "Africa/Freetown",
+          "Europe/San_Marino",
+          "Africa/Dakar",
+          "Africa/Mogadishu",
+          "America/Paramaribo",
+          "Africa/Juba",
+          "Africa/Sao_Tome",
+          "America/El_Salvador",
+          "America/Lower_Princes",
+          "Asia/Damascus",
+          "Africa/Mbabane",
+          "America/Grand_Turk",
+          "Africa/Ndjamena",
+          "Indian/Kerguelen",
+          "Africa/Lome",
+          "Asia/Bangkok",
+          "Asia/Dushanbe",
+          "Asia/Dili",
+          "Asia/Ashgabat",
+          "Africa/Tunis",
+          "Pacific/Tongatapu",
+          "Europe/Istanbul",
+          "America/Port_of_Spain",
+          "Pacific/Funafuti",
+          "Asia/Taipei",
+          "Africa/Dar_es_Salaam",
+          "Europe/Kyiv",
+          "Europe/Simferopol",
+          "Africa/Kampala",
+          "America/New_York",
+          "America/Chicago",
+          "America/Indiana/Indianapolis",
+          "America/Kentucky/Louisville",
+          "America/Indiana/Vincennes",
+          "America/Detroit",
+          "America/Los_Angeles",
+          "America/Phoenix",
+          "America/Denver",
+          "America/Juneau",
+          "America/Boise",
+          "America/North_Dakota/New_Salem",
+          "Pacific/Honolulu",
+          "America/Anchorage",
+          "America/Montevideo",
+          "Asia/Samarkand",
+          "Asia/Tashkent",
+          "Europe/Vatican",
+          "America/St_Vincent",
+          "America/Caracas",
+          "America/Tortola",
+          "America/St_Thomas",
+          "Pacific/Efate",
+          "Pacific/Wallis",
+          "Pacific/Apia",
+          "Asia/Aden",
+          "Indian/Mayotte",
+          "Africa/Johannesburg",
+          "Africa/Lusaka",
+          "Africa/Harare"
+        ],
+        "shards": [
+          "0",
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i",
+          "j",
+          "k",
+          "l",
+          "m",
+          "n",
+          "o",
+          "p",
+          "q",
+          "r",
+          "s",
+          "t",
+          "u",
+          "v",
+          "w",
+          "x",
+          "y",
+          "z"
+        ]
+      },
+      "requests": [
+        "index.json",
+        "0.json",
+        "a.json",
+        "b.json",
+        "c.json",
+        "d.json",
+        "e.json",
+        "f.json",
+        "g.json",
+        "h.json",
+        "i.json",
+        "j.json",
+        "k.json",
+        "l.json",
+        "m.json",
+        "n.json",
+        "o.json",
+        "p.json",
+        "q.json",
+        "r.json",
+        "s.json",
+        "t.json",
+        "u.json",
+        "v.json",
+        "w.json",
+        "x.json",
+        "y.json",
+        "z.json"
+      ],
+      "outputs": [
+        {
+          "key": "0",
+          "query": "6th of October City",
+          "cities": [
+            {
+              "name": "6th of October City",
+              "admin1": "Giza",
+              "country": "Egypt",
+              "latitude": 29.82,
+              "longitude": 31.05,
+              "timeZone": "Africa/Cairo",
+              "population": 368650
+            }
+          ]
+        },
+        {
+          "key": "a",
+          "query": "Ahmedabad",
+          "cities": [
+            {
+              "name": "Ahmedabad",
+              "admin1": "Gujarat",
+              "country": "India",
+              "latitude": 23.03,
+              "longitude": 72.59,
+              "timeZone": "Asia/Kolkata",
+              "population": 6357693
+            }
+          ]
+        },
+        {
+          "key": "b",
+          "query": "Beijing",
+          "cities": [
+            {
+              "name": "Beijing",
+              "admin1": "Beijing",
+              "country": "China",
+              "latitude": 39.91,
+              "longitude": 116.4,
+              "timeZone": "Asia/Shanghai",
+              "population": 18960744
+            }
+          ]
+        },
+        {
+          "key": "c",
+          "query": "Chengdu",
+          "cities": [
+            {
+              "name": "Chengdu",
+              "admin1": "Sichuan",
+              "country": "China",
+              "latitude": 30.67,
+              "longitude": 104.07,
+              "timeZone": "Asia/Shanghai",
+              "population": 13568357
+            }
+          ]
+        },
+        {
+          "key": "d",
+          "query": "Delhi",
+          "cities": [
+            {
+              "name": "Delhi",
+              "admin1": "Delhi",
+              "country": "India",
+              "latitude": 28.65,
+              "longitude": 77.23,
+              "timeZone": "Asia/Kolkata",
+              "population": 11034555
+            },
+            {
+              "name": "Delhi Cantonment",
+              "admin1": "Delhi",
+              "country": "India",
+              "latitude": 28.6,
+              "longitude": 77.13,
+              "timeZone": "Asia/Kolkata",
+              "population": 110351
+            }
+          ]
+        },
+        {
+          "key": "e",
+          "query": "Ecatepec de Morelos",
+          "cities": [
+            {
+              "name": "Ecatepec de Morelos",
+              "admin1": "Mexico",
+              "country": "Mexico",
+              "latitude": 19.6,
+              "longitude": -99.06,
+              "timeZone": "America/Mexico_City",
+              "population": 1645352
+            }
+          ]
+        },
+        {
+          "key": "f",
+          "query": "Foshan",
+          "cities": [
+            {
+              "name": "Foshan",
+              "admin1": "Guangdong",
+              "country": "China",
+              "latitude": 23.03,
+              "longitude": 113.13,
+              "timeZone": "Asia/Shanghai",
+              "population": 9042509
+            }
+          ]
+        },
+        {
+          "key": "g",
+          "query": "Guangzhou",
+          "cities": [
+            {
+              "name": "Guangzhou",
+              "admin1": "Guangdong",
+              "country": "China",
+              "latitude": 23.12,
+              "longitude": 113.25,
+              "timeZone": "Asia/Shanghai",
+              "population": 16096724
+            }
+          ]
+        },
+        {
+          "key": "h",
+          "query": "Ho Chi Minh City",
+          "cities": [
+            {
+              "name": "Ho Chi Minh City",
+              "admin1": "Ho Chi Minh City (HCMC)",
+              "country": "Vietnam",
+              "latitude": 10.82,
+              "longitude": 106.63,
+              "timeZone": "Asia/Ho_Chi_Minh",
+              "population": 14002598
+            }
+          ]
+        },
+        {
+          "key": "i",
+          "query": "Istanbul",
+          "cities": [
+            {
+              "name": "Istanbul",
+              "admin1": "Istanbul",
+              "country": "Turkey",
+              "latitude": 41.01,
+              "longitude": 28.95,
+              "timeZone": "Europe/Istanbul",
+              "population": 15701602
+            }
+          ]
+        },
+        {
+          "key": "j",
+          "query": "Johannesburg",
+          "cities": [
+            {
+              "name": "Johannesburg",
+              "admin1": "Gauteng",
+              "country": "South Africa",
+              "latitude": -26.2,
+              "longitude": 28.04,
+              "timeZone": "Africa/Johannesburg",
+              "population": 9418183
+            }
+          ]
+        },
+        {
+          "key": "k",
+          "query": "Kinshasa",
+          "cities": [
+            {
+              "name": "Kinshasa",
+              "admin1": "Kinshasa",
+              "country": "Democratic Republic of the Congo",
+              "latitude": -4.33,
+              "longitude": 15.31,
+              "timeZone": "Africa/Kinshasa",
+              "population": 16000000
+            }
+          ]
+        },
+        {
+          "key": "l",
+          "query": "Lagos",
+          "cities": [
+            {
+              "name": "Lagos",
+              "admin1": "Lagos",
+              "country": "Nigeria",
+              "latitude": 6.45,
+              "longitude": 3.39,
+              "timeZone": "Africa/Lagos",
+              "population": 15388000
+            },
+            {
+              "name": "Lagos de Moreno",
+              "admin1": "Jalisco",
+              "country": "Mexico",
+              "latitude": 21.36,
+              "longitude": -101.93,
+              "timeZone": "America/Mexico_City",
+              "population": 98206
+            },
+            {
+              "name": "Lagos",
+              "admin1": "Faro",
+              "country": "Portugal",
+              "latitude": 37.1,
+              "longitude": -8.67,
+              "timeZone": "Europe/Lisbon",
+              "population": 33494
+            }
+          ]
+        },
+        {
+          "key": "m",
+          "query": "Mumbai",
+          "cities": [
+            {
+              "name": "Mumbai",
+              "admin1": "Maharashtra",
+              "country": "India",
+              "latitude": 19.07,
+              "longitude": 72.88,
+              "timeZone": "Asia/Kolkata",
+              "population": 12691836
+            }
+          ]
+        },
+        {
+          "key": "n",
+          "query": "Nanjing",
+          "cities": [
+            {
+              "name": "Nanjing",
+              "admin1": "Jiangsu",
+              "country": "China",
+              "latitude": 32.06,
+              "longitude": 118.78,
+              "timeZone": "Asia/Shanghai",
+              "population": 9314685
+            }
+          ]
+        },
+        {
+          "key": "o",
+          "query": "Osaka",
+          "cities": [
+            {
+              "name": "Osaka",
+              "admin1": "Osaka",
+              "country": "Japan",
+              "latitude": 34.69,
+              "longitude": 135.5,
+              "timeZone": "Asia/Tokyo",
+              "population": 2753862
+            }
+          ]
+        },
+        {
+          "key": "p",
+          "query": "Puxi",
+          "cities": [
+            {
+              "name": "Puxi",
+              "admin1": "Shanghai",
+              "country": "China",
+              "latitude": 31.24,
+              "longitude": 121.47,
+              "timeZone": "Asia/Shanghai",
+              "population": 6683712
+            }
+          ]
+        },
+        {
+          "key": "q",
+          "query": "Qingdao",
+          "cities": [
+            {
+              "name": "Qingdao",
+              "admin1": "Shandong",
+              "country": "China",
+              "latitude": 36.06,
+              "longitude": 120.38,
+              "timeZone": "Asia/Shanghai",
+              "population": 7172451
+            }
+          ]
+        },
+        {
+          "key": "r",
+          "query": "Rio de Janeiro",
+          "cities": [
+            {
+              "name": "Rio de Janeiro",
+              "admin1": "Rio de Janeiro",
+              "country": "Brazil",
+              "latitude": -22.91,
+              "longitude": -43.18,
+              "timeZone": "America/Sao_Paulo",
+              "population": 6747815
+            }
+          ]
+        },
+        {
+          "key": "s",
+          "query": "Shanghai",
+          "cities": [
+            {
+              "name": "Shanghai",
+              "admin1": "Shanghai",
+              "country": "China",
+              "latitude": 31.22,
+              "longitude": 121.46,
+              "timeZone": "Asia/Shanghai",
+              "population": 24874500
+            }
+          ]
+        },
+        {
+          "key": "t",
+          "query": "Tianjin",
+          "cities": [
+            {
+              "name": "Tianjin",
+              "admin1": "Tianjin",
+              "country": "China",
+              "latitude": 39.14,
+              "longitude": 117.18,
+              "timeZone": "Asia/Shanghai",
+              "population": 11090314
+            }
+          ]
+        },
+        {
+          "key": "u",
+          "query": "UEruemqi",
+          "cities": [
+            {
+              "name": "Ürümqi",
+              "admin1": "Xinjiang",
+              "country": "China",
+              "latitude": 43.8,
+              "longitude": 87.6,
+              "timeZone": "Asia/Urumqi",
+              "population": 3029372
+            }
+          ]
+        },
+        {
+          "key": "v",
+          "query": "Vadodara",
+          "cities": [
+            {
+              "name": "Vadodara",
+              "admin1": "Gujarat",
+              "country": "India",
+              "latitude": 22.3,
+              "longitude": 73.21,
+              "timeZone": "Asia/Kolkata",
+              "population": 1822221
+            }
+          ]
+        },
+        {
+          "key": "w",
+          "query": "Wuhan",
+          "cities": [
+            {
+              "name": "Wuhan",
+              "admin1": "Hubei",
+              "country": "China",
+              "latitude": 30.58,
+              "longitude": 114.27,
+              "timeZone": "Asia/Shanghai",
+              "population": 10392693
+            }
+          ]
+        },
+        {
+          "key": "x",
+          "query": "Xi'an",
+          "cities": [
+            {
+              "name": "Xi’an",
+              "admin1": "Shaanxi",
+              "country": "China",
+              "latitude": 34.26,
+              "longitude": 108.93,
+              "timeZone": "Asia/Shanghai",
+              "population": 9600000
+            }
+          ]
+        },
+        {
+          "key": "y",
+          "query": "Yangon",
+          "cities": [
+            {
+              "name": "Yangon",
+              "admin1": "Yangon",
+              "country": "Myanmar",
+              "latitude": 16.81,
+              "longitude": 96.16,
+              "timeZone": "Asia/Yangon",
+              "population": 4477638
+            }
+          ]
+        },
+        {
+          "key": "z",
+          "query": "Zhengzhou",
+          "cities": [
+            {
+              "name": "Zhengzhou",
+              "admin1": "Henan",
+              "country": "China",
+              "latitude": 34.76,
+              "longitude": 113.65,
+              "timeZone": "Asia/Shanghai",
+              "population": 4253913
+            }
+          ]
+        }
+      ],
+      "elapsedMs": 28.569541000000015
+    }
+  ]
+}

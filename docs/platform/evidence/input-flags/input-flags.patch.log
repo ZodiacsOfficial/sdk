@@ -1,0 +1,849 @@
+diff --git a/packages/engine/README.md b/packages/engine/README.md
+index 6bade00..b698679 100644
+--- a/packages/engine/README.md
++++ b/packages/engine/README.md
+@@ -107,6 +107,44 @@ flags. When the birth time is unknown, pass a conventional UTC instant with
+ `timeKnown: false`; angles and houses remain absent and the chart carries the
+ `no-time` flag.
+ 
++### Input flag compatibility
++
++Public birth inputs retain all five `ChartFlag` values. Supply an array with at
++most 64 entries; entries must be known string values in ordinary data slots.
++Repeated values collapse in first-occurrence order. Unknown strings, sparse
++slots, accessor slots, non-array iterables and simultaneous `dst-gap`/`dst-fold`
++claims reject with a `RangeError` that does not include supplied flag values.
++
++`dst-gap`, `dst-fold` and `lmt` remain caller assertions: a UTC instant alone
++cannot verify a historical local-time resolution. `no-time` and
++`polar-fallback` may be echoed for compatibility, but must agree with the
++calculation. Set `timeKnown: false` for unknown time; a flag never overrides that
++setting. A fallback assertion requires the actual requested Placidus calculation
++to produce whole-sign houses, including fallback caused by nonconvergence.
++
++`natalChart` stores only distinct time-resolution assertions in `chart.input.flags`
++and derives result flags once. This is canonical semantic input, not a lossless
++record of the submitted flag array. Correct derived echoes therefore work with
++the existing draft receipt creator and replay; the receipt schema is unchanged.
++
++When `transits`, `synastry` or `saturnReturn` receive a precomputed `Chart`, they
++check flag consistency with its supplied time/settings and house/angle presence.
++Contradictory or missing result claims reject. They do not recompute or verify
++the supplied astronomical result. An already canonical Chart retains object
++identity; compatible duplicate/derived echoes produce a shallow metadata copy,
++preserving numerical arrays and engine version. These checks happen at call
++time and do not freeze caller-owned objects.
++
++Ordinary Saturn-return inputs require no extra natal calculation. A raw birth
++input that explicitly asserts `polar-fallback` requires one natal calculation to
++check that assertion before the return scan. A supplied Chart instead receives
++the consistency check above, without natal recomputation. Public birth and
++`resolveBirth` settings are validated once and the captured scalar values are
++used for calculation/resolution. Explicit null settings or local time are
++invalid. These boundaries do not sandbox same-realm getters, proxies or other
++caller-supplied executable code. The unsupported `/internal` computation API is
++unchanged.
++
+ The shared engine selects the eastern horizon intersection before assembling
+ houses, including in either polar hemisphere. At exact geographic poles no
+ point physically rises; at ecliptic/horizon coincidence an ascendant is not
+diff --git a/packages/engine/src/api.ts b/packages/engine/src/api.ts
+index dff59b8..50dcb36 100644
+--- a/packages/engine/src/api.ts
++++ b/packages/engine/src/api.ts
+@@ -3,11 +3,19 @@ import { computeSaturnReturns } from "./returns.js";
+ import { normalizeLongitude } from "./signs.js";
+ import { findInterAspects, summarizePair } from "./synastry.js";
+ import { dateFrom } from "./date-input.js";
++import {
++  assertDerivedFlags,
++  snapshotFlags,
++  timeFlags,
++  validateBirthSettings
++} from "./birth-input.js";
++import type { FlagSnapshot } from "./birth-input.js";
+ import type {
+   BirthInput,
+   BodyPosition,
+   Chart,
+   ChartInput,
++  ChartFlag,
+   DateInput,
+   MoonPhase,
+   MoonPhaseName,
+@@ -33,44 +41,98 @@ function isBirth(value: unknown): value is BirthInput {
+   return Boolean(value && typeof value === "object" && "utc" in value);
+ }
+ 
+-function resolvedChart(source: NatalSource): Chart {
+-  if (!isChart(source)) return natalChart(source);
+-  validateBirth(source.input);
+-  dateFrom(source.input.utc, "birth.utc");
+-  return source;
+-}
+-
+-function validateBirth(birth: BirthInput): void {
+-  if (!birth || typeof birth !== "object" || Array.isArray(birth)) {
+-    throw new RangeError("birth must be an object containing a resolved utc instant.");
++function resolvedChart(source: NatalSource): { chart: Chart; utc: Date } {
++  if (!isChart(source)) {
++    const chart = natalChart(source);
++    return { chart, utc: chart.input.utc };
+   }
++  const sourceInput = source.input;
++  const { input, flags: inputFlags } = validateBirth(sourceInput);
++  const resultFlags = snapshotFlags(source.flags);
++  const expected = timeFlags(inputFlags?.values ?? []);
++  const hasHouses = input.timeKnown && input.latitude !== undefined;
++  const houses = source.houses;
++  const angles = source.angles;
++  const actualHouseSystem = houses?.system;
+   if (
+-    birth.houseSystem !== undefined &&
+-    birth.houseSystem !== "whole" &&
+-    birth.houseSystem !== "placidus"
++    (hasHouses
++      ? !angles ||
++        typeof angles !== "object" ||
++        Array.isArray(angles) ||
++        !houses ||
++        typeof houses !== "object" ||
++        Array.isArray(houses)
++      : angles !== null || houses !== null) ||
++    (houses !== null && actualHouseSystem !== "whole" && actualHouseSystem !== "placidus") ||
++    (input.houseSystem === "whole" && actualHouseSystem === "placidus")
+   ) {
+-    throw new RangeError('houseSystem must be "whole" or "placidus".');
++    throw new RangeError("chart flags must agree with its input and supplied house result.");
+   }
+-  if (birth.timeKnown !== undefined && typeof birth.timeKnown !== "boolean") {
+-    throw new RangeError("timeKnown must be a boolean.");
+-  }
+-  const hasLatitude = birth.latitude !== undefined;
+-  const hasLongitude = birth.longitude !== undefined;
+-  if (hasLatitude !== hasLongitude) {
+-    throw new RangeError("latitude and longitude must be supplied together.");
++  if (!input.timeKnown) expected.push("no-time");
++  if (input.houseSystem === "placidus" && actualHouseSystem === "whole") {
++    expected.push("polar-fallback");
+   }
++  assertDerivedFlags(inputFlags?.values ?? [], expected);
+   if (
+-    birth.latitude !== undefined &&
+-    (!Number.isFinite(birth.latitude) || birth.latitude < -90 || birth.latitude > 90)
++    resultFlags.values.length !== expected.length ||
++    !expected.every((flag) => resultFlags.values.includes(flag))
+   ) {
+-    throw new RangeError("latitude must be between -90 and 90 degrees.");
++    throw new RangeError("chart flags must agree with its input and supplied house result.");
+   }
+-  if (
+-    birth.longitude !== undefined &&
+-    (!Number.isFinite(birth.longitude) || birth.longitude < -180 || birth.longitude > 180)
+-  ) {
+-    throw new RangeError("longitude must be between -180 and 180 degrees.");
++  const canonicalInputFlags = input.flags ?? [];
++  const inputChanged =
++    inputFlags !== undefined &&
++    (inputFlags.hasDuplicates || inputFlags.values.length !== canonicalInputFlags.length);
++  const resultChanged =
++    resultFlags.hasDuplicates ||
++    !expected.every((flag, index) => flag === resultFlags.values[index]);
++  // A supplied Chart's numerical result remains a claim. Only flag metadata is
++  // normalized; canonical Charts retain identity and no ephemeris is rerun.
++  if (!inputChanged && !resultChanged) return { chart: source, utc: input.utc };
++  return {
++    chart: {
++      ...source,
++      input: inputChanged ? input : sourceInput,
++      flags: expected
++    },
++    utc: input.utc
++  };
++}
++
++interface ValidatedBirth {
++  input: ChartInput;
++  flags: FlagSnapshot | undefined;
++}
++
++function validateBirth(birth: BirthInput): ValidatedBirth {
++  if (!birth || typeof birth !== "object" || Array.isArray(birth)) {
++    throw new RangeError("birth must be an object containing a resolved utc instant.");
+   }
++  const settings = validateBirthSettings(birth);
++  const supplied = birth.flags;
++  const flags = supplied === undefined ? undefined : snapshotFlags(supplied);
++  const possible: ChartFlag[] = [];
++  if (settings.timeKnown === false) possible.push("no-time");
++  else if (settings.houseSystem === "placidus" && settings.latitude !== undefined) {
++    possible.push("polar-fallback");
++  }
++  assertDerivedFlags(flags?.values ?? [], possible);
++  const input: ChartInput = {
++    utc: dateFrom(birth.utc, "birth.utc"),
++    houseSystem: settings.houseSystem ?? "whole",
++    timeKnown: settings.timeKnown ?? true,
++    ...(settings.latitude === undefined
++      ? {}
++      : { latitude: settings.latitude, longitude: settings.longitude }),
++    ...(flags === undefined ? {} : { flags: timeFlags(flags.values) })
++  };
++  return { input, flags };
++}
++
++function computedBirth({ input, flags }: ValidatedBirth): Chart {
++  const chart = computeChart(input);
++  assertDerivedFlags(flags?.values ?? [], chart.flags);
++  return chart;
+ }
+ 
+ /** Apparent geocentric tropical positions for an instant. */
+@@ -80,22 +142,12 @@ export function positions(date: DateInput): BodyPosition[] {
+ 
+ /** Build a natal chart from an already resolved UTC instant. */
+ export function natalChart(birth: BirthInput): Chart {
+-  validateBirth(birth);
+-  const input: ChartInput = {
+-    utc: dateFrom(birth.utc, "birth.utc"),
+-    houseSystem: birth.houseSystem ?? "whole",
+-    timeKnown: birth.timeKnown ?? true,
+-    ...(birth.latitude === undefined
+-      ? {}
+-      : { latitude: birth.latitude, longitude: birth.longitude }),
+-    ...(birth.flags === undefined ? {} : { flags: [...birth.flags] })
+-  };
+-  return computeChart(input);
++  return computedBirth(validateBirth(birth));
+ }
+ 
+ /** Snapshot of current positions and their major aspects to a natal chart. */
+ export function transits(natal: NatalSource, date: DateInput): TransitResult {
+-  const chart = resolvedChart(natal);
++  const { chart } = resolvedChart(natal);
+   const at = dateFrom(date, "date");
+   const current = computeBodies(at);
+   return {
+@@ -108,8 +160,8 @@ export function transits(natal: NatalSource, date: DateInput): TransitResult {
+ 
+ /** Major inter-chart aspects and element/modality balances. */
+ export function synastry(first: NatalSource, second: NatalSource): SynastryResult {
+-  const a = resolvedChart(first);
+-  const b = resolvedChart(second);
++  const { chart: a } = resolvedChart(first);
++  const { chart: b } = resolvedChart(second);
+   return { a, b, ...summarizePair(a.bodies, b.bodies) };
+ }
+ 
+@@ -141,11 +193,14 @@ export function moonPhase(date: DateInput): MoonPhase {
+ export function saturnReturn(birth: SaturnReturnSource): SaturnReturnResult {
+   let utc: Date;
+   if (isChart(birth)) {
+-    validateBirth(birth.input);
+-    utc = dateFrom(birth.input.utc, "birth.utc");
++    utc = resolvedChart(birth).utc;
+   } else if (isBirth(birth)) {
+-    validateBirth(birth);
+-    utc = dateFrom(birth.utc, "birth.utc");
++    const validated = validateBirth(birth);
++    // Only an explicit compatibility assertion needs a natal calculation to
++    // establish actual Placidus fallback. Ordinary return inputs remain date-only.
++    utc = validated.flags?.values.includes("polar-fallback")
++      ? computedBirth(validated).input.utc
++      : validated.input.utc;
+   } else utc = dateFrom(birth, "birth");
+   return computeSaturnReturns(utc);
+ }
+diff --git a/packages/engine/src/geo/timezone.ts b/packages/engine/src/geo/timezone.ts
+index 33d2b28..1c96a07 100644
+--- a/packages/engine/src/geo/timezone.ts
++++ b/packages/engine/src/geo/timezone.ts
+@@ -1,4 +1,5 @@
+ import type { BirthInput, ChartFlag, HouseSystem } from "../types.js";
++import { validateBirthSettings } from "../birth-input.js";
+ 
+ export interface LocalTimeResolution {
+   utc: Date;
+@@ -193,21 +194,24 @@ export function resolveBirth(input: LocalBirthInput): BirthInput {
+   if (!input || typeof input !== "object" || Array.isArray(input)) {
+     throw new RangeError("birth must be an object containing a local date and timezone.");
+   }
+-  const timeKnown = input.timeKnown ?? input.time !== undefined;
+-  if (timeKnown && input.time === undefined) {
++  const settings = validateBirthSettings(input);
++  const time = input.time;
++  const timeKnown = settings.timeKnown ?? time !== undefined;
++  if (timeKnown && time === undefined) {
+     throw new RangeError("time is required when timeKnown is true.");
+   }
+-  if ((input.latitude === undefined) !== (input.longitude === undefined)) {
+-    throw new RangeError("latitude and longitude must be supplied together.");
+-  }
+-  const resolution = resolveLocalToUtc(input.date, input.time ?? "12:00", input.timeZone);
++  const resolution = resolveLocalToUtc(
++    input.date,
++    time === undefined ? "12:00" : time,
++    input.timeZone
++  );
+   return {
+     utc: resolution.utc,
+     timeKnown,
+-    houseSystem: input.houseSystem ?? "whole",
++    houseSystem: settings.houseSystem ?? "whole",
+     flags: resolution.flags,
+-    ...(input.latitude === undefined
++    ...(settings.latitude === undefined
+       ? {}
+-      : { latitude: input.latitude, longitude: input.longitude })
++      : { latitude: settings.latitude, longitude: settings.longitude })
+   };
+ }
+diff --git a/packages/engine/src/receipt.test.ts b/packages/engine/src/receipt.test.ts
+index 2f2f381..681e7e6 100644
+--- a/packages/engine/src/receipt.test.ts
++++ b/packages/engine/src/receipt.test.ts
+@@ -390,7 +390,11 @@ describe("hostile or inconsistent natal envelopes", () => {
+   it.each(["no-time", "polar-fallback", SECRET])(
+     "rejects forged caller flag %s instead of publishing it as a derived fact",
+     (flag) => {
+-      const actual = chart({ latitude: 40, houseSystem: "whole", flags: [flag as ChartFlag] });
++      const actual = chart({ latitude: 40, houseSystem: "whole" });
++      // Mutate after public calculation: the codec must still reject forged
++      // Charts even though natalChart now validates caller flags itself.
++      actual.input.flags = [flag as ChartFlag];
++      actual.flags.push(flag as ChartFlag);
+       expect(actual.flags).toContain(flag);
+       errorFrom(() => createNatalEnvelope(actual));
+     }
+diff --git a/packages/engine/src/types.ts b/packages/engine/src/types.ts
+index 4e8d0db..8f182f2 100644
+--- a/packages/engine/src/types.ts
++++ b/packages/engine/src/types.ts
+@@ -59,6 +59,9 @@ export interface BirthInput {
+   /** False means `utc` is a caller-supplied reference instant and suppresses angles/houses.
+    * It does not establish a UTC-noon or local-noon convention by itself. */
+   timeKnown?: boolean;
++  /** Up to 64 known flags. Duplicate claims normalize to one value. Time flags
++   * are caller assertions; no-time/polar-fallback echoes must match calculation.
++   * natalChart returns canonical semantic flags, not the raw submitted array. */
+   flags?: readonly ChartFlag[];
+ }
+ 
+diff --git a/packages/engine/src/birth-input.ts b/packages/engine/src/birth-input.ts
+new file mode 100644
+index 0000000..c4fc400
+--- /dev/null
++++ b/packages/engine/src/birth-input.ts
+@@ -0,0 +1,77 @@
++import type { BirthInput, ChartFlag } from "./types.js";
++
++type BirthSettings = Pick<BirthInput, "latitude" | "longitude" | "houseSystem" | "timeKnown">;
++
++/** Shared public/civil settings validation; no astronomy or timezone dependency. */
++export function validateBirthSettings(birth: BirthSettings): BirthSettings {
++  const { houseSystem, timeKnown, latitude, longitude } = birth;
++  if (houseSystem !== undefined && houseSystem !== "whole" && houseSystem !== "placidus") {
++    throw new RangeError('houseSystem must be "whole" or "placidus".');
++  }
++  if (timeKnown !== undefined && typeof timeKnown !== "boolean") {
++    throw new RangeError("timeKnown must be a boolean.");
++  }
++  const hasLatitude = latitude !== undefined;
++  const hasLongitude = longitude !== undefined;
++  if (hasLatitude !== hasLongitude) {
++    throw new RangeError("latitude and longitude must be supplied together.");
++  }
++  if (latitude !== undefined && (!Number.isFinite(latitude) || latitude < -90 || latitude > 90)) {
++    throw new RangeError("latitude must be between -90 and 90 degrees.");
++  }
++  if (
++    longitude !== undefined &&
++    (!Number.isFinite(longitude) || longitude < -180 || longitude > 180)
++  ) {
++    throw new RangeError("longitude must be between -180 and 180 degrees.");
++  }
++  return {
++    ...(houseSystem === undefined ? {} : { houseSystem }),
++    ...(timeKnown === undefined ? {} : { timeKnown }),
++    ...(latitude === undefined ? {} : { latitude, longitude })
++  };
++}
++
++const FLAGS: readonly ChartFlag[] = ["dst-gap", "dst-fold", "lmt", "no-time", "polar-fallback"];
++
++export interface FlagSnapshot {
++  values: ChartFlag[];
++  hasDuplicates: boolean;
++}
++
++/** Bounded data snapshot. Do not coerce members or invoke array getters/iterators. */
++export function snapshotFlags(value: unknown): FlagSnapshot {
++  const length: unknown = Array.isArray(value)
++    ? Object.getOwnPropertyDescriptor(value, "length")?.value
++    : undefined;
++  if (typeof length !== "number" || !Number.isInteger(length) || length < 0 || length > 64) {
++    throw new RangeError("flags must be an array of at most 64 supported chart flags.");
++  }
++  const values: ChartFlag[] = [];
++  for (let index = 0; index < length; index += 1) {
++    const flag: unknown = Object.getOwnPropertyDescriptor(value, String(index))?.value;
++    if (typeof flag !== "string" || !FLAGS.includes(flag as ChartFlag)) {
++      throw new RangeError("flags must contain only supported chart flag strings.");
++    }
++    if (!values.includes(flag as ChartFlag)) values.push(flag as ChartFlag);
++  }
++  if (values.includes("dst-gap") && values.includes("dst-fold")) {
++    throw new RangeError('flags cannot contain both "dst-gap" and "dst-fold".');
++  }
++  return { values, hasDuplicates: values.length !== length };
++}
++
++export function timeFlags(flags: readonly ChartFlag[]): ChartFlag[] {
++  return flags.filter((flag) => flag !== "no-time" && flag !== "polar-fallback");
++}
++
++export function assertDerivedFlags(
++  supplied: readonly ChartFlag[],
++  actual: readonly ChartFlag[]
++): void {
++  for (const flag of ["no-time", "polar-fallback"] as const) {
++    if (supplied.includes(flag) && !actual.includes(flag)) {
++      throw new RangeError("flags contradict the birth time or house result.");
++    }
++  }
++}
+diff --git a/packages/engine/src/input-flags.test.ts b/packages/engine/src/input-flags.test.ts
+new file mode 100644
+index 0000000..2fb74bc
+--- /dev/null
++++ b/packages/engine/src/input-flags.test.ts
+@@ -0,0 +1,429 @@
++import { afterEach, describe, expect, it, vi } from "vitest";
++
++import { natalChart, saturnReturn, synastry, transits } from "./index.js";
++import { resolveBirth } from "./geo.js";
++import {
++  createNatalEnvelope,
++  natalReplayInput,
++  parseNatalEnvelope,
++  serializeNatalEnvelope
++} from "./receipt.js";
++import * as ephemeris from "./ephemeris.js";
++import * as returns from "./returns.js";
++import type { BirthInput, Chart, ChartFlag } from "./types.js";
++import type { LocalBirthInput } from "./geo.js";
++
++const instant = "2001-12-21T09:00:00Z";
++const base: BirthInput = {
++  utc: instant,
++  latitude: 40,
++  longitude: -74,
++  houseSystem: "whole",
++  timeKnown: true
++};
++const secret = "SYNTHETIC-PRIVATE-NOTE";
++
++function rejectsPrivately(action: () => unknown): void {
++  let failure: unknown;
++  try {
++    action();
++  } catch (error) {
++    failure = error;
++  }
++  expect(failure).toBeInstanceOf(RangeError);
++  expect((failure as Error).message).not.toContain(secret);
++}
++
++afterEach(() => vi.restoreAllMocks());
++
++describe("public birth flag boundary", () => {
++  it.each([
++    ["private string", [secret]],
++    ["bare string", "lmt"],
++    ["Set", new Set(["lmt"])],
++    ["array-like object", { 0: "lmt", length: 1 }],
++    ["null", null],
++    ["boolean", false],
++    ["number", 1],
++    ["null member", [null]],
++    ["numeric member", [1]],
++    ["object member", [{}]],
++    ["nested array", [["lmt"]]],
++    ["unknown string", ["unknown"]],
++    ["empty string", [""]],
++    ["case mismatch", ["LMT"]],
++    ["whitespace", ["lmt\n"]],
++    ["sparse array", new Array(1)],
++    ["opposing time assertions", ["dst-gap", "dst-fold"]]
++  ])("rejects %s with a fixed error before chart computation", (_label, flags) => {
++    const calculate = vi.spyOn(ephemeris, "computeChart");
++    rejectsPrivately(() => natalChart({ ...base, flags } as BirthInput));
++    expect(calculate).not.toHaveBeenCalled();
++  });
++
++  it("does not coerce flag members or invoke array member getters/iterators", () => {
++    const hook = vi.fn(() => {
++      throw new Error(secret);
++    });
++    const coercible = { toString: hook, valueOf: hook };
++    rejectsPrivately(() => natalChart({ ...base, flags: [coercible] } as unknown as BirthInput));
++    const accessor: ChartFlag[] = [];
++    Object.defineProperty(accessor, "0", { get: hook });
++    rejectsPrivately(() => natalChart({ ...base, flags: accessor }));
++    const data: ChartFlag[] = ["lmt"];
++    Object.defineProperty(data, Symbol.iterator, { value: hook });
++    expect(natalChart({ ...base, flags: data }).flags).toEqual(["lmt"]);
++    expect(hook).not.toHaveBeenCalled();
++  });
++
++  it.each([
++    ["known time marked unknown", { flags: ["no-time"] }],
++    ["default known time marked unknown", { timeKnown: undefined, flags: ["no-time"] }],
++    ["whole-sign request marked fallback", { flags: ["polar-fallback"] }],
++    [
++      "low-latitude Placidus without fallback",
++      { houseSystem: "placidus", flags: ["polar-fallback"] }
++    ],
++    [
++      "unknown time marked fallback",
++      { timeKnown: false, houseSystem: "placidus", flags: ["polar-fallback"] }
++    ],
++    [
++      "no location marked fallback",
++      {
++        latitude: undefined,
++        longitude: undefined,
++        houseSystem: "placidus",
++        flags: ["polar-fallback"]
++      }
++    ]
++  ])("rejects derived-flag contradiction: %s", (_label, changes) => {
++    rejectsPrivately(() => natalChart({ ...base, ...changes } as BirthInput));
++  });
++
++  it.each([
++    {
++      name: "unknown-time echo",
++      changes: { timeKnown: false, flags: ["no-time"] },
++      expected: ["no-time"]
++    },
++    {
++      name: "polar fallback echo",
++      changes: { latitude: 78, houseSystem: "placidus", flags: ["polar-fallback"] },
++      expected: ["polar-fallback"]
++    },
++    {
++      name: "duplicate compatible claims",
++      changes: { timeKnown: false, flags: ["no-time", "lmt", "lmt", "no-time"] },
++      expected: ["lmt", "no-time"]
++    },
++    {
++      name: "time assertions in supplied order",
++      changes: { flags: ["lmt", "dst-fold"] },
++      expected: ["lmt", "dst-fold"]
++    },
++    {
++      name: "historical gap assertions",
++      changes: { flags: ["dst-gap", "lmt"] },
++      expected: ["dst-gap", "lmt"]
++    }
++  ])(
++    "canonicalizes $name without changing numerical results and round-trips a receipt",
++    ({ changes, expected }) => {
++      const supplied = { ...base, ...changes } as BirthInput;
++      const before = structuredClone(supplied);
++      const chart = natalChart(supplied);
++      const timeFlags = expected.filter(
++        (flag) => flag !== "no-time" && flag !== "polar-fallback"
++      ) as ChartFlag[];
++      const control = natalChart({ ...supplied, flags: timeFlags });
++      expect(chart.input.flags).toEqual(timeFlags);
++      expect(chart.flags).toEqual(expected);
++      expect(chart.bodies).toEqual(control.bodies);
++      expect(chart.houses).toEqual(control.houses);
++      expect(chart.angles).toEqual(control.angles);
++      expect(chart.aspects).toEqual(control.aspects);
++      expect(supplied).toEqual(before);
++      const envelope = createNatalEnvelope(chart);
++      expect(envelope.receipt.inputFlags).toEqual(timeFlags);
++      expect(envelope.receipt.resultFlags).toEqual(expected);
++      const parsed = parseNatalEnvelope(serializeNatalEnvelope(envelope));
++      expect(parsed.ok).toBe(true);
++      if (!parsed.ok) throw new Error("Valid fixture failed receipt parsing");
++      expect(natalChart(natalReplayInput(parsed.envelope))).toEqual(chart);
++    }
++  );
++
++  it("keeps optional absence, frozen arrays and later caller mutation safe", () => {
++    expect(Object.hasOwn(natalChart(base).input, "flags")).toBe(false);
++    const flags = ["lmt"] as ChartFlag[];
++    const chart = natalChart({ ...base, flags });
++    flags.push("no-time");
++    expect(chart.input.flags).toEqual(["lmt"]);
++    expect(chart.flags).toEqual(["lmt"]);
++    expect(natalChart({ ...base, flags: Object.freeze(["lmt"] as const) }).flags).toEqual(["lmt"]);
++  });
++
++  it("accepts 64 repeated known claims but rejects longer arrays before reading members", () => {
++    expect(natalChart({ ...base, flags: new Array<ChartFlag>(64).fill("lmt") }).flags).toEqual([
++      "lmt"
++    ]);
++    const flags = new Array<ChartFlag>(65).fill("lmt");
++    const getter = vi.fn(() => {
++      throw new Error(secret);
++    });
++    Object.defineProperty(flags, "0", { get: getter });
++    rejectsPrivately(() => natalChart({ ...base, flags }));
++    expect(getter).not.toHaveBeenCalled();
++  });
++
++  it("uses one validated scalar/flag/instant snapshot for a fresh calculation", () => {
++    const source = { ...base };
++    const first = {
++      latitude: 40,
++      longitude: -74,
++      houseSystem: "placidus",
++      timeKnown: true,
++      flags: ["lmt"],
++      utc: instant
++    };
++    const getters: ReturnType<typeof vi.fn>[] = [];
++    for (const [key, value] of Object.entries(first)) {
++      const getter = vi.fn().mockReturnValueOnce(value).mockReturnValue(secret);
++      getters.push(getter);
++      Object.defineProperty(source, key, { get: getter });
++    }
++    const actual = natalChart(source);
++    expect(actual.input).toMatchObject({ ...first, utc: new Date(instant) });
++    expect(actual.flags).toEqual(["lmt"]);
++    for (const getter of getters) expect(getter).toHaveBeenCalledTimes(1);
++  });
++
++  const wrappers = [
++    ["transits", (input: BirthInput) => transits(input, instant)],
++    ["first synastry input", (input: BirthInput) => synastry(input, base)],
++    ["second synastry input", (input: BirthInput) => synastry(base, input)],
++    ["Saturn returns", (input: BirthInput) => saturnReturn(input)]
++  ] as const;
++  it.each(wrappers)("rejects unknown and contradictory birth flags in %s", (_label, calculate) => {
++    for (const flags of [[secret], ["no-time"], ["polar-fallback"]]) {
++      rejectsPrivately(() => calculate({ ...base, flags } as BirthInput));
++    }
++  });
++});
++
++describe("precomputed Chart flag compatibility", () => {
++  it("retains canonical Chart identity when wrappers reuse it", () => {
++    const chart = natalChart(base);
++    const calculate = vi.spyOn(ephemeris, "computeChart");
++    expect(transits(chart, instant).natal).toBe(chart);
++    expect(synastry(chart, chart).a).toBe(chart);
++    expect(calculate).not.toHaveBeenCalled();
++  });
++
++  it("normalizes a correct legacy derived echo without mutating/recomputing numerical data", () => {
++    const chart = natalChart({ ...base, timeKnown: false });
++    chart.input.flags = ["lmt", "no-time"];
++    chart.flags = ["lmt", "no-time", "no-time"];
++    const before = structuredClone(chart);
++    const calculate = vi.spyOn(ephemeris, "computeChart");
++    const normalized = transits(chart, instant).natal;
++    expect(normalized).not.toBe(chart);
++    expect(normalized.input.flags).toEqual(["lmt"]);
++    expect(normalized.flags).toEqual(["lmt", "no-time"]);
++    expect(normalized.bodies).toBe(chart.bodies);
++    expect(normalized.aspects).toBe(chart.aspects);
++    expect(normalized.engineVersion).toBe(chart.engineVersion);
++    expect(chart).toEqual(before);
++    expect(calculate).not.toHaveBeenCalled();
++    expect(createNatalEnvelope(normalized).receipt.resultFlags).toEqual(["lmt", "no-time"]);
++  });
++
++  it.each([
++    [
++      "unknown input flag",
++      (chart: Chart) => {
++        chart.input.flags = [secret as ChartFlag];
++      }
++    ],
++    [
++      "unknown result flag",
++      (chart: Chart) => {
++        chart.flags.push(secret as ChartFlag);
++      }
++    ],
++    [
++      "forged no-time input",
++      (chart: Chart) => {
++        chart.input.flags = ["no-time"];
++      }
++    ],
++    [
++      "forged polar input",
++      (chart: Chart) => {
++        chart.input.flags = ["polar-fallback"];
++      }
++    ],
++    [
++      "forged no-time result",
++      (chart: Chart) => {
++        chart.flags.push("no-time");
++      }
++    ],
++    [
++      "forged polar result",
++      (chart: Chart) => {
++        chart.flags.push("polar-fallback");
++      }
++    ],
++    [
++      "unrecorded time assertion",
++      (chart: Chart) => {
++        chart.flags.push("lmt");
++      }
++    ]
++  ])("rejects %s for every Chart wrapper", (_label, alter) => {
++    const chart = natalChart(base);
++    alter(chart);
++    rejectsPrivately(() => transits(chart, instant));
++    rejectsPrivately(() => synastry(chart, chart));
++    rejectsPrivately(() => saturnReturn(chart));
++  });
++
++  it.each([
++    ["missing no-time", () => natalChart({ ...base, timeKnown: false })],
++    ["missing polar fallback", () => natalChart({ ...base, latitude: 78, houseSystem: "placidus" })]
++  ])("rejects %s from supplied result flags", (_label, fixture) => {
++    const chart = fixture();
++    chart.flags = [];
++    rejectsPrivately(() => transits(chart, instant));
++    rejectsPrivately(() => synastry(chart, chart));
++    rejectsPrivately(() => saturnReturn(chart));
++  });
++
++  it.each([undefined, null, false, []])("rejects invalid supplied angle presence: %j", (angles) => {
++    const chart = natalChart(base);
++    Object.assign(chart, { angles });
++    rejectsPrivately(() => transits(chart, instant));
++  });
++});
++
++describe("Saturn flag validation calculation cost", () => {
++  it("uses zero natal calculations for ordinary inputs or supplied Charts, one only for raw polar assertions", () => {
++    const chart = natalChart({ ...base, latitude: 78, houseSystem: "placidus" });
++    const natal = vi.spyOn(ephemeris, "computeChart");
++    const scan = vi
++      .spyOn(returns, "computeSaturnReturns")
++      .mockReturnValue({ natalLon: 0, natalRetrograde: false, seasons: [] });
++    saturnReturn(instant);
++    saturnReturn(base);
++    saturnReturn({ ...base, timeKnown: false, flags: ["no-time", "lmt"] });
++    saturnReturn(chart);
++    expect(natal).not.toHaveBeenCalled();
++    expect(scan).toHaveBeenCalledTimes(4);
++    saturnReturn({ ...base, latitude: 78, houseSystem: "placidus", flags: ["polar-fallback"] });
++    expect(natal).toHaveBeenCalledTimes(1);
++    expect(scan).toHaveBeenCalledTimes(5);
++    rejectsPrivately(() =>
++      saturnReturn({ ...base, houseSystem: "placidus", flags: ["polar-fallback"] })
++    );
++    expect(natal).toHaveBeenCalledTimes(2);
++    expect(scan).toHaveBeenCalledTimes(5);
++  });
++
++  it("does not reread validated settings when a raw polar assertion requires calculation", () => {
++    const source = { ...base };
++    const getters: ReturnType<typeof vi.fn>[] = [];
++    for (const [key, value] of Object.entries({
++      latitude: 78,
++      longitude: -74,
++      houseSystem: "placidus",
++      timeKnown: true,
++      flags: ["polar-fallback"],
++      utc: instant
++    })) {
++      const getter = vi.fn().mockReturnValueOnce(value).mockReturnValue(secret);
++      getters.push(getter);
++      Object.defineProperty(source, key, { get: getter });
++    }
++    const natal = vi.spyOn(ephemeris, "computeChart");
++    const scan = vi
++      .spyOn(returns, "computeSaturnReturns")
++      .mockReturnValue({ natalLon: 0, natalRetrograde: false, seasons: [] });
++    saturnReturn(source);
++    expect(natal).toHaveBeenCalledTimes(1);
++    expect(scan).toHaveBeenCalledWith(new Date(instant));
++    for (const getter of getters) expect(getter).toHaveBeenCalledTimes(1);
++  });
++});
++
++describe("civil birth settings meet the public core boundary", () => {
++  const local: LocalBirthInput = {
++    date: "2024-02-29",
++    time: "12:00",
++    timeZone: "UTC",
++    latitude: 40,
++    longitude: -74
++  };
++  it.each([
++    ["string timeKnown", { timeKnown: "false" }],
++    ["number timeKnown", { timeKnown: 0 }],
++    ["null timeKnown", { timeKnown: null }],
++    ["unknown house system", { houseSystem: secret }],
++    ["null house system", { houseSystem: null }],
++    ["null coordinates", { latitude: null, longitude: null }],
++    ["string latitude", { latitude: "40" }],
++    ["out-of-range latitude", { latitude: 91 }],
++    ["out-of-range longitude", { longitude: 181 }],
++    ["nonfinite latitude", { latitude: Infinity }]
++  ])("rejects %s before running the civil resolver", (_label, changes) => {
++    const original = Intl.DateTimeFormat;
++    const intl = vi
++      .spyOn(Intl, "DateTimeFormat")
++      .mockImplementation((locales, options) => new original(locales, options));
++    rejectsPrivately(() => resolveBirth({ ...local, ...changes } as LocalBirthInput));
++    expect(intl).not.toHaveBeenCalled();
++  });
++
++  it("rejects explicit null time instead of substituting noon", () => {
++    rejectsPrivately(() => resolveBirth({ ...local, time: null } as unknown as LocalBirthInput));
++    rejectsPrivately(() =>
++      resolveBirth({ ...local, time: null, timeKnown: false } as unknown as LocalBirthInput)
++    );
++  });
++
++  it("uses one validated civil settings/time snapshot", () => {
++    const source = { ...local };
++    const getters: ReturnType<typeof vi.fn>[] = [];
++    for (const [key, value] of Object.entries({
++      latitude: 40,
++      longitude: -74,
++      houseSystem: "whole",
++      timeKnown: false,
++      time: "08:30"
++    })) {
++      const getter = vi.fn().mockReturnValueOnce(value).mockReturnValue(secret);
++      getters.push(getter);
++      Object.defineProperty(source, key, { get: getter });
++    }
++    const actual = resolveBirth(source);
++    expect(actual).toMatchObject({
++      latitude: 40,
++      longitude: -74,
++      houseSystem: "whole",
++      timeKnown: false,
++      utc: new Date("2024-02-29T08:30:00Z")
++    });
++    for (const getter of getters) expect(getter).toHaveBeenCalledTimes(1);
++  });
++
++  it("preserves unknown-time supplied reference and absent-time local noon semantics", () => {
++    const supplied = resolveBirth({ ...local, time: "08:30", timeKnown: false });
++    expect(supplied.utc).toEqual(new Date("2024-02-29T08:30:00Z"));
++    expect(natalChart(supplied).flags).toEqual(["no-time"]);
++    const noon = resolveBirth({ date: "0000-02-29", timeZone: "UTC" });
++    expect(noon.utc).toEqual(new Date("0000-02-29T12:00:00Z"));
++    expect(noon.timeKnown).toBe(false);
++    expect(natalChart(noon).flags).toEqual(["no-time"]);
++  });
++});

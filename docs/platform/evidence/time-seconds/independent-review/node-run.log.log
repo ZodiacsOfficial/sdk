@@ -1,0 +1,19 @@
+{
+  "node": "v22.23.2",
+  "icu": "78.2",
+  "tzdb": "2026a",
+  "transitionCases": 278,
+  "corrected": 140,
+  "instantsChanged": 0,
+  "trueDenverFold": {
+    "first": "1883-11-18T18:59:56.000Z",
+    "second": "1883-11-18T19:00:00.000Z",
+    "millisecondsApart": 4000,
+    "bothExact": true,
+    "earlierSelected": true
+  },
+  "validSettings": 6,
+  "rejectedSettings": 17,
+  "receipts": 7,
+  "networkCalls": 0
+}

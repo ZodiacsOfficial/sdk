@@ -1,0 +1,51 @@
+import {readFile,writeFile,readdir,mkdir,symlink} from 'node:fs/promises';
+import {createRequire} from 'node:module';
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
+const root=process.argv[2];
+const label=process.argv[3];
+const out=`/private/tmp/zodiacs-platform-input-flags-evidence/${label}-modules`;
+const require=createRequire('/private/tmp/zodiacs-platform-sdk/package.json');
+const ts=require('typescript');
+await mkdir(out,{recursive:true});
+await writeFile(`${out}/package.json`,JSON.stringify({type:'module'}));
+try{await symlink('/private/tmp/zodiacs-platform-sdk/packages/engine/node_modules',`${out}/node_modules`,'dir');}catch(error){if(error.code!=='EEXIST')throw error;}
+async function copy(dir,rel=''){
+ for(const f of await readdir(dir,{withFileTypes:true})){
+  if(f.isDirectory()){await mkdir(path.join(out,rel,f.name),{recursive:true});await copy(path.join(dir,f.name),path.join(rel,f.name));}
+  else if(f.name.endsWith('.ts')&&!f.name.endsWith('.test.ts')){
+   const source=await readFile(path.join(dir,f.name),'utf8');
+   const result=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}});
+   await writeFile(path.join(out,rel,f.name.replace(/\.ts$/,'.js')),result.outputText);
+  }
+ }
+}
+await copy(`${root}/packages/engine/src`);
+const {natalChart}=await import(pathToFileURL(`${out}/index.js`));
+const {resolveBirth}=await import(pathToFileURL(`${out}/geo.js`));
+const {createNatalEnvelope,natalReplayInput}=await import(pathToFileURL(`${out}/receipt.js`));
+const base={utc:'2001-12-21T09:00:00Z',latitude:40,longitude:-74,houseSystem:'whole',timeKnown:true};
+const report={baseCommit:'d190d97c981c7cacc6eb4ab6a49bdb8451ca3459',runtime:process.version,scope:'Synthetic local inputs only; no network or storage',label,births:[],civil:[]};
+for(const [name,changes]of[
+ ['private string',{flags:['SYNTHETIC-PRIVATE-NOTE']}],['string instead of array',{flags:'lmt'}],['Set instead of array',{flags:new Set(['lmt'])}],['array-like object',{flags:{0:'lmt',length:1}}],['null array',{flags:null}],['null member',{flags:[null]}],['duplicate time flags',{flags:['lmt','lmt']}],['simultaneous gap and fold',{flags:['dst-gap','dst-fold']}],
+ ['correct no-time echo',{timeKnown:false,flags:['no-time']}],['contradictory no-time',{flags:['no-time']}],['correct polar fallback echo',{latitude:78,houseSystem:'placidus',flags:['polar-fallback']}],['contradictory whole-sign polar fallback',{flags:['polar-fallback']}],['contradictory low-latitude Placidus fallback',{houseSystem:'placidus',flags:['polar-fallback']}],
+ ['valid time assertion',{flags:['lmt']}],['valid historical gap assertions',{flags:['dst-gap','lmt']}],['valid historical fold assertions',{flags:['dst-fold','lmt']}],['no flags',{flags:undefined}],['unknown-time from scalar only',{timeKnown:false}]
+]){
+ const observation={name};
+ try{
+  const chart=natalChart({...base,...changes});
+  Object.assign(observation,{status:'fulfilled',inputFlags:chart.input.flags,outputFlags:chart.flags,timeKnown:chart.input.timeKnown,anglesPresent:chart.angles!==null,requested:chart.input.houseSystem,actual:chart.houses?.system??null});
+  try{const receipt=createNatalEnvelope(chart);Object.assign(observation,{receipt:'accepted',receiptInputFlags:receipt.receipt.inputFlags,receiptResultFlags:receipt.receipt.resultFlags,replayFlags:natalReplayInput(receipt).flags});}catch(error){observation.receipt={code:error.code,name:error.name,message:error.message};}
+ }catch(error){Object.assign(observation,{status:'rejected',error:{name:error.name,message:error.message}});}
+ report.births.push(observation);
+}
+const local={date:'2024-02-29',time:'12:00',timeZone:'UTC',latitude:40,longitude:-74};
+for(const[name,changes]of[
+ ['string false timeKnown',{timeKnown:'false'}],['numeric zero timeKnown',{timeKnown:0}],['null timeKnown',{timeKnown:null}],['unsupported house system',{houseSystem:'equal'}],['null house system',{houseSystem:null}],['null coordinates',{latitude:null,longitude:null}],['string latitude',{latitude:'40'}],['out-of-range latitude',{latitude:91}],['private extra flags',{flags:['SYNTHETIC-PRIVATE-NOTE']}],['valid default',{}],['valid unknown-time supplied reference',{timeKnown:false}],['valid unknown-time default noon',{time:undefined,timeKnown:false}]
+]){
+ const observation={name};
+ try{const birth=resolveBirth({...local,...changes});Object.assign(observation,{status:'fulfilled',birth});try{natalChart(birth);observation.coreAccepts=true;}catch(error){observation.coreAccepts=false;observation.coreError={name:error.name,message:error.message};}}catch(error){Object.assign(observation,{status:'rejected',error:{name:error.name,message:error.message}});}
+ report.civil.push(observation);
+}
+await writeFile(`/private/tmp/zodiacs-platform-input-flags-evidence/${label}.json`,JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({label,births:report.births.length,civil:report.civil.length},null,2));

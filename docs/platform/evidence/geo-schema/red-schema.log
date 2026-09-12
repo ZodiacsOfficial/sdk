@@ -1,0 +1,367 @@
+
+ RUN  v2.1.9 /private/tmp/zodiacs-platform-geo-schema
+
+ ❯ packages/engine/src/geo/geonames-schema.test.ts (63 tests | 59 failed) 33ms
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: null root 9ms
+     → expected 'Cannot read properties of null (readi…' to be 'Invalid GeoNames index data.' // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: array root 1ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: error envelope 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: missing tables 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: unsupported version 1ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: string version 1ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: object source 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: empty source 1ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: negative count 1ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: fractional count 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: unsafe count 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: object timezone table 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: missing timezone 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: empty timezone 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: whitespace timezone 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: object region 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: numeric country 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: object shard list 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: string shard list 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: invalid shard type 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: unsupported shard path 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: unsupported prototype shard 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: uppercase shard 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid index: duplicate shard 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: null root 2ms
+     → expected 'rows is not iterable' to be 'Invalid GeoNames shard data.' // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: error envelope 0ms
+     → expected 'rows is not iterable' to be 'Invalid GeoNames shard data.' // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: string root 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: null row 1ms
+     → expected 'Cannot read properties of null (readi…' to be 'Invalid GeoNames shard data.' // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: object row 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: truncated row 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: extra row position 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: nonstring name 0ms
+     → expected 'value.normalize is not a function' to be 'Invalid GeoNames shard data.' // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: empty name 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: invalid ascii sentinel 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: empty ascii name 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: string region index 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: prototype region index 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: out-of-bounds region index 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: negative country index 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: constructor country index 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: fractional country index 1ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: out-of-bounds country index 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: string latitude 1ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: null latitude 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: unscaled fractional latitude 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: latitude above north pole 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: latitude below south pole 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: longitude above antimeridian 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: longitude below antimeridian 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: fractional timezone index 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: out-of-bounds timezone index 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: prototype timezone index 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: negative population 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: fractional population 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: string population 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > evicts invalid shard: unsafe population 0ms
+     → expected false to be true // Object.is equality
+   × GeoNames fulfilled JSON validation and recovery > rejects a nonfinite value produced by valid JSON numeric overflow 2ms
+     → promise resolved "[ { name: 'New Test City', …(6) } ]" instead of rejecting
+   × GeoNames fulfilled JSON validation and recovery > validates the entire shard before caching or returning a limited result 0ms
+     → promise resolved "[ { name: 'New Test City', …(6) } ]" instead of rejecting
+   × GeoNames fulfilled JSON validation and recovery > does not expose cached index arrays through preload 0ms
+     → expected [ 'Injected/Zone' ] to deeply equal [ 'UTC' ]
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 59 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: null root
+AssertionError: expected 'Cannot read properties of null (readi…' to be 'Invalid GeoNames index data.' // Object.is equality
+
+Expected: "Invalid GeoNames index data."
+Received: "Cannot read properties of null (reading 'version')"
+
+ ❯ expectSchemaFailure packages/engine/src/geo/geonames-schema.test.ts:93:25
+     91|   const first = (results[0] as PromiseRejectedResult).reason;
+     92|   expect(first).toBeInstanceOf(TypeError);
+     93|   expect(first.message).toBe(`Invalid GeoNames ${resource} data.`);
+       |                         ^
+     94|   for (const result of results) expect((result as PromiseRejectedResul…
+     95| }
+ ❯ packages/engine/src/geo/geonames-schema.test.ts:110:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/59]⎯
+
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: array root
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: error envelope
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: missing tables
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: unsupported version
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: string version
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: object source
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: empty source
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: negative count
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: fractional count
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: unsafe count
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: object timezone table
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: missing timezone
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: empty timezone
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: whitespace timezone
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: object region
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: numeric country
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: object shard list
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: string shard list
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: invalid shard type
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: unsupported shard path
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: unsupported prototype shard
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: uppercase shard
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid index: duplicate shard
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ expectSchemaFailure packages/engine/src/geo/geonames-schema.test.ts:90:67
+     88| 
+     89| function expectSchemaFailure(results: PromiseSettledResult<unknown>[],…
+     90|   expect(results.every((result) => result.status === "rejected")).toBe…
+       |                                                                   ^
+     91|   const first = (results[0] as PromiseRejectedResult).reason;
+     92|   expect(first).toBeInstanceOf(TypeError);
+ ❯ packages/engine/src/geo/geonames-schema.test.ts:110:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/59]⎯
+
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: null root
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: error envelope
+AssertionError: expected 'rows is not iterable' to be 'Invalid GeoNames shard data.' // Object.is equality
+
+Expected: "Invalid GeoNames shard data."
+Received: "rows is not iterable"
+
+ ❯ expectSchemaFailure packages/engine/src/geo/geonames-schema.test.ts:93:25
+     91|   const first = (results[0] as PromiseRejectedResult).reason;
+     92|   expect(first).toBeInstanceOf(TypeError);
+     93|   expect(first.message).toBe(`Invalid GeoNames ${resource} data.`);
+       |                         ^
+     94|   for (const result of results) expect((result as PromiseRejectedResul…
+     95| }
+ ❯ packages/engine/src/geo/geonames-schema.test.ts:131:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/59]⎯
+
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: string root
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: object row
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: truncated row
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: extra row position
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: empty name
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: invalid ascii sentinel
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: empty ascii name
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: string region index
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: prototype region index
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: out-of-bounds region index
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: negative country index
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: constructor country index
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: fractional country index
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: out-of-bounds country index
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: string latitude
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: null latitude
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: unscaled fractional latitude
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: latitude above north pole
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: latitude below south pole
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: longitude above antimeridian
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: longitude below antimeridian
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: fractional timezone index
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: out-of-bounds timezone index
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: prototype timezone index
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: negative population
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: fractional population
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: string population
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: unsafe population
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ expectSchemaFailure packages/engine/src/geo/geonames-schema.test.ts:90:67
+     88| 
+     89| function expectSchemaFailure(results: PromiseSettledResult<unknown>[],…
+     90|   expect(results.every((result) => result.status === "rejected")).toBe…
+       |                                                                   ^
+     91|   const first = (results[0] as PromiseRejectedResult).reason;
+     92|   expect(first).toBeInstanceOf(TypeError);
+ ❯ packages/engine/src/geo/geonames-schema.test.ts:131:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/59]⎯
+
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: null row
+AssertionError: expected 'Cannot read properties of null (readi…' to be 'Invalid GeoNames shard data.' // Object.is equality
+
+Expected: "Invalid GeoNames shard data."
+Received: "Cannot read properties of null (reading '1')"
+
+ ❯ expectSchemaFailure packages/engine/src/geo/geonames-schema.test.ts:93:25
+     91|   const first = (results[0] as PromiseRejectedResult).reason;
+     92|   expect(first).toBeInstanceOf(TypeError);
+     93|   expect(first.message).toBe(`Invalid GeoNames ${resource} data.`);
+       |                         ^
+     94|   for (const result of results) expect((result as PromiseRejectedResul…
+     95| }
+ ❯ packages/engine/src/geo/geonames-schema.test.ts:131:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/59]⎯
+
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > evicts invalid shard: nonstring name
+AssertionError: expected 'value.normalize is not a function' to be 'Invalid GeoNames shard data.' // Object.is equality
+
+Expected: "Invalid GeoNames shard data."
+Received: "value.normalize is not a function"
+
+ ❯ expectSchemaFailure packages/engine/src/geo/geonames-schema.test.ts:93:25
+     91|   const first = (results[0] as PromiseRejectedResult).reason;
+     92|   expect(first).toBeInstanceOf(TypeError);
+     93|   expect(first.message).toBe(`Invalid GeoNames ${resource} data.`);
+       |                         ^
+     94|   for (const result of results) expect((result as PromiseRejectedResul…
+     95| }
+ ❯ packages/engine/src/geo/geonames-schema.test.ts:131:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/59]⎯
+
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > rejects a nonfinite value produced by valid JSON numeric overflow
+AssertionError: promise resolved "[ { name: 'New Test City', …(6) } ]" instead of rejecting
+
+- Expected: 
+[Error: rejected promise]
+
++ Received: 
+Array [
+  Object {
+    "admin1": "",
+    "country": "Test country",
+    "latitude": Infinity,
+    "longitude": 0,
+    "name": "New Test City",
+    "population": 100,
+    "timeZone": "UTC",
+  },
+]
+
+ ❯ packages/engine/src/geo/geonames-schema.test.ts:149:44
+    147|     });
+    148|     const client = createGeoNamesClient({ baseUrl: "https://example.te…
+    149|     await expect(client.searchCities("new")).rejects.toThrow("Invalid …
+       |                                            ^
+    150|     expect(await client.searchCities("new")).toMatchObject([{ latitude…
+    151|     expect(requests(fetcher, "n.json")).toBe(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/59]⎯
+
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > validates the entire shard before caching or returning a limited result
+AssertionError: promise resolved "[ { name: 'New Test City', …(6) } ]" instead of rejecting
+
+- Expected: 
+[Error: rejected promise]
+
++ Received: 
+Array [
+  Object {
+    "admin1": "",
+    "country": "Test country",
+    "latitude": 10,
+    "longitude": 20,
+    "name": "New Test City",
+    "population": 100,
+    "timeZone": "UTC",
+  },
+]
+
+ ❯ packages/engine/src/geo/geonames-schema.test.ts:159:47
+    157|     );
+    158|     const client = createGeoNamesClient({ baseUrl: "https://example.te…
+    159|     await expect(client.searchCities("new", 1)).rejects.toThrow("Inval…
+       |                                               ^
+    160|   });
+    161| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/59]⎯
+
+ FAIL  packages/engine/src/geo/geonames-schema.test.ts > GeoNames fulfilled JSON validation and recovery > does not expose cached index arrays through preload
+AssertionError: expected [ 'Injected/Zone' ] to deeply equal [ 'UTC' ]
+
+- Expected
++ Received
+
+  Array [
+-   "UTC",
++   "Injected/Zone",
+  ]
+
+ ❯ packages/engine/src/geo/geonames-schema.test.ts:171:29
+    169|     (metadata.shards as string[]).splice(0);
+    170|     const again = await client.preload();
+    171|     expect(again.timeZones).toEqual(["UTC"]);
+       |                             ^
+    172|     expect(again.shards).toEqual(["n", "s"]);
+    173|     expect(await client.searchCities("new")).toMatchObject([{ timeZone…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/59]⎯
+
+ Test Files  1 failed (1)
+      Tests  59 failed | 4 passed (63)
+   Start at  05:46:22
+   Duration  253ms (transform 45ms, setup 0ms, collect 48ms, tests 33ms, environment 0ms, prepare 41ms)
+

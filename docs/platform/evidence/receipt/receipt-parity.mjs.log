@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import {writeFileSync} from 'node:fs';
+const previous = await import('/Users/chiburashka/.codex/worktrees/4806/site/node_modules/@zodiacs/engine/dist/index.js');
+const current = await import('/private/tmp/zodiacs-platform-sdk/packages/engine/dist/index.js');
+const receipt = await import('/private/tmp/zodiacs-platform-sdk/packages/engine/dist/receipt.js');
+let cases = 0;
+for (const utc of ['1907-07-06T15:06:36Z','2001-12-21T09:00:00Z','2024-11-03T05:30:00Z'])
+for (const latitude of [-78.2232,-40,0,78.2232])
+for (const longitude of [-74,15.6267])
+for (const houseSystem of ['whole','placidus'])
+for (const timeKnown of [false,true]) {
+  const input = {utc, latitude, longitude, houseSystem, timeKnown};
+  const a = previous.natalChart(input), b = current.natalChart(input);
+  const {engineVersion: av, ...ar} = a, {engineVersion: bv, ...br} = b;
+  assert.deepEqual(ar,br);
+  const envelope = receipt.createNatalEnvelope(b, {sourceInstant: utc});
+  const parsed = receipt.parseNatalEnvelope(receipt.serializeNatalEnvelope(envelope));
+  assert(parsed.ok);
+  const replayed = current.natalChart(receipt.natalReplayInput(parsed.envelope));
+  assert.deepEqual(replayed, {...b, input:{...b.input, flags:b.input.flags ?? []}});
+  cases++;
+}
+const result = {capturedAt:new Date().toISOString(),result:'passed',cases,previous:previous.ENGINE_VERSION,candidate:current.ENGINE_VERSION,runtime:process.version,comparison:'Exact public natal-chart equality with engineVersion omitted, plus codec replay equality on current version with absent input.flags normalized to an empty list. No numerical rounding. Synthetic finite corpus, not independent astronomical accuracy evidence.',harnessCorrection:'The initial replay check incorrectly required absent optional input.flags and [] to be structurally identical. The explicit normalization above fixes the assertion; production code was unchanged.'};
+writeFileSync('/private/tmp/zodiacs-platform-evidence/receipt-numerical-parity.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify(result));

@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: a synchronous transport throw is shared and the first observed rejection can trigger one concurrent retry
+ok 1 - a synchronous transport throw is shared and the first observed rejection can trigger one concurrent retry
+  ---
+  duration_ms: 19.8355
+  type: 'test'
+  ...
+# Subtest: response.json throwing synchronously clears only that request
+ok 2 - response.json throwing synchronously clears only that request
+  ---
+  duration_ms: 0.399875
+  type: 'test'
+  ...
+# Subtest: a reentrant injected transport cannot let an older rejection evict the active index promise
+ok 3 - a reentrant injected transport cannot let an older rejection evict the active index promise
+  ---
+  duration_ms: 1.782625
+  type: 'test'
+  ...
+# Subtest: delayed shard JSON rejection shares callers until parsing settles, then retry handlers coalesce
+ok 4 - delayed shard JSON rejection shares callers until parsing settles, then retry handlers coalesce
+  ---
+  duration_ms: 2.765583
+  type: 'test'
+  ...
+# Subtest: ten consecutive failed generations each coalesce 50 callers, with no autonomous retries
+ok 5 - ten consecutive failed generations each coalesce 50 callers, with no autonomous retries
+  ---
+  duration_ms: 3.955
+  type: 'test'
+  ...
+# Subtest: one shard can retry and remain cached while another pending shard later rejects
+ok 6 - one shard can retry and remain cached while another pending shard later rejects
+  ---
+  duration_ms: 2.558917
+  type: 'test'
+  ...
+# Subtest: preserves a non-Error rejection undefined and makes a later retry possible
+ok 7 - preserves a non-Error rejection undefined and makes a later retry possible
+  ---
+  duration_ms: 0.488667
+  type: 'test'
+  ...
+# Subtest: preserves a non-Error rejection null and makes a later retry possible
+ok 8 - preserves a non-Error rejection null and makes a later retry possible
+  ---
+  duration_ms: 0.33175
+  type: 'test'
+  ...
+# Subtest: preserves a non-Error rejection 0 and makes a later retry possible
+ok 9 - preserves a non-Error rejection 0 and makes a later retry possible
+  ---
+  duration_ms: 0.554833
+  type: 'test'
+  ...
+# Subtest: preserves a non-Error rejection  and makes a later retry possible
+ok 10 - preserves a non-Error rejection  and makes a later retry possible
+  ---
+  duration_ms: 0.574084
+  type: 'test'
+  ...
+# Subtest: documented pre-existing limit: semantically invalid JSON remains cached in both versions
+ok 11 - documented pre-existing limit: semantically invalid JSON remains cached in both versions
+  ---
+  duration_ms: 0.690792
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 118.982083

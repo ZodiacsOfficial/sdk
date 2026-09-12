@@ -1,0 +1,20 @@
+Scope: all 8 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +731
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+   ╭──────────────────────────────────────────────────────────────────╮
+   │                                                                  │
+   │                Update available! 9.15.0 → 12.4.1.                │
+   │   Changelog: https://github.com/pnpm/pnpm/releases/tag/v12.4.1   │
+   │         Run "corepack install -g pnpm@12.4.1" to update.         │
+   │                                                                  │
+   ╰──────────────────────────────────────────────────────────────────╯
+
+Progress: resolved 731, reused 594, downloaded 0, added 0
+Progress: resolved 731, reused 663, downloaded 0, added 312
+Progress: resolved 731, reused 664, downloaded 0, added 573
+Progress: resolved 731, reused 664, downloaded 0, added 717
+Progress: resolved 731, reused 664, downloaded 0, added 720
+ ERR_PNPM_GenericFailure  No space left on device (os error 28), reflink '/private/tmp/.pnpm-store/v3/files/09/51a130489b780fced04b6e1a87dfdcf1767afb056f27ca7be4812f886728d38e59ee07b8186ec5f8ef161fa39461e1dacde499307368066f0b059987fd50b6' -> '/private/tmp/zodiacs-r3-sdk/node_modules/.pnpm/viem@2.51.3_bufferutil@4.1.0_typescript@5.9.3_utf-8-validate@5.0.10_zod@3.22.4/node_modules/viem_tmp_36218/_cjs/op-stack/actions/getL2Output.js.map'

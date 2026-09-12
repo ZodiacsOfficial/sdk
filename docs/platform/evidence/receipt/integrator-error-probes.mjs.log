@@ -1,0 +1,60 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { createRequire } from 'node:module';
+const root='/private/tmp/zodiacs-platform-sdk';
+const require=createRequire(`${root}/packages/engine/package.json`);
+const ts=createRequire(`${root}/package.json`)('typescript');
+const cache=new Map();
+const sources={};
+function load(relative){
+ const file=path.join(root,relative);
+ if(cache.has(file))return cache.get(file).exports;
+ const source=fs.readFileSync(file,'utf8');sources[relative]=crypto.createHash('sha256').update(source).digest('hex');
+ const code=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+ const module={exports:{}};cache.set(file,module);
+ new Function('module','exports','require',code)(module,module.exports,specifier=>specifier.startsWith('.')?load(path.relative(root,path.resolve(path.dirname(file),specifier.replace(/\.js$/u,'.ts')))):require(specifier));
+ return module.exports;
+}
+const codec=load('packages/engine/src/receipt.ts');
+const {natalChart}=load('packages/engine/src/api.ts');
+const observations=[];
+const failures=[];
+const secret='synthetic-private-error-payload';
+const allowed=new Set(['invalid_json','invalid_shape','invalid_value','inconsistent_result','invalid_context','size_limit','complexity_limit','unsupported_version','unsupported_feature']);
+function check(name,fn){try{observations.push({name,result:fn()??'passed'});}catch(error){failures.push({name,error:error.message});}}
+function safeError(action){let caught;try{action();}catch(error){caught=error;}assert.ok(caught,'Hostile object was accepted');assert.ok(allowed.has(caught.code));assert.equal(caught.message,`Natal envelope rejected: ${caught.code}.`);assert.ok(!JSON.stringify({code:caught.code,message:caught.message,name:caught.name}).includes(secret));return {code:caught.code,message:caught.message};}
+const chart=natalChart({utc:'2001-12-21T09:00:00.123Z',latitude:78.2232,longitude:15.6267,houseSystem:'placidus'});
+const envelope=codec.createNatalEnvelope(chart);
+const methods=[['create',()=>chart,x=>codec.createNatalEnvelope(x)],['serialize',()=>envelope,x=>codec.serializeNatalEnvelope(x)],['replay',()=>envelope,x=>codec.natalReplayInput(x)],['redact',()=>envelope,x=>codec.redactNatalEnvelope(x)]];
+for(const [name,base,invoke] of methods){
+ for(const trap of ['getPrototypeOf','ownKeys','getOwnPropertyDescriptor']){
+  check(`${name} sanitizes a ${trap} trap error`,()=>safeError(()=>invoke(new Proxy(base(),{[trap](){throw new Error(secret);}}))));
+ }
+ check(`${name} sanitizes a mutated branded error`,()=>{
+  const thrown=new codec.NatalEnvelopeError('invalid_value');thrown.message=secret;Object.defineProperty(thrown,'code',{get(){throw new Error(secret);}});
+  return safeError(()=>invoke(new Proxy(base(),{getPrototypeOf(){throw thrown;}})));
+ });
+ check(`${name} ignores forged code accessors`,()=>{
+  let reads=0;const thrown={get code(){reads++;throw new Error(secret);},message:secret};
+  const result=safeError(()=>invoke(new Proxy(base(),{ownKeys(){throw thrown;}})));assert.equal(reads,0);assert.equal(result.code,'invalid_shape');return result;
+ });
+}
+check('public error constructor accepts only fixed codes without coercion',()=>{
+ let calls=0;const error=new codec.NatalEnvelopeError({toString(){calls++;return secret;}});
+ assert.equal(calls,0);assert.equal(error.code,'invalid_shape');assert.equal(error.message,'Natal envelope rejected: invalid_shape.');
+});
+check('serialization order is independent of Intl availability',()=>{
+ const original=Intl.Collator;Intl.Collator=()=>{throw new Error('Intl call');};
+ const prior=String.prototype.localeCompare;String.prototype.localeCompare=()=>{throw new Error('localeCompare call');};
+ try{
+  const one=structuredClone(envelope);one.extensions={'é':1,'e\u0301':2,'😀':3,'𐀀':4,'Z':5,'a':6};
+  const two=structuredClone(envelope);two.extensions=Object.fromEntries(Object.entries(one.extensions).reverse());
+  assert.equal(codec.serializeNatalEnvelope(one),codec.serializeNatalEnvelope(two));
+ }finally{Intl.Collator=original;String.prototype.localeCompare=prior;}
+});
+const report={observedAt:new Date().toISOString(),node:process.version,sources,observations,failures,scope:'Synthetic error-spoof and canonical-order probes against actual source. No network, persistence, build, or source/test edits.'};
+fs.writeFileSync('/private/tmp/zodiacs-platform-receipt-final-review/error-probes.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({observations:observations.length,failures,sources},null,2));
+process.exitCode=failures.length?1:0;

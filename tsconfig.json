@@ -5,6 +5,11 @@
     "noEmit": true,
     "rootDir": "."
   },
-  "include": ["packages/sdk/src/**/*.ts", "packages/sdk/src/**/*.tsx"],
+  "include": [
+    "packages/engine/src/**/*.ts",
+    "packages/sdk/src/**/*.ts",
+    "packages/sdk/src/**/*.tsx",
+    "packages/widgets/src/**/*.ts"
+  ],
   "exclude": ["node_modules", "packages/*/dist"]
 }

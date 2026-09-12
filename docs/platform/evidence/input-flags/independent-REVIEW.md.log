@@ -1,0 +1,50 @@
+# Independent flags compatibility review
+
+**14/14 independent controls passed against frozen runtime source. No concrete blocking defect was found within the documented flag/settings consistency scope.** This is an internal code and test review, not human release approval or astronomical authentication.
+
+The implementation owner confirmed a source freeze before execution. Runtime source was copied into this scratch directory; only that copy was imported by the independent tests. The final shared-source hashes still matched after execution:
+
+| Runtime file | SHA256 |
+| --- | --- |
+| `api.ts` | `33566edb5a1fd1c6092f769c01e91b67904d3018afccfbe8bdc69857ce19871a` |
+| `birth-input.ts` | `144fd683942ec434088c6a214dbe1f0b87cba13f545c38deaca8e5fcaf12581e` |
+| `geo/timezone.ts` | `5f83d4aebe7a5eb32939a63a249492fe512864fe55209e86f4d129ef535145c9` |
+
+`source-manifest.json` records all 18 copied runtime/fixture files. No shared implementation, dependency, package archive or release state was changed by this reviewer. The implementation author's full suite was not repeated.
+
+Final evidence SHA256 values: `probe.test.ts` = `1552a45f075f18a0f0c360f29c5710165b35173340499703a021b2a9550da3ec`; `result.json` = `c07b8c57ed01e2b35ee083f5e7f04946aa69fb137aebed61029d7447c0d80991`; `source-manifest.json` = `2b74683273f9a92d3f1891c7d1bcc43a842aabc3a195bdde98d1975d040f71ea`.
+
+## Executed command
+
+Working directory: `/private/tmp/zodiacs-platform-input-flags-review`.
+
+```sh
+/private/tmp/zodiacs-platform-runtime/node_modules/node/bin/node \
+  /private/tmp/zodiacs-platform-sdk/node_modules/vitest/vitest.mjs run \
+  --config vitest.config.mjs --reporter=verbose --reporter=json \
+  --outputFile.json=result.json > probe.log 2>&1
+```
+
+Node 22.23.2 and Vitest 2.1.9 exited 0. The final run reports 14 passing tests in one file. `probe.log` and `result.json` are the exact final outputs; `probe.test.ts` is the executed independent suite. Existing dependency symlinks point to installed Vitest and astronomy-engine; they do not copy or modify those dependencies.
+
+## Evidence and interpretation
+
+- Correct typed `no-time` and `polar-fallback` echoes, including duplicates, normalize to the same chart as canonical time-only input. The real optional receipt codec round-trips both examples, preserving unknown 08:30 and requested Placidus. Numerical comparison here proves unchanged behavior for these inputs, not an independent ephemeris oracle.
+- Known time without coordinates remains distinct from unknown time with coordinates. Contradictory derived assertions reject. All five typed ChartFlag values remain available; gap/fold/LMT remain caller claims.
+- Canonical frozen Charts retain object identity through wrappers. Compatible legacy echoes and reordered result flags make a shallow metadata copy while preserving numerical array/object references and the caller's original data. Unknown result flags, contradictory no-time, unsupported systems and missing angle/house objects reject across Chart-consuming wrappers without natal recomputation.
+- A deliberately changed real body `lon` value with otherwise coherent flag metadata is accepted as the supplied Chart claim. This confirms the documented boundary: checking flags does not authenticate astronomical values or recompute a Chart.
+- Flag index getters, inherited/sparse slots and scalar coercion hooks cannot inject values; custom array iteration is not used. A Proxy `get` trap that reports length zero cannot hide an unsupported own slot because the snapshot captures the own length descriptor. A 64-entry duplicate list normalizes; 65 entries reject before computation.
+- Changing getters for fresh natal scalars, UTC and flags are read once and the first validated values are used. Civil date/time/zone/settings also use the captured values. Invalid civil settings, including explicit null time, reject before Intl construction.
+- Instrumented actual natal computation shows zero extra chart calculations for ordinary date/birth/unknown-time or supplied-Chart Saturn inputs. A valid explicit raw polar assertion causes one natal calculation. A contradictory low-latitude polar assertion calculates once to test the actual result, then rejects before the return scan. The expensive Saturn return scan alone is stubbed for these call-count checks.
+
+The source derives fallback from the actual requested Placidus calculation; it does not substitute a fixed latitude threshold, so the check includes fallback caused by nonconvergence. Source review also confirms the public root and civil resolver share the lightweight settings snapshot, without adding astronomy or timezone dependencies to that helper.
+
+## Preserved harness corrections
+
+`attempt-1/` retains the original suite, output and JSON result: 12 passed, two failed because the reviewer left a Vitest spy on the native Intl constructor active during a subsequent valid resolver call. That spy created an incompatible native receiver and polluted the test instance's formatter cache. The correction restores the spy immediately after proving invalid settings did not call Intl, before exercising valid native resolution. No source changed.
+
+`attempt-2/` retains the next 14-pass run. Review of the probe itself found that its numerical-claim control wrote a nonexistent `longitude` property instead of the engine's actual `lon` field. The final suite corrects that field, explicitly asserts its value changed, and passes again. It also adds explicit null time to the existing invalid-civil-settings loop. Only the final suite is evidence for the real longitude mutation control.
+
+## Limits
+
+These are finite synthetic consistency checks. Time-resolution flags are not historical proofs. Precomputed Charts remain mutable caller-owned claims, and their canonical object identity is intentionally retained. Classification of a supplied Chart can read its UTC accessor before the validated UTC snapshot; this is not a promise that arbitrary same-realm getters or Proxy traps execute once or are sandboxed. The validated UTC snapshot is the one used for the supplied-Chart Saturn scan. The unsupported internal computation API and receipt wire schema are unchanged; no storage, hosted execution, release publication or external adoption was tested or introduced.

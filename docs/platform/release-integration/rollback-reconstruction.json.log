@@ -1,0 +1,12 @@
+{
+  "at": "2026-09-12T15:17:10.869462+00:00",
+  "base": "b49e0f14f9f17bc84db39486f2c4bb075e0ae3ff",
+  "selected": "ac27761e6dea138842e6ef5c2c69129ead7af636",
+  "reversePatchSha256": "b1f6b45363db4bd3bdd6605d80884e71bf0030db7f5bb095b20d431413cfc680",
+  "reversePatchBytes": 4847063,
+  "reconstructedTree": "6d78b97ce13ee2c1feef584bb2397f207e14c86c",
+  "expectedMainTree": "6d78b97ce13ee2c1feef584bb2397f207e14c86c",
+  "match": true,
+  "method": "Git cached reverse application in separate temporary index; current worktree/index untouched",
+  "limits": "Source rollback reconstruction only, no deployment or publication rollback. Archived candidate artifacts and all current files remain retained."
+}

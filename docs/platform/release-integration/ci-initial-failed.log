@@ -1,0 +1,269 @@
+SDK	Test	﻿2026-09-12T15:22:03.2366854Z ##[group]Run corepack pnpm test
+SDK	Test	2026-09-12T15:22:03.2367376Z [36;1mcorepack pnpm test[0m
+SDK	Test	2026-09-12T15:22:03.2418977Z shell: /usr/bin/bash -e {0}
+SDK	Test	2026-09-12T15:22:03.2419441Z ##[endgroup]
+SDK	Test	2026-09-12T15:22:03.5701822Z 
+SDK	Test	2026-09-12T15:22:03.5702703Z > zodiacs-sdk-workspace@ test /home/runner/work/sdk/sdk
+SDK	Test	2026-09-12T15:22:03.5703752Z > vitest run --fileParallelism=false
+SDK	Test	2026-09-12T15:22:03.5704767Z 
+SDK	Test	2026-09-12T15:22:03.8699051Z 
+SDK	Test	2026-09-12T15:22:03.8700788Z [1m[7m[36m RUN [39m[27m[22m [36mv2.1.9 [39m[90m/home/runner/work/sdk/sdk[39m
+SDK	Test	2026-09-12T15:22:03.8701436Z 
+SDK	Test	2026-09-12T15:22:04.7823235Z  [32m✓[39m packages/engine/src/receipt.test.ts [2m([22m[2m36 tests[22m[2m)[22m[33m 365[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:05.1817794Z  [32m✓[39m packages/engine/src/input-flags.test.ts [2m([22m[2m66 tests[22m[2m)[22m[90m 184[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:05.4566445Z  [32m✓[39m packages/engine/src/geo/geonames-schema.test.ts [2m([22m[2m67 tests[22m[2m)[22m[90m 90[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:05.9387449Z  [32m✓[39m packages/sdk/src/core/identity.test.ts [2m([22m[2m12 tests[22m[2m)[22m[90m 15[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:06.3532223Z  [32m✓[39m packages/sdk/src/core/solana.test.ts [2m([22m[2m11 tests[22m[2m)[22m[90m 34[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:06.7599148Z  [32m✓[39m packages/sdk/src/core/canonical-registry.test.ts [2m([22m[2m12 tests[22m[2m)[22m[90m 29[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:07.1576685Z  [32m✓[39m packages/sdk/src/core/base.test.ts [2m([22m[2m9 tests[22m[2m)[22m[90m 17[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:07.5644490Z  [32m✓[39m packages/engine/src/engine.test.ts [2m([22m[2m24 tests[22m[2m)[22m[90m 142[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:08.0084307Z  [32m✓[39m packages/sdk/src/react/hooks.test.ts [2m([22m[2m7 tests[22m[2m)[22m[90m 43[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:08.2256553Z  [32m✓[39m packages/engine/src/geo/geonames.test.ts [2m([22m[2m10 tests[22m[2m)[22m[90m 41[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:08.6571655Z  [32m✓[39m packages/sdk/src/market/adapters.test.ts [2m([22m[2m13 tests[22m[2m)[22m[90m 11[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:08.9205119Z  [32m✓[39m packages/engine/src/public-input.test.ts [2m([22m[2m77 tests[22m[2m)[22m[90m 65[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:09.1496399Z  [32m✓[39m packages/engine/src/geo.test.ts [2m([22m[2m40 tests[22m[2m)[22m[90m 51[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:09.3348815Z  [32m✓[39m packages/widgets/src/index.test.ts [2m([22m[2m8 tests[22m[2m)[22m[90m 11[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:09.5336398Z  [32m✓[39m packages/engine/src/receipt-json.test.ts [2m([22m[2m88 tests[22m[2m)[22m[90m 28[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:09.9342365Z  [32m✓[39m packages/sdk/src/core/format.test.ts [2m([22m[2m16 tests[22m[2m)[22m[90m 22[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:10.3223340Z  [32m✓[39m packages/engine/src/houses-regression.test.ts [2m([22m[2m6 tests[22m[2m)[22m[90m 199[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:10.5220717Z  [32m✓[39m packages/engine/src/returns-bounds.test.ts [2m([22m[2m15 tests[22m[2m)[22m[90m 27[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:10.8013716Z  [32m✓[39m packages/engine/src/geo/timezone-precision.test.ts [2m([22m[2m17 tests[22m[2m)[22m[90m 83[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:11.2001131Z  [32m✓[39m packages/sdk/src/testing.test.ts [2m([22m[2m3 tests[22m[2m)[22m[90m 13[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:11.3884485Z  [32m✓[39m packages/engine/src/returns-crossings.test.ts [2m([22m[2m14 tests[22m[2m)[22m[90m 8[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:11.8615422Z  [32m✓[39m packages/sdk/src/ui/registry.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[90m 9[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:12.2739041Z  [32m✓[39m packages/sdk/src/react/context.test.ts [2m([22m[2m2 tests[22m[2m)[22m[90m 8[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:12.4406110Z  [32m✓[39m packages/sdk/src/core/package-posture.test.ts [2m([22m[2m1 test[22m[2m)[22m[90m 4[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:12.8326456Z  [32m✓[39m packages/sdk/src/assets.test.ts [2m([22m[2m3 tests[22m[2m)[22m[90m 9[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:13.2576170Z  [32m✓[39m packages/sdk/src/ui/ZodiacAssetCard.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[90m 10[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:13.4274988Z  [32m✓[39m packages/sdk/src/core/registry.test.ts [2m([22m[2m6 tests[22m[2m)[22m[90m 5[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:13.8080624Z  [32m✓[39m packages/sdk/src/core/season.test.ts [2m([22m[2m4 tests[22m[2m)[22m[90m 5[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:14.2008547Z  [32m✓[39m packages/sdk/src/core/address.test.ts [2m([22m[2m3 tests[22m[2m)[22m[90m 13[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:14.3863878Z  [31m❯[39m packages/sdk/src/core/docs-posture.test.ts [2m([22m[2m1 test[22m[2m | [22m[31m1 failed[39m[2m)[22m[90m 19[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:14.3867053Z [31m   [31m×[31m app-neutral canonical positioning[2m > [22mkeeps SDK code, docs, metadata, and tests free of app-specific branding[90m 18[2mms[22m[31m[39m
+SDK	Test	2026-09-12T15:22:14.3869470Z [31m     → /home/runner/work/sdk/sdk/docs/platform/release-integration/README.md: expected '# SDK release integration candidate\n…' not to match /Astrofolio|flagshipApp|poweredByApp…/iu[39m
+SDK	Test	2026-09-12T15:22:14.7666041Z  [32m✓[39m packages/sdk/src/core/read-only-posture.test.ts [2m([22m[2m1 test[22m[2m)[22m[90m 3[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:14.9526462Z  [32m✓[39m packages/sdk/src/ui/ZodiacMarketStrip.test.tsx [2m([22m[2m1 test[22m[2m)[22m[90m 4[2mms[22m[39m
+SDK	Test	2026-09-12T15:22:14.9630190Z 
+SDK	Test	2026-09-12T15:22:14.9641875Z [31m⎯⎯⎯⎯⎯⎯⎯[1m[7m Failed Tests 1 [27m[22m⎯⎯⎯⎯⎯⎯⎯[39m
+SDK	Test	2026-09-12T15:22:14.9642654Z 
+SDK	Test	2026-09-12T15:22:14.9646024Z [31m[1m[7m FAIL [27m[22m[39m packages/sdk/src/core/docs-posture.test.ts[2m > [22mapp-neutral canonical positioning[2m > [22mkeeps SDK code, docs, metadata, and tests free of app-specific branding
+SDK	Test	2026-09-12T15:22:14.9669881Z [31m[1mAssertionError[22m: /home/runner/work/sdk/sdk/docs/platform/release-integration/README.md: expected '# SDK release integration candidate\n…' not to match /Astrofolio|flagshipApp|poweredByApp…/iu[39m
+SDK	Test	2026-09-12T15:22:14.9671750Z 
+SDK	Test	2026-09-12T15:22:14.9672498Z [32m- Expected:[39m 
+SDK	Test	2026-09-12T15:22:14.9673505Z /Astrofolio|flagshipApp|poweredByApp|referenceApp|base-native/iu
+SDK	Test	2026-09-12T15:22:14.9674494Z 
+SDK	Test	2026-09-12T15:22:14.9674905Z [31m+ Received:[39m 
+SDK	Test	2026-09-12T15:22:14.9675489Z "# SDK release integration candidate
+SDK	Test	2026-09-12T15:22:14.9675876Z 
+SDK	Test	2026-09-12T15:22:14.9676387Z Checkpoint: 2026-09-12 UTC. This is the SDK half of the owner's bounded R3
+SDK	Test	2026-09-12T15:22:14.9677427Z release integration. It combines the already accepted draft stack for review
+SDK	Test	2026-09-12T15:22:14.9678553Z against current main. It adds no numerical implementation or later feature.
+SDK	Test	2026-09-12T15:22:14.9679675Z Astrofolio remains separate. **Do not merge or publish:** SDK #5's explicit
+SDK	Test	2026-09-12T15:22:14.9680771Z hold and owner, practitioner and licensing review gates remain in force.
+SDK	Test	2026-09-12T15:22:14.9681393Z 
+SDK	Test	2026-09-12T15:22:14.9681625Z ## Exact starting identities
+SDK	Test	2026-09-12T15:22:14.9681916Z 
+SDK	Test	2026-09-12T15:22:14.9682324Z | Role                          | Source                                     |
+SDK	Test	2026-09-12T15:22:14.9683184Z | ----------------------------- | ------------------------------------------ |
+SDK	Test	2026-09-12T15:22:14.9686121Z | Refreshed SDK main            | `b49e0f14f9f17bc84db39486f2c4bb075e0ae3ff` |
+SDK	Test	2026-09-12T15:22:14.9687213Z | Selected cumulative draft #11 | `ac27761e6dea138842e6ef5c2c69129ead7af636` |
+SDK	Test	2026-09-12T15:22:14.9688204Z | Held draft #5                 | `cced011659d48877b8b73b8a85796815234cf741` |
+SDK	Test	2026-09-12T15:22:14.9689129Z | Engine rc.6 source            | `fb57af7a2cd7c30983cc8fb655183d5a11f9cf30` |
+SDK	Test	2026-09-12T15:22:14.9690116Z | Immutable archive carrier     | `51129a197cd3f2a2a8c966fb797ea4da1e147b3d` |
+SDK	Test	2026-09-12T15:22:14.9690648Z 
+SDK	Test	2026-09-12T15:22:14.9691166Z Fresh main is already an ancestor of draft #11. The integration branch retains
+SDK	Test	2026-09-12T15:22:14.9692360Z the complete accepted #5–#11 history; no conflict resolution, cherry-pick,
+SDK	Test	2026-09-12T15:22:14.9693689Z runtime modification, lockfile update or artifact replacement is needed.
+SDK	Test	2026-09-12T15:22:14.9694988Z Its selected cumulative delta is 532 paths, including 75 non-documentation
+SDK	Test	2026-09-12T15:22:14.9696019Z paths. New integration changes are limited to the root release notice and
+SDK	Test	2026-09-12T15:22:14.9697040Z this evidence record. Actual heads, bodies and review state are retained in
+SDK	Test	2026-09-12T15:22:14.9698172Z [starting-heads.json.log](starting-heads.json.log); the complete non-documentation
+SDK	Test	2026-09-12T15:22:14.9699178Z scope is in [non-doc-paths.json.log](non-doc-paths.json.log).
+SDK	Test	2026-09-12T15:22:14.9699631Z 
+SDK	Test	2026-09-12T15:22:14.9700131Z All applications, examples, hosted workflows, canonical Registry data and
+SDK	Test	2026-09-12T15:22:14.9701209Z ownership SDK runtime/package declarations match fresh main. The inherited
+SDK	Test	2026-09-12T15:22:14.9702243Z ownership SDK changes are only its sibling-package README paragraph and a
+SDK	Test	2026-09-12T15:22:14.9703303Z test's portable file-URL conversion. The optional React/market/UI imports and
+SDK	Test	2026-09-12T15:22:14.9704505Z read-only ownership boundary are unchanged. The exact engine source and
+SDK	Test	2026-09-12T15:22:14.9705443Z all prior candidate archives match their accepted identities.
+SDK	Test	2026-09-12T15:22:14.9705884Z 
+SDK	Test	2026-09-12T15:22:14.9706085Z ## Artifact and compatibility
+SDK	Test	2026-09-12T15:22:14.9706357Z 
+SDK	Test	2026-09-12T15:22:14.9706869Z The 23-file engine archive remains 36,591 bytes, with 122,552 unpacked bytes:
+SDK	Test	2026-09-12T15:22:14.9707602Z 
+SDK	Test	2026-09-12T15:22:14.9708098Z `09c3e63432f8ba2e9df05af137c42f65ab039740a207a89418d9e6470ea3db3e`
+SDK	Test	2026-09-12T15:22:14.9708585Z 
+SDK	Test	2026-09-12T15:22:14.9709127Z Its SHA-512 integrity, member types, paths and individual file digests match
+SDK	Test	2026-09-12T15:22:14.9710241Z the committed manifest. A fresh build and pack reproduce the archive byte for
+SDK	Test	2026-09-12T15:22:14.9711368Z byte. Anonymous retrieval from the exact carrier commit matches those bytes.
+SDK	Test	2026-09-12T15:22:14.9712501Z The accepted site uses `file:vendor/zodiacs-engine-0.1.1-rc.6.tgz`; its declared
+SDK	Test	2026-09-12T15:22:14.9713616Z pin, lock integrity and actual vendored bytes agree. The standalone starter's
+SDK	Test	2026-09-12T15:22:14.9714924Z older candidate stays immutable and is not silently advanced by this task.
+SDK	Test	2026-09-12T15:22:14.9715492Z 
+SDK	Test	2026-09-12T15:22:14.9716001Z A new isolated consumer installs this exact archive with lifecycle scripts
+SDK	Test	2026-09-12T15:22:14.9717265Z disabled. Public runtime imports, TypeScript 5.9.3, examples, optional-package
+SDK	Test	2026-09-12T15:22:14.9718318Z isolation, GeoNames recovery, flag/settings rejection, receipt replay and
+SDK	Test	2026-09-12T15:22:14.9719320Z diagnostic redaction pass on Node 22.23.2. Its production audit reports zero
+SDK	Test	2026-09-12T15:22:14.9720377Z findings. This is candidate usability, not npm publication or external adoption.
+SDK	Test	2026-09-12T15:22:14.9720932Z 
+SDK	Test	2026-09-12T15:22:14.9721426Z Fresh npm reads report `@zodiacs/sdk` latest `1.0.1`; engine and widgets each
+SDK	Test	2026-09-12T15:22:14.9722440Z return HTTP 404. The packaged README statements about separate publication
+SDK	Test	2026-09-12T15:22:14.9723460Z and historical site versions are retained as part of the immutable candidate
+SDK	Test	2026-09-12T15:22:14.9724650Z source, not taken as current publication evidence. No existing candidate is
+SDK	Test	2026-09-12T15:22:14.9725450Z repacked under changed bytes or republished.
+SDK	Test	2026-09-12T15:22:14.9725799Z 
+SDK	Test	2026-09-12T15:22:14.9726038Z ## Verification and evidence reuse
+SDK	Test	2026-09-12T15:22:14.9726357Z 
+SDK	Test	2026-09-12T15:22:14.9726860Z Fresh local checks pass for the three package builds, export smoke, package
+SDK	Test	2026-09-12T15:22:14.9727903Z contents, Registry checksum and neutrality guard. Package reproducibility,
+SDK	Test	2026-09-12T15:22:14.9728927Z actual installed build-tool versions, anonymous artifact bytes and the clean
+SDK	Test	2026-09-12T15:22:14.9730010Z consumer are verified independently of the previous workspace build output.
+SDK	Test	2026-09-12T15:22:14.9730572Z 
+SDK	Test	2026-09-12T15:22:14.9731090Z The complete selected source, lock and test tree are unchanged. The existing
+SDK	Test	2026-09-12T15:22:14.9732386Z 579-test Node 22/24 suites, workspace build/lint/typecheck/format/dry-pack and
+SDK	Test	2026-09-12T15:22:14.9733469Z TypeDoc records remain valid within their original scope. The independent
+SDK	Test	2026-09-12T15:22:14.9734749Z 278 Node and 37 actual Chrome controls are reused with their original finite
+SDK	Test	2026-09-12T15:22:14.9735711Z historical-time and numerical limitations. See the retained
+SDK	Test	2026-09-12T15:22:14.9736967Z [rc.6 implementation evidence](../evidence/time-seconds/implementation/release/gates.json.log)
+SDK	Test	2026-09-12T15:22:14.9738313Z and [independent review](../evidence/time-seconds/independent-review/REVIEW.md.log).
+SDK	Test	2026-09-12T15:22:14.9739451Z Required hosted workflows will run for this main-target integration draft;
+SDK	Test	2026-09-12T15:22:14.9740524Z earlier stacked drafts did not trigger that workflow and do not substitute
+SDK	Test	2026-09-12T15:22:14.9741588Z for this result. Hosted CI and preview results will be attached to the exact
+SDK	Test	2026-09-12T15:22:14.9742404Z draft head before completion is claimed.
+SDK	Test	2026-09-12T15:22:14.9742764Z 
+SDK	Test	2026-09-12T15:22:14.9743268Z The first fresh install stopped at disk exhaustion. Only the new partial
+SDK	Test	2026-09-12T15:22:14.9744499Z installation was removed; the exact prior frozen installation was copied
+SDK	Test	2026-09-12T15:22:14.9745558Z using APFS copy-on-write, with declarations, lockfile, metadata and actual
+SDK	Test	2026-09-12T15:22:14.9746643Z versions checked. An initial content check hit the host's unrelated npm cache
+SDK	Test	2026-09-12T15:22:14.9747979Z permission; the check passes using an owned temporary cache. The first pin
+SDK	Test	2026-09-12T15:22:14.9749095Z proof incorrectly expected a remote URL where the accepted site intentionally
+SDK	Test	2026-09-12T15:22:14.9750203Z uses a vendored file; the corrected assertion checks the actual pin and bytes.
+SDK	Test	2026-09-12T15:22:14.9751218Z All three setup failures remain recorded. No permission, package gate,
+SDK	Test	2026-09-12T15:22:14.9752139Z freshness rule, provenance assertion or budget was relaxed.
+SDK	Test	2026-09-12T15:22:14.9752761Z 
+SDK	Test	2026-09-12T15:22:14.9752957Z ## Rollback and approval
+SDK	Test	2026-09-12T15:22:14.9753232Z 
+SDK	Test	2026-09-12T15:22:14.9753742Z A separate temporary Git index applies the cumulative reverse patch and
+SDK	Test	2026-09-12T15:22:14.9754775Z reconstructs the exact refreshed main tree
+SDK	Test	2026-09-12T15:22:14.9755661Z `6d78b97ce13ee2c1feef584bb2397f207e14c86c`. This verifies a source rollback,
+SDK	Test	2026-09-12T15:22:14.9756739Z not a deployment rollback. Current worktree files, prior archives and receipts
+SDK	Test	2026-09-12T15:22:14.9757688Z remain retained. SDK main is never changed by the exercise.
+SDK	Test	2026-09-12T15:22:14.9758142Z 
+SDK	Test	2026-09-12T15:22:14.9758647Z For a later authorized release, select the exact SDK and site integration
+SDK	Test	2026-09-12T15:22:14.9759685Z commits together. A site engine rollback restores its package pin, matching
+SDK	Test	2026-09-12T15:22:14.9760726Z resolver and receipt-context adapters together; changing only the package
+SDK	Test	2026-09-12T15:22:14.9761659Z can create a mismatched contract. Prior rc.5 source is
+SDK	Test	2026-09-12T15:22:14.9762679Z `224863ebea0ab62d0eff721a53f5ab2a1bfc756f`, with its immutable artifact retained.
+SDK	Test	2026-09-12T15:22:14.9763843Z Restoring ownership-only main removes the unreleased sibling packages from
+SDK	Test	2026-09-12T15:22:14.9765122Z that source tree; it does not delete their committed review artifacts.
+SDK	Test	2026-09-12T15:22:14.9765629Z 
+SDK	Test	2026-09-12T15:22:14.9766158Z Before release, the owner must approve the exact merge sequence and any npm
+SDK	Test	2026-09-12T15:22:14.9767216Z publication or production actions, explicitly resolve the SDK #5 hold and
+SDK	Test	2026-09-12T15:22:14.9768272Z obtain the required human reviews. After approval, verify actual public
+SDK	Test	2026-09-12T15:22:14.9769314Z package bytes, production behavior and rollback. This task claims neither
+SDK	Test	2026-09-12T15:22:14.9770337Z merge, npm publication, production deployment nor external adoption.
+SDK	Test	2026-09-12T15:22:14.9770856Z 
+SDK	Test	2026-09-12T15:22:14.9771011Z ## Record index
+SDK	Test	2026-09-12T15:22:14.9771220Z 
+SDK	Test	2026-09-12T15:22:14.9771732Z - [Preservation and archive-member proof](preservation-proof.json.log)
+SDK	Test	2026-09-12T15:22:14.9772644Z - [Frozen dependency reuse](dependency-reuse.json.log)
+SDK	Test	2026-09-12T15:22:14.9773844Z - [Installed versions and consumer audit](installed-and-consumer.json.log)
+SDK	Test	2026-09-12T15:22:14.9775249Z - [Artifacts, paired site pin and rollback identities](artifacts-pins-rollback.json.log)
+SDK	Test	2026-09-12T15:22:14.9776329Z - [Fresh local gate commands and results](local-gates.json.log)
+SDK	Test	2026-09-12T15:22:14.9777361Z - [Byte-identical rebuilt archive and clean consumer](reproducibility.json.log)
+SDK	Test	2026-09-12T15:22:14.9778341Z - [Current npm availability](registry-state.json.log)
+SDK	Test	2026-09-12T15:22:14.9779245Z - [Source rollback reconstruction](rollback-reconstruction.json.log)
+SDK	Test	2026-09-12T15:22:14.9780045Z - [Evidence file identities](manifest.json)
+SDK	Test	2026-09-12T15:22:14.9780530Z "
+SDK	Test	2026-09-12T15:22:14.9780695Z 
+SDK	Test	2026-09-12T15:22:14.9781511Z [36m [2m❯[22m packages/sdk/src/core/docs-posture.test.ts:[2m45:52[22m[39m
+SDK	Test	2026-09-12T15:22:14.9831216Z     [90m 43| [39m
+SDK	Test	2026-09-12T15:22:14.9832433Z     [90m 44| [39m    [35mfor[39m ([35mconst[39m file [35mof[39m files) {
+SDK	Test	2026-09-12T15:22:14.9834489Z     [90m 45| [39m      [34mexpect[39m([34mreadFileSync[39m(file[33m,[39m [32m"utf8"[39m)[33m,[39m file)[33m.[39mnot[33m.[39m[34mtoMatch[39m(forbidden)[33m;[39m
+SDK	Test	2026-09-12T15:22:14.9835970Z     [90m   | [39m                                                   [31m^[39m
+SDK	Test	2026-09-12T15:22:14.9836587Z     [90m 46| [39m    }
+SDK	Test	2026-09-12T15:22:14.9837110Z     [90m 47| [39m  })[33m;[39m
+SDK	Test	2026-09-12T15:22:14.9837740Z 
+SDK	Test	2026-09-12T15:22:14.9838252Z [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+SDK	Test	2026-09-12T15:22:14.9838638Z 
+SDK	Test	2026-09-12T15:22:14.9841389Z [2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m31 passed[39m[22m[90m (32)[39m
+SDK	Test	2026-09-12T15:22:14.9843766Z [2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m578 passed[39m[22m[90m (579)[39m
+SDK	Test	2026-09-12T15:22:14.9845132Z [2m   Start at [22m 15:22:03
+SDK	Test	2026-09-12T15:22:14.9848086Z [2m   Duration [22m 11.09s[2m (transform 652ms, setup 0ms, collect 4.51s, tests 1.57s, environment 6ms, prepare 1.81s)[22m
+SDK	Test	2026-09-12T15:22:14.9848982Z 
+SDK	Test	2026-09-12T15:22:14.9864907Z 
+SDK	Test	2026-09-12T15:22:14.9967032Z ##[error]AssertionError: /home/runner/work/sdk/sdk/docs/platform/release-integration/README.md: expected '# SDK release integration candidate\n…' not to match /Astrofolio|flagshipApp|poweredByApp…/iu
+SDK	Test	
+SDK	Test	- Expected: 
+SDK	Test	/Astrofolio|flagshipApp|poweredByApp|referenceApp|base-native/iu
+SDK	Test	
+SDK	Test	+ Received: 
+SDK	Test	"# SDK release integration candidate
+SDK	Test	
+SDK	Test	Checkpoint: 2026-09-12 UTC. This is the SDK half of the owner's bounded R3
+SDK	Test	release integration. It combines the already accepted draft stack for review
+SDK	Test	against current main. It adds no numerical implementation or later feature.
+SDK	Test	Astrofolio remains separate. **Do not merge or publish:** SDK #5's explicit
+SDK	Test	hold and owner, practitioner and licensing review gates remain in force.
+SDK	Test	
+SDK	Test	## Exact starting identities
+SDK	Test	
+SDK	Test	| Role                          | Source                                     |
+SDK	Test	| ----------------------------- | ------------------------------------------ |
+SDK	Test	| Refreshed SDK main            | `b49e0f14f9f17bc84db39486f2c4bb075e0ae3ff` |
+SDK	Test	| Selected cumulative draft #11 | `ac27761e6dea138842e6ef5c2c69129ead7af636` |
+SDK	Test	| Held draft #5                 | `cced011659d48877b8b73b8a85796815234cf741` |
+SDK	Test	| Engine rc.6 source            | `fb57af7a2cd7c30983cc8fb655183d5a11f9cf30` |
+SDK	Test	| Immutable archive carrier     | `51129a197cd3f2a2a8c966fb797ea4da1e147b3d` |
+SDK	Test	
+SDK	Test	Fresh main is already an ancestor of draft #11. The integration branch retains
+SDK	Test	the complete accepted #5–#11 history; no conflict resolution, cherry-pick,
+SDK	Test	runtime modification, lockfile update or artifact replacement is needed.
+SDK	Test	Its selected cumulative delta is 532 paths, including 75 non-documentation
+SDK	Test	paths. New integration changes are limited to the root release notice and
+SDK	Test	this evidence record. Actual heads, bodies and review state are retained in
+SDK	Test	[starting-heads.json.log](starting-heads.json.log); the complete non-documentation
+SDK	Test	scope is in [non-doc-paths.json.log](non-doc-paths.json.log).
+SDK	Test	
+SDK	Test	All applications, examples, hosted workflows, canonical Registry data and
+SDK	Test	ownership SDK runtime/package declarations match fresh main. The inherited
+SDK	Test	ownership SDK changes are only its sibling-package README paragraph and a
+SDK	Test	test's portable file-URL conversion. The optional React/market/UI imports and
+SDK	Test	read-only ownership boundary are unchanged. The exact engine source and
+SDK	Test	all prior candidate archives match their accepted identities.
+SDK	Test	
+SDK	Test	## Artifact and compatibility
+SDK	Test	
+SDK	Test	The 23-file engine archive remains 36,591 bytes, with 122,552 unpacked bytes:
+SDK	Test	
+SDK	Test	`09c3e63432f8ba2e9df05af137c42f65ab039740a207a89418d9e6470ea3db3e`
+SDK	Test	
+SDK	Test	Its SHA-512 integrity, member types, paths and individual file digests match
+SDK	Test	the committed manifest. A fresh build and pack reproduce the archive byte for
+SDK	Test	byte. Anonymous retrieval from the exact carrier commit matches those bytes.
+SDK	Test	The accepted site uses `file:vendor/zodiacs-engine-0.1.1-rc.6.tgz`; its declared
+SDK	Test	pin, lock integrity and actual vendored bytes agree. The standalone starter's
+SDK	Test	older candidate stays immutable and is not silently advanced by this task.
+SDK	Test	
+SDK	Test	A new isolated consumer installs this exact archive with lifecycle scripts
+SDK	Test	disabled. Public runtime imports, TypeScript 5.9.3, examples, optional-package
+SDK	Test	isolation, GeoNames recovery, flag/settings rejection, receipt replay and
+SDK	Test	diagnostic redaction pass on Node 22.23.2. Its production audit reports zero
+SDK	Test	findings. This is candidate usability, not npm publication or external adoption.
+SDK	Test	
+SDK	Test	Fresh npm reads report `@zodiacs/sdk` latest `1.0.1`; engine and widgets each
+SDK	Test	return HTTP 404. The packaged README statements about separate publication
+SDK	Test	and historical site versions are retained as part of the immutable candidate
+SDK	Test	source, not taken as current publication evidence. No existing candidate is
+SDK	Test	repacked under changed bytes or republished.
+SDK	Test	
+SDK	Test	## Verification and evidence reuse
+SDK	Test	
+SDK	Test	Fresh local checks pass for the three package builds, export smoke, package
+SDK	Test	contents, Registry checksum and neutrality guard. Package reproducibility,
+SDK	Test	actual installed build-tool versions, anonymous artifact bytes and the clean
+SDK	Test	consumer are verified independently of the previous workspace build output.
+SDK	Test	
+SDK	Test	The complete selected source, lock and test tree are 
+SDK	Test	2026-09-12T15:22:15.0164467Z  ELIFECYCLE  Test failed. See above for more details.
+SDK	Test	2026-09-12T15:22:15.0411785Z ##[error]Process completed with exit code 1.

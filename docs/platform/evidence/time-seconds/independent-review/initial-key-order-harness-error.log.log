@@ -1,0 +1,13 @@
+file:///private/tmp/zodiacs-platform-sdk-seconds-independent-review/checks.mjs:1
+function invariant(condition, message) { if (!condition) throw new Error(message); }
+                                                               ^
+
+Error: Context changed
+    at invariant (file:///private/tmp/zodiacs-platform-sdk-seconds-independent-review/checks.mjs:1:64)
+    at same (file:///private/tmp/zodiacs-platform-sdk-seconds-independent-review/checks.mjs:2:32)
+    at file:///private/tmp/zodiacs-platform-sdk-seconds-independent-review/checks.mjs:79:3
+    at Array.map (<anonymous>)
+    at receiptChecks (file:///private/tmp/zodiacs-platform-sdk-seconds-independent-review/checks.mjs:68:18)
+    at file:///private/tmp/zodiacs-platform-sdk-seconds-independent-review/node-run.mjs:6:126
+
+Node.js v22.23.2

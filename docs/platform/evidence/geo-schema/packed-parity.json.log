@@ -1,0 +1,12 @@
+{
+  "observedAt": "2026-09-07T23:05:40.052Z",
+  "result": "passed",
+  "cases": 96,
+  "previous": "0.1.1-rc.3",
+  "current": "0.1.1-rc.4",
+  "ephemeris": "2.1.19",
+  "node": "v22.23.2",
+  "previousDir": "/var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-platform-consumer-G7UHiL/package",
+  "currentDir": "/var/folders/yj/t3y9tw9d1rj9mxk5z2_pkxpw0000gn/T/zodiacs-engine-consumer-vE97u9",
+  "scope": "Exact public natal-chart equality for finite synthetic corpus after excluding only engineVersion; current receipt replay preserves every field with absent input.flags normalized to []. Actual installed packages; no rounding or independent astronomical accuracy claim."
+}

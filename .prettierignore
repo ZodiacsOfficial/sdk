@@ -3,6 +3,7 @@ dist
 .next
 .turbo
 coverage
+docs/engine-api
 *.tsbuildinfo
 AGENTS.md
 pnpm-lock.yaml

@@ -1,0 +1,169 @@
+{
+  "observedAt": "2026-09-07T21:57:01.520Z",
+  "node": "v22.23.2",
+  "sources": {
+    "packages/engine/src/receipt.ts": "6a2513769934da7b72ab2e07c66df2d48e49fe2d8a8b54b737c2424d301778d8",
+    "packages/engine/src/date-input.ts": "f9db8865bf143d6334eb93d9618f50aa6a81ba32273b0a103d2a83e3c8014675",
+    "packages/engine/src/aspects.ts": "f0c69b344ea2c1808c9e18da13ffd89daf05898a3fce4d004778b8cb8bc5a154",
+    "packages/engine/src/signs.ts": "25b7cc9006624254995bd21f5dbaef92f4e61ef476b570589122a034896072dd",
+    "packages/engine/src/receipt-json.ts": "da5627224b593769eea8f1d434815ad34f422f44e1ef38a6687f86d8ccf8dd5c",
+    "packages/engine/src/api.ts": "2e5a73407196fb75ece1085898ff9491a187e581b3512a7678ad964b3cab338e",
+    "packages/engine/src/ephemeris.ts": "3481029c0836bcf641bb4e2f9bea8e57d01358babce07bda6de8fdc9a9fe4418",
+    "packages/engine/src/houses.ts": "c2f0ba0649778efd160986c592648951beb4069afc9049f7fde3f7587e45b8f6",
+    "packages/engine/src/types.ts": "48c67ff2add881f2d7b1a2e1d9eaf18b669dcfb8791692493b2a9b91bcdae37e",
+    "packages/engine/src/returns.ts": "cccc2e526ea00f8a5466a8d5784d8cc2b9b191f639794435a4e273e2288a087c",
+    "packages/engine/src/synastry.ts": "482ad89ae8df0bc5f3e8813d39400e8d3f7ceff4cad8d79fa0b5cdf3627ac1f7"
+  },
+  "observations": [
+    {
+      "name": "create sanitizes a getPrototypeOf trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "create sanitizes a ownKeys trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "create sanitizes a getOwnPropertyDescriptor trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "create sanitizes a mutated branded error",
+      "result": {
+        "code": "invalid_value",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "create ignores forged code accessors",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "serialize sanitizes a getPrototypeOf trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "serialize sanitizes a ownKeys trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "serialize sanitizes a getOwnPropertyDescriptor trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "serialize sanitizes a mutated branded error",
+      "result": {
+        "code": "invalid_value",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "serialize ignores forged code accessors",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "replay sanitizes a getPrototypeOf trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "replay sanitizes a ownKeys trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "replay sanitizes a getOwnPropertyDescriptor trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "replay sanitizes a mutated branded error",
+      "result": {
+        "code": "invalid_value",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "replay ignores forged code accessors",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "redact sanitizes a getPrototypeOf trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "redact sanitizes a ownKeys trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "redact sanitizes a getOwnPropertyDescriptor trap error",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "redact sanitizes a mutated branded error",
+      "result": {
+        "code": "invalid_value",
+        "message": "Natal envelope rejected: invalid_value."
+      }
+    },
+    {
+      "name": "redact ignores forged code accessors",
+      "result": {
+        "code": "invalid_shape",
+        "message": "Natal envelope rejected: invalid_shape."
+      }
+    },
+    {
+      "name": "public error constructor accepts only fixed codes without coercion",
+      "result": "passed"
+    },
+    {
+      "name": "serialization order is independent of Intl availability",
+      "result": "passed"
+    }
+  ],
+  "failures": [],
+  "scope": "Synthetic error-spoof and canonical-order probes against actual source. No network, persistence, build, or source/test edits."
+}

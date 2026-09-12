@@ -1,0 +1,14 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.evaluate: Error: Blocked test capability
+    at <anonymous>:4:92
+    at new UtilityScript (<anonymous>:289:22)
+    at <anonymous>:337:16
+    at <anonymous>:338:9
+    at /private/tmp/zodiacs-platform-receipt-docs/browser-probe.mjs:79:14 {
+  log: []
+}
+
+Node.js v22.23.2

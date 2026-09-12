@@ -1,0 +1,116 @@
+{
+  "recordedAt": "2026-09-07T23:01:24.990438+00:00",
+  "sourceToEvidence": [
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/baseline-probe.json",
+      "evidence": "baseline-probe.json.log",
+      "sha256": "bb31d10e63475f22ad1fafb321a692d80b5c785d33ba93e59525441aa999aa3b"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/fixed-probe.json",
+      "evidence": "fixed-probe.json.log",
+      "sha256": "9e3214c81de7e127ccd13bddc8d797f414c98323dfad4ca4e45403efacd10aa8"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/red-schema.log",
+      "evidence": "red-schema.log",
+      "sha256": "8fcc08367e91231374e581bf1949a2457580fe7694d4b72934e0a6d157773790"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/summary.json",
+      "evidence": "summary.json.log",
+      "sha256": "df29c2b7e5c071a87fd10d0136f099b912e6c39bda79874bf98da5e493b6ed54"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/REVIEW.md",
+      "evidence": "REVIEW.md.log",
+      "sha256": "9b2dd5e220d28dd9eee9f6a6807fdd47b7065c621e860283887e53dc434e9958"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/corpus.json",
+      "evidence": "corpus.json.log",
+      "sha256": "97ce45708b6dc13b4729bfcd89db796161c828c5b026c13f2f60cb94543fd1c8"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/asset-contract.json",
+      "evidence": "asset-contract.json.log",
+      "sha256": "012056fbce5e83903c46810035fd2067c5e7a308d92b100cc70feed33146d5da"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/integrated-node20-tests.log",
+      "evidence": "integrated-node20-tests.log",
+      "sha256": "7388a3215d9549ffd197877b11f3b3527cfabc0f66973303873e4b466207b0f6"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/integrated-node22-tests.log",
+      "evidence": "integrated-node22-tests.log",
+      "sha256": "ab349e0595751cf4b9a38ca4cd1f69dcc476b63f1e248a12d4db0932aa0b114b"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/integrated-lint.log",
+      "evidence": "integrated-lint.log",
+      "sha256": "890fc4b86254514fd4e424d596839403a47fa1bbb04f369a8e9e1797d6e94a77"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/integrated-registry.log",
+      "evidence": "integrated-registry.log",
+      "sha256": "210e30c8e0c21e3a8ea78f4b26306cd41769eb68aabf3a72bcdb065f8b7d6cac"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/integrated-neutrality.log",
+      "evidence": "integrated-neutrality.log",
+      "sha256": "c895534fb0f94b45547a0e8b22b9145ceaf5ace6ae3ff7c87bc67882d2c3fd18"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/final-build.log",
+      "evidence": "final-build.log",
+      "sha256": "3d18dab231750af940325553f206dea0e6cfdb00080bc65d59cf68d4ac04dac3"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/final-typecheck.log",
+      "evidence": "final-typecheck.log",
+      "sha256": "3198497be5757fee812d80ed91b0a2b3b47d4d41894bf94ae9706552da7f1987"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/final-typedoc.log",
+      "evidence": "final-typedoc.log",
+      "sha256": "860cecb201a19e2ee04e4926041ab5ac6d691046201b2d799c7deb01dd9fdd97"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/final-exports.log",
+      "evidence": "final-exports.log",
+      "sha256": "cbf3aa45b47914cb79589809a94d39d3f7ca4179e1ad90e058e4cd2f8d106f83"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/final-contents.log",
+      "evidence": "final-contents.log",
+      "sha256": "2cb32505ff9f511c43130d2072b62c7f0528116643d61971499a5378cc105b86"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/final-pack-dry-run.log",
+      "evidence": "final-pack-dry-run.log",
+      "sha256": "9f976c7305f7d21630797ebeddb6a78ca3c600ea79000670b90015a213fb01ac"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-evidence/final-format.log",
+      "evidence": "final-format.log",
+      "sha256": "5b7274a567cba35fe65522e300d64a8e11871ba858252aa63fd371edafb916a2"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-review/REVIEW.md",
+      "evidence": "independent-REVIEW.md.log",
+      "sha256": "36921576cf2a75ec2c6eb43e66d2c5bcb1c7bc00cee3db2c557c6ec8e494ff3c"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-review/probe.mjs",
+      "evidence": "independent-probe.mjs.log",
+      "sha256": "75cabfde592f636ff0e0aa68738e21bd66105aec37387b8759f9e2f095f1e62e"
+    },
+    {
+      "source": "/private/tmp/zodiacs-platform-geo-schema-review/result.json",
+      "evidence": "independent-result.json.log",
+      "sha256": "15f5e238d057bc0e30258973bdabf162ff749d1f771424246d11c195b2f509d4"
+    }
+  ],
+  "normalization": "Raw bytes unchanged. Source-like/JSON/markdown evidence uses .log suffix to keep exact evidence outside formatter and executable-test discovery."
+}

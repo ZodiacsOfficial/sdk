@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { createRequire } from 'node:module';
+const root='/private/tmp/zodiacs-platform-sdk';
+const require=createRequire(`${root}/packages/engine/package.json`),ts=createRequire(`${root}/package.json`)('typescript'),cache=new Map();
+function load(file){
+ if(cache.has(file))return cache.get(file).exports;
+ const code=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+ const module={exports:{}};cache.set(file,module);
+ new Function('module','exports','require',code)(module,module.exports,s=>s.startsWith('.')?load(path.resolve(path.dirname(file),s.replace(/\.js$/,'.ts'))):require(s));return module.exports;
+}
+const codec=load(`${root}/packages/engine/src/receipt.ts`),{natalChart}=load(`${root}/packages/engine/src/api.ts`);
+const original=codec.serializeNatalEnvelope(codec.createNatalEnvelope(natalChart({utc:'2001-12-21T09:00:00Z',latitude:78.2232,longitude:15.6267,houseSystem:'placidus'})));
+const pole=JSON.parse(original);pole.receipt.coordinates.latitude=90;
+const duplicateFeature=original.replace('"requiredFeatures":[]','"requiredFeatures":["unknown-required-feature"],"requiredFeatures":[]');
+const duplicateVersion=original.replace('"schema":"zodiacs.natal-envelope.draft-v1"','"schema":"zodiacs.natal-envelope.draft-v99","schema":"zodiacs.natal-envelope.draft-v1"');
+const samples=[['exact-pole-with-houses',JSON.stringify(pole)],['duplicate-required-features',duplicateFeature],['duplicate-envelope-schema',duplicateVersion]];
+const output=samples.map(([name,input])=>{const result=codec.parseNatalEnvelope(input);return {name,accepted:result.ok,code:result.ok?null:result.code,...(name==='exact-pole-with-houses'&&result.ok?{declaredExclusion:result.envelope.receipt.coverage.angleExclusions,latitude:result.envelope.receipt.coordinates.latitude,anglesPresent:result.envelope.result.angles!==null}:{}),input};});
+const report={observedAt:new Date().toISOString(),sourceSha256:crypto.createHash('sha256').update(fs.readFileSync(`${root}/packages/engine/src/receipt.ts`)).digest('hex'),scope:'Synthetic local JSON import counterexamples; no network or source writes.',cases:output};
+fs.writeFileSync('/private/tmp/zodiacs-platform-receipt-final-review/counterexamples.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify(output.map(({input,...value})=>value),null,2));

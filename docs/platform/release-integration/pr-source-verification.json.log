@@ -1,0 +1,2295 @@
+{
+  "at": "2026-09-12T15:22:13.996452+00:00",
+  "pr": {
+    "baseRefOid": "b49e0f14f9f17bc84db39486f2c4bb075e0ae3ff",
+    "headRefOid": "3ee11dc5e3c0b177a6f52afa47a8a2eff8424141",
+    "isDraft": true,
+    "number": 12,
+    "state": "OPEN",
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/ZodiacsOfficial/sdk/actions/runs/34701968976/job/103575214050",
+        "name": "Zodia",
+        "startedAt": "2026-09-12T15:21:13Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "App CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/ZodiacsOfficial/sdk/actions/runs/34701968975/job/103575214056",
+        "name": "SDK",
+        "startedAt": "2026-09-12T15:21:13Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "StatusContext",
+        "context": "Vercel \u2013 sdk-zodia",
+        "startedAt": "2026-09-12T15:20:31Z",
+        "state": "PENDING",
+        "targetUrl": "https://vercel.com/zodiacsofficial/sdk-zodia/21ScKgd6qjrzRYxFJBLAsNizqHRA"
+      },
+      {
+        "__typename": "StatusContext",
+        "context": "Vercel \u2013 sdk-zodia-launch",
+        "startedAt": "2026-09-12T15:20:31Z",
+        "state": "PENDING",
+        "targetUrl": "https://vercel.com/zodiacsofficial/sdk-zodia-launch/HbE8GPW5gQ7QoL3A45qvgZfvjy7L"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-12T15:21:13Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://vercel.com/github",
+        "name": "Vercel Preview Comments",
+        "startedAt": "2026-09-12T15:21:13Z",
+        "status": "COMPLETED",
+        "workflowName": ""
+      }
+    ],
+    "title": "Integrate the accepted engine and widgets review stack under the publication hold",
+    "url": "https://github.com/ZodiacsOfficial/sdk/pull/12"
+  },
+  "pages": 6,
+  "files": 558,
+  "allStatusesAndBlobIdentitiesMatch": true,
+  "actualFiles": {
+    ".prettierignore": {
+      "status": "modified",
+      "sha": "06c6ccef26d73f01a8d9f6578934e660a5d4226b"
+    },
+    "README.md": {
+      "status": "modified",
+      "sha": "cc02dd32ae1f1ca84d1badce27d4a0b58dab445b"
+    },
+    "artifacts/README.md": {
+      "status": "added",
+      "sha": "d8c83e7dcb3a844aa59e1c425c3e5966c7406d3a"
+    },
+    "artifacts/zodiacs-engine-0.1.1-rc.2.tgz": {
+      "status": "added",
+      "sha": "77c8270578cf16044395de70296f8c8f6aad1b1e"
+    },
+    "artifacts/zodiacs-engine-0.1.1-rc.3.json": {
+      "status": "added",
+      "sha": "d6d24e433176df4309074b04758dced979b002a0"
+    },
+    "artifacts/zodiacs-engine-0.1.1-rc.3.tgz": {
+      "status": "added",
+      "sha": "573e4ad4d3fb50d0f969a5edff3b46a8f5bd8abb"
+    },
+    "artifacts/zodiacs-engine-0.1.1-rc.4.json": {
+      "status": "added",
+      "sha": "ddffbd65df590c8932354e494a3f18cb38e8c1a5"
+    },
+    "artifacts/zodiacs-engine-0.1.1-rc.4.tgz": {
+      "status": "added",
+      "sha": "4540b5791c701814d6d60383c80bc3be029a3634"
+    },
+    "artifacts/zodiacs-engine-0.1.1-rc.5.json": {
+      "status": "added",
+      "sha": "f1664f8c482cf540880a51280f0f43f9cad3289c"
+    },
+    "artifacts/zodiacs-engine-0.1.1-rc.5.tgz": {
+      "status": "added",
+      "sha": "cea611e5c4aa16994fe2bd8ed073ea60500a8740"
+    },
+    "artifacts/zodiacs-engine-0.1.1-rc.6.json": {
+      "status": "added",
+      "sha": "64ebf8e32f1392c9f14773905efadaabc3987cc7"
+    },
+    "artifacts/zodiacs-engine-0.1.1-rc.6.tgz": {
+      "status": "added",
+      "sha": "e5938427088b08c0ce1250a774579aa4fcae444c"
+    },
+    "docs/engine-api/.nojekyll": {
+      "status": "added",
+      "sha": "e2ac6616addc2d4975edda1dfb80bfdd51549686"
+    },
+    "docs/engine-api/assets/custom.css": {
+      "status": "added",
+      "sha": "953ba2cdfab024f72c99d039c502db9c6798cd71"
+    },
+    "docs/engine-api/assets/hierarchy.js": {
+      "status": "added",
+      "sha": "28fa567f15aa39b864adc9df99aeabcfb64c768c"
+    },
+    "docs/engine-api/assets/highlight.css": {
+      "status": "added",
+      "sha": "55df07c877debb2e9b0574afdd7a66af955ccfd2"
+    },
+    "docs/engine-api/assets/icons.js": {
+      "status": "added",
+      "sha": "4fbadc5ade83addedc40e867cb758c10f7180a2a"
+    },
+    "docs/engine-api/assets/icons.svg": {
+      "status": "added",
+      "sha": "be7798fcda8ee6ef2c5513007a90c368f90b9bda"
+    },
+    "docs/engine-api/assets/main.js": {
+      "status": "added",
+      "sha": "b0eda9ed309c0f9c80ca58d0823d37027d691bf7"
+    },
+    "docs/engine-api/assets/navigation.js": {
+      "status": "added",
+      "sha": "293498874606a286c831870ba6f8a0d8c09bbdb1"
+    },
+    "docs/engine-api/assets/search.js": {
+      "status": "added",
+      "sha": "dda9b8d2778bf621ca64141dfb104030c6ff042e"
+    },
+    "docs/engine-api/assets/style.css": {
+      "status": "added",
+      "sha": "ec257d517a428db9cde19a14db24db48efda7045"
+    },
+    "docs/engine-api/classes/receipt.NatalEnvelopeError.html": {
+      "status": "added",
+      "sha": "5ae9117483f7d7717abff5be5518a8c66287cc9d"
+    },
+    "docs/engine-api/functions/geo.createGeoNamesClient.html": {
+      "status": "added",
+      "sha": "59b7fb5bb3be3d4b8f64220502e38216fdcbdb1f"
+    },
+    "docs/engine-api/functions/geo.offsetAt.html": {
+      "status": "added",
+      "sha": "df768aa4336abdc667c46bde67554b3f666b70d2"
+    },
+    "docs/engine-api/functions/geo.resolveBirth.html": {
+      "status": "added",
+      "sha": "50a918f860d4230099756410614e0711ce9260db"
+    },
+    "docs/engine-api/functions/geo.resolveLocalToUtc.html": {
+      "status": "added",
+      "sha": "7568f7d1a93bad8ab0fc4d747c877b5dabb8e4a5"
+    },
+    "docs/engine-api/functions/index.computeAngles.html": {
+      "status": "added",
+      "sha": "a7a9fde7877650f2c1cec263371736c0a34391ae"
+    },
+    "docs/engine-api/functions/index.computeHouses.html": {
+      "status": "added",
+      "sha": "329cef80153eaecc2dbf513f2205e099d31d758d"
+    },
+    "docs/engine-api/functions/index.degreeInSign.html": {
+      "status": "added",
+      "sha": "31cfd3e0016935ff4f5e45c74bd04d50f9e852f4"
+    },
+    "docs/engine-api/functions/index.elementBalance.html": {
+      "status": "added",
+      "sha": "1f2bf95b328088b55945eb8f0a12cef84abe66c2"
+    },
+    "docs/engine-api/functions/index.findAspects.html": {
+      "status": "added",
+      "sha": "97a9aa4018e9c78cb6cf4805ab57562cfd449cbb"
+    },
+    "docs/engine-api/functions/index.findInterAspects.html": {
+      "status": "added",
+      "sha": "b5aa3522f8d4f3b98eb3e277ce710e05fb70b5bb"
+    },
+    "docs/engine-api/functions/index.findLongitudeCrossings.html": {
+      "status": "added",
+      "sha": "64365ec0e49d99a5a0667863a3aad54fec717993"
+    },
+    "docs/engine-api/functions/index.groupIntoSeasons.html": {
+      "status": "added",
+      "sha": "c5ed63e35d370ea6493350a8b275fe2ce325ba35"
+    },
+    "docs/engine-api/functions/index.houseOf.html": {
+      "status": "added",
+      "sha": "d27aa627c5ada6434dbf08cadc5be9f798bffb88"
+    },
+    "docs/engine-api/functions/index.matchAspect.html": {
+      "status": "added",
+      "sha": "e11c1f574b46843ab92fbc726bb02892d4d0feb8"
+    },
+    "docs/engine-api/functions/index.meanObliquity.html": {
+      "status": "added",
+      "sha": "b0cf5d8986dad222f820450243cdc3afe191e6dd"
+    },
+    "docs/engine-api/functions/index.modalityBalance.html": {
+      "status": "added",
+      "sha": "6895bcb76047618315010a163cfdc3394a33fc32"
+    },
+    "docs/engine-api/functions/index.moonPhase.html": {
+      "status": "added",
+      "sha": "744d67c5f79813f18fb70cba60aebbe2cb89d320"
+    },
+    "docs/engine-api/functions/index.natalChart.html": {
+      "status": "added",
+      "sha": "1218bd90a96f6b68a117eab13f47e20f24062608"
+    },
+    "docs/engine-api/functions/index.normalizeLongitude.html": {
+      "status": "added",
+      "sha": "8b2de5db8805738fad493a80d0fa17811cc21895"
+    },
+    "docs/engine-api/functions/index.placidusCusps.html": {
+      "status": "added",
+      "sha": "9ab00cc9f64d40d2f403fbc22a20331601c3216b"
+    },
+    "docs/engine-api/functions/index.positions.html": {
+      "status": "added",
+      "sha": "c4d1a9dc75ebfb961a6f4c6da54bba8701b70b05"
+    },
+    "docs/engine-api/functions/index.ramcOf.html": {
+      "status": "added",
+      "sha": "6515dae6167070968a6f9c429e0ad48a2773d73b"
+    },
+    "docs/engine-api/functions/index.saturnReturn.html": {
+      "status": "added",
+      "sha": "76d54302e631358eb8e11d9e636b856d9c9fd15e"
+    },
+    "docs/engine-api/functions/index.separation.html": {
+      "status": "added",
+      "sha": "d70448c59a0646a7b4be8e96342cc3a44ba1612a"
+    },
+    "docs/engine-api/functions/index.signForLongitude.html": {
+      "status": "added",
+      "sha": "3c259a44a9581baedef2873efa918c3654a893f5"
+    },
+    "docs/engine-api/functions/index.signIndexForLongitude.html": {
+      "status": "added",
+      "sha": "ec1b7ac60134525071896710211d6877ec5384a6"
+    },
+    "docs/engine-api/functions/index.summarizePair.html": {
+      "status": "added",
+      "sha": "263b177b4084550e1bf3510aa9a2e7093ed6bb6f"
+    },
+    "docs/engine-api/functions/index.synastry.html": {
+      "status": "added",
+      "sha": "75fe4954e8bb327122dd0e65ef9b623991af42af"
+    },
+    "docs/engine-api/functions/index.transits.html": {
+      "status": "added",
+      "sha": "5e6122246ef90b6d95ce5cbf06836bbddb5b62d9"
+    },
+    "docs/engine-api/functions/index.wholeSignCusps.html": {
+      "status": "added",
+      "sha": "48d9c1553218b6c7158fad462886e4b8ba1d8b9f"
+    },
+    "docs/engine-api/functions/receipt.createNatalEnvelope.html": {
+      "status": "added",
+      "sha": "fa3cf746dc61c97ab53fd97ef9db810f0e324d35"
+    },
+    "docs/engine-api/functions/receipt.natalReplayInput.html": {
+      "status": "added",
+      "sha": "41adbce5218b0882af6387d184486ca03868d3a4"
+    },
+    "docs/engine-api/functions/receipt.parseNatalEnvelope.html": {
+      "status": "added",
+      "sha": "fa1319c82469de6d9d71709f7d9d85b999b2aaa0"
+    },
+    "docs/engine-api/functions/receipt.redactNatalEnvelope.html": {
+      "status": "added",
+      "sha": "bdac79362a2c46b974c9b6b1ec9636b0828d169f"
+    },
+    "docs/engine-api/functions/receipt.serializeNatalEnvelope.html": {
+      "status": "added",
+      "sha": "b6c65ceda8bfa7ac4a6a8e2ec8dd5425bf5dacab"
+    },
+    "docs/engine-api/hierarchy.html": {
+      "status": "added",
+      "sha": "269b24ce229a53f5966aeb600793b8755e315777"
+    },
+    "docs/engine-api/index.html": {
+      "status": "added",
+      "sha": "f33c01d21b4c7494c0d134f2cd14104d73f1a3e1"
+    },
+    "docs/engine-api/interfaces/geo.City.html": {
+      "status": "added",
+      "sha": "423c90fa1ac0ef6ff820427825417b72a91857df"
+    },
+    "docs/engine-api/interfaces/geo.GeoNamesClient.html": {
+      "status": "added",
+      "sha": "bc46a669264d49d79cb6c291372449372b867469"
+    },
+    "docs/engine-api/interfaces/geo.GeoNamesClientOptions.html": {
+      "status": "added",
+      "sha": "8e6a39a125743a8cb13273298dbcdb7db19c7e5a"
+    },
+    "docs/engine-api/interfaces/geo.GeoNamesIndexMetadata.html": {
+      "status": "added",
+      "sha": "1c1b0dafbd280a35f332f8ef92fc76efedf41b05"
+    },
+    "docs/engine-api/interfaces/geo.LocalBirthInput.html": {
+      "status": "added",
+      "sha": "1cb6db4c5ae90b3c42dd9f4f34c66c0611c72489"
+    },
+    "docs/engine-api/interfaces/geo.LocalTimeResolution.html": {
+      "status": "added",
+      "sha": "52bb5c19d7e08fc1b6022ed13930056545014f90"
+    },
+    "docs/engine-api/interfaces/index.AngleInput.html": {
+      "status": "added",
+      "sha": "ff9a19519ec0e0bd97ec559ec1785158440036ac"
+    },
+    "docs/engine-api/interfaces/index.Angles.html": {
+      "status": "added",
+      "sha": "1aaab4f26a3b1d59be4a19681cec5cef6f7bf7f7"
+    },
+    "docs/engine-api/interfaces/index.Aspect.html": {
+      "status": "added",
+      "sha": "208d8abae58e0c53ec2cee1b78ca51f7e30fca29"
+    },
+    "docs/engine-api/interfaces/index.AspectDefinition.html": {
+      "status": "added",
+      "sha": "e92ad16c4baedc7231fea1db1c529cbb7c0299b1"
+    },
+    "docs/engine-api/interfaces/index.BirthInput.html": {
+      "status": "added",
+      "sha": "6e68a074360291cd995b26e881513488699379bd"
+    },
+    "docs/engine-api/interfaces/index.BodyPosition.html": {
+      "status": "added",
+      "sha": "5995476d773d992611293f0f763606aaa038cbc8"
+    },
+    "docs/engine-api/interfaces/index.Chart.html": {
+      "status": "added",
+      "sha": "59faeeff03f5450453b248457f970b7242a74ebd"
+    },
+    "docs/engine-api/interfaces/index.ChartInput.html": {
+      "status": "added",
+      "sha": "10f6ebe68b9fa12cf84d954611ec62fc14cae140"
+    },
+    "docs/engine-api/interfaces/index.Houses.html": {
+      "status": "added",
+      "sha": "dfa6a44eab20a6aed67f95b8822fc01bb17dd286"
+    },
+    "docs/engine-api/interfaces/index.InterAspect.html": {
+      "status": "added",
+      "sha": "66e584b5b44d1c1aec364e884282aa2e4d68d332"
+    },
+    "docs/engine-api/interfaces/index.LongitudeCrossing.html": {
+      "status": "added",
+      "sha": "5a4617835206f65297714aa68d8a054282cc4bb8"
+    },
+    "docs/engine-api/interfaces/index.MinimalBody.html": {
+      "status": "added",
+      "sha": "5a26cc7467574743ac3b6a96336c0f1162ab943e"
+    },
+    "docs/engine-api/interfaces/index.MoonPhase.html": {
+      "status": "added",
+      "sha": "badb9423b8917e18a5ce99a54f0a569e3a89e991"
+    },
+    "docs/engine-api/interfaces/index.PairSummary.html": {
+      "status": "added",
+      "sha": "b6c9d0de1b350a57f49407adf6c4665f9f4667ae"
+    },
+    "docs/engine-api/interfaces/index.ReturnSeason.html": {
+      "status": "added",
+      "sha": "9a6e609397bdb21288f7bf2b05349bb2789656eb"
+    },
+    "docs/engine-api/interfaces/index.SaturnReturnResult.html": {
+      "status": "added",
+      "sha": "7dad7c7fd3efb652425c5f8572aaf62ff1de1163"
+    },
+    "docs/engine-api/interfaces/index.SignDefinition.html": {
+      "status": "added",
+      "sha": "83cab25c29aae52d2f7e13cd3560f1d8a738ca14"
+    },
+    "docs/engine-api/interfaces/index.SynastryResult.html": {
+      "status": "added",
+      "sha": "53b2b516ead31141be890f980f2f731bf9910078"
+    },
+    "docs/engine-api/interfaces/index.TransitResult.html": {
+      "status": "added",
+      "sha": "6f66a4ac3c0fbddbdb275c0e0732d2e94894bcdf"
+    },
+    "docs/engine-api/interfaces/receipt.NatalDiagnostic.html": {
+      "status": "added",
+      "sha": "de993d544140cc863d938925b5ae4190e7658826"
+    },
+    "docs/engine-api/interfaces/receipt.NatalEnvelope.html": {
+      "status": "added",
+      "sha": "d424b48787aee6c73e4ae107d717eedd3df047d6"
+    },
+    "docs/engine-api/interfaces/receipt.NatalEnvelopeContext.html": {
+      "status": "added",
+      "sha": "a6787d161cdb0958bfff0d6d4e7f740c21a36c9f"
+    },
+    "docs/engine-api/interfaces/receipt.NatalJsonObject.html": {
+      "status": "added",
+      "sha": "3a7af469a647e8023d1ca6b7e27a36ccf3bc881e"
+    },
+    "docs/engine-api/interfaces/receipt.NatalLocalResolution.html": {
+      "status": "added",
+      "sha": "a59f7134babe728bee6bde7c15eb2c9b339f50f9"
+    },
+    "docs/engine-api/interfaces/receipt.NatalProvenanceClaims.html": {
+      "status": "added",
+      "sha": "9d87b97ffab21f0bac1f37afbf8ab4a37892bfea"
+    },
+    "docs/engine-api/interfaces/receipt.NatalReceipt.html": {
+      "status": "added",
+      "sha": "ed56e0d6b6cadb95591cd0ce5e2cb9e934266aac"
+    },
+    "docs/engine-api/media/CHANGELOG.md": {
+      "status": "added",
+      "sha": "2b9f4afa900f1efbd6f398cb2ca577536a72e263"
+    },
+    "docs/engine-api/media/LICENSING.md": {
+      "status": "added",
+      "sha": "1f429eef299c89313a0dc00efed78329f1e226f8"
+    },
+    "docs/engine-api/media/NOTICE": {
+      "status": "added",
+      "sha": "401b57f2d09836183e1f83385ac090d7f8c5b355"
+    },
+    "docs/engine-api/modules.html": {
+      "status": "added",
+      "sha": "ff0e82c0a9585f1ccd795567e0ade5327858ea31"
+    },
+    "docs/engine-api/modules/geo.html": {
+      "status": "added",
+      "sha": "90c3cdebe813951ec406b02930d0b59ef23ad1de"
+    },
+    "docs/engine-api/modules/index.html": {
+      "status": "added",
+      "sha": "29bd0d8caa582e86a20622c63d2ee1fa14910f1c"
+    },
+    "docs/engine-api/modules/receipt.html": {
+      "status": "added",
+      "sha": "b13a4d00754d31fdc05d2b3d394214c0d63f206e"
+    },
+    "docs/engine-api/types/index.AspectType.html": {
+      "status": "added",
+      "sha": "68651eb8742f3e0a6deb8a96ec0395ba92d2f9c1"
+    },
+    "docs/engine-api/types/index.BodyName.html": {
+      "status": "added",
+      "sha": "593fcb091666efea606757896bff999401684dcf"
+    },
+    "docs/engine-api/types/index.ChartFlag.html": {
+      "status": "added",
+      "sha": "7cd399db37e7d2a5fa36583b5f13d8d24802d757"
+    },
+    "docs/engine-api/types/index.DateInput.html": {
+      "status": "added",
+      "sha": "c117a60071615e534ccb5d5f04f72428f201640c"
+    },
+    "docs/engine-api/types/index.Element.html": {
+      "status": "added",
+      "sha": "bcc008906ed6d22d46b4ba213aecd7615a5710f2"
+    },
+    "docs/engine-api/types/index.HouseNumber.html": {
+      "status": "added",
+      "sha": "6943b831c7582d583b2cc54f012598b2733a02fa"
+    },
+    "docs/engine-api/types/index.HouseSystem.html": {
+      "status": "added",
+      "sha": "aa7148c086db938ac8089330ff832eb53f09af19"
+    },
+    "docs/engine-api/types/index.Modality.html": {
+      "status": "added",
+      "sha": "570e2cddff188bcce3497c936c7c05786163eb6d"
+    },
+    "docs/engine-api/types/index.MoonPhaseName.html": {
+      "status": "added",
+      "sha": "a59bfe0b5942def8b074560519940c18f02f85e3"
+    },
+    "docs/engine-api/types/index.NatalSource.html": {
+      "status": "added",
+      "sha": "33b437317859f7c951dca7aa779879dbc32bc5b7"
+    },
+    "docs/engine-api/types/index.Polarity.html": {
+      "status": "added",
+      "sha": "2d64f58311fddfb7a68093b380d720bb0c994022"
+    },
+    "docs/engine-api/types/index.SaturnReturnSource.html": {
+      "status": "added",
+      "sha": "6f71e7adb1b3eb613d15ed209c79a219788a627f"
+    },
+    "docs/engine-api/types/index.ZodiacSign.html": {
+      "status": "added",
+      "sha": "a98bff9febdcbd952f6843809dcd308c03a77a16"
+    },
+    "docs/engine-api/types/receipt.NatalEnvelopeErrorCode.html": {
+      "status": "added",
+      "sha": "886b17c1b2330d54e20f589f9118accb2312599d"
+    },
+    "docs/engine-api/types/receipt.NatalEnvelopeParseResult.html": {
+      "status": "added",
+      "sha": "027d08f61ef4405d6d61d5f6a5808b7b7fdf7d61"
+    },
+    "docs/engine-api/types/receipt.NatalJsonValue.html": {
+      "status": "added",
+      "sha": "9fdd6f0fe9171907965f97e263c9de26ad6c45df"
+    },
+    "docs/engine-api/types/receipt.NatalReference.html": {
+      "status": "added",
+      "sha": "379e86be13639a32dd3edc6426069355acb06f39"
+    },
+    "docs/engine-api/variables/index.ASPECTS.html": {
+      "status": "added",
+      "sha": "25c7947f92e3f42ddfb0ee037b04e05b2ae76475"
+    },
+    "docs/engine-api/variables/index.ASPECT_BODIES.html": {
+      "status": "added",
+      "sha": "ed8b276190280293c6d7267a1ad42406c35eef1a"
+    },
+    "docs/engine-api/variables/index.ASPECT_TYPES.html": {
+      "status": "added",
+      "sha": "ac11b8b4d06466964279e69fffdacd245d56b2a9"
+    },
+    "docs/engine-api/variables/index.ELEMENTS.html": {
+      "status": "added",
+      "sha": "2f8a349ce6f26c6a03bb6133d1b1466aabbc9c26"
+    },
+    "docs/engine-api/variables/index.ENGINE_VERSION.html": {
+      "status": "added",
+      "sha": "93463cef764edaffcb472f1bae7ec801a3e002ab"
+    },
+    "docs/engine-api/variables/index.HOUSE_SYSTEMS.html": {
+      "status": "added",
+      "sha": "aa16ab28e71c8acc5c28036c033f4105431b0530"
+    },
+    "docs/engine-api/variables/index.MODALITIES.html": {
+      "status": "added",
+      "sha": "76b29609ccfde900370b6ed8e71acf5ad085bb38"
+    },
+    "docs/engine-api/variables/index.SIGNS.html": {
+      "status": "added",
+      "sha": "000e9df237244a03c3b780871374a4dcf0fe8af2"
+    },
+    "docs/engine-api/variables/index.SIGN_NAMES.html": {
+      "status": "added",
+      "sha": "38b578283f17a3c537608839febf160d824d506f"
+    },
+    "docs/engine-api/variables/receipt.NATAL_DIAGNOSTIC_SCHEMA.html": {
+      "status": "added",
+      "sha": "18adabadcc93c1bc957f5b3b58b73d45412d12e2"
+    },
+    "docs/engine-api/variables/receipt.NATAL_ENVELOPE_LIMITS.html": {
+      "status": "added",
+      "sha": "b3190c8933e90ff47c2c4cef203f3c57b3f8defc"
+    },
+    "docs/engine-api/variables/receipt.NATAL_ENVELOPE_SCHEMA.html": {
+      "status": "added",
+      "sha": "1cb371c2f6e7ba5fedca44f2cd3919c0f5b31337"
+    },
+    "docs/engine-api/variables/receipt.NATAL_RECEIPT_SCHEMA.html": {
+      "status": "added",
+      "sha": "0a0e00dd5abb5235dc46c7f2cd7ff7839cb66180"
+    },
+    "docs/platform/EVIDENCE.md": {
+      "status": "added",
+      "sha": "13ce1d64364b3f26106683fe29606fc632aa2ec4"
+    },
+    "docs/platform/STATUS.md": {
+      "status": "added",
+      "sha": "476cae399f0c661bfeadaae9172888e4fbb5bbbc"
+    },
+    "docs/platform/evidence/geo-build.log": {
+      "status": "added",
+      "sha": "dcecf5bd59b4b946d4f2b0f64726409eb4472195"
+    },
+    "docs/platform/evidence/geo-checksum.log": {
+      "status": "added",
+      "sha": "eeca3d09d4b1d474382a9a687d4674720556e63f"
+    },
+    "docs/platform/evidence/geo-consumer-audit.json": {
+      "status": "added",
+      "sha": "a0fa263472858ffb6373ea14ff89cac9c577c37c"
+    },
+    "docs/platform/evidence/geo-consumer20.json": {
+      "status": "added",
+      "sha": "18c6128e1aa57ff14db04fc16896952ea87aaf1a"
+    },
+    "docs/platform/evidence/geo-consumer22.json": {
+      "status": "added",
+      "sha": "908d5e3aafeb3e2b82d036253a189bb3f8c4678a"
+    },
+    "docs/platform/evidence/geo-contents.log": {
+      "status": "added",
+      "sha": "ef08390451d64a2415d0bd03246ca110ce9aaf19"
+    },
+    "docs/platform/evidence/geo-docs.log": {
+      "status": "added",
+      "sha": "6ada21bea9f1eb9fe086d61a0f531c7660e0608f"
+    },
+    "docs/platform/evidence/geo-exports.log": {
+      "status": "added",
+      "sha": "cf2cf6d79263ebdf2fa28b071e873f940c90b567"
+    },
+    "docs/platform/evidence/geo-format.log": {
+      "status": "added",
+      "sha": "79707e55ed1dc2baa627ac7b9fa1f88f981f717e"
+    },
+    "docs/platform/evidence/geo-independent-REVIEW.md": {
+      "status": "added",
+      "sha": "a9ff10885ae9bc726bce2e7cf98b9fc7676fe88c"
+    },
+    "docs/platform/evidence/geo-independent-review-result.json": {
+      "status": "added",
+      "sha": "414665e6bf5cea1ef364595fd2e79cf8dfa48151"
+    },
+    "docs/platform/evidence/geo-independent-review-tests.log": {
+      "status": "added",
+      "sha": "8b88a9236300480359562ce15ef93f92da44ce3f"
+    },
+    "docs/platform/evidence/geo-lint.log": {
+      "status": "added",
+      "sha": "1f63ec91929336f5a30484bedad92910b44d62e9"
+    },
+    "docs/platform/evidence/geo-log-normalization.json": {
+      "status": "added",
+      "sha": "0694d6d8535cc6526fcb9d23ac047940a3191772"
+    },
+    "docs/platform/evidence/geo-neutrality.log": {
+      "status": "added",
+      "sha": "26208d099cbe3cee53ca1d6c0f2f217fdbe9cf48"
+    },
+    "docs/platform/evidence/geo-numerical-parity.json": {
+      "status": "added",
+      "sha": "caf37d14b7a257f1746e4aae112b7130dbf339cb"
+    },
+    "docs/platform/evidence/geo-pack-dry.log": {
+      "status": "added",
+      "sha": "57e7fe340d6dce1ab381f0a2451295f3ec9e9f35"
+    },
+    "docs/platform/evidence/geo-pack.json": {
+      "status": "added",
+      "sha": "01e917c1d5d3a1d9cf55c5aaeb943778042377a9"
+    },
+    "docs/platform/evidence/geo-reproduction-green.log": {
+      "status": "added",
+      "sha": "d96b4fd5e8a8dcdec1e13cba67b9495cb34d99b6"
+    },
+    "docs/platform/evidence/geo-reproduction-red.log": {
+      "status": "added",
+      "sha": "322faca777fcdf7c5a0ee4dda7ff6c690cd59a73"
+    },
+    "docs/platform/evidence/geo-reproduction-result.json": {
+      "status": "added",
+      "sha": "ecdd50ef76d69379c1c15d193dbcad1c04177e4d"
+    },
+    "docs/platform/evidence/geo-schema/REVIEW.md.log": {
+      "status": "added",
+      "sha": "cbc277eb65e35afbf1e55a0f115468235721556d"
+    },
+    "docs/platform/evidence/geo-schema/asset-contract.json.log": {
+      "status": "added",
+      "sha": "869d84b8413c937b660b456cd4e007eb722ba553"
+    },
+    "docs/platform/evidence/geo-schema/baseline-probe.json.log": {
+      "status": "added",
+      "sha": "7ce2323b2deec411b6f2e15cdbb2099821ce0091"
+    },
+    "docs/platform/evidence/geo-schema/browser/README.md.log": {
+      "status": "added",
+      "sha": "0bd887d5efa6d5e56676b431861f03588941e785"
+    },
+    "docs/platform/evidence/geo-schema/browser/attempt-1/README-prepared.md.log": {
+      "status": "added",
+      "sha": "b7dbd3b5b1d5b1ae7467a7f41a3a6ef2981fad78"
+    },
+    "docs/platform/evidence/geo-schema/browser/attempt-1/browser-probe.log": {
+      "status": "added",
+      "sha": "d89b32eff257245d0331422e65e9eb9d80c991d0"
+    },
+    "docs/platform/evidence/geo-schema/browser/attempt-1/browser-probe.mjs.log": {
+      "status": "added",
+      "sha": "93640f4c1b506b5f2fe38a14e1cbb49db45b2d1c"
+    },
+    "docs/platform/evidence/geo-schema/browser/browser-probe.log": {
+      "status": "added",
+      "sha": "eaa6e6215a36b1c8523cedc6f596d1972c57de5a"
+    },
+    "docs/platform/evidence/geo-schema/browser/browser-probe.mjs.log": {
+      "status": "added",
+      "sha": "d4b6373a3caedabd1c3732b0371602ffa7ac531d"
+    },
+    "docs/platform/evidence/geo-schema/browser/browser-probe.png": {
+      "status": "added",
+      "sha": "3bb5276e5440f40d5beacdd6b48b2bcc9b173829"
+    },
+    "docs/platform/evidence/geo-schema/browser/browser-result.json.log": {
+      "status": "added",
+      "sha": "5fed279d5d76fdd0fa28973ebe949ebaf16fbc53"
+    },
+    "docs/platform/evidence/geo-schema/browser/bundle-graphs.json.log": {
+      "status": "added",
+      "sha": "a309d410ea1bbdf7d3076c76d7f83f0b8349ea84"
+    },
+    "docs/platform/evidence/geo-schema/consumer-audit.json.log": {
+      "status": "added",
+      "sha": "a0fa263472858ffb6373ea14ff89cac9c577c37c"
+    },
+    "docs/platform/evidence/geo-schema/consumer20.log": {
+      "status": "added",
+      "sha": "c2aa9dc3de730b474a942ddfdb2a249440d3ee02"
+    },
+    "docs/platform/evidence/geo-schema/consumer22.log": {
+      "status": "added",
+      "sha": "4918697982a5d7ed8aee07279ade5230cd563294"
+    },
+    "docs/platform/evidence/geo-schema/corpus.json.log": {
+      "status": "added",
+      "sha": "202c8b57106c583ea91a93b96d97771a30199e7d"
+    },
+    "docs/platform/evidence/geo-schema/delivery-inputs.json.log": {
+      "status": "added",
+      "sha": "dc8fceb17b88dfc2ad272bd160c1761093ec83b3"
+    },
+    "docs/platform/evidence/geo-schema/final-build.log": {
+      "status": "added",
+      "sha": "925422fca03a10fe791e862a67d97339f24cf83a"
+    },
+    "docs/platform/evidence/geo-schema/final-contents.log": {
+      "status": "added",
+      "sha": "cd5e3516bac3c79bcf72781d85a374dd15e640e0"
+    },
+    "docs/platform/evidence/geo-schema/final-exports.log": {
+      "status": "added",
+      "sha": "f0f0185426150200dfad11ae5b31a15f76f375fb"
+    },
+    "docs/platform/evidence/geo-schema/final-format-ledger.log": {
+      "status": "added",
+      "sha": "79707e55ed1dc2baa627ac7b9fa1f88f981f717e"
+    },
+    "docs/platform/evidence/geo-schema/final-format.log": {
+      "status": "added",
+      "sha": "79707e55ed1dc2baa627ac7b9fa1f88f981f717e"
+    },
+    "docs/platform/evidence/geo-schema/final-pack-dry-run.log": {
+      "status": "added",
+      "sha": "04039f835ddf6e40a91294567bd9ae647ba0c8f8"
+    },
+    "docs/platform/evidence/geo-schema/final-typecheck.log": {
+      "status": "added",
+      "sha": "bc36a6b8569c42ac50b8f4968c2389baaa07fb05"
+    },
+    "docs/platform/evidence/geo-schema/final-typedoc.log": {
+      "status": "added",
+      "sha": "935226c91360ae29710854d5dd4a1c9578540acd"
+    },
+    "docs/platform/evidence/geo-schema/fixed-probe.json.log": {
+      "status": "added",
+      "sha": "5d8c650a46ed1f6ea57585ec5cc0d92805bc10c5"
+    },
+    "docs/platform/evidence/geo-schema/independent-REVIEW.md.log": {
+      "status": "added",
+      "sha": "9a08838fbebe97ee3ae1288567e816af0a292b6d"
+    },
+    "docs/platform/evidence/geo-schema/independent-probe.mjs.log": {
+      "status": "added",
+      "sha": "649aa52921a01cded76df28af7d0c90a0de1c2b8"
+    },
+    "docs/platform/evidence/geo-schema/independent-result.json.log": {
+      "status": "added",
+      "sha": "fc38274092266ed5e0d03b3bd40b9b4ba5e203e3"
+    },
+    "docs/platform/evidence/geo-schema/inputs.json.log": {
+      "status": "added",
+      "sha": "1b55910b0f39b10430a5d260265be5282cc3030d"
+    },
+    "docs/platform/evidence/geo-schema/integrated-lint.log": {
+      "status": "added",
+      "sha": "327babf66df8c57227f6839f4930282821b12782"
+    },
+    "docs/platform/evidence/geo-schema/integrated-neutrality.log": {
+      "status": "added",
+      "sha": "26208d099cbe3cee53ca1d6c0f2f217fdbe9cf48"
+    },
+    "docs/platform/evidence/geo-schema/integrated-node20-tests.log": {
+      "status": "added",
+      "sha": "84ec207a041dcd21983456ed54d7de58d1ddfcff"
+    },
+    "docs/platform/evidence/geo-schema/integrated-node22-tests.log": {
+      "status": "added",
+      "sha": "5f3024cccda22f2503cd7f231d16cd882b248e25"
+    },
+    "docs/platform/evidence/geo-schema/integrated-registry.log": {
+      "status": "added",
+      "sha": "eeca3d09d4b1d474382a9a687d4674720556e63f"
+    },
+    "docs/platform/evidence/geo-schema/pack-rc4-normalized.json.log": {
+      "status": "added",
+      "sha": "8dcb154de8599339078f2e4c8e597f919ee9beb9"
+    },
+    "docs/platform/evidence/geo-schema/pack-rc4-stderr.log": {
+      "status": "added",
+      "sha": "d40132bff0290259ae2c7dbfbb3e9d33fec81a09"
+    },
+    "docs/platform/evidence/geo-schema/pack-rc4.json.log": {
+      "status": "added",
+      "sha": "467f7622cb44aad0e370e25f5cb7e0a77617c977"
+    },
+    "docs/platform/evidence/geo-schema/packed-parity.json.log": {
+      "status": "added",
+      "sha": "3d2087fa4f29d77cc980fd57bd1e9123d17614ed"
+    },
+    "docs/platform/evidence/geo-schema/packed-parity.mjs.log": {
+      "status": "added",
+      "sha": "ab49301d2268606642b3101ecdd96c0fd032edf3"
+    },
+    "docs/platform/evidence/geo-schema/public-artifact.json.log": {
+      "status": "added",
+      "sha": "e6d4b19d1c6ee2fe8d42455200a7f6355e1a9af9"
+    },
+    "docs/platform/evidence/geo-schema/red-schema.log": {
+      "status": "added",
+      "sha": "cccda6c4f7232bd3f49751a0ba33aa8c69543133"
+    },
+    "docs/platform/evidence/geo-schema/release-refresh.json.log": {
+      "status": "added",
+      "sha": "c8bb0b76e57d01355c3dee1bf2c5ea2f15e82058"
+    },
+    "docs/platform/evidence/geo-schema/summary.json.log": {
+      "status": "added",
+      "sha": "cd825e45b7b59983974aff608688712053b9c276"
+    },
+    "docs/platform/evidence/geo-tests-node20.log": {
+      "status": "added",
+      "sha": "b790102e56dced9b77b5ad1939d897ef3b445744"
+    },
+    "docs/platform/evidence/geo-tests.log": {
+      "status": "added",
+      "sha": "08cf5336c6cbfa50582217a7f2e7f43e6950c91c"
+    },
+    "docs/platform/evidence/geo-typecheck.log": {
+      "status": "added",
+      "sha": "c87ab162c4e33f44a1b4f00e7a8819be5a22446c"
+    },
+    "docs/platform/evidence/input-flags/REVIEW.md.log": {
+      "status": "added",
+      "sha": "b2046ff02a7a2743fba6e222270f71b0e6a38f4f"
+    },
+    "docs/platform/evidence/input-flags/baseline.json.log": {
+      "status": "added",
+      "sha": "0df6d6dd2041c52f0cc616dcd26f205ecc3bedba"
+    },
+    "docs/platform/evidence/input-flags/browser/README.md.log": {
+      "status": "added",
+      "sha": "4cfb03bf10ecdf61c4daff2da87f33da44948a15"
+    },
+    "docs/platform/evidence/input-flags/browser/browser-probe.mjs.log": {
+      "status": "added",
+      "sha": "97cfd9e3682b40730dacdd1bd49a260dc96ffe52"
+    },
+    "docs/platform/evidence/input-flags/browser/cases.mjs.log": {
+      "status": "added",
+      "sha": "99990f37dba34c0aaa98da5ff14e6914f6dc21c4"
+    },
+    "docs/platform/evidence/input-flags/browser/inputs.json.log": {
+      "status": "added",
+      "sha": "892c854685a70f1a1c260112867c95cde8a7c591"
+    },
+    "docs/platform/evidence/input-flags/browser/manifest.json.log": {
+      "status": "added",
+      "sha": "4d0899bdac522836775bd23f0823ab7051bb8287"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/agent-1-open-failure.log": {
+      "status": "added",
+      "sha": "a6bb4eb000b9d507ac6df13edeb430ad56f19541"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/agent-2-close-failure.log": {
+      "status": "added",
+      "sha": "bda671468cf15af4891bc29f58b3e429296ed17f"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/agent-browser-config.json.log": {
+      "status": "added",
+      "sha": "0967ef424bce6791893e9a57bb952f80fd536e93"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/archive-members.json.log": {
+      "status": "added",
+      "sha": "08a9994d21bf282cd11d07ce46c7cee19b702f45"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/browser-probe.mjs.log": {
+      "status": "added",
+      "sha": "9fbce17f79e8ec4f6c431b83b4bea5f67cdf7a50"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/browser-result.json.log": {
+      "status": "added",
+      "sha": "a328559ca4b2af2e34b3f1cce83afe1ddb5da30a"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/bundle-graphs.json.log": {
+      "status": "added",
+      "sha": "ed175bdb0e8296cb1e7e6f0aad50e014a073fcde"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825254705-62322/cases.mjs.log": {
+      "status": "added",
+      "sha": "99990f37dba34c0aaa98da5ff14e6914f6dc21c4"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-1-open.log": {
+      "status": "added",
+      "sha": "9c3db15eb0d3b3a5c3716f1c6479cb99892bcc0a"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-2-wait.log": {
+      "status": "added",
+      "sha": "7aabfe0beec4eff1c6d78ba546433e5a45d50cc7"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-3-eval.log": {
+      "status": "added",
+      "sha": "89e7a85b2ffaedecb2379b6cb42b514c7abbf5f2"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-4-snapshot.log": {
+      "status": "added",
+      "sha": "5f0f6930d942aef3cb065b47f5402ef6ea48fc8b"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-5-snapshot.log": {
+      "status": "added",
+      "sha": "e6e204825cf160e30929eb976ded3953df3201cd"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-6-errors.log": {
+      "status": "added",
+      "sha": "4a42d15fb86e7b81ed2a53aec7e5a06c39bcd9a0"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-7-screenshot.log": {
+      "status": "added",
+      "sha": "dc3af5ed1b3c3537603490d5431bec9f6c14e4d7"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-8-close.log": {
+      "status": "added",
+      "sha": "89978ad98a59df218a5584afdce200d1cb101698"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/agent-browser-config.json.log": {
+      "status": "added",
+      "sha": "0967ef424bce6791893e9a57bb952f80fd536e93"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/archive-members.json.log": {
+      "status": "added",
+      "sha": "08a9994d21bf282cd11d07ce46c7cee19b702f45"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/browser-probe.mjs.log": {
+      "status": "added",
+      "sha": "97cfd9e3682b40730dacdd1bd49a260dc96ffe52"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/browser-probe.png": {
+      "status": "added",
+      "sha": "0be653315ecae3353cdf8c464569570e65164017"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/browser-result.json.log": {
+      "status": "added",
+      "sha": "ed00c5c407ebc559d62f6065d9077bb809e9c804"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/bundle-graphs.json.log": {
+      "status": "added",
+      "sha": "ed175bdb0e8296cb1e7e6f0aad50e014a073fcde"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/cases.mjs.log": {
+      "status": "added",
+      "sha": "99990f37dba34c0aaa98da5ff14e6914f6dc21c4"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/preflight.png": {
+      "status": "added",
+      "sha": "5a02301360f8d0d5cad939b523e218737717ac63"
+    },
+    "docs/platform/evidence/input-flags/browser/run-1788825287747-62400/trace.zip": {
+      "status": "added",
+      "sha": "76d1f60bfdae8785d2b6fcc702441d85b04f1b3c"
+    },
+    "docs/platform/evidence/input-flags/browser/summary.json.log": {
+      "status": "added",
+      "sha": "0f2bcffe7a9585131271cd0b44682f9a08953aaf"
+    },
+    "docs/platform/evidence/input-flags/build.log": {
+      "status": "added",
+      "sha": "83d8eea3c616021bd0213a99e354b3b2c4d96ee6"
+    },
+    "docs/platform/evidence/input-flags/delivery-artifact.json.log": {
+      "status": "added",
+      "sha": "e6e83ff29c1785b67d02851787f6a81b058370e2"
+    },
+    "docs/platform/evidence/input-flags/delivery-consumer-audit.json.log": {
+      "status": "added",
+      "sha": "a0fa263472858ffb6373ea14ff89cac9c577c37c"
+    },
+    "docs/platform/evidence/input-flags/delivery-consumer20.log": {
+      "status": "added",
+      "sha": "ef3df8519e81a86b4c95eba225ff842ee41ff1d7"
+    },
+    "docs/platform/evidence/input-flags/delivery-consumer22.log": {
+      "status": "added",
+      "sha": "f277b9f0492c7397714fc39d859afdc93a605b22"
+    },
+    "docs/platform/evidence/input-flags/delivery-inputs.json.log": {
+      "status": "added",
+      "sha": "d38e393569d2f1691f2e7ddda5e5980a0972a0d1"
+    },
+    "docs/platform/evidence/input-flags/delivery-pack-attempt-1.log": {
+      "status": "added",
+      "sha": "ae6167c1226f3c16158fb41e98235f1158682973"
+    },
+    "docs/platform/evidence/input-flags/delivery-pack-inventory.json.log": {
+      "status": "added",
+      "sha": "186cc5e8c0f0a0a08cb94ccf917e3e62089f45e5"
+    },
+    "docs/platform/evidence/input-flags/delivery-pack.log": {
+      "status": "added",
+      "sha": "c518d00f495167a384818235188b0b0ce81e9079"
+    },
+    "docs/platform/evidence/input-flags/delivery-packed-parity.json.log": {
+      "status": "added",
+      "sha": "3363da87e257363eaad879460d3b021ea4815122"
+    },
+    "docs/platform/evidence/input-flags/delivery-packed-parity.log": {
+      "status": "added",
+      "sha": "4eb97dd2379b309ed627319b3923ed845b868716"
+    },
+    "docs/platform/evidence/input-flags/delivery-packed-parity.mjs.log": {
+      "status": "added",
+      "sha": "f6282dfb6e7b750edff39d010baf408d2849ce34"
+    },
+    "docs/platform/evidence/input-flags/delivery-public-artifact.json.log": {
+      "status": "added",
+      "sha": "6dc43c9eea3a6379911cbdc77fcdab8f06d7cd79"
+    },
+    "docs/platform/evidence/input-flags/delivery-source-format.log": {
+      "status": "added",
+      "sha": "79707e55ed1dc2baa627ac7b9fa1f88f981f717e"
+    },
+    "docs/platform/evidence/input-flags/engine-tests-final.log": {
+      "status": "added",
+      "sha": "ae23bad99d815d40ec7797b1834c28402a493fda"
+    },
+    "docs/platform/evidence/input-flags/exports-smoke.log": {
+      "status": "added",
+      "sha": "ae01f602fe5a3ebeed1d51e5861d5217a498f0d9"
+    },
+    "docs/platform/evidence/input-flags/fixed.json.log": {
+      "status": "added",
+      "sha": "d5b41625d11cc7effb9700fb4b008f12313eedea"
+    },
+    "docs/platform/evidence/input-flags/format-check.log": {
+      "status": "added",
+      "sha": "4aa0d16e7a0ff5c16269bf45771cebe89cc2e81d"
+    },
+    "docs/platform/evidence/input-flags/geo-build-graph.json.log": {
+      "status": "added",
+      "sha": "160c938c5ac18fbd22c1739e60f227169eb76296"
+    },
+    "docs/platform/evidence/input-flags/independent-PLAN.md.log": {
+      "status": "added",
+      "sha": "9066a4392bb816fbad440f500b9e1519dd93425b"
+    },
+    "docs/platform/evidence/input-flags/independent-REVIEW.md.log": {
+      "status": "added",
+      "sha": "91a853156af15eb26e8b11f00933b875c8aa9f4d"
+    },
+    "docs/platform/evidence/input-flags/independent-probe.log": {
+      "status": "added",
+      "sha": "3d3238ceadea279461cb47661e0376083b6b93a7"
+    },
+    "docs/platform/evidence/input-flags/independent-probe.test.ts.log": {
+      "status": "added",
+      "sha": "36be13c6e2678493cb7dd865c36d991ba92b5205"
+    },
+    "docs/platform/evidence/input-flags/independent-result.json.log": {
+      "status": "added",
+      "sha": "787ccfdfbcb1a8379229031148edc900df285e48"
+    },
+    "docs/platform/evidence/input-flags/independent-source-manifest.json.log": {
+      "status": "added",
+      "sha": "3b93f0104a7191c696c047efbe42cd74d4cbe8fb"
+    },
+    "docs/platform/evidence/input-flags/independent-vitest.config.mjs.log": {
+      "status": "added",
+      "sha": "7c78c662b742637fcb1aea700978133d98a1577b"
+    },
+    "docs/platform/evidence/input-flags/input-flags.patch.log": {
+      "status": "added",
+      "sha": "55dd7b9dc34615eaf93617543677a0b91eb19593"
+    },
+    "docs/platform/evidence/input-flags/probe.mjs.log": {
+      "status": "added",
+      "sha": "27bc2127f91a3b396c246ea4c708d634c59a0bd5"
+    },
+    "docs/platform/evidence/input-flags/red-final-suite.log": {
+      "status": "added",
+      "sha": "6c50e14241c70cc2312f74de436958a83ca254bb"
+    },
+    "docs/platform/evidence/input-flags/red.log": {
+      "status": "added",
+      "sha": "0dd4e8567c6b9ed5c9a4589e72b1ebb0ed5b7385"
+    },
+    "docs/platform/evidence/input-flags/release-build.log": {
+      "status": "added",
+      "sha": "645ceee556726b96cb9d34788517326be19c7c86"
+    },
+    "docs/platform/evidence/input-flags/release-docs-engine.log": {
+      "status": "added",
+      "sha": "917a861a635f8fa7aa04488c18fbe7495db5a545"
+    },
+    "docs/platform/evidence/input-flags/release-exports-smoke.log": {
+      "status": "added",
+      "sha": "7dfebbe8cef418697fffc21249a537eafd580a03"
+    },
+    "docs/platform/evidence/input-flags/release-format-check.log": {
+      "status": "added",
+      "sha": "79707e55ed1dc2baa627ac7b9fa1f88f981f717e"
+    },
+    "docs/platform/evidence/input-flags/release-gates.json.log": {
+      "status": "added",
+      "sha": "1c6ac207c50f6b2808e51bf57ebfbbfa557ebfb7"
+    },
+    "docs/platform/evidence/input-flags/release-inputs.json.log": {
+      "status": "added",
+      "sha": "f3fb045c3ad222c633d550d88d39e253fd065a15"
+    },
+    "docs/platform/evidence/input-flags/release-lint.log": {
+      "status": "added",
+      "sha": "c668ae591c6a9bab57727cfe8060a4395775997f"
+    },
+    "docs/platform/evidence/input-flags/release-neutrality-guard.log": {
+      "status": "added",
+      "sha": "26208d099cbe3cee53ca1d6c0f2f217fdbe9cf48"
+    },
+    "docs/platform/evidence/input-flags/release-pack-dry-run.log": {
+      "status": "added",
+      "sha": "95f724dfbbc1fabf2abea908b53dd8facade7b7c"
+    },
+    "docs/platform/evidence/input-flags/release-package-contents.log": {
+      "status": "added",
+      "sha": "ae28eb7f50cb18c5ddbc8868ea5874e1585d11c7"
+    },
+    "docs/platform/evidence/input-flags/release-production-refresh.json.log": {
+      "status": "added",
+      "sha": "029fcccb89a709e1543e44dbe308bdd643e71ef9"
+    },
+    "docs/platform/evidence/input-flags/release-registry-checksum.log": {
+      "status": "added",
+      "sha": "eeca3d09d4b1d474382a9a687d4674720556e63f"
+    },
+    "docs/platform/evidence/input-flags/release-release-refresh.json.log": {
+      "status": "added",
+      "sha": "0f978222dc9250d8e572ac75fee4ede9301d391e"
+    },
+    "docs/platform/evidence/input-flags/release-test.log": {
+      "status": "added",
+      "sha": "225d8d2a7951af97abd7d11e74ca343509073fa3"
+    },
+    "docs/platform/evidence/input-flags/release-test20.log": {
+      "status": "added",
+      "sha": "cbebcc1b47afc32dc44c320cce63c71b86b7cdc4"
+    },
+    "docs/platform/evidence/input-flags/release-typecheck.log": {
+      "status": "added",
+      "sha": "b55c4aa5e5ca4345088ae85290f5917beab7faed"
+    },
+    "docs/platform/evidence/input-flags/source-inputs.json.log": {
+      "status": "added",
+      "sha": "4604ce23bece3b079495cb2fabe1a32ae0c7e862"
+    },
+    "docs/platform/evidence/input-flags/summary.json.log": {
+      "status": "added",
+      "sha": "2d8cfb5eec256103e737b277526351f3f10b74fe"
+    },
+    "docs/platform/evidence/input-flags/typecheck-final.log": {
+      "status": "added",
+      "sha": "557ba852ec07a0239ba362f8331e53a3613e05fe"
+    },
+    "docs/platform/evidence/receipt/browser-README.md": {
+      "status": "added",
+      "sha": "4c7b2cfbc8f0adfe5a5e0d93c1fc2d82e83e2f7c"
+    },
+    "docs/platform/evidence/receipt/browser-harness-initialization-failure.log": {
+      "status": "added",
+      "sha": "2bfb0038c4a97451e19f35b496b947a47238054a"
+    },
+    "docs/platform/evidence/receipt/browser-probe.log": {
+      "status": "added",
+      "sha": "8faba84a30e34f18a46fe3fa165a1bea7d60f035"
+    },
+    "docs/platform/evidence/receipt/browser-probe.mjs.log": {
+      "status": "added",
+      "sha": "5880835d8d8631fed90a955a30d8beab3baa8f11"
+    },
+    "docs/platform/evidence/receipt/browser-probe.png": {
+      "status": "added",
+      "sha": "78ef9d7bf1a82b1b5b3cd7c3c0297bccf8da2493"
+    },
+    "docs/platform/evidence/receipt/browser-result.json": {
+      "status": "added",
+      "sha": "09485194ca4174f567833c7d07cc7ebae5215991"
+    },
+    "docs/platform/evidence/receipt/browser-sandbox-failure.log": {
+      "status": "added",
+      "sha": "2caa6004d245b722cf5f28d5ab160c087bdb160a"
+    },
+    "docs/platform/evidence/receipt/fixture-generation.json": {
+      "status": "added",
+      "sha": "9e5dcbcabedffbb4c4e0e4454c6633290e2e737b"
+    },
+    "docs/platform/evidence/receipt/fixture-verification.json": {
+      "status": "added",
+      "sha": "b692742170e1952c2f7422b65c09f282499fee73"
+    },
+    "docs/platform/evidence/receipt/independent-REVIEW.md": {
+      "status": "added",
+      "sha": "f922d316321660388ae19bd276af03f693756721"
+    },
+    "docs/platform/evidence/receipt/independent-summary.json": {
+      "status": "added",
+      "sha": "28ab25f6074ca94971f08ca61649b0e0f0fcd125"
+    },
+    "docs/platform/evidence/receipt/integrator-counterexamples.json": {
+      "status": "added",
+      "sha": "2de62f732a2a0d12b31cabd6c5c9389169ad8581"
+    },
+    "docs/platform/evidence/receipt/integrator-counterexamples.mjs.log": {
+      "status": "added",
+      "sha": "bf59c5f6b7e8f925e98ee457daa78179c52df488"
+    },
+    "docs/platform/evidence/receipt/integrator-error-probes.json": {
+      "status": "added",
+      "sha": "17d658cce22c39c758c7c95cf4e3f82302678c72"
+    },
+    "docs/platform/evidence/receipt/integrator-error-probes.mjs.log": {
+      "status": "added",
+      "sha": "ae5e33d83e24ff16a061711361e97c83275955d1"
+    },
+    "docs/platform/evidence/receipt/integrator-json-differential.json": {
+      "status": "added",
+      "sha": "2b5c315d3c0c341267781cf889bc8c92a98aabf6"
+    },
+    "docs/platform/evidence/receipt/integrator-json-differential.mjs.log": {
+      "status": "added",
+      "sha": "50933032ed503d62a0214e8209b38e2309383e74"
+    },
+    "docs/platform/evidence/receipt/integrator-probe.json": {
+      "status": "added",
+      "sha": "65ff8e306a9e83e8ba95e46696554809bffedec2"
+    },
+    "docs/platform/evidence/receipt/integrator-probe.mjs.log": {
+      "status": "added",
+      "sha": "dcc78b08fc4e3226f56f76fa7a466c044ecf54a0"
+    },
+    "docs/platform/evidence/receipt/integrator-temporal.json": {
+      "status": "added",
+      "sha": "7c48c09aa9a2595ae8470aa1a31f98b12cf7f6fb"
+    },
+    "docs/platform/evidence/receipt/integrator-temporal.mjs.log": {
+      "status": "added",
+      "sha": "c1b9cdcd81a57f6522bd237a25e706eda927af41"
+    },
+    "docs/platform/evidence/receipt/normalization.json": {
+      "status": "added",
+      "sha": "6be442b7aa64fee797bbac7cf41bff837f345e6e"
+    },
+    "docs/platform/evidence/receipt/public-artifact.json": {
+      "status": "added",
+      "sha": "c6798fec991e1dae6ed9a52aaed461de242e6b15"
+    },
+    "docs/platform/evidence/receipt/receipt-build.log": {
+      "status": "added",
+      "sha": "2a9897234770742dc0c05dad3df5d6250cc427f7"
+    },
+    "docs/platform/evidence/receipt/receipt-consumer-audit.json": {
+      "status": "added",
+      "sha": "a0fa263472858ffb6373ea14ff89cac9c577c37c"
+    },
+    "docs/platform/evidence/receipt/receipt-consumer20.json": {
+      "status": "added",
+      "sha": "6d1c30a364cb7cafd3b3e64970ce3cf2c6765ebf"
+    },
+    "docs/platform/evidence/receipt/receipt-consumer22.json": {
+      "status": "added",
+      "sha": "e4de66c5ff7a4a833457fbd0be0afff397c1c3a2"
+    },
+    "docs/platform/evidence/receipt/receipt-contents-final.log": {
+      "status": "added",
+      "sha": "3b9a32cbd1e4f1cd4dd7d9c5cd868b2133a7a654"
+    },
+    "docs/platform/evidence/receipt/receipt-docs-final.log": {
+      "status": "added",
+      "sha": "e536df2ac696e221136b4e9858f4086d9ab1c8d7"
+    },
+    "docs/platform/evidence/receipt/receipt-docs.log": {
+      "status": "added",
+      "sha": "e536df2ac696e221136b4e9858f4086d9ab1c8d7"
+    },
+    "docs/platform/evidence/receipt/receipt-engine-build-final.log": {
+      "status": "added",
+      "sha": "b1b9402bcf2ba8afe768a6e7a8adca559cabd7fb"
+    },
+    "docs/platform/evidence/receipt/receipt-error-final.json": {
+      "status": "added",
+      "sha": "32ff53d22e06a776dc5e0ae37fddef699c1098e2"
+    },
+    "docs/platform/evidence/receipt/receipt-error-probe.cjs.log": {
+      "status": "added",
+      "sha": "1c468b23b90a46cd65127a4eb25c0429a55a1d27"
+    },
+    "docs/platform/evidence/receipt/receipt-error-working.json": {
+      "status": "added",
+      "sha": "2f10e7c996b07df1e1b7435417314f013b314307"
+    },
+    "docs/platform/evidence/receipt/receipt-exports-final.log": {
+      "status": "added",
+      "sha": "7bea3e7e64f609dbdab6b3ac793c8b3da2360735"
+    },
+    "docs/platform/evidence/receipt/receipt-exports-smoke.log": {
+      "status": "added",
+      "sha": "7bea3e7e64f609dbdab6b3ac793c8b3da2360735"
+    },
+    "docs/platform/evidence/receipt/receipt-focused-final.log": {
+      "status": "added",
+      "sha": "616cdcc3a80dcb2233a41014fa81d3bfe723ecc6"
+    },
+    "docs/platform/evidence/receipt/receipt-format-check.log": {
+      "status": "added",
+      "sha": "2fd5e5ecb926dd805d7627e2d66cb8e41d6e7492"
+    },
+    "docs/platform/evidence/receipt/receipt-format-final.log": {
+      "status": "added",
+      "sha": "2fd5e5ecb926dd805d7627e2d66cb8e41d6e7492"
+    },
+    "docs/platform/evidence/receipt/receipt-gates.json": {
+      "status": "added",
+      "sha": "d8520a2b5d1b5b9ee32c512dbbb0b8e8e8c01363"
+    },
+    "docs/platform/evidence/receipt/receipt-lint.log": {
+      "status": "added",
+      "sha": "f98fa9966b3c63123b891033e3e2b94b76447fad"
+    },
+    "docs/platform/evidence/receipt/receipt-neutrality-final.log": {
+      "status": "added",
+      "sha": "b4e0f65bce2988b71f0d134e9f81827d441be067"
+    },
+    "docs/platform/evidence/receipt/receipt-neutrality-guard.log": {
+      "status": "added",
+      "sha": "a8c52317906ac882e414c8c94bf68ff9664de17b"
+    },
+    "docs/platform/evidence/receipt/receipt-neutrality-with-evidence.log": {
+      "status": "added",
+      "sha": "b4e0f65bce2988b71f0d134e9f81827d441be067"
+    },
+    "docs/platform/evidence/receipt/receipt-node20-final.log": {
+      "status": "added",
+      "sha": "1e637781651cad41398162cb02fc8d106efc4ff3"
+    },
+    "docs/platform/evidence/receipt/receipt-node20-tests.log": {
+      "status": "added",
+      "sha": "1a7b50e8aed6c044bc8f097daad92c0bc0f3ba3f"
+    },
+    "docs/platform/evidence/receipt/receipt-numerical-parity.json": {
+      "status": "added",
+      "sha": "7338b3d57562e8df7b7ec3a93f27ca0a84e31bf3"
+    },
+    "docs/platform/evidence/receipt/receipt-pack-dry-run.log": {
+      "status": "added",
+      "sha": "d1e2ca1ef79845db511f2a2a3a82399c2e6c15d3"
+    },
+    "docs/platform/evidence/receipt/receipt-pack.json": {
+      "status": "added",
+      "sha": "729fa6de361fcf2892f63e17381161badb03d5e3"
+    },
+    "docs/platform/evidence/receipt/receipt-package-contents.log": {
+      "status": "added",
+      "sha": "43470d3f240984a07a3ae9bc16ef9fb00d5fb1fb"
+    },
+    "docs/platform/evidence/receipt/receipt-parity.mjs.log": {
+      "status": "added",
+      "sha": "863b61674ff3b1f61eb0dbb8a549989a59c6e029"
+    },
+    "docs/platform/evidence/receipt/receipt-registry-checksum.log": {
+      "status": "added",
+      "sha": "e3b2fa05adf497ba47045e1ea6b8fc2bf1da7469"
+    },
+    "docs/platform/evidence/receipt/receipt-source-format-final.log": {
+      "status": "added",
+      "sha": "4aa0d16e7a0ff5c16269bf45771cebe89cc2e81d"
+    },
+    "docs/platform/evidence/receipt/receipt-test.log": {
+      "status": "added",
+      "sha": "66c385f25a255d82b8694a938f8e6312f2cbab33"
+    },
+    "docs/platform/evidence/receipt/receipt-tests-final.log": {
+      "status": "added",
+      "sha": "c04661a3083891f166fd012f3480876e20ef902d"
+    },
+    "docs/platform/evidence/receipt/receipt-typecheck-final.log": {
+      "status": "added",
+      "sha": "ed355ca083cddd810505b4b79f027c620049f3af"
+    },
+    "docs/platform/evidence/receipt/receipt-typecheck.log": {
+      "status": "added",
+      "sha": "014403e23994fa6cacf6b45b8c49bc41113b8f5b"
+    },
+    "docs/platform/evidence/receipt/reference-roundtrip.log": {
+      "status": "added",
+      "sha": "07987231e85d0c4b0ba75457fadb1b54cde75eea"
+    },
+    "docs/platform/evidence/receipt/verify-fixtures.mjs.log": {
+      "status": "added",
+      "sha": "4c2e8943cc21d14fd5059e9fb2a0e0f4552dfb4a"
+    },
+    "docs/platform/evidence/time-seconds/implementation/consumer-node22.log.log": {
+      "status": "added",
+      "sha": "1fc37061b65b26d165988ca4e8dd5ea3875435e5"
+    },
+    "docs/platform/evidence/time-seconds/implementation/consumer-node24.log.log": {
+      "status": "added",
+      "sha": "353a1866c2c87054159d18a71875c95accbb9756"
+    },
+    "docs/platform/evidence/time-seconds/implementation/final-focused-tests.log.log": {
+      "status": "added",
+      "sha": "3a1379da7a8ceb8a5b5075c0e77319bc516cd3a4"
+    },
+    "docs/platform/evidence/time-seconds/implementation/final-format.log.log": {
+      "status": "added",
+      "sha": "acdbca2cfd45549faafc2490934159b510fda437"
+    },
+    "docs/platform/evidence/time-seconds/implementation/focused-tests.log.log": {
+      "status": "added",
+      "sha": "7149ed6e15d43810502176810a317dfdf767e110"
+    },
+    "docs/platform/evidence/time-seconds/implementation/format.log.log": {
+      "status": "added",
+      "sha": "1f3d25e44e4ab2f2897a77fe38381406eb7cb7e2"
+    },
+    "docs/platform/evidence/time-seconds/implementation/manifest.json": {
+      "status": "added",
+      "sha": "82bd4397537383f5e584bc648ec099f000e0f47f"
+    },
+    "docs/platform/evidence/time-seconds/implementation/metadata-format.log.log": {
+      "status": "added",
+      "sha": "67ad78d500fab30127c13e1d5b4ff1674abf3dfe"
+    },
+    "docs/platform/evidence/time-seconds/implementation/original-regressions.log.log": {
+      "status": "added",
+      "sha": "8844dd75d15a1ee271108f3964db3e6470d52b37"
+    },
+    "docs/platform/evidence/time-seconds/implementation/pack-initial-cache-error.json.log": {
+      "status": "added",
+      "sha": "742c1e9308b9b0d09c81e675516ee03efc56531c"
+    },
+    "docs/platform/evidence/time-seconds/implementation/pack.json.log": {
+      "status": "added",
+      "sha": "22e73339b97de2c78d214b8cf7f55dc844c65c07"
+    },
+    "docs/platform/evidence/time-seconds/implementation/pack.log.log": {
+      "status": "added",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/build.log.log": {
+      "status": "added",
+      "sha": "890a2bd90c7c4be88d4a715ba016b39bb712a518"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/checksum.log.log": {
+      "status": "added",
+      "sha": "d999ce7cef5607855abb923c56b4a1f406e84fe5"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/contents.log.log": {
+      "status": "added",
+      "sha": "8ba9c715d6d2e66313adfacd33ed55df41f46226"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/docs.log.log": {
+      "status": "added",
+      "sha": "7e30d669e446c82653dd3eccc0996aa8792d85f5"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/exports.log.log": {
+      "status": "added",
+      "sha": "9ae1e36b44072eefb7585d41713a145142704fc0"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/format.log.log": {
+      "status": "added",
+      "sha": "5b5a2216d50028c6f8180a7cd984567c62a759b5"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/gates.json.log": {
+      "status": "added",
+      "sha": "fdd178dce058ea5b40a3569678cc281fe44cad29"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/lint.log.log": {
+      "status": "added",
+      "sha": "6f8def616ece923ce21190cd32c85921d60f25e6"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/neutrality.log.log": {
+      "status": "added",
+      "sha": "556ddd641e306b180c99c479f302eafcd59b3070"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/pack-dry.log.log": {
+      "status": "added",
+      "sha": "2c575daffd47ca4246a15a02ae8d9ded80c31837"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/test.log.log": {
+      "status": "added",
+      "sha": "e04bdb125456214dc421eddc48ce3c2cad04cd49"
+    },
+    "docs/platform/evidence/time-seconds/implementation/release/typecheck.log.log": {
+      "status": "added",
+      "sha": "50f34c2d2236a051416eb23987450ce6744f271c"
+    },
+    "docs/platform/evidence/time-seconds/implementation/sdk-seconds-base-pr.json.log": {
+      "status": "added",
+      "sha": "c74d0eda52b21638a88fe48bddc37688ecafb8cb"
+    },
+    "docs/platform/evidence/time-seconds/implementation/sdk-seconds-hold.json.log": {
+      "status": "added",
+      "sha": "17d319131d5b643f063125b6e5b97d6e8c6c9d1b"
+    },
+    "docs/platform/evidence/time-seconds/implementation/sdk-seconds-install.log.log": {
+      "status": "added",
+      "sha": "c8b55b867f799845424aa2ab70e171d7ac4dbf4f"
+    },
+    "docs/platform/evidence/time-seconds/implementation/source-identity.json.log": {
+      "status": "added",
+      "sha": "2f6736acd2039616e7e62dbb1946fb413949ab3a"
+    },
+    "docs/platform/evidence/time-seconds/implementation/test-node24.log.log": {
+      "status": "added",
+      "sha": "c726a7a70d0ec04037f890942af9f0f0b72b696a"
+    },
+    "docs/platform/evidence/time-seconds/implementation/zodiacs-platform-sdk-seconds-gates.py.log": {
+      "status": "added",
+      "sha": "cbb2767677bf0023e3f2c4e02550c68a86bd321c"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/REVIEW.md.log": {
+      "status": "added",
+      "sha": "f631d6c2f5a6735b793f153b926992788b0b9626"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/author-source-identity.json.log": {
+      "status": "added",
+      "sha": "2f6736acd2039616e7e62dbb1946fb413949ab3a"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline-entry.ts.log": {
+      "status": "added",
+      "sha": "ea7709f58fedaa087d4662a9742659529a2f318a"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline-subject.mjs.log": {
+      "status": "added",
+      "sha": "6d3dbedd48de6970d3a01b92c188a53467d88beb"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/CHANGELOG.md.log": {
+      "status": "added",
+      "sha": "ebe0e39b4583d04af0c78ac8fdc25749ece2d5a0"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/README.md.log": {
+      "status": "added",
+      "sha": "964e63f3305822fa6a38dce002e7604c11953885"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/package.json.log": {
+      "status": "added",
+      "sha": "815910eb72fcbaa3a8e9c0e0a9a8b0dbad1a3033"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/api.ts.log": {
+      "status": "added",
+      "sha": "50dcb36d494a138fad555f47c539e96ce350a6a4"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/aspects.ts.log": {
+      "status": "added",
+      "sha": "aa48f539c2dca51f91bf6c45c0bc62e457de7a0f"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/birth-input.ts.log": {
+      "status": "added",
+      "sha": "c4fc400a4c07874af25b6aba970eea94c24fb0a0"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/date-input.ts.log": {
+      "status": "added",
+      "sha": "3ef604fc9dc72fab729ee34f85bf62e1097be964"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/engine.test.ts.log": {
+      "status": "added",
+      "sha": "8dc3c126dda528d5d665f0e419a49884be5a3a05"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/ephemeris.ts.log": {
+      "status": "added",
+      "sha": "f7ad64f535ef7833a463f3a84d7d850cd706e8f3"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/geo.test.ts.log": {
+      "status": "added",
+      "sha": "1e0d48bcd1bcc6199cd2df63c2787bf237395432"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/geo.ts.log": {
+      "status": "added",
+      "sha": "9784721b9190aba7da3ee9233675ce61e905191c"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/geo/geonames-schema.test.ts.log": {
+      "status": "added",
+      "sha": "0049c667c3e73ccf15f0f02f7c1b2ba2ba736211"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/geo/geonames.test.ts.log": {
+      "status": "added",
+      "sha": "71bbed554de161804ee5d7194c7b91c2a7264e0a"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/geo/geonames.ts.log": {
+      "status": "added",
+      "sha": "2e4295ee88cfbf71563a221bc98cdbbd10121e52"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/geo/timezone.ts.log": {
+      "status": "added",
+      "sha": "1c96a07c682554505dd6c2691a4cce3c23b3a403"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/houses-regression.test.ts.log": {
+      "status": "added",
+      "sha": "a167d53c5e574f43fa525083c477d477976d9ee2"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/houses.ts.log": {
+      "status": "added",
+      "sha": "4d525990ea35a75e568a23641b152ed628c17c4c"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/index.ts.log": {
+      "status": "added",
+      "sha": "5ac4d84b5a36f16876b87b76cc6aed20e226dbc9"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/input-flags.test.ts.log": {
+      "status": "added",
+      "sha": "2fb74bcf24984c30f0eea02dea32c5f023eb68af"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/internal-math.ts.log": {
+      "status": "added",
+      "sha": "1e82ce8ad4dd60c1d1632976277908eb2877277d"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/internal.ts.log": {
+      "status": "added",
+      "sha": "c4089b504ac8eb5c92bbd37cb49557e109c53a9c"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/public-input.test.ts.log": {
+      "status": "added",
+      "sha": "2ca5c05cf9ad0c4eae65e26873eb73c918a4b419"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/receipt-json.test.ts.log": {
+      "status": "added",
+      "sha": "50361ba422290b3f4497a755a45b8b0ea40c5470"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/receipt-json.ts.log": {
+      "status": "added",
+      "sha": "6b57ef9f10120add668029c05ca19933efec05e7"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/receipt.test.ts.log": {
+      "status": "added",
+      "sha": "681e7e6582939e2b6c3c8713afa2ca5112e24ddf"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/receipt.ts.log": {
+      "status": "added",
+      "sha": "05c9e6189d48e1f3dd348ab09b32f2276e3c403b"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/returns-bounds.test.ts.log": {
+      "status": "added",
+      "sha": "e222029c59c0caca4b86f12aa9ed6d4ac36ee007"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/returns-crossings.test.ts.log": {
+      "status": "added",
+      "sha": "3e8e7e163d49ed13e30ac0e72820a10f42b932ef"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/returns.ts.log": {
+      "status": "added",
+      "sha": "7798bb7b69fe8bcc669645e61dc061704263bedc"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/signs.ts.log": {
+      "status": "added",
+      "sha": "b0c503894b97fea073955ec1d8f4453ad0651b02"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/synastry.ts.log": {
+      "status": "added",
+      "sha": "2f527b141c5a954440e778c224192f1e6db3b2a5"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/baseline/packages/engine/src/types.ts.log": {
+      "status": "added",
+      "sha": "e8da3b63f5e304f3dd208d5b8a4b13a9f673e106"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/browser-result.json.log": {
+      "status": "added",
+      "sha": "d2c4fd8509d4e8fe1087864dd7901b36b27bb6c7"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/browser-run.log.log": {
+      "status": "added",
+      "sha": "ed6f0e9e975d889a9eb04b9c274aaa19cb673f32"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/browser-run.mjs.log": {
+      "status": "added",
+      "sha": "fb347d09fab556d22a46cd4ae050c7b0cd7b1b27"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/build.log.log": {
+      "status": "added",
+      "sha": "17115d54976c978134c9b867cf7d0f0341e584f3"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/build.mjs.log": {
+      "status": "added",
+      "sha": "99f2377c913c46d1710329a9d2e7153dda6e66f3"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/bundle-inputs.json.log": {
+      "status": "added",
+      "sha": "72640df0b8701b93d0f5b91e7ff00484224fbc21"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate-entry.ts.log": {
+      "status": "added",
+      "sha": "c23df1a399c3e1a42d1046fbbc2e73ea34b1ac55"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate-subject.mjs.log": {
+      "status": "added",
+      "sha": "66bd1c9579bf41f1e052b322f90ad4828972b3b7"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/CHANGELOG.md.log": {
+      "status": "added",
+      "sha": "2b9f4afa900f1efbd6f398cb2ca577536a72e263"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/README.md.log": {
+      "status": "added",
+      "sha": "d5efe55f1e48ce8d4eed7199c78f940b43b3edb0"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/package.json.log": {
+      "status": "added",
+      "sha": "65b32a222559ccfb800960fe05d21d44b518a307"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/api.ts.log": {
+      "status": "added",
+      "sha": "50dcb36d494a138fad555f47c539e96ce350a6a4"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/aspects.ts.log": {
+      "status": "added",
+      "sha": "aa48f539c2dca51f91bf6c45c0bc62e457de7a0f"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/birth-input.ts.log": {
+      "status": "added",
+      "sha": "c4fc400a4c07874af25b6aba970eea94c24fb0a0"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/date-input.ts.log": {
+      "status": "added",
+      "sha": "3ef604fc9dc72fab729ee34f85bf62e1097be964"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/engine.test.ts.log": {
+      "status": "added",
+      "sha": "8dc3c126dda528d5d665f0e419a49884be5a3a05"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/ephemeris.ts.log": {
+      "status": "added",
+      "sha": "f7ad64f535ef7833a463f3a84d7d850cd706e8f3"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/geo.test.ts.log": {
+      "status": "added",
+      "sha": "1e0d48bcd1bcc6199cd2df63c2787bf237395432"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/geo.ts.log": {
+      "status": "added",
+      "sha": "9784721b9190aba7da3ee9233675ce61e905191c"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/geo/geonames-schema.test.ts.log": {
+      "status": "added",
+      "sha": "0049c667c3e73ccf15f0f02f7c1b2ba2ba736211"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/geo/geonames.test.ts.log": {
+      "status": "added",
+      "sha": "71bbed554de161804ee5d7194c7b91c2a7264e0a"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/geo/geonames.ts.log": {
+      "status": "added",
+      "sha": "2e4295ee88cfbf71563a221bc98cdbbd10121e52"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/geo/timezone-precision.test.ts.log": {
+      "status": "added",
+      "sha": "43822847069d5adfd95c558bf1f0f705b7331779"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/geo/timezone.ts.log": {
+      "status": "added",
+      "sha": "b7dc84c1a4001ac4270151467dbc802d1e2d18c7"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/houses-regression.test.ts.log": {
+      "status": "added",
+      "sha": "a167d53c5e574f43fa525083c477d477976d9ee2"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/houses.ts.log": {
+      "status": "added",
+      "sha": "4d525990ea35a75e568a23641b152ed628c17c4c"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/index.ts.log": {
+      "status": "added",
+      "sha": "5ac4d84b5a36f16876b87b76cc6aed20e226dbc9"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/input-flags.test.ts.log": {
+      "status": "added",
+      "sha": "2fb74bcf24984c30f0eea02dea32c5f023eb68af"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/internal-math.ts.log": {
+      "status": "added",
+      "sha": "1e82ce8ad4dd60c1d1632976277908eb2877277d"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/internal.ts.log": {
+      "status": "added",
+      "sha": "c4089b504ac8eb5c92bbd37cb49557e109c53a9c"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/public-input.test.ts.log": {
+      "status": "added",
+      "sha": "2ca5c05cf9ad0c4eae65e26873eb73c918a4b419"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/receipt-json.test.ts.log": {
+      "status": "added",
+      "sha": "50361ba422290b3f4497a755a45b8b0ea40c5470"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/receipt-json.ts.log": {
+      "status": "added",
+      "sha": "6b57ef9f10120add668029c05ca19933efec05e7"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/receipt.test.ts.log": {
+      "status": "added",
+      "sha": "681e7e6582939e2b6c3c8713afa2ca5112e24ddf"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/receipt.ts.log": {
+      "status": "added",
+      "sha": "05c9e6189d48e1f3dd348ab09b32f2276e3c403b"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/returns-bounds.test.ts.log": {
+      "status": "added",
+      "sha": "e222029c59c0caca4b86f12aa9ed6d4ac36ee007"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/returns-crossings.test.ts.log": {
+      "status": "added",
+      "sha": "3e8e7e163d49ed13e30ac0e72820a10f42b932ef"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/returns.ts.log": {
+      "status": "added",
+      "sha": "7798bb7b69fe8bcc669645e61dc061704263bedc"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/signs.ts.log": {
+      "status": "added",
+      "sha": "b0c503894b97fea073955ec1d8f4453ad0651b02"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/synastry.ts.log": {
+      "status": "added",
+      "sha": "2f527b141c5a954440e778c224192f1e6db3b2a5"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/candidate/packages/engine/src/types.ts.log": {
+      "status": "added",
+      "sha": "cf3821a42da19850eb53903ebb9c326aa11b2d3f"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/checks.mjs.log": {
+      "status": "added",
+      "sha": "43e557ae1647840ad88256ad11448cab0e5221dd"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/dependency-hashes.json.log": {
+      "status": "added",
+      "sha": "9ddb07b3436e358905f95d7a2a4f39cb542ae628"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/final-source-recheck.json.log": {
+      "status": "added",
+      "sha": "d956d57f35527c4f05ca1735b93291fdbee6a92c"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/finalize.mjs.log": {
+      "status": "added",
+      "sha": "721d8390448bb1721da52d983e93f945734ce3c8"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/initial-checks.mjs.log.log": {
+      "status": "added",
+      "sha": "7c201533de48e97613e51516ec018a61a1bb6631"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/initial-key-order-checks.mjs.log.log": {
+      "status": "added",
+      "sha": "2bdc31a12e92c58020fea63dfaca41ada985d333"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/initial-key-order-harness-error.log.log": {
+      "status": "added",
+      "sha": "a94b133702cc1aba67a90627f919a0a818bbe7ea"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/initial-replay-harness-error.log.log": {
+      "status": "added",
+      "sha": "bb6d9ea81e750a57d2134852cb0a69a1f9f17058"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/manifest.json": {
+      "status": "added",
+      "sha": "9e15522a9ebb831aa091fa9a2d7387f927527222"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/node-result.json.log": {
+      "status": "added",
+      "sha": "549475e7c499f793272022f791a2c0378e368600"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/node-run.log.log": {
+      "status": "added",
+      "sha": "326694dc84eb42e6b9bdf1cd6146f417d1f8abd0"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/node-run.mjs.log": {
+      "status": "added",
+      "sha": "9d559b2e6037eb1ac66a5a6793bf42c1617f9bfc"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/retained-controls-and-model.json.log": {
+      "status": "added",
+      "sha": "2e0e15272a4c02f79673d4a5ed1f9ffe14190c6b"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/retained-resolver-followup.md.log": {
+      "status": "added",
+      "sha": "a24bc430066e1be3d2447f1bc188b3c49cbbfedf"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/setup-identity.json.log": {
+      "status": "added",
+      "sha": "6a9d125f92a3ae17f1adad269db610d5df3ffdbc"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/setup.log.log": {
+      "status": "added",
+      "sha": "6535bf3f599b751cff6990dfa6e42f41c9ffd87c"
+    },
+    "docs/platform/evidence/time-seconds/independent-review/setup.mjs.log": {
+      "status": "added",
+      "sha": "485b97a6c523e3a30d23c546eb4d228edc9b2601"
+    },
+    "docs/platform/evidence/time-seconds/public/draft-pr.json.log": {
+      "status": "added",
+      "sha": "f4a0e6b1737e917fa0d78c4b13ce2f62c817d144"
+    },
+    "docs/platform/evidence/time-seconds/public/verification.json.log": {
+      "status": "added",
+      "sha": "1f2f3a9f3f399c7ec52bb1812b96c0d3987b9f35"
+    },
+    "docs/platform/fixtures/natal-envelope-draft-v1-polar.json": {
+      "status": "added",
+      "sha": "1308233d733db8217426def40365b374a25f79eb"
+    },
+    "docs/platform/fixtures/natal-envelope-draft-v1-unknown-0830.json": {
+      "status": "added",
+      "sha": "eed60b6dc6c84de6960eacbbb6f306eec6dc5da4"
+    },
+    "docs/platform/receipt-draft-v1.md": {
+      "status": "added",
+      "sha": "cb4a3a059d3cb5c2e4e4e3d95d3cfa4170e9144b"
+    },
+    "docs/platform/release-integration/README.md": {
+      "status": "added",
+      "sha": "c1774cf896552e7a952655f13c64d5a4650011d3"
+    },
+    "docs/platform/release-integration/artifacts-pins-rollback.json.log": {
+      "status": "added",
+      "sha": "f4bdba9d774314a53c954dc0e93da0ffe64b93dc"
+    },
+    "docs/platform/release-integration/checksum.log": {
+      "status": "added",
+      "sha": "5b3937ee1026968d386943e06c9aac301cc340cf"
+    },
+    "docs/platform/release-integration/clean-consumer.log": {
+      "status": "added",
+      "sha": "3ca0cceb0ceac15e7ddb1f6cd71c8ee32c2ec75a"
+    },
+    "docs/platform/release-integration/consumer-audit-stderr.log": {
+      "status": "added",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/platform/release-integration/consumer-audit.json.log": {
+      "status": "added",
+      "sha": "a0fa263472858ffb6373ea14ff89cac9c577c37c"
+    },
+    "docs/platform/release-integration/contents-owned-cache.log": {
+      "status": "added",
+      "sha": "e10202c0fae7e2afbebf4d3fbe0a0ace2b102753"
+    },
+    "docs/platform/release-integration/contents.log": {
+      "status": "added",
+      "sha": "e0620ff479bf17498f59e9999f47568597a8c178"
+    },
+    "docs/platform/release-integration/dependency-reuse.json.log": {
+      "status": "added",
+      "sha": "88ac8363a2d5a69324bd2c8a13fccd130d714249"
+    },
+    "docs/platform/release-integration/engine-build.log": {
+      "status": "added",
+      "sha": "c9dc54388ddc9a220e70ae228dc26ff5221d1f7b"
+    },
+    "docs/platform/release-integration/engine-pack.log": {
+      "status": "added",
+      "sha": "22e73339b97de2c78d214b8cf7f55dc844c65c07"
+    },
+    "docs/platform/release-integration/exports.log": {
+      "status": "added",
+      "sha": "3f43717af3eab80e46345eabb1eb32383850dd91"
+    },
+    "docs/platform/release-integration/format-final.log": {
+      "status": "added",
+      "sha": "fd4b9f7b668565e1b822f819da715dfca1810366"
+    },
+    "docs/platform/release-integration/install.log": {
+      "status": "added",
+      "sha": "aca1ec7be68e2ee689586e001af6d1f8a4aeccd2"
+    },
+    "docs/platform/release-integration/installed-and-consumer.json.log": {
+      "status": "added",
+      "sha": "34c101689be0da63fec43b657df0cc1bb911f89f"
+    },
+    "docs/platform/release-integration/local-gates.json.log": {
+      "status": "added",
+      "sha": "264e75c0b08485747e5d5c4ef25932dede94cde5"
+    },
+    "docs/platform/release-integration/manifest.json": {
+      "status": "added",
+      "sha": "d7cc49618210cb186013e8405f9ebea61a7de0e2"
+    },
+    "docs/platform/release-integration/neutrality.log": {
+      "status": "added",
+      "sha": "1a6c8ebf12b32803ba8e07dd7eb5b305b9c2a98b"
+    },
+    "docs/platform/release-integration/non-doc-paths.json.log": {
+      "status": "added",
+      "sha": "0f98b11ca9c0434a3e27cf01b91a5a37bf0396be"
+    },
+    "docs/platform/release-integration/ownership-build.log": {
+      "status": "added",
+      "sha": "39bbd9f3e245a0e17bbaeec55a5383e2c7035b21"
+    },
+    "docs/platform/release-integration/preservation-proof.json.log": {
+      "status": "added",
+      "sha": "723f7ee913af14dcbab66108f0910b3f7201d37c"
+    },
+    "docs/platform/release-integration/registry-state.json.log": {
+      "status": "added",
+      "sha": "0c51c6478680e4b08b8f6ed26d4996dd1a582878"
+    },
+    "docs/platform/release-integration/reproducibility.json.log": {
+      "status": "added",
+      "sha": "eae2b56d817d877665a7004fb3e9ab7792d2283a"
+    },
+    "docs/platform/release-integration/rollback-reconstruction.json.log": {
+      "status": "added",
+      "sha": "15efd56dbcfefe4d33803f3701e72d01fc08b99f"
+    },
+    "docs/platform/release-integration/starting-heads.json.log": {
+      "status": "added",
+      "sha": "c2aa5c9c89250786ca575c27c3a537d0a1be05c2"
+    },
+    "docs/platform/release-integration/widgets-build.log": {
+      "status": "added",
+      "sha": "1ff15b7d398126639e51d9cee89d8132da960078"
+    },
+    "package.json": {
+      "status": "modified",
+      "sha": "4b973f5bf5c50ec13f3feb5bff40578234e75e90"
+    },
+    "packages/engine/CHANGELOG.md": {
+      "status": "added",
+      "sha": "2b9f4afa900f1efbd6f398cb2ca577536a72e263"
+    },
+    "packages/engine/LICENSE": {
+      "status": "added",
+      "sha": "271c4903e3d125a4387a40d4cf94f5fec2213f37"
+    },
+    "packages/engine/LICENSING.md": {
+      "status": "added",
+      "sha": "1f429eef299c89313a0dc00efed78329f1e226f8"
+    },
+    "packages/engine/NOTICE": {
+      "status": "added",
+      "sha": "401b57f2d09836183e1f83385ac090d7f8c5b355"
+    },
+    "packages/engine/README.md": {
+      "status": "added",
+      "sha": "d5efe55f1e48ce8d4eed7199c78f940b43b3edb0"
+    },
+    "packages/engine/docs/typedoc.css": {
+      "status": "added",
+      "sha": "953ba2cdfab024f72c99d039c502db9c6798cd71"
+    },
+    "packages/engine/package.json": {
+      "status": "added",
+      "sha": "65b32a222559ccfb800960fe05d21d44b518a307"
+    },
+    "packages/engine/scripts/module-resolution-smoke.mjs": {
+      "status": "added",
+      "sha": "043aaadb67d8cddfb552c2c7462c918187491516"
+    },
+    "packages/engine/scripts/typedoc-canonical.mjs": {
+      "status": "added",
+      "sha": "092a442aa58b2822a228cb53186822cbfbbda94d"
+    },
+    "packages/engine/scripts/verify-package-contents.mjs": {
+      "status": "added",
+      "sha": "8393fd81e3c2344256d516e846499d1c799ea772"
+    },
+    "packages/engine/scripts/verify-packed-consumer.mjs": {
+      "status": "added",
+      "sha": "97efe73ecd5d5c45c7d0e7e0cc113d0b35d4c366"
+    },
+    "packages/engine/src/api.ts": {
+      "status": "added",
+      "sha": "50dcb36d494a138fad555f47c539e96ce350a6a4"
+    },
+    "packages/engine/src/aspects.ts": {
+      "status": "added",
+      "sha": "aa48f539c2dca51f91bf6c45c0bc62e457de7a0f"
+    },
+    "packages/engine/src/birth-input.ts": {
+      "status": "added",
+      "sha": "c4fc400a4c07874af25b6aba970eea94c24fb0a0"
+    },
+    "packages/engine/src/date-input.ts": {
+      "status": "added",
+      "sha": "3ef604fc9dc72fab729ee34f85bf62e1097be964"
+    },
+    "packages/engine/src/engine.test.ts": {
+      "status": "added",
+      "sha": "8dc3c126dda528d5d665f0e419a49884be5a3a05"
+    },
+    "packages/engine/src/ephemeris.ts": {
+      "status": "added",
+      "sha": "f7ad64f535ef7833a463f3a84d7d850cd706e8f3"
+    },
+    "packages/engine/src/geo.test.ts": {
+      "status": "added",
+      "sha": "1e0d48bcd1bcc6199cd2df63c2787bf237395432"
+    },
+    "packages/engine/src/geo.ts": {
+      "status": "added",
+      "sha": "9784721b9190aba7da3ee9233675ce61e905191c"
+    },
+    "packages/engine/src/geo/geonames-schema.test.ts": {
+      "status": "added",
+      "sha": "0049c667c3e73ccf15f0f02f7c1b2ba2ba736211"
+    },
+    "packages/engine/src/geo/geonames.test.ts": {
+      "status": "added",
+      "sha": "71bbed554de161804ee5d7194c7b91c2a7264e0a"
+    },
+    "packages/engine/src/geo/geonames.ts": {
+      "status": "added",
+      "sha": "2e4295ee88cfbf71563a221bc98cdbbd10121e52"
+    },
+    "packages/engine/src/geo/timezone-precision.test.ts": {
+      "status": "added",
+      "sha": "43822847069d5adfd95c558bf1f0f705b7331779"
+    },
+    "packages/engine/src/geo/timezone.ts": {
+      "status": "added",
+      "sha": "b7dc84c1a4001ac4270151467dbc802d1e2d18c7"
+    },
+    "packages/engine/src/houses-regression.test.ts": {
+      "status": "added",
+      "sha": "a167d53c5e574f43fa525083c477d477976d9ee2"
+    },
+    "packages/engine/src/houses.ts": {
+      "status": "added",
+      "sha": "4d525990ea35a75e568a23641b152ed628c17c4c"
+    },
+    "packages/engine/src/index.ts": {
+      "status": "added",
+      "sha": "5ac4d84b5a36f16876b87b76cc6aed20e226dbc9"
+    },
+    "packages/engine/src/input-flags.test.ts": {
+      "status": "added",
+      "sha": "2fb74bcf24984c30f0eea02dea32c5f023eb68af"
+    },
+    "packages/engine/src/internal-math.ts": {
+      "status": "added",
+      "sha": "1e82ce8ad4dd60c1d1632976277908eb2877277d"
+    },
+    "packages/engine/src/internal.ts": {
+      "status": "added",
+      "sha": "c4089b504ac8eb5c92bbd37cb49557e109c53a9c"
+    },
+    "packages/engine/src/public-input.test.ts": {
+      "status": "added",
+      "sha": "2ca5c05cf9ad0c4eae65e26873eb73c918a4b419"
+    },
+    "packages/engine/src/receipt-json.test.ts": {
+      "status": "added",
+      "sha": "50361ba422290b3f4497a755a45b8b0ea40c5470"
+    },
+    "packages/engine/src/receipt-json.ts": {
+      "status": "added",
+      "sha": "6b57ef9f10120add668029c05ca19933efec05e7"
+    },
+    "packages/engine/src/receipt.test.ts": {
+      "status": "added",
+      "sha": "681e7e6582939e2b6c3c8713afa2ca5112e24ddf"
+    },
+    "packages/engine/src/receipt.ts": {
+      "status": "added",
+      "sha": "05c9e6189d48e1f3dd348ab09b32f2276e3c403b"
+    },
+    "packages/engine/src/returns-bounds.test.ts": {
+      "status": "added",
+      "sha": "e222029c59c0caca4b86f12aa9ed6d4ac36ee007"
+    },
+    "packages/engine/src/returns-crossings.test.ts": {
+      "status": "added",
+      "sha": "3e8e7e163d49ed13e30ac0e72820a10f42b932ef"
+    },
+    "packages/engine/src/returns.ts": {
+      "status": "added",
+      "sha": "7798bb7b69fe8bcc669645e61dc061704263bedc"
+    },
+    "packages/engine/src/signs.ts": {
+      "status": "added",
+      "sha": "b0c503894b97fea073955ec1d8f4453ad0651b02"
+    },
+    "packages/engine/src/synastry.ts": {
+      "status": "added",
+      "sha": "2f527b141c5a954440e778c224192f1e6db3b2a5"
+    },
+    "packages/engine/src/types.ts": {
+      "status": "added",
+      "sha": "cf3821a42da19850eb53903ebb9c326aa11b2d3f"
+    },
+    "packages/engine/tsconfig.build.json": {
+      "status": "added",
+      "sha": "cbc2f55ff37356c6a84920e77038ef154ef4d0a8"
+    },
+    "packages/engine/tsconfig.json": {
+      "status": "added",
+      "sha": "205aedd322bc03762b3968d65022a1745e667d3c"
+    },
+    "packages/engine/tsconfig.typecheck.json": {
+      "status": "added",
+      "sha": "3693ac384f29ecf906425270620bf76bd59496a8"
+    },
+    "packages/engine/typedoc.json": {
+      "status": "added",
+      "sha": "cc1baf044ca60919bf3403f50912214e2bac2541"
+    },
+    "packages/sdk/README.md": {
+      "status": "modified",
+      "sha": "819a09a64c3781f75d8c15f5287537e87d200bf4"
+    },
+    "packages/sdk/src/core/docs-posture.test.ts": {
+      "status": "modified",
+      "sha": "efcf0b5fc6ea37080b14388f831fc01ec9049363"
+    },
+    "packages/widgets/LICENSE": {
+      "status": "added",
+      "sha": "271c4903e3d125a4387a40d4cf94f5fec2213f37"
+    },
+    "packages/widgets/README.md": {
+      "status": "added",
+      "sha": "93fd26f315db6b5d624d776028cd4abb86e8b86b"
+    },
+    "packages/widgets/package.json": {
+      "status": "added",
+      "sha": "bf656927cd56d22f93896ea593ca4b9881b35a07"
+    },
+    "packages/widgets/scripts/module-resolution-smoke.mjs": {
+      "status": "added",
+      "sha": "a7f38d7fc70b26dc307db14ed51ce8422df3a080"
+    },
+    "packages/widgets/scripts/verify-package-contents.mjs": {
+      "status": "added",
+      "sha": "d8c144b7783e5dd392b4c6684973355895fc088f"
+    },
+    "packages/widgets/src/index.test.ts": {
+      "status": "added",
+      "sha": "f873422d78f80d1350663abcb3c0a510f86a5acc"
+    },
+    "packages/widgets/src/index.ts": {
+      "status": "added",
+      "sha": "8a4f8412421a4d484bfbcbba5e78e6928e34f6c1"
+    },
+    "packages/widgets/tsconfig.build.json": {
+      "status": "added",
+      "sha": "cbc2f55ff37356c6a84920e77038ef154ef4d0a8"
+    },
+    "packages/widgets/tsconfig.json": {
+      "status": "added",
+      "sha": "205aedd322bc03762b3968d65022a1745e667d3c"
+    },
+    "packages/widgets/tsconfig.typecheck.json": {
+      "status": "added",
+      "sha": "31268e1ea3d76cfb7ee6b2af3746fa451d1ceeaa"
+    },
+    "pnpm-lock.yaml": {
+      "status": "modified",
+      "sha": "1d6f83ec39d488dcc2be81046a13538ddaf3d606"
+    },
+    "pnpm-workspace.yaml": {
+      "status": "modified",
+      "sha": "082b0921126483932b0cee9e0a2dd92427f1d549"
+    },
+    "tsconfig.base.json": {
+      "status": "modified",
+      "sha": "f479418b110cd69610f3792769ca9d134f6dae96"
+    },
+    "tsconfig.json": {
+      "status": "modified",
+      "sha": "f715967745bc181ed0c1abc849621a5c38b89987"
+    },
+    "vitest.config.ts": {
+      "status": "modified",
+      "sha": "661302887cdd9ca6c24ee9be93e599cafb74e412"
+    }
+  }
+}

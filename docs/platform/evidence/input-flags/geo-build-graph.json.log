@@ -1,0 +1,9 @@
+{
+  "root": "file:///private/tmp/zodiacs-platform-input-flags/packages/engine/dist/",
+  "externalImports": [],
+  "files": [
+    "file:///private/tmp/zodiacs-platform-input-flags/packages/engine/dist/geo.js",
+    "file:///private/tmp/zodiacs-platform-input-flags/packages/engine/dist/chunk-K5MRTCWE.js"
+  ],
+  "scope": "Static built optional geo import graph remains free of astronomy/Node/other external dependencies."
+}

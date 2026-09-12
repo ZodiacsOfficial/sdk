@@ -1,0 +1,40 @@
+# Independent GeoNames schema/cache review
+
+No concrete blocking defect was found in the bounded implementation. Nine independent synthetic controls passed under Node 22.23.2 with strict unhandled-rejection handling. The result supports integrating this source follow-up subject to the integrator's normal gates; it is not human approval, a registry release, asset authentication or a full resource-exhaustion audit.
+
+## Reviewed identity
+
+- Reviewed source: `packages/engine/src/geo/geonames.ts` in the isolated GeoNames schema checkout; SHA256 `fd4363799fb26f3682b8c54054afc07761d7c301cdb798e6afc40965df150437`.
+- The implementation owner confirmed source freeze before probing. The source hash was checked again afterward and was unchanged.
+- Checkout HEAD for the baseline: `b0d7f02549187a9c4a0ca5baa97cf3342fc60707`.
+- Baseline `git show HEAD:packages/engine/src/geo/geonames.ts` SHA256 `4872c94c5ccface076aa0dbab3f5c0209ed5e04d4f105d265cbc2844309f7f3a`.
+- Independent `probe.mjs` SHA256 `75cabfde592f636ff0e0aa68738e21bd66105aec37387b8759f9e2f095f1e62e`.
+- `result.json` SHA256 `15f5e238d057bc0e30258973bdabf162ff749d1f771424246d11c195b2f509d4`.
+
+Exact frozen source and baseline copies are adjacent to this record. The reviewer did not edit the implementation, its tests, dependencies or archives, and did not rerun the author's complete corpus suite.
+
+## Executed command and evidence
+
+```sh
+/private/tmp/zodiacs-platform-runtime/node_modules/node/bin/node --experimental-strip-types --unhandled-rejections=strict /private/tmp/zodiacs-platform-geo-schema-review/probe.mjs
+```
+
+The command exited 0. `result.json` contains all nine control results and exact source hashes. Synthetic responses use in-memory `Response` or explicitly supplied mock-fetch objects; no network or real-user fixture was used.
+
+## Findings supported by execution
+
+1. Twelve callers share one invalid index request. A replacement started directly from the first rejection handler is shared and remains cached after every old observer settles: exactly two index requests.
+2. Nine callers share one invalid shard request. A successful other shard can remain pending while the failed shard is retried; the old failure does not evict the replacement or the other shard. Final counts: one index, two failed/replacement north requests, one south request.
+3. Malformed JSON, invalid index shape and invalid table contents fail on three successive explicit attempts. No request happens merely because a failure settles. The fourth valid attempt remains cached. Running in strict mode exposed no orphaned rejected promise in these controls.
+4. Mutations to returned metadata arrays, custom-fetch-owned tables and rows, and returned city objects cannot modify the cached validated data.
+5. Table-index and coordinate objects with hostile `valueOf`/`toString` methods are rejected with zero coercions. Twenty-seven independent table-index traps, including inherited-array property names and numeric strings, reject with the fixed shard-schema error.
+6. An invalid row outside the requested prefix and beyond the existing early-break threshold rejects the complete shard before a limited result is returned. A later explicit call retries that resource.
+7. Eight synthetic queries matched the previous implementation's results, ordering and request sequence. These include ±90°/±180° boundaries, zero population, empty region/country strings, a timezone identifier absent from the host, Unicode and ASCII names, prefix/contains ranking, small limits, missing shards and short queries.
+
+Source review confirms validation executes inside the cached promise before its existing identity-guarded catch (index lines 141–153; shard lines 156–167). All scalar values copied into a cached row have already passed primitive type/range checks (lines 104–124), and `preload` exposes fresh array snapshots (lines 170–179). The coordinate scaling and ASCII sentinel agree with the site's compact-v1 generator; the tested query algorithm is unchanged.
+
+## Explicit limits retained
+
+The ninth control confirms the documented custom-fetch boundary: a getter on an array supplied by same-realm custom code executes once during table iteration. Such objects cannot originate in ordinary parsed JSON. This is not a sandbox or universal no-accessor guarantee; the current README states that limitation. It is not a newly discovered merge blocker.
+
+The format cannot detect mismatched asset generations whose table references remain in range, authenticate place facts, verify aggregate row counts without loading all shards, or prove that a nonempty timezone identifier is supported by every host. The implementation deliberately retains a valid cached index after a shard failure. Its whole-resource JSON parsing/validation has no newly imposed body-size or row-count budget. These limitations are distinct from the tested invalid-fulfilled-payload retry fix and are not claimed solved here.

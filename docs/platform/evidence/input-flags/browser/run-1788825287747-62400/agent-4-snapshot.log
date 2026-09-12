@@ -1,0 +1,5 @@
+$ agent-browser snapshot
+- heading "Installed rc.5 browser acceptance" [level=1, ref=e1]
+- paragraph
+  - StaticText "Synthetic acceptance cases are prepared. Candidate modules load only after privacy observers are armed."
+- list
