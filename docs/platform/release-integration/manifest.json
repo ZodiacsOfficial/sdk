@@ -120,6 +120,31 @@
       "path": "format-final.log",
       "bytes": 197,
       "sha256": "211fe7b71924b91de42e8f7aecdbfb35344d35d92efae091caa6a848a6e30320"
+    },
+    {
+      "path": "ci-initial-failed.log",
+      "bytes": 25462,
+      "sha256": "be17d4c87cb75b5fe6904890e1c4f33053582424f6839af5a45e0aad60561a9a"
+    },
+    {
+      "path": "docs-posture-corrected.log",
+      "bytes": 285,
+      "sha256": "b2b2913b579d39ae62c1dd8f891f30710f0ea4e561bb09aaadd6e211805d46e8"
+    },
+    {
+      "path": "docs-correction-format.log",
+      "bytes": 197,
+      "sha256": "211fe7b71924b91de42e8f7aecdbfb35344d35d92efae091caa6a848a6e30320"
+    },
+    {
+      "path": "preview-initial.json.log",
+      "bytes": 1508,
+      "sha256": "b9665d4d5c9746c692493df709bfd79e8223264be48bc2b9ba25bffa6194e680"
+    },
+    {
+      "path": "pr-source-verification.json.log",
+      "bytes": 89960,
+      "sha256": "8e7d8161ae58973d7c190148c5c768fa89451f4db75fa697e492976cee6f2295"
     }
   ]
 }

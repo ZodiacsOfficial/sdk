@@ -1,0 +1,42 @@
+{
+  "at": "2026-09-12T15:24:30.558Z",
+  "deployments": [
+    {
+      "id": "dpl_21ScKgd6qjrzRYxFJBLAsNizqHRA",
+      "name": "sdk-zodia",
+      "url": "sdk-zodia-qwfd08ych-zodiacsofficial.vercel.app",
+      "state": "READY",
+      "source": "3ee11dc5e3c0b177a6f52afa47a8a2eff8424141",
+      "project": {
+        "id": "prj_owFf8Ne43QlelkWLbiLrLONny1aS",
+        "name": "sdk-zodia",
+        "framework": "nextjs"
+      },
+      "target": null,
+      "createdAt": 1789226430511,
+      "ready": 1789226531470,
+      "errorCode": null,
+      "errorMessage": null,
+      "errorStep": null
+    },
+    {
+      "id": "dpl_HbE8GPW5gQ7QoL3A45qvgZfvjy7L",
+      "name": "sdk-zodia-launch",
+      "url": "sdk-zodia-launch-mu6cop3ya-zodiacsofficial.vercel.app",
+      "state": "ERROR",
+      "source": "3ee11dc5e3c0b177a6f52afa47a8a2eff8424141",
+      "project": {
+        "id": "prj_OLmKAXKXkcTbXBxAuk7MkbUwipSJ",
+        "name": "sdk-zodia-launch",
+        "framework": null
+      },
+      "target": null,
+      "createdAt": 1789226430534,
+      "ready": 1789226552634,
+      "errorCode": "STATIC_BUILD_NO_OUT_DIR",
+      "errorMessage": "No Output Directory named \"public\" found after the Build completed. Configure the Output Directory in your Project Settings. Alternatively, configure vercel.json#outputDirectory.",
+      "errorStep": "buildStep"
+    }
+  ],
+  "qualification": "Provider state only; no claim of browser verification of unrelated Zodia application; no settings, promotion or production action."
+}

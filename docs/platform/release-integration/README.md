@@ -3,7 +3,7 @@
 Checkpoint: 2026-09-12 UTC. This is the SDK half of the owner's bounded R3
 release integration. It combines the already accepted draft stack for review
 against current main. It adds no numerical implementation or later feature.
-Astrofolio remains separate. **Do not merge or publish:** SDK #5's explicit
+Concurrent verification work remains separate. **Do not merge or publish:** SDK #5's explicit
 hold and owner, practitioner and licensing review gates remain in force.
 
 ## Exact starting identities
@@ -75,6 +75,20 @@ Required hosted workflows will run for this main-target integration draft;
 earlier stacked drafts did not trigger that workflow and do not substitute
 for this result. Hosted CI and preview results will be attached to the exact
 draft head before completion is claimed.
+
+The first main-target run passed 578 of 579 tests. Its only failure was the
+neutral SDK documentation guard rejecting a named application in this new
+record. The sentence now refers to concurrent verification work without
+application framing; the test and its forbidden-word policy are unchanged.
+The affected documentation test and format check pass after correction.
+
+The first integration head's `sdk-zodia` preview is READY. The separate
+`sdk-zodia-launch` project fails with `STATIC_BUILD_NO_OUT_DIR`: its root
+configuration expects a `public` directory after the workspace build. That
+project also failed on prior drafts. The error is retained as an external
+configuration gate, not counted as a passing preview or silently bypassed.
+Project settings and production are untouched; the owner must decide how
+that extra deployment target belongs in the release process.
 
 The first fresh install stopped at disk exhaustion. Only the new partial
 installation was removed; the exact prior frozen installation was copied
